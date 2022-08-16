@@ -7,7 +7,7 @@ And now engine support [OpenGL](https://www.khronos.org/opengl/), [DirectX](http
 [Vulkan](https://www.khronos.org/vulkan/) graphical API's.  Its only for Windows for now, other platforms such a Mac and Linux will be also
 support in a far future.
 
-| :hammer_and_wrench:**Build**     |            | :earth_americas:**Offical Home**                           |
+| :hammer_and_wrench:**Build**     |            | :earth_americas:**Official Home**                           |
 |----------------------------------|------------| ---------------------------------------------------------- |
 | :green_circle:Pre-release        | [0.3.5](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
 | :red_circle:Development          | 0.3.5.1608 |                                                            |
