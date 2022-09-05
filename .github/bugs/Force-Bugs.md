@@ -1,5 +1,6 @@
 Status: (F) - Fixed, (A) - Active, (C) - Critical   
 Type: (K) - Kernel,   
+	  (I) - IO,
 	  (E) - Editor,   
 	  (G) - Graphics,   
 	  (W) - Window,   
@@ -7,7 +8,19 @@ Type: (K) - Kernel,
 	  (P) - Physics,   
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
-   
+    
+(F/E) #0130: Fixed completly the drag drop API for Browser and behaviour of DrawThumbnail. It includes small & critical bugs that happens when dragging asset/item.   
+(F/E) #0129: Fixed start dragging. Add delta to resolution of 5px to start drag in Browser.   
+(F/E) #0128: Fixed bug to not allow go back on SubBarPanel if directory tree has identical folders.   
+(F/M) #0127: Fix bug with IterateOver function, if directory not exist we skip the iteration.   
+(AC/IW) #0126: Bug with FE_KEY_DELETE in my Force Win32 Input Implmentation, that block input in Imgui input box and maybe something else. This bug appears only if we press to DELETE and show Win32 MessageBox. No any idea how fix this, seems throw ImGui Key Pull this works fine.   
+(F/E) #0125: Fixed bug when input from Editor OnEvent blocks when focused to another panel and in SceneState::EMTPY.   
+(F/E) #0124: Fixed very old bug with camera scrolling when other panel is focused.   
+(F/M) #0123: Fixed bug when asset's parent path (folder) not have actuall asset file, it created new one with idefinded behvaiour Zero UID.   
+(F/E) #0122: Fix bug with not update assets root directory when new project created/opened.   
+(F/W) #0121: On Win32 when disable cursor its not hide the icon. Problem was with WndProc in ImGui.   
+(F/G) #0120: PlatformLoader: GLFW not was create the graphics context.   
+(F/I) #0119: Fix bug that Force Input not call pool events for GLFW.   
 (F/K) #0118: Fixed bug with Creating 'Input' as Ref but also deleting raw pointer at initialization/deinitialization.   
 (F/E) #0117: Editor Element was not clean up ShaderLibrary.   
 (F/K) #0116: Element not have destructor that doesn't destroy some elements.   
