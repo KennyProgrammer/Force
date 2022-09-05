@@ -59,7 +59,29 @@
 	- Graphics: Rewrite Model and Mesh classes and Face, add MaterialTextureType, restore basic 3d renderer and loading model via new API.   
 	- RenderEngine: Clean-up and rewrite the 3D renderer, restore it at that state where we can render something with it.   
 	- Examples: Add the new ExampleApplication Project to test core and rendering in future. This example is explaned in docs on For Engine Developers page.   
-	...
+	- Nave: Add new window for creating projects and loading it from Force Editor. This UI also moved soon in Editor creation project window.   
+	- Project: Refactoring project creation. Rename Configurate to Setup. Add SetupSpecification that automatically currect project data fully.   
+	- Core: Application System: Add SetupSpecification for Application. And connect last project and window changes, such as checking to all Window's was destroyed.   
+	- Editor: Remove the BasePanel file, and move some functions to Force ImGuiWidgetUtils some to other new utils files in Editor. Rename BasePanel to Panel. Remove old DialogPanel files. Clean-up the Editor completly, now its maybe unstable.   
+	- Project: Now opened project has state and it files cannot be removed until it not be closed.   
+	- Editor: Starting rework the dialog system. Starting with DialogNewProject. Add new UI.   
+	- Nave: Now project cannot be deleted until is opened in Editor.   
+	- Editor: Add DialogOpenProject and rework the project loading on first time or if project not found.   
+	- Editor & Project: Make a lot improvements with Open/Create projects, and fix but with loading project without exising startup scene.   
+	- Editor: Fixed bugs with viewports and camera resettings in Open/Create project.   
+	- Editor: Add Startup Page (Create Project or Open Project). Add Close Project button. Fix menubar icons.   
+	- Nave: Fix issues with older Force versions, that lead to crash.   
+	- SceneManagment: Add SceneSpecification and remove some SceneInitFlags.   
+	- Editor: Add DialogNewScene and fix couple issues with Browser and Explorer.   
+	- AssetManagment: Completly rewrite most function in AssetManager fix tons of bugs with copying, renaming, and add contept of Relative Vs Full Paths.   
+	- Editor: Browser: Completly rewrite the Browser, fix CopyAsset, MoveAsset, RenameAsset, Paste Asset, add new icons, and fix toons of bugs. See Force-Log_BrowserAndAssetsRefactoring.md.   
+	- AssetManagment: CreateAsset now supports create physical file.   
+	- Utils: Complete the Panel and Dialog API, now its moved to Force from Editor.   
+	- Inspector: Fix bug that asset preview button (show/hide) not hide preview some assets.   
+	- Editor: Add DialogNewScript and fix bugs with Inspector.   
+	- Editor: Add DialogNewPrefab and fix bugs with Inspector.   
+	- Editor: Add DialogSelectPreset and finally completle the new Dialog system. Remove old ProjectPanels/PanelDialogOld.   
+	...     
 0.3.5:   
 	- SceneManagment: Fix saving scene with incurrect name.   
 	- Project: Fix saving project with current scene not make it startup.   
