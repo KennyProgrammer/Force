@@ -1,6 +1,9 @@
 # Force-Log
 
-0.3.5 to 0.4.0:   
+0.3.9 to 0.4.0:   
+    - ...      
+	
+**0.3.9pre1:**   
 	- Scripting: Expands the Scripting API (Debug, GameObject), add Window, PrimitiveType, Utils, Vector2i, Vector2i.   
 	- Scripting: Major scripting update. Now all core of C# library stores in different module ForceCSCore.dll that now links to user scripts file ForceCS.dll.   
 	- Scripting: Now project link the ForceCSCore.dll directly to EditorPath.
@@ -81,8 +84,46 @@
 	- Editor: Add DialogNewScript and fix bugs with Inspector.   
 	- Editor: Add DialogNewPrefab and fix bugs with Inspector.   
 	- Editor: Add DialogSelectPreset and finally completle the new Dialog system. Remove old ProjectPanels/PanelDialogOld.   
-	...     
-0.3.5:   
+	- Inspector: Fix the name and tag input box.   
+	- Scripting: ScriptSystem v3.0. Part_1. In progress.   
+	- Scripting: ScriptSystem v3.0. Part_2. In progress.   
+	- Editor: Fix Transform Component UI via new Table API, fix other widgets, fix Console, remove doubled unused menubar, fix Tag and Object Name input boxes, improve UIToolbar.   
+	- Serialization: Make new API for Serializers. Add template Serializer class that allows easly create new Serializer. Renson for this, because Force already has at least six serializers.   
+	- Editor: Add actually preview for Scene and Prefab in Inspector. (Bonus)   
+	- Editor: Fix Undo/Redo with Create/Destroy/Paste/Cut/Duplicate objects, and fix some issues with Explorer (sorting by Name, popups, widgets).   
+	- Editor: Finish fixing Undo/Redo, and fix more issues with Explorer (popups, widgets, states).   
+	- Editor: Add dialogs with link to documentation.   
+	- Scripting: ScriptSystem v3.0. Part_3. In progress. Rebuild And Continue Play.   
+	- Scripting: Fix a lot of memory leak in components and Mono Runtime.   
+	- Editor: Upgrade the Preferences to use the Table API, and that fix ugly glitched resizing on columns and uncurrect separator.   
+	- Editor: Add new DialogSelectImage to select images when no apportunity to currect drag it from browser (for example in prefab editor).   
+	- Scripting: Recreate the attach and instantiation prefabs throw fields. Works with Rebuild And Continue Play.   
+	- Editor: Preferences: Add support for exiting from full screen mode, and go back with reloading application.   
+	- Editor: Preferences: Fix settings UI and change some descriptions.   
+	- Scripting: Now Force detect status of build script project from MSBuild, and print correspond messages.   
+	- Editor: Add key-codes for Play (F5) / Simulatie (F6) and Build Script Project (Shift+F5).   
+	- Editor: Add GameObjectProperties popup on GameObject icon in inspector.   
+	- Scripting: Refact the NativeScript API (C++ scripting) simular to MonoScript API (C# scripting). But C++ is unusles because its not have hot script recompiling yet.   
+	- Editor: Fix couple bugs with CSharpScriptComponent rendering and move build button on top of UIToolbar. Add button help for each component.   
+	- Scripting: Add OnEnable() and OnDisable() method-events.   
+	- Scripting: Fix transform and with physics in runtime not affect on instance of object, and runtime fixture not became NULL on colliders when body destroy it.   
+	- Scripting: Fix the C# physics rigidbody method AddForce now its actaully add force to game object position.   
+	- Editor: Fix issue that save mark appears in simulation, and fix uncurrent scene node sort order when go to runtime.   
+	- Editor: Fix couple bugs with explorer nodes and script fields not appears in simulation mode.   
+	- Platform: Fixed very old bug, to not redraw content with any GraphicsAPI on Win32 client area when move/resize messages as sended.   
+	- Audio: Fix couble bugs with deserializing audio when asset .ext is missing.    
+	- Audio: Improve Audio clean-up with projects and scenes.   
+	- Editor: Fix the UIToolbar not overlaping now, add spinner when script project is building, block the open/close project, and open/close/unload/delete scene if script project is building.   
+	- Editor: Fix a lot of UI stuff, finally fully fixed White theme, and some uncurrent buttons.   
+	- Core: Application System: Remove old OnUpdate function, devide it to BeginFrame and EndFrame, and add PresentFrame with two different modes.   
+	- Editor: Now projects creates, and opens half-dynamic on OnFrameOver function, and show messages-step with kinda of loading step it is dynamically.   
+	- Editor: Fix some bugs with fullscreen mode, disable open any dialog in fullscreen.   
+	- Editor: When build scripts is now shows Spinner.   
+	- Editor: All actions with saving/opening scenes, projects now show in StatusBar.   
+	- Editor: Add DialogAbout to see who creators of the Force.   
+	...   
+	
+**0.3.5:**   
 	- SceneManagment: Fix saving scene with incurrect name.   
 	- Project: Fix saving project with current scene not make it startup.   
 	- Editor: Fix bug when attach another script to object, not displayed add button.   
@@ -200,8 +241,8 @@
 	- Scripting: Fixing bug that GameObject that was created from script not send its components data to Force.   
 	- Scripting: Fixing bug that GameObjects transforms and physical data not currenlty updates to/from Mono.   
 	- Scripting: Fixing bug data not send to Mono after OnStart().   
-	...
-0.3.0a:   
+	
+**0.2.16 to 0.3.3:**   
 	- Core: Update ForceML. Added new Typed^ types of vector to easy indentify it and recreate Vector^ operators. Status: in progress.   
 	- Graphics: Refactoring in VertexArrayObject, VertexBufferObject, IndexBufferObject, replace create(), destroy() functions by constructors and destructor.    
 	- Core & Window: Fix nasty bug when engine crashing on window exit button or randomly when using PlatformApplication::Exit() function.   
@@ -283,60 +324,94 @@
 	- Editor: Settings: Add new User (preparing for exporting Application now this does nothing).   
 	- Editor: Add UI for creating script files.   
 	
-0.2.5.8 - Graphics: WGL: Add more funtionality to Win32 WGL Context.    
-0.2.5.7 - Editor: Settings, Language and imgui.ini files are now creates automatically if its not on the disk.
-0.2.5.6 - Graphics: GL3: Fix bug: Doesn't render textures in batch renderer.  
-0.2.5.5 - Graphics: GL3: Now framebuffer support it, and render all currectly. RenderEngine2D: GL3: Doesn't render textures in batch renderer since 0.1.20.3.7c.   
-0.2.5.4 - Graphics: GL4: Recreate Framebuffer API, now is more structured and support easing attaching Render Targets. GL3: Framebuffer doesnt render anything, black texture.   
-0.2.5.3 - Graphics: Written new GLH API instead old one GLHelper, now is more usable and not recall gl functions.    
-0.2.5.2 - Win32: WGL: Fully recreate WGL context, now all WGL_CONTEXT_CORE_PROFILE_BIT_ARB, WGL_CONTEXT_COMPAT_PROFILE_BIT_ARB, WGL_CONTEXT_FORWARD_COMPAT and WGL_CONTEXT_DEBUG_BIT_ARB works perfectly with all extensions.    
-0.2.5 - Editor: Add preview of runtime view in editor. And add 'play' button to runs the scene-application and stopping it by pressing escape.   
-0.2.4.3 - Window: Fix uncorrect title when new scene is created, displayed old scene title.   
-0.2.4.2 - Graphics: RenderEngine2D: Add support for 'Selection' of GameObject's using objectID as vertex buffer attribute to determite pixel on screen as id or empty space.   
-0.2.4 - Graphics: RenderEngine: Add the EditorCamera class, and now editor scene will render throw that camera. Also Rewrite the RuntimeCamera class. Editor: Add control buttons to easy changing the gizmo types and EditorCamera projection.   
-0.2.3.12 - Editor: Add snapping to Gizmos using Alt/Alt+Shift when moving. Fixed shifting the Gizmo model itself in other game objects.   
-0.2.3.10 - Editor: Fix 'Gizmo Lock' with rotation gizmo. Fix incorrect displaying '#n' as '\n' form lang file. Fix SaveAs without format.   
-0.2.3.9 - Editor: Settings Panel + Localization: English, Russian + Basic Gizmos support + fixed #0002 bug.   
-0.2.3.8 - Core: Recreate the Force Application system. Removed CoreApp, and replace by ApplicationPlatform.  
-0.2.3.5 - Editor: Recreate and improve Console Log panel, fix bugs with coping/pasting unvalid game objects.   
-0.2.3 - Editor: Add console log panel, when shows all major changes, and more icons. Graphics: WGL: Context now creates natively using wglCreateContextWithAttribs().   
-0.2.2 - Graphics: RenderEngine2D: Add beginBatch() and beginNewBatch() functions + fix memory leak on destroying renderer.    
-0.2.1 - Debug: Profiling: Fix memory leak in Instrumentator. (don't have destructor.)   
-0.2.0 - Core: CTXEngine renamed to Force. Editor: Add support for saving tags per scene. Copy-Cut-Paste system, user can now copying, pasting, cutting the game objects with UI Menus and shortcuts. Window: Win32: Fix the minimum size of window.   
-0.1.21.12 - Editor: Added YAML Serializing library. Now user can load and save scenes in/from .ctx format pretty easly. Also added editor icons on InpsectorPanel. Refresh desing of CTXEditor.   
-0.1.21.10 - Editor: Recreate the UI for transform component, add colored XYZ reset-buttons and move the labels in to left side. Graphics: GL3: Refactoring GLIndexBufferObject, now OpenGL 3.x support 16 bit IndexBuffers.   
-0.1.21.9.6 - Graphics: D3D11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
-0.1.21.9.3 - Graphics: D3D11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
-0.1.21.9.2 - Graphics: D3D11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
-0.1.21.9 - Graphics: D3D11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
-0.1.21.8 - Graphics: D3D11: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
-0.1.21.6.9 - Window: Win32: Fixed visibale flag, and now window can be showed or not by controlling flag. WindowPlatfrom in win32 now stores hInstance and hwndClass pointers.   
-0.1.21.6.8 - Window: Win32: Fixed back (Y axis) mouse scrolling. Fix bug with cursor when updating in rect of window. Add to handle five new messages in WinProcc.   
-0.1.21.6.5 - Editor: Improve editor functionality. Fully recreate desing. Add dark and white themes. RenderEngine: Add support for basic lighting. Window: Fix displaying of uncorrect title.   
-0.1.21.6.4 - Editor: Add Tag Component UI, Tag list, Tag Add button, GameObject Add button.   
-0.1.21.6.3 - Editor: Add Camera Properies UI Panel. And upgrade editor, fix uncurrect projection resize.   
-0.1.21.6.2 - RenderEngine: Update RenderEngine 3D, add support for TextureCube, advanced Depth Testing. Editor: Inspector panel now shows currect data about GameObject's and Components.   
-0.1.21.6.0 - Assimp + Editor: Add support to loading any model from modeling program, and add new Editor Panels.   
-0.1.21.5.3c - Input: Recreate fully input system. Window: Add global callback system.   
-0.1.21.5.2c - Window: Add global callback system, i.e Win32 and GLFW works uses CTXEngine callbacks.   
-0.1.21.5.0c - ECS: Added Components, GameObject and Scene classes.   
-0.1.21.4.0c - Win32 Support: Window, OpenGL context, ImGui + lazzy Input.   
-0.1.21.3.12c - EnTT and Core Refactoring.   
+**0.2.0 to 0.2.9:**   
+	- Graphics: WGL: Add more funtionality to Win32 WGL Context.    
+	- Editor: Settings, Language and imgui.ini files are now creates automatically if its not on the disk.   
+	- Graphics: GL3: Fix bug: Doesn't render textures in batch renderer.   
+	- Graphics: GL3: Now framebuffer support it, and render all currectly. RenderEngine2D: GL3: Doesn't render textures in batch renderer since 0.1.20.3.7c.   
+	- Graphics: GL4: Recreate Framebuffer API, now is more structured and support easing attaching Render Targets. GL3: Framebuffer doesnt render anything, black texture.   
+	- Graphics: Written new GLH API instead old one GLHelper, now is more usable and not recall gl functions.   
+	- Win32: WGL: Fully recreate WGL context, now all WGL_CONTEXT_CORE_PROFILE_BIT_ARB, WGL_CONTEXT_COMPAT_PROFILE_BIT_ARB, WGL_CONTEXT_FORWARD_COMPAT and WGL_CONTEXT_DEBUG_BIT_ARB works perfectly with all extensions.    
+	- Editor: Add preview of runtime view in editor. And add 'play' button to runs the scene-application and stopping it by pressing escape.   
+	- Window: Fix uncorrect title when new scene is created, displayed old scene title.   
+	- Graphics: RenderEngine2D: Add support for 'Selection' of GameObject's using objectID as vertex buffer attribute to determite pixel on screen as id or empty space.   
+	- Graphics: RenderEngine: Add the EditorCamera class, and now editor scene will render throw that camera. Also Rewrite the RuntimeCamera class. Editor: Add control buttons to easy changing the gizmo types and EditorCamera projection.   
+	- Editor: Add snapping to Gizmos using Alt/Alt+Shift when moving. Fixed shifting the Gizmo model itself in other game objects.   
+	- Editor: Fix 'Gizmo Lock' with rotation gizmo. Fix incorrect displaying '#n' as '\n' form lang file. Fix SaveAs without format.   
+	- Editor: Settings Panel + Localization: English, Russian + Basic Gizmos support + fixed #0002 bug.   
+	- Core: Recreate the Force Application system. Removed CoreApp, and replace by ApplicationPlatform.   
+	- Editor: Recreate and improve Console Log panel, fix bugs with coping/pasting unvalid game objects.   
+	- Editor: Add console log panel, when shows all major changes, and more icons.   
+	- Graphics: WGL: Context now creates natively using wglCreateContextWithAttribs().   
+	- Graphics: RenderEngine2D: Add beginBatch() and beginNewBatch() functions + fix memory leak on destroying renderer.    
+	- Debug: Profiling: Fix memory leak in Instrumentator. (don't have destructor.)   
+	- Core: CTXEngine renamed to Force.   
+	- Editor: Add support for saving tags per scene. Copy-Cut-Paste system, user can now copying, pasting, cutting the game objects with UI Menus and shortcuts.   
+	- Window: Win32: Fix the minimum size of window.   
+	
+**0.1.21.3.12 to 0.2.0:**   
+	- Editor: Added YAML Serializing library. Now user can load and save scenes in/from .ctx format pretty easly. Also added editor icons on InpsectorPanel. Refresh desing of CTXEditor.   
+	- Editor: Recreate the UI for transform component, add colored XYZ reset-buttons and move the labels in to left side. Graphics: GL3: Refactoring GLIndexBufferObject, now OpenGL 3.x support 16 bit IndexBuffers.   
+	- Graphics: D3D11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
+	- Graphics: D3D11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
+	- Graphics: D3D11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
+	- Graphics: D3D11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
+	- Graphics: D3D11: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
+	- Window: Win32: Fixed visibale flag, and now window can be showed or not by controlling flag. WindowPlatfrom in win32 now stores hInstance and hwndClass pointers.   
+	- Window: Win32: Fixed back (Y axis) mouse scrolling. Fix bug with cursor when updating in rect of window. Add to handle five new messages in WinProcc.   
+	- Editor: Improve editor functionality. Fully recreate desing. Add dark and white themes.   
+	- RenderEngine: Add support for basic lighting.   
+	- Window: Fix displaying of uncorrect title.   
+	- Editor: Add Tag Component UI, Tag list, Tag Add button, GameObject Add button.   
+	- Editor: Add Camera Properies UI Panel. And upgrade editor, fix uncurrect projection resize.   
+	- RenderEngine: Update RenderEngine 3D, add support for TextureCube, advanced Depth Testing. Editor: Inspector panel now shows currect data about GameObject's and Components.   
+	- Editor: Add support to loading any model from modeling program, and add new Editor Panels.   
+	- Input: Recreate fully input system. Window: Add global callback system.   
+	- Window: Add global callback system, i.e Win32 and GLFW works uses CTXEngine callbacks.   
+	- ECS: Added Components, GameObject and Scene classes.   
+	- Win32 Support: Window, OpenGL context, ImGui + lazzy Input.   
+	- Core & SceneManagment: EnTT and Core Refactoring.   
+	
+**(For this special thanks to TheCherno "Yan Chernikov" and its GameEngine series!)**   
+**0.1.20 to 0.1.21.3.12 (The Core Pipeline Update):**   
+	- Core: Application System: New Configuration System.   
+	- Core: Application System: Element + Scene + App structure recreation and fixing Editor events.   
+	- RenderEngine2D: Support More that 32 textures on Render + black rect on some devices.   
+	- Editor: Editor Viewport + Upgrade light.   
+	- Common: Basic 2D Lighting.   
+	- Editor: Editor Space + Project.   
+	- RenderEngine2D: Engine now support raw batch rendering system, also updated buffer's classes.   
+	- RenderEngine2D: Prepare class RenderEngine2D for batch rendering system.   
+	- SceneManagment: Again upgrade game object system. Now all transform stuff move to Transformation component class. This is not full version of this class, i will also add support to geetting matrix from it and other cool stuff.   
+	- SceneManagment: Try to attempt to add very early game object system to the engine. Next step be components system.   
+	- Runtime: Try create basic template my favorite game geometry dash in CTXEngine.   
+	- Common: These are very big changes in the code. Because I organized the files closer to the folders by namespace. That is, now there is a part of the Core engine, it includes a control system, then Renderer which is responsible for rendering, with all the API. And also made many other sorts in the code.   
+	- RenderEngine2D: Upgrade the render engine 2d, now support textures with alpha channel and textures with colours and alpha. Moved two shaders in one GameObject.glsl. Its boost perfomance very well, because gpu don't need at runtime switch between this shader programs. Also fixed much small bugs, and improve better camera movement. Now camera follow by player.  
+	- RenderEngine2D: Started to create specicfic 2d render engine, because it be very imporatnt in the future for exampe uis-guis.   
+	- Graphics: Add textures iwth blending support, upgrade asset engine pack, and do many small changes with optimization and code.   
+	- Core: Made few refactoring in the code. Moved all CTX defines to CoreBase. And also add templates to easy putting some stuff, such a std::vector, std::*_ptr. And finally create shader abstraction.   
+	- Graphics: Finally base of RenderEngine is fully complete! Now render engine set the uses rendeing api (for now open gl) and dispatch it. Also now RenderEngineHelper stores data about rendering commands. And if current api is open gl then load GLRenderEngine impl and runs it functions.   
+	- Graphics: Upgrade the rendering, add attrubite buffer layouts to easy put attribute (offset, stride). For now remove Abstraction GLVertexArrayObject, but in next commit it's be more better.   
+	- Graphics: Improve renderer and add shader support.   
+	- Graphics: Create platform specific rendering api's context, and improve renderer.   
+	- Core: Now engine use static link (.lib) instead (.dll). And also fix other bugs with warnings on build.   
+	- ImGui: Update ImGui to Docking Branch.   
+	- Graphics: Patricles and SubTextures support.   
+	- Math: Add GLM (Math library) support.   
+	- IO: Windows Input support.   
+	- Github: Here should be first first initial commit on Force/Craftix repository, but i create repositiry few weeks later, then delete it again or break. (Because i did't know how git works :D)
+	- GLFW: Add first Window.   
+	- ImGui: Start working on supporting reciving events from ImGui in ImGuiElement.   
+	- Graphics: Dear's ImGui. Add ImGui library and OpenGL + GLFW backends to render ImGui.   
+	- Graphics: OpenGL and GLAD. Add glad extension loader for OpenGL functions.   
+	- Element System: Add support for raw Element/Layer system and write the GameLayer for test.   
+	- Core: Now all .cpp files includes the Precompile headers.   
+	- IO: Start working on input system for Craftix. Basic inplmenetation uses GLFW in the Core.   
+	- Core: Add PreMake5 support for build engine projects.   
+	- Core: Add Logger library SpdLog for logging debug messages to console and debug application.    
+	- Core: Entry Point. Make a basic main entry point for Application.   
    
-From 0.1.20 to 0.1.21.3.10 (The Core Pipeline Update):   
-   
-0.1.20.3.10c - New Configuration System.   
-0.1.20.3.9c - Element + Scene + App structure recreation and fixing Editor events.   
-0.1.20.3.7c - Support More that 32 textures on Render + black rect on some devices.   
-0.1.20.3.6c - Editor Viewport + Upgrade light.   
-0.1.20.3.5c - Basic 2D Lighting.   
-0.1.20.3.1c - Editor Space + Project.   
-0.1.20.1.8c - Patricles and SubTextures support.   
-0.1.20.1.6c   
-0.1.20.1.5c   
-0.1.20.1.1c  
-   
-(2019-2020) The version of the Force/Craftix then on Java before C++:   
+**0.0.1 to 0.1.21: (The version of the Force/Craftix then on Java before C++) (2018-2019):**   
    
 0.1.19 - The Final Fixable Update (Lwjgl 3)   
 0.0.19 - The Final Fixable Update (Lwjgl 2)   
@@ -346,10 +421,7 @@ From 0.1.20 to 0.1.21.3.10 (The Core Pipeline Update):
 0.0.15 - Rotateble Menu Skybox   
 0.0.14 - First Button Fixable Update   
 0.0.13 - Text 2.0   
-0.0.12 - Audio Update  
+0.0.12 - Audio Update   
 0.0.11 - First Menu   
 0.0.11be - Bogdan Edition   
    
-(2018):   
-   
-0.0.1 - 0.0.10   

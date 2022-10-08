@@ -1,6 +1,6 @@
 Status: (F) - Fixed, (A) - Active, (C) - Critical   
 Type: (K) - Kernel,   
-	  (I) - IO,
+	  (I) - IO,   
 	  (E) - Editor,   
 	  (G) - Graphics,   
 	  (W) - Window,   
@@ -9,6 +9,23 @@ Type: (K) - Kernel,
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
     
+(A/S) #0146: Bug with crashing Mono sometimes when reload assemblies. Most cases happens after reopen or open new project.   
+(A/S) #0145: Bug that sometimes when settings is resoring or/and reopen project and build not with Debug but Release, or someting like that pEvents and pScriptClass becomes NULLPTR.   
+(F/E) #0144: Fixed crash with resizing Inspector and Assets Browser when below min clip rect size.   
+(F/S) #0143: Fixed bug that script project generates uncurrect Editor paths for Premake5.   
+(F/E) #0142: Fixed bug when script engine is building we cannot close/open project/scene.   
+(F/A) #0141: Audio clip was not currect loaded, if .ext asset file is missing.   
+(A/P) #0140B: Physics system uncurrect plays when click or press on non-client area on Win32 window. But works perfecly with move/resize.   
+(F/W) #0140: Fixed very old bug since 0.1.21, to not redraw content with any GraphicsAPI on Win32 client area when move/resize messages as sended.    
+(F/P) #0139: Fix bug that DestroyRigidbody2D not say colliders components that fixture was destoryed by body and not set to NULL.   
+(F/S) #0138: Fix Edit name and tag in runtime not affect on instance of object in script.   
+(F/E) #0137: Fix uncurrent rendering CSharpScriptComponent normaly and with different order.   
+(F/E) #0136: Fix bug with uncurrect closing component list and tag manager.   
+(F/S) #0135: Fix bug with deleting objects at runtime, was duplicate deletion in monoGameObjects.   
+(F/E) #0134: Fix bug when close project in fullscreen mode, it already show startup page, but preload the open last saved project.   
+(F/E) #0133: Fix bug when reloading application is not reset the static Inspector DrawComponentOrder.   
+(F/E) #0132: Bug when object has the same ENTTID not UUID in explorer, incurrect selected flag.   
+(F/E) #0131: Fixed bug during opening project assets imports after that load startup scene, or asset scene, because scene is asset and requre to loaded before.   
 (F/E) #0130: Fixed completly the drag drop API for Browser and behaviour of DrawThumbnail. It includes small & critical bugs that happens when dragging asset/item.   
 (F/E) #0129: Fixed start dragging. Add delta to resolution of 5px to start drag in Browser.   
 (F/E) #0128: Fixed bug to not allow go back on SubBarPanel if directory tree has identical folders.   
@@ -49,7 +66,7 @@ Type: (K) - Kernel,
 (F/S) #0093: Fix bug when opened new project, its have old ForceCS.dll from previous project.   
 (F/E) #0092: Fix bug with not closing browser.   
 (A/W) #0091: Fix bug with resizeble flag on Win32 does nothing.   
-(A/E) #0090: Bug when Startup Scene not found in Assets leads to crash bad_allocation.   
+(F/E) #0090: Bug when Startup Scene not found in Assets leads to crash bad_allocation.   
 (F/S) #0089: Fix bug with incurrent display liked asset after moving/copying item if AssetInfo still showing.   
 (F/E) #0088: Fix incurrect displaying of prefab icon on Click+LMB. (Reference to #0025).   
 (F/S) #0087: GameObjectComponent was not copying to runtime scene.   
