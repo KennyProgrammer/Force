@@ -25,7 +25,7 @@ support in a far future.
 ### Install
 
 To quickly install and configure this engine on Windows go to [**Releases**](https://github.com/KennyProgrammer/Force/releases) page and download 
-latest release. Force Editor now currenly in beta state, but already support a bunch of features since last year. If some binary is missing that popup the error message let me know.
+latest release. Force Editor now currenly in beta state, but already stable and support a bunch of features. If some binary is missing that popup the error message let me know.
 
 ### Documentation
 You can read new documentation how install and work with engine, how write scripts and make games [here](https://danil-dukhovenko.gitbook.io/force/).
