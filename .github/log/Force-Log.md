@@ -121,7 +121,20 @@
 	- Editor: When build scripts is now shows Spinner.   
 	- Editor: All actions with saving/opening scenes, projects now show in StatusBar.   
 	- Editor: Add DialogAbout to see who creators of the Force.   
-	...   
+	  Editor: Fix bunch of bugs with creation/loading project dynamically situations.   
+	- Editor & Nave: Now Nave & Editor checks its resources and binaries.   
+	- Nave: Fix bug that Nave create startup scene with default name.   
+	- Editor: Extend the Create Project Dialog, and More button, and screen.   
+	- Scripting: Add DisableInInspector & ShowInInspector attributes, and add opportunity to show or disable fields in inspector throw script.   
+	- Scripting: Add AudioSource.SetClip method and fix AudioClip.LoadAudioClip & AudioClip.UnloadAudioClip.   
+	- Scripting: MonoBackend: Add StringToUtf8 and few new functions, rewrite API. Remove from CsGameObject vars stay only internal calls and garbage GameObject creation using wrappers. SceneManager API: Add access to scene throw C# GameObject.   
+	- Scripting: Remove all garbage wrappers form MonoInternalCalls and rewrite the MonoObjectWrappers NewComponent_ API, not code not duplicate at some placeses and should be faster.   
+	- Scripting: Rewrite the MonoObjectWrappers Set_ API, now more officent and takes less code.   
+	- Scripting: Extend the RigidBody2D API, add a lot of missing methods for contrilling bodies.   
+	- Scripting: Continue extend script API. Add Object base class, add MonoScript.IsMakedGameObject/RemoveMakedGameObject/Enable/Disable, add OnDisabled() event to allow user enable script again.   
+	- Physics2D: Make a new module for Physics. Move all physics 2d relative stuff to there.   
+	- Scripting: Extend the Physics API for scripts. Add AABB, PhysicsShape2D, PhysicsShape2DType, Physics2DSettings, Transform2D, and expand Collider2D and Rigidbody2D.   
+	- Scripting: Last script core rewriting. Finally add support for Instnatiate/Destroy/Get any MonoScript from script as other components.   
 	
 **0.3.5:**   
 	- SceneManagment: Fix saving scene with incurrect name.   

@@ -9,8 +9,12 @@ Type: (K) - Kernel,
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
     
-(A/S) #0146: Bug with crashing Mono sometimes when reload assemblies. Most cases happens after reopen or open new project.   
-(A/S) #0145: Bug that sometimes when settings is resoring or/and reopen project and build not with Debug but Release, or someting like that pEvents and pScriptClass becomes NULLPTR.   
+(F/S) #0150: Fix that object was unvalid for explorer after Object.Destroy(gameObject) because selectedObject still has old game object.   
+(F/E) #0149: Fix bug if selectedThumbnail not exist we cannot preview asset just deselect it and set inspector view to Empty.   
+(F/S) #0148: When create new project throw Nave or Editor its not setting up the build configuration for scripts so i think its just empty string "why???" so breaks initial script compilation. Until save settings.   
+(F/S) #0147: When create new project throw "Nave" its script premake5.lua file not link to Editor so breaks initial script compilation.   
+(F/S) #0146: Bug with crashing Mono sometimes when reload assemblies. Most cases happens after reopen or open new project.   
+(AF/S) #0145: Bug that sometimes when settings is resoring or/and reopen project and build not with Debug but Release, or someting like that pEvents and pScriptClass becomes NULLPTR.   
 (F/E) #0144: Fixed crash with resizing Inspector and Assets Browser when below min clip rect size.   
 (F/S) #0143: Fixed bug that script project generates uncurrect Editor paths for Premake5.   
 (F/E) #0142: Fixed bug when script engine is building we cannot close/open project/scene.   

@@ -12,4 +12,6 @@
    - Nave: Now project cannot be deleted until is opened in Editor.   
    - Nave: Fix issues with older Force versions, that lead to crash.   
    - Nave: Made Nave resizeble, and not it also redraws while move/resize curreclty.   
+   - Nave: Now Nave checks its resources.   
+   - Nave: Fix bug that Nave create startup scene with default name.   
 
