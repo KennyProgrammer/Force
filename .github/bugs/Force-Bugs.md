@@ -8,7 +8,21 @@ Type: (K) - Kernel,
 	  (P) - Physics,   
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
+	  (N) - Nave   
     
+(F/E) #0163: Fixed bug that when user in not scene/project state when click on play, scene not display currect message.    
+(F/E) #0162: Fixed bug when rename scene, somehow gets buffers overflow when name is bigger that reuqested, for example when scene is --NotSerializebleScene--.   
+(F/E) #0161: Fixed incurrect style with white theme with borders on the window.   
+(F/E) #0160: Fix bug with deselecting objects when move explorer panel.   
+(F/E) #0159: Fix bug with crahsing in Assets Browser when size is too small of the window on Y.   
+(F/E) #0158: Fix bug with object selection when clicking on Toolbar.   
+(F/E) #0157: Fix bug that audio and camera sprites process invalid selection object ID.   
+(F/S) #0156: Camera Background is not serialized.   
+(F/E) #0155: Glitching when selection area renders with collider's area.   
+(F/P) #0154: Incorrect box collider displaying.   
+(F/K) #0153: std::exception (Uncurrect user profile symbols).   
+(F/E) #0152: Refer to to not working fix (#0058). Somehow fix this bug, but break ImGui because cut-out ability to render when press Ctrl+Tab. Eventity we don't need it for a Game Engine.   
+(F/E) #0151: Fix bug when we exit from runtime by press Shift+Esc now blocks Shift and not let move editor camera down until we released it, and the same with project saving.   
 (F/S) #0150: Fix that object was unvalid for explorer after Object.Destroy(gameObject) because selectedObject still has old game object.   
 (F/E) #0149: Fix bug if selectedThumbnail not exist we cannot preview asset just deselect it and set inspector view to Empty.   
 (F/S) #0148: When create new project throw Nave or Editor its not setting up the build configuration for scripts so i think its just empty string "why???" so breaks initial script compilation. Until save settings.   
