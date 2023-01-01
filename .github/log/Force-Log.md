@@ -1,9 +1,24 @@
-# Force-Log
-
-0.3.9 to 0.4.0:   
-    - ...      
-	
-**0.3.9pre1:**   
+**0.3.10 - 0.4+:**   
+    - UI: Starting working on Force UI System.   
+	- UI: Add first few template components for UI: FrameComponent, FrameRendererComponent, ImageComponent, ButtonComponent, UITransform. The are for now do noting.   
+	- Editor: Add the new beta rect tool, that will be using for controling UI images, buttons and in general 2D sprites.   
+	- Editor: Add 2D grid, in orthographic view of editor camera.   
+**0.3.10:**   
+    - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
+	- Editor: Fixed couples bugs with gizmo ui buttons, incurrent camera switching, blocking alt, editor view gizmos, now not user cannot drag object immidiatly when another is selected.   
+	- Editor: Fixed another batch of bugs with sending transform to undo and show scene modified, and bug with zooming when object selected and when gizmo is using.   
+	- Platform: Rework the window system to handle multiple windows at the same time. Win32: For Win32 window user can set its own proccdure.   
+	- Core & Graphics: Add LogoRenderer, and LogoScreen, that now appears when engine and editor is loading.   
+	- Graphics: Editor Camera: Rework the editor camera that is now more controllable and support a lot more controlls from WASD, Num Keys, Key Rotation, Key Zooming, fixing angles.   
+	- Editor: Add more buttons to camera's toolbar, such enabling grid, and add new camera properties window.   
+	- Editor: Fix a lot of buts with gizmos and its controlling not objects cannot be immidiatly moved, now need select object then move.   
+	- Editor: Starting to rework the Gizmos API. Start to write the Gizmos API for Rect tool and custom gizmos in future. Add new icon on camera view tool.   
+	- Editor: Rework the Toolbar. Move all buttons from Preview to Toolbar where all buttons like Play hang out.   
+	- Editor: Add new Pan tool, that allows move camera with mouse on X and Y axis. Now ToolbarUI can be show horizontal and match the size of viewport.   
+	- Editor: Rework the tooltips. Add tooltips almost in every place when its possible, some components may not have it.   
+	- Editor: Add rest of the tooltip messages to components.   
+	- SceneManagment & Editor: Fix bunch of bugs with scenes loading for example scene has wrong format, and also add another bunch of tooltip messages.   
+**0.3.9:**   
 	- Scripting: Expands the Scripting API (Debug, GameObject), add Window, PrimitiveType, Utils, Vector2i, Vector2i.   
 	- Scripting: Major scripting update. Now all core of C# library stores in different module ForceCSCore.dll that now links to user scripts file ForceCS.dll.   
 	- Scripting: Now project link the ForceCSCore.dll directly to EditorPath.
@@ -135,7 +150,13 @@
 	- Physics2D: Make a new module for Physics. Move all physics 2d relative stuff to there.   
 	- Scripting: Extend the Physics API for scripts. Add AABB, PhysicsShape2D, PhysicsShape2DType, Physics2DSettings, Transform2D, and expand Collider2D and Rigidbody2D.   
 	- Scripting: Last script core rewriting. Finally add support for Instnatiate/Destroy/Get any MonoScript from script as other components.   
-	
+	- Scripting: Finally continue work on SceneManager API. Now all scenes has concept of playable, just 'playing' flag that can be access from script.   
+	- Scripting: Add oportunity to unload current playing scene (play next found scene), and remove GameObjects, remove/add Components on objects from current & different runtime scenes.   
+	- Scripting: Improve UnloadScene and add LoadScene API.   
+	- Scripting: Add StartScene API, but with bugs for now. Cannot move object in inspector in second start scene.  
+    - Scrtpting: Fix upper bug with dragging objects, add opportunity to re-play runtime scene and reset to state where it was loaded, to re-play from start.   
+	- Physics2D: Improve simulation mode, now physics dynamic bodies not sleep, because in simulation mode we need always run simulation and we cannot controll awaking from scripts.   
+	- Explorer: Rework the draw system of scene nodes in different scene, loading/unloading scenes, and add more states to UIToolbar.   
 **0.3.5:**   
 	- SceneManagment: Fix saving scene with incurrect name.   
 	- Project: Fix saving project with current scene not make it startup.   
