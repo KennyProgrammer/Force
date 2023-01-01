@@ -41,8 +41,8 @@ reasons, feel free to contact me directly, sending a email here on kennytuts@gma
 
 ### License
 
-Code and documentation Copyright (c) 2020-2022 Dukhovenko Danila.\
-Logo Copyright (c) 2022 Dukhovenko Danila.
+Code and documentation Copyright (c) 2020-2023 Dukhovenko Danila.\
+Logo Copyright (c) 2023 Dukhovenko Danila.
 
 Engine and external sets of in-engine tools `'not open source code'` will be released under [the MIT license](./).\
 Documentation released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\
