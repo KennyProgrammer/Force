@@ -10,6 +10,19 @@ Type: (K) - Kernel,
 	  (M) - Assets   
 	  (N) - Nave   
     
+(F/E) #0176: Fix bug that in release build cannot retrive address of &EditorElement::GetPanel().GetSelectedObject(), need made a copy and then &, so not excecuting code with selection of game objects.   
+(F/A) #0175: Fix big that not allow to select asset when asset deselects by Explorer.   
+(F/A) #0174: Fixed big when reimporing already preview selected asset.   
+(F/E) #0173: Fixed bug when drag asset user can scroll content with zooming camera.   
+(F/E) #0172: Fixed reimport single asset sometimes cause to reimport all assets again.   
+(F/E) #0171: Fixed the Rect tool snapping.   
+(F/E) #0170: Fixed bugs with dialogs that still not open right project or delete all scenes when open new scene.   
+(F/K) #0169: Fixed crash that causing when user clicked on cross window button, ImGui throws incurrect assets of missing completition frame.   
+(F/W) #0168: Win32: Fixed bug with incurrent return values from WM_CLOSE message, before 'break' lead to immideatly destroying window by OS not by our call DestroyWindow.   
+(F/E) #0167: Bug with duplicate projects paths points to the same project, in project startup page in recent projects.   
+(F/E) #0166: Bug with large text rendering in script preview or asset script preivew - text not all text renders and window is not responce on inputs.   
+(F/E) #0165: Fixed bug when scene asset preview not displays in play mode or no-scenes mode.   
+(F/M) #0164: Fixed bug that assets with first attempt to reimport assets. It is not reimported.   
 (F/E) #0163: Fixed bug that when user in not scene/project state when click on play, scene not display currect message.    
 (F/E) #0162: Fixed bug when rename scene, somehow gets buffers overflow when name is bigger that reuqested, for example when scene is --NotSerializebleScene--.   
 (F/E) #0161: Fixed incurrect style with white theme with borders on the window.   
@@ -167,11 +180,11 @@ Type: (K) - Kernel,
 (F/K) #0011: Bug with resizing id attachment in framebuffers, memory leak.   
 (F/W) #0010: Fix uncorrect title when new scene is created, displayed old scene title.   
 (F/E) #0009: When using 'Camera' object with Gizmos, its shift the Gizmo model itself in other game objects.   
-(CFA/W) #0008: In Win32+GL created context using wglCreateContextWithFlags is creates small waves on window.   
-(A/E)   #0007: Incorrent scaling of sub-windows on resize. ImGuiWindowFlags_.   
-(CA/E)  #0006: When sub-window is opened it has a part of space off main window, on clicking it is dissapears. Only GLFW+ImGui. {from 0.2.3}   
+(CFA/W) #0008: In Win32+GL created context using wglCreateContextWithFlags is creates small waves on window. (NOTE: 22.01.23 - Probably gone or was uncurrect VSync.)   
+(F/E)   #0007: Incorrent scaling of sub-windows on resize. ImGuiWindowFlags_.   
+(CAF/E)  #0006: When sub-window is opened it has a part of space off main window, on clicking it is dissapears. Only GLFW+ImGui. {from 0.2.3}   
 (F/K) #0005: Bug with incorrent Open/Save dialogs path start point.   
 (F/E) #0004: Flipped framebuffer image in ImGui::Image function.   
 (F/G) #0003: GL4.0+ shader (Rectangle.glsl) texture Z-fighting. In GL3.3 and lower this bug still be exist.   
 (F/E) #0002: Button SaveAs of Ctrl+S+Shift doesn't show the .force files and don't save actial file.   
-(A/E) #0001: Bug with pasting game objects, sometimes cause std::bad_allocation. I think its because EnTT has strange id system.   
+(F/E) #0001: Bug with pasting game objects, sometimes cause std::bad_allocation. I think its because EnTT has strange id system.   

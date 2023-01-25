@@ -1,8 +1,30 @@
-**0.3.10 - 0.4+:**   
+# Force-Log
+
+**0.4.0+:**   
     - UI: Starting working on Force UI System.   
 	- UI: Add first few template components for UI: FrameComponent, FrameRendererComponent, ImageComponent, ButtonComponent, UITransform. The are for now do noting.   
 	- Editor: Add the new beta rect tool, that will be using for controling UI images, buttons and in general 2D sprites.   
 	- Editor: Add 2D grid, in orthographic view of editor camera.   
+	- Platform: Add NotificationClient to recive device changes.   
+	- Editor: Add way to fully reload audio device by Force.   
+	- Editor: Add messages when assets is reloaded/reimported and optimise mechanism reimporting, now it happens at end of the frame not in the middle.   
+	- Editor: Add Startup Window in the Menu Bar. Also fixed tons bugs with dialogs, incurrect messages boxes. Rework the startup screen and add few context menus.   
+	- Editor: Dialogs last and final changes and fixes commit. Add new icon for Open Project/Scene. Dialogs are now stable.   
+	- Gizmos: Rework the ImGuizmo Bounds tool specific for Rect tool, and add the ability to check that mouse is over Rect gizmos. Rect tool now renders only one XY axis as it should.   
+	- Gizmos: Fix incurrect Rect bounds rendering, and fix incurrect discarding Rect lines for 2D view mode.   
+	- Editor: Create a MonoBuildManager and move all code relative to script building from editor to there. Start to clean up EditorElement.   
+	- Editor: Create a EditorPlayer and move all code relative to playing scenes from EditorElement to there.   
+	- Editor: Add new View button on Toolbar to change the Editor View.   
+	- Editor: Add new Window Menu Bar and move Panels to there, add Assets Menu Bar (as short cut for Asset Browser) and completly redo the File Menu Bar.   
+	- Editor: Add also Layouts menu. Restore PanelUndoRedoDebug, now its called PanelUndoRedoHistory.   
+	- Editor: Add bunch of actions to Edit Menu Bar, and add logo for Box2D and The Mono Project to About Dialog.   
+	- Animation: Add simple Animantion interface. Editor: Add way to focus to object by pressing F.   
+	- Editor: Add way to import new asset via menu the same as thowing files to Assets Browser.   
+	- Editor: Add PanelAssetsPreview seprated and move all code form PanelInspector that draws assets preview to there. Now assets preview can be show on different panel and allow modify along with selected object.   
+	- AssetsBrowser: Restore and redo the search filter. Complete AssetsBrowser.   
+	- Networking: Add raw Curl library for downloading files from urls. Editor: Add DialogCheckUpdates for checking Force updates, for now just dialog with out cheking itself.   
+	- AssetsBrowser: Fixed bugs with reimporing assets, redraw asset table, and with creating folders with the same name.   
+	
 **0.3.10:**   
     - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
 	- Editor: Fixed couples bugs with gizmo ui buttons, incurrent camera switching, blocking alt, editor view gizmos, now not user cannot drag object immidiatly when another is selected.   
