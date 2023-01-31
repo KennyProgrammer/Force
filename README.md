@@ -10,7 +10,7 @@ support in a far future.
 | :hammer_and_wrench:**Build**     |            | :earth_americas:**Official Home**                           |
 |----------------------------------|------------| ---------------------------------------------------------- |
 | :green_circle:Pre-release        | [0.3.10](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
-| :red_circle:Development          | 0.4.0 ![2%](https://progress-bar.dev/2) |
+| :red_circle:Development          | 0.4.0 ![4%](https://progress-bar.dev/4) |
 
 ## Content
 * [Introduction](#introduction)
