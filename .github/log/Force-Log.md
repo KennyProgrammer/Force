@@ -24,6 +24,10 @@
 	- AssetsBrowser: Restore and redo the search filter. Complete AssetsBrowser.   
 	- Networking: Add raw Curl library for downloading files from urls. Editor: Add DialogCheckUpdates for checking Force updates, for now just dialog with out cheking itself.   
 	- AssetsBrowser: Fixed bugs with reimporing assets, redraw asset table, and with creating folders with the same name.   
+	- ParticleSystem: Start to work on Force particle system. Add ParticleSystemComponent, and restore the old ParticleSystem class.   
+	- ParticleSystem: Serialize/Deserialize ParticleSystemComponent. Add opportunity to set the sprite on particle.   
+	- ParticleSystem: Add playing state of particles, add simulation particle with specific time, add more function for emit particle without changing its properties by system.   
+	- Scripting: Add ParticleSystem component and Particle classes, for C#, and implement C++ API to C#.  Add GameObject_GetComponent function.   
 	
 **0.3.10:**   
     - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   

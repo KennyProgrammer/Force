@@ -10,6 +10,7 @@ Type: (K) - Kernel,
 	  (M) - Assets   
 	  (N) - Nave   
     
+(A/E) #0177: Fix bug when focused viewport and hovered panel that has scrollable area, when scrol it zoom-in-out camera and panel content.   
 (F/E) #0176: Fix bug that in release build cannot retrive address of &EditorElement::GetPanel().GetSelectedObject(), need made a copy and then &, so not excecuting code with selection of game objects.   
 (F/A) #0175: Fix big that not allow to select asset when asset deselects by Explorer.   
 (F/A) #0174: Fixed big when reimporing already preview selected asset.   

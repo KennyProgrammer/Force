@@ -7,22 +7,22 @@
 | Core              | Build basic workstation to work with Force.                          | +                            |
 | Window System     | Handle windows on different platforms.                               | +                            |
 | Renderer 2D       | Batch Renderer: Quads, Lines, Circles, Sprites.                      | +                            |
-|                   | Font Rendering: Support for text and font.                           | -                            |
-|                   | UI Rendering: Support for UI/GUI/HUD rendering.                      | Working....                  |
+|                   | Font Rendering: Support for text and font.                           | Working...                   |
+|                   | UI Rendering: Support for UI/GUI/HUD rendering.                      | Working...                   |
 | Renderer 3D       | Basic model loading, basic shaders and renderer.                     | 2023-?                       |
 | Project System    | Apportunatty to create, save, and edit projects.                     | +                            |
 | Scene Managment   | ECS. Creating, saving, controlling, playing scenes.                  | +                            |
-| Asset Managment   | Creating, importing, saving, display, attach to GameObjects assets.  | Fixing bugs... (99%)         |
+| Asset Managment   | Creating, importing, saving, display, attach to GameObjects assets.  | +                            |
 | C# Scripting      | Mono and scripting projects, feature to create scripts, attatch to   |                              |
 |                   | GameObjects and play.                                                | +                            |
 | Physics 2D        | Box 2D physics.                                                      | +                            |
 | Physics 3D        | XPhys physics.                                                       | 2024-?                       |
 | Audio             | Playing effects and sounds.                                          | +                            |
-| Editor Tool       | Force Editor Tool, to create projecs and games. Main focus today.    | Working....                  |
+| Editor Tool       | Force Editor Tool, to create projecs and games. Main focus today.    | Working...                  |
 | Nave Tool         | Force Launcher allowing download, search builds, and create projects.| Working...                   |
 | Runtime           | Goal to play created project outside the Editor.                     | +                            |
 | Platforms         | Windows, Linux, Mac.                                                 | +--                          |
-| Renderers         | OpenGL, DirectX10, DirectX11, DirectX12, Vulkan, Metal, Mantle.      | +++---                       |
+| Renderers         | OpenGL, DirectX10, DirectX11, DirectX12, Vulkan, Metal, Mantle.      | +++----                      |
 
 ### Renderer
 
@@ -55,8 +55,8 @@
 | Rendering (Only 2D)                           | +                            |
 | ImGui support                                 | +                            |
 | Interaction with GameObjects                  | +                            |
-| Interaction with Components                   | Working... (95%)             |
-| Interaction with Scenes                       | Working... (50%)             |
+| Interaction with Components                   | +                            |
+| Interaction with Scenes                       | +                            |
 | Runtime recompilation Assemblies/Scripts      | +                            |
 
 ### Asset Managment
