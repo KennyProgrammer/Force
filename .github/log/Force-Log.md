@@ -28,7 +28,36 @@
 	- ParticleSystem: Serialize/Deserialize ParticleSystemComponent. Add opportunity to set the sprite on particle.   
 	- ParticleSystem: Add playing state of particles, add simulation particle with specific time, add more function for emit particle without changing its properties by system.   
 	- Scripting: Add ParticleSystem component and Particle classes, for C#, and implement C++ API to C#.  Add GameObject_GetComponent function.   
-	
+	- AssetsBrowser: Fixed incurrect image size rendering, that makes no visible button hovering state.   
+	- Inspector: Add search filter for components menu. Now user can search components there.   
+	- Scripting: Add Force Debugger extension support for debugging C# code. But extension is not working for now because Mono.Debugging.VisualStudio.all is incompatble.   
+	- Explorer: Rework the explorer, now scene node displayes like normal button without tree node, but works as tree node. Tooltips now are displayed on explorer buttons. Fixed Attach Mode via Ctrl+F2. Fixed dragging object from Explorer to Browser to make a prefab. Selected object now displays with bold font.   
+	- Inspector: Fix couple bugs with Inspector. Now in components menu search text are displaying. Fixed incurrent DrawComponent buttons positions.   
+	- AssetsBrowser: Fix bug with renaming assets by pressing F2, before it acts as creation state to leak to crash. Fix bug while renaming user cannot see label if thumbnail asset is below first row.   
+	- Editor: Add open scenes and projects files to by dragging and dropping on viewport of Force. Platfrom: Rework DragDrop API.   
+	- Editor: Expand the OpenScene function to support opening project outside Force and if scene asset file already exist.   
+	- SceneManagment: Add way to handle objects and components if it asset is not exist or not valid for couple of reasons while deserializing scene and notify user in editor.   
+	- Editor: ImportNewAsset now opens in current project path not with system defaults.   
+	- AssetsBrowser: Now folders in browsers displays first then other asset files. Move CopyFileTo AssetImporter.   
+	- AssetImporter: Expand concept of handleing handle objects and components during scene opening. Add AssetImporter and opportunity to reimport unexising asset to project and component.   
+	- AssetBrowser: Fix bug that while rename script asset not rename script class name.   
+	- FontRendering: Add msdfgen and msdf-atlas-gen with freetype libraries, and setting up basic example class and code to work with Font's.   
+	- DXGI: Add support for (24-bit) textures for DX11, DX10 with DXGI_FORMAT_B8G8R8X8_UNORM format. (GL4 already has it with GL_RGB).   
+	- DX11: Refact some code with D3DTexture2D, update SetTexturePixels that currect accept size and for D3D11_USAGE_IMMUTABLE recreates texture for other types UpdateSubresource.   
+	- Graphics: Refact Texture API, now TextureStatus do more work, add TextureFormatGetChannels, now all ctors accepts TextureSpecification.   
+	- FontRendering: Add way to generate font atlas from specific charset and preview it in editor.   
+	- GL4: After destroying LogoScreen GL not switch contexts so destroyes graphics object from other context.   
+	- WGL: Completly rewrite WGL context, because HDC and HGLRC was not attached to its context, so causing problems during context and window destruction.   
+	- FontRendering: Add generator for RGBA8 texture, so this completly fix uncurrect displaying texture for example on DX10/DX11.   
+	- AssetImporter: Add DialogAssetImporter, and now is scene has missing assets, this dialog will opened and allow user import missing assets with new UI.   
+	- Editor: Add new Toolbar button Play Mode Properties with new Focused Mode. Its allows to input only when mouse is over Scene/Game Panel.   
+	- Editor: Fixed really annouing bug, when user focused on Scene/Game Panel it can scrool Scene/Game and content in Inspector, Explorer, AssetsBrowser, Console.   
+	- Force: Completly cut-off WinAPI includes from public Force API includes. Add ForceMinInclude.h, and Config.h and sort all additional configuration defines that play role on Force include order. Optimize Force Editor compilation time.   
+	- SceneManagment: Now project file accept startup scene as asset UUID. Fix bug with saving incurrent scene by name (now by asset UUID), fix bug that during reloading audio device incurrent scene was opened.   
+	- RenderEngine2D: Add RenderText, and RenderCharacter functions to render text.   
+	- FontRendering: Add way to render text, using new text shader, working for all supported API's.   
+	- AssetsBrowser: Again shitty browser, how i tired to fix it already so far, it just crazy. Fix couple bugs with it, update design and add way to move asset using hierary side of browser.   
+	- Editor: Refact the editor reloading system, now user can cancel reloading. Add reloading editor assets feature. If one of Editor/Resources files missing Force not let you to do that.   
 **0.3.10:**   
     - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
 	- Editor: Fixed couples bugs with gizmo ui buttons, incurrent camera switching, blocking alt, editor view gizmos, now not user cannot drag object immidiatly when another is selected.   
@@ -325,17 +354,17 @@
 	- Platform: Moved (renamed PlatformTimer to Timer) to Force::Platform namespace with GLFW/Win32 implementations.   
 	- Core: Renamed PlatformApplication to Application for simpleset.   
 	- Platform: Updating the Win32 Library.  
-	- D3D11: Add mipmapping support for textures. 
+	- DX11: Add mipmapping support for textures. 
 	- UniformBuffer: Add Upload() function and UploadAndSet() function to manually set uniform and then upload in GPU if requries.   
-	- D3D11: Add support for Framebuffers (RenderTargetView + Texture2D + ShaderResourceView).  
+	- DX11: Add support for Framebuffers (RenderTargetView + Texture2D + ShaderResourceView).  
 	- Graphics: Add RenderCmd::CullMode & RenderCmd::SetCounterClockwise API for OpenGL & DirectX 11.   
 	- UniformUploader: Add SetVector(), SetFloat() & SetInt() functions. Uniform Buffers now at working stage.   
-	- Graphics: Add UniformBlock and UniformUploader API. Sonner will replace old Shader loading unfiorms API. D3D11 & GL: Now supports multiple buffers loading, but some problems has with OpenGL.   
-	- D3D11: Add in Win32 proc WM_SIZE DirectX 11 SwapChain resizing. Add almost full integration ImGui with DirectX 11 (Docking & Viewport_Enabled).   
-	- Core: Add UUID system. D3D11 & GL: Fixed not renderable texture in shader.   
-	- SceneManagment: Add CreateObjectWithUUID() and diserizliztion for UUID. Core: Add beta Reload() func in FE_EXPEREMENTAL. D3D11: Starting to implement mipmapping.   
-	- D3D11: Add D3DImage and GDIPlus to load textures using GDI, not throw WIC or DSS. Also fixed texture filtering, and add new combined filter flags.   
-	- Graphics: Added TextureWrappingMode platfrom structure. D3D11: Framebuffer now support multiple render targets rendering. And fix the ReadPixel() function, now you can select object from scene by clicking on it.   
+	- Graphics: Add UniformBlock and UniformUploader API. Sonner will replace old Shader loading unfiorms API. DX11 & GL: Now supports multiple buffers loading, but some problems has with OpenGL.   
+	- DX11: Add in Win32 proc WM_SIZE DirectX 11 SwapChain resizing. Add almost full integration ImGui with DirectX 11 (Docking & Viewport_Enabled).   
+	- Core: Add UUID system. DX11 & GL: Fixed not renderable texture in shader.   
+	- SceneManagment: Add CreateObjectWithUUID() and diserizliztion for UUID. Core: Add beta Reload() func in FE_EXPEREMENTAL. DX11: Starting to implement mipmapping.   
+	- DX11: Add D3DImage and GDIPlus to load textures using GDI, not throw WIC or DSS. Also fixed texture filtering, and add new combined filter flags.   
+	- Graphics: Added TextureWrappingMode platfrom structure. DX11: Framebuffer now support multiple render targets rendering. And fix the ReadPixel() function, now you can select object from scene by clicking on it.   
 	- Editor: Refact the UI Play/Stop/Pause/Resume buttons, recreate hole framebuffer switching/resizing situation in EditorElement.cpp and create SceneState structure.   
 	- Physics2D: Add the Box2D physics library and interate it to the editor with BoxCollider2DComponent and RigidBody2DComponent. And serialize-desirialize this components.   
 	- Editor: Fix the ImGuizmo rotation bug with uncurrect text formating.   
@@ -346,7 +375,7 @@
 	- Physics2D: Add more paramteters to RigidBody2DComponent such a mass, inertia, gravityScale, gravityVelocity etc.    
 	- SceneManagment: Add to SceneSerializer.cpp Get and Set templates functions to automatically set values if in the that not exist.   
 	- Physics2D: Add 'simulated' param to BoxCollider2DComponent. Dont create Physics2D World if no object in scene hasnt 2D components.   
-	- D3D10: Implement fully functional DirectX 10 Graphics API for older GPU's, like GL3.3.  
+	- DX10: Implement fully functional DirectX 10 Graphics API for older GPU's, like GL3.3.  
 	- Platform: Add new FE_PLATFORM_WINDOWS_WINx macros to determine extatly witch version of Windows we need use to compile code. For example if we compile to Win7 we not want to use d3d12.lib at all and all D3D12 code.  
 	- RenderEngine2D: Add circle renderer and CircleRenderer component.   
 	- RenderEngine2D: Remove a lot of RenderRectangle unused overloads functions. 
@@ -412,11 +441,11 @@
 **0.1.21.3.12 to 0.2.0:**   
 	- Editor: Added YAML Serializing library. Now user can load and save scenes in/from .ctx format pretty easly. Also added editor icons on InpsectorPanel. Refresh desing of CTXEditor.   
 	- Editor: Recreate the UI for transform component, add colored XYZ reset-buttons and move the labels in to left side. Graphics: GL3: Refactoring GLIndexBufferObject, now OpenGL 3.x support 16 bit IndexBuffers.   
-	- Graphics: D3D11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
-	- Graphics: D3D11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
-	- Graphics: D3D11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
-	- Graphics: D3D11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
-	- Graphics: D3D11: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
+	- Graphics: DX11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
+	- Graphics: DX11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
+	- Graphics: DX11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
+	- Graphics: DX11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
+	- Graphics: D3DDX1111: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
 	- Window: Win32: Fixed visibale flag, and now window can be showed or not by controlling flag. WindowPlatfrom in win32 now stores hInstance and hwndClass pointers.   
 	- Window: Win32: Fixed back (Y axis) mouse scrolling. Fix bug with cursor when updating in rect of window. Add to handle five new messages in WinProcc.   
 	- Editor: Improve editor functionality. Fully recreate desing. Add dark and white themes.   

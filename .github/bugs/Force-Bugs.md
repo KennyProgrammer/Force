@@ -2,7 +2,7 @@ Status: (F) - Fixed, (A) - Active, (C) - Critical
 Type: (K) - Kernel,   
 	  (I) - IO,   
 	  (E) - Editor,   
-	  (G) - Graphics,   
+	  (G) - Graphics/Platform,   
 	  (W) - Window,   
 	  (A) - Audio,   
 	  (P) - Physics,   
@@ -10,7 +10,14 @@ Type: (K) - Kernel,
 	  (M) - Assets   
 	  (N) - Nave   
     
-(A/E) #0177: Fix bug when focused viewport and hovered panel that has scrollable area, when scrol it zoom-in-out camera and panel content.   
+(F/E) #0184: Fixed unnoying and unfixeble bug that sometimes when select items it browser or then go to inspector or asset preview it randomly scrolls content of browser.   
+(F/E) #0183: Fix but that DialogOpenScene when project has identical scenes with same name it select all of them.   
+(A/G) #0182: WGL: Fullscreen mode is does't work, just shows black empty window even not make it fullscreen.   
+(F/G) #0181: GL: Fixed bug when use logo screen window it RenderCmd or its active context points already destroyes context and upload data to VertexBuffer and get crash.   
+(F/G) #0180: WGL: Fixed bug that sometimes dummy context creation fails. Incurrect PFD was set. (old bug from 0.2.0).   
+(F/G) #0179: Fix bug with trying create texture with DX11/DX10 that requre (24-bit/RGB format) but Force always use RGBA (32-bit).   
+(F/E) #0178: Fix bug that while rename script asset not rename script class name.   
+(F/E) #0177: Fix bug when focused viewport and hovered panel that has scrollable area, when scroll it zoom-in-out camera and panel content.   
 (F/E) #0176: Fix bug that in release build cannot retrive address of &EditorElement::GetPanel().GetSelectedObject(), need made a copy and then &, so not excecuting code with selection of game objects.   
 (F/A) #0175: Fix big that not allow to select asset when asset deselects by Explorer.   
 (F/A) #0174: Fixed big when reimporing already preview selected asset.   
