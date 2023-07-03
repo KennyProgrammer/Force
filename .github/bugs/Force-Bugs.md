@@ -1,5 +1,7 @@
+# Force-Bugs
+
 Status: (F) - Fixed, (A) - Active, (C) - Critical   
-Type: (K) - Kernel,   
+Type: (K) - Kernel/Core,   
 	  (I) - IO,   
 	  (E) - Editor,   
 	  (G) - Graphics/Platform,   
@@ -9,7 +11,86 @@ Type: (K) - Kernel,
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
 	  (N) - Nave   
-    
+	  
+(F/E) #0262: Fixed bug that lead to crash just crash...   
+(F/E) #0261: Fixed bug with incurrent selected group of assets via Shift.   
+(F/G) #0260: Fixed bug that in runtime drag-drop was disabled.   
+(F/E) #0259: Fix toons of final bugs with browser, espesially with dragging.    
+(F/GE) #0258: Fixed bug that block drag when mouse outside window + create new one (lose focus) and popup dissapears.   
+(F/K) #0257: Fixed bug that from Application ImGui Popups closed, it should be here.   
+(F/G) #0256: Fixed bug that drag drop was not initialized because of Co and Ole differ threading model.   
+(F/G) #0255: Win32: Fix bugs with initializing COM library.   
+(F/K) #0254: Fix bug that in Debug build Scripting Backend was not be intialized because of missing left brachet.   
+(F/E) #0253: Fixed bug that when tooltip or popup opens in dialog outside main window it lose focus.   
+(F/G) #0252: Fix bug that CreateFile still use A instead W version to lead to crash.   
+(F/E) #0251: Fixed bug with hovering toolbars and window is lose focus and glitch the new UI thin-border.   
+(F/E) #0250: Fix couble bugs with go to play/simulate mode and implement auto selection for multiple objects.   
+(F/E) #0249: Fix couble bugs with selection, deselection, cutting, pasting objects.   
+(F/E) #0248: Fix bug that cause glitch when focus to main window from dialog, or custom ImGui parent window.   
+(F/E) #0247: Fix tooltip can be shows from panel when dialog opened, and fixed some colors.   
+(F/E) #0246: Fixed bug that gizmos renders on top of preview and UIToolbar buttons, and ability to use gizmos when click on them.   
+(F/K) #0245: Fix bug when during shutdown if scene modified it not allowed to return to editor and menu bar renders weird during message box.   
+(F/E) #0244: Fixed wrong thing, when select asset it deselect game object.   
+(F/E) #0243: Fix bug that elements in datbase and global search can be activated by Enter even if its panel not hovered.   
+(F/E) #0242: Fix incurrect recent projects.   
+(F/E) #0241: Fix bug that panel states was not reset if panel is hidden so lead to variaous bugs.   
+(F/E) #0240: Fix bug when setting Open Last Project, it was fails.   
+(F/E) #0239: Fix bug with uncurrect Edit Layout.   
+(F/EG) #0238: Fix bug that when draggind panel outside main window it stops to react on drag drop of windows or was glitched.   
+(F/E) #0237: Fix bug when panel is platform window i cannot be dragged.   
+(F/G) #0236: Sometimes then focus to main window from progress window its crashes in ntdll, or TextInputFramework.   
+(F/E) #0235: Fix a litter bug when drag panel resize border and use mouse it rotate and resize window.   
+(F/E) #0234: Fixed bug with lost focus to main window when progerss dialog is finished, and fix icon diplaying in status bar or error status.   
+(F/E) #0233: Fix bugs with creating folder and renaming assets, asset either not created or not refresh.   
+(F/W) #0232: Fix bug when restore from taskbar in not currectly fit the monitor, fix the exiting from fullscreen.   
+(A/S) #0231: Bug with clicking on Skip in AssetsImporter. Sometimes   
+(A/A) #0230: Crash with loading some .wav files in sndfile.c int free(psf->container_data).   
+(F/G) #0229: Fixed bug that dark theme for title bar on dialog windows not working.   
+(F/E) #0228: Fixed when project opened but no scene is loaded on play is not print corresponend message.   
+(F/K) #0227: Bug when application is minimized CPU usage rises to about 50% of time.   
+(F/G) #0226 (CRITICAL): Crash sometimes in Invalidate Scene Framebuffer in CreateTexture on D3D11/10, when resizng happens too quick.   
+(F/E) #0225: Finally fixed bug with Inspector cannot be closed.   
+(F/E) #0224: Bug with Cut, then Copy it removes object.   
+(F/E) #0223: Fixed bug that in play mode in explorer we cannot deselect object.   
+(F/E) #0222: Fixed bug that explorer uncurrect display second node of next scene. Bacause of BeginChild before DrawGameObjectNode.   
+(A/E) #0221: (HARD) Bug when drag from explorer then click on ESC, or ALT, and in state mouse down hover again to that game object node it start drag it again, but it shouldnt.   
+(F/E) #0220: Fixed bug when drag and press ESC and drag and use nav keys it was released mouse state.   
+(F/G) #0219: GL4: Fixed bug with recompilation shader, if shader was recompiled it was not deleting prev shader id.   
+(F/M) #0218: Fix bug when asset physical file was deleted but .ext file exist.   
+(F/M) #0217: Fix bug when asset was deleted but some of component points to it (now its just engine start to lagging because it try to find asset AssetManaget::GetAssetByUID() every frame.)   
+(F/E) #0216: Fix incurrent selecting in browser during dragging to folders, now all drop targets displays with rect and also in hierarchy.   
+(F/E) #0215: Hierachy in browser was incurrent disaplying folders with flag Leaf.   
+(F/E) #0214: Rename scene asset was not renamed its scene name in YAML.   
+(F/G) #0213B: Create and rename files in unicode. (Only scripts cannot has a unicode name because name it actuall class name).   
+(F/G) #0213: If path or file is unicode Window does not open it in explorer. (FE_PlatformUtils_OpenFile platfrom macro fix this).   
+(F/E) #0212: When click on play or simulate in non project state it crash.   
+(F/E) #0211: Explorer context popup is not opening with LMB in Explorer. 
+(AFF/E) #0210: Audio is not hearing. (On 0.3.10 its works fine)   
+(F/M) #0209: When create new project with new scene asset handle we need assign in to project.   
+(F/E) #0208: Fixed bug when user open project, editor camera project was not updated from project settings.   
+(F/E) #0207: Bug that when hover on SceneGame size button and click it select object.   
+(F/E) #0206: Bug that in play mode we cannot drag assets via hierachy and we drag to folders it not hovered.   
+(F/E) #0205: Fixed bug when game object node is selected, then hover over another game object node and try dragging its drag hovered node, now its do nothing only selected and hovered node with the same node id can be dragged.   
+(F/M) #0204: Asset folder in Assets root not selected and not deleting. When reimport all assets it brokes this folder. Before ReadExt it modifiy asset .ext and set category and type None, maybe its parent folder updates of file asset and do that.   
+(F/E) #0203: Scene for some reason when modified not show message when engine close.   
+(F/E) #0202: When audio reloads we need to save selected UUID of object on main scene and when scene another main is loading we search the game object and make it selected in explorer and inspector.   
+(F/S) #0201: Fixed bug that browser size and layout not saved properly.   
+(F/E) #0200: Fixed bug when drag and press ALT it at the same time rotate scene viewport camera.   
+(F/E) #0199: Fixed bug with SceneGameView toolbar buttons, it press state actives on down not click state.   
+(F/G) #0198: Fix bug that Windows OpenFileBox and SaveFileBox now use UTF-16 versions to Windows can translate to Path unicode letters.   
+(F/G) #0197: Fix bug that image asset witch contains russian letters it crashes.   
+(F/A) #0196: Fixed bug when audio asset creates, load sound with russian letters it crashes.   
+(F/E) #0195: Fixed bug with incurrect browser drop highlight rendering.   
+(F/E) #0194: While dragging game object node, then hover browser, then hover other panel it not reset ImGui mouse down state to one if we still dragging.   
+(F/E) #0193: While dragging preset on header of component tree is show highlight in incurrent place.   
+(F/E) #0192: Fixed DragDropPresetOnBlankComponentListSpace highlight in runtime. (appears only in edit mode).
+(F/E) #0191: Fixed bug that drag game object node, move out explorer and then in, it deselected currecly selected object.
+(F/E) #0190: Bug when drag game object node to browser, hover browser then hover explorer it set state of explorer drag to false.   
+(F/E) #0189: Bug when start drag from browser but then while dragging hover explorer game object node, Force thinks that we start drag object from explorer to browser and highlight it.   
+(F/E) #0188: In runtime and simulation when drag DragDropPresetOnGameObjectNode in shows highlight rect.   
+(F/E) #0187: Fixed bug when drag preset in play or simulation but it adds to edit scene.   
+(F/E) #0186: Bug when exit from runtime in maximized & paused mode, its not reset panels back.   
+(F/M) #0185: Asset preset incurrent recreates with incorrect type during importing.   
 (F/E) #0184: Fixed unnoying and unfixeble bug that sometimes when select items it browser or then go to inspector or asset preview it randomly scrolls content of browser.   
 (F/E) #0183: Fix but that DialogOpenScene when project has identical scenes with same name it select all of them.   
 (A/G) #0182: WGL: Fullscreen mode is does't work, just shows black empty window even not make it fullscreen.   
@@ -104,7 +185,7 @@ Type: (K) - Kernel,
 (F/E) #0094: Fix bug when opened new project/scene, in runtime its not stop the scene.   
 (F/S) #0093: Fix bug when opened new project, its have old ForceCS.dll from previous project.   
 (F/E) #0092: Fix bug with not closing browser.   
-(A/W) #0091: Fix bug with resizeble flag on Win32 does nothing.   
+(F/W) #0091: Fix bug with resizeble flag on Win32 does nothing.   
 (F/E) #0090: Bug when Startup Scene not found in Assets leads to crash bad_allocation.   
 (F/S) #0089: Fix bug with incurrent display liked asset after moving/copying item if AssetInfo still showing.   
 (F/E) #0088: Fix incurrect displaying of prefab icon on Click+LMB. (Reference to #0025).   
@@ -130,14 +211,14 @@ Type: (K) - Kernel,
 (F/E) #0068: Is we double click on folder and opened it, we need to block preview asset to not automatically show preview of another item in folder.   
 (F/E) #0067: Fix bug when creating file/folder and it state input box asset .ext file create with initial name.   
 (F/K) #0066: Fix bug with not closing some of opened file streams.   
-(A/E) #0065: Fix bug with deleting object that have loaded texture asset.   
+(F/E) #0065: Fix bug with deleting object that have loaded texture asset.   
 (F/E) #0064: Increase perfomance of ProjectBrowser removing the slow filesystem::relative function and filesystem::directory_iterator.   
 (F/E) #0063: Fix bug with dragging content items by name not filepath.   
 (F/E) #0062: Bug with not displaying hithlight rect on browser viewport when dragging file from OS.   
 (F/E) #0061: Bug with not displaying hithlight rect on scene viewport when dragging scene.   
 (F/E) #0060: Bug with draging scene to view   
 (F/E) #0059: Bug with not currect displaying buttons is none-scene view.   
-(A/E) #0058: F__KING BUG (since beginning 0.1.21): FIX ANYWAY: Disable the focus to ImGui window by press ALT.   
+(AF/E) #0058: F__KING BUG (since beginning 0.1.21): FIX ANYWAY: Disable the focus to ImGui window by press ALT.   
 (F/E) #0057: Bug with csharp project: on project loading if c# project files not found - regererate it.   
 (F/E) #0056: Non scene is attached open additional scene, scene not displaying.   
 (F/E) #0055: Fixed bug with some popups is moving by mouse, and have uncurrect theme.   
