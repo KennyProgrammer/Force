@@ -1,0 +1,6 @@
+Type: Force Builds Data
+Builds:
+  - Version: 0.4.0-Q1
+    URL: https://github.com/KennyProgrammer/ForceDev/archive/refs/tags/v0.4.0-Q1.zip
+  - Version: 0.3.10
+    URL: https://github.com/KennyProgrammer/Force/releases/download/v0.3.10/Force-0.3.10.rar
