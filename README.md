@@ -10,7 +10,7 @@ support in a far future.
 | :hammer_and_wrench:**Build**     |            | :earth_americas:**Official Home**                           |
 |----------------------------------|------------| ---------------------------------------------------------- |
 | :green_circle:Pre-release        | [0.3.10](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
-| :red_circle:Development          | 0.4.0-Q2 ![45%](https://progress-bar.dev/45) |
+| :red_circle:Development          | 0.4.0-Q2 ![47%](https://progress-bar.dev/45) |
 
 **NOTE:** Most of the issues and bugs that you can find in latest 0.3.10 pre-release can be already fixed or re-created during 0.4.0
 development. So be patient and wait global and massive 0.4.0 update that will re-live Force in all cases.
@@ -28,7 +28,7 @@ development. So be patient and wait global and massive 0.4.0 update that will re
 ### Install
 
 To quickly install and configure this engine on Windows go to [**Releases**](https://github.com/KennyProgrammer/Force/releases) page and download 
-latest release. Force Editor now currenly in beta state, but already stable and support a bunch of features. If some binary is missing that popup the error message let me know.
+latest release or try new just bundeled [**Force Nave**](https://github.com/KennyProgrammer/Force-Nave). Force Editor now currenly in beta state, but already stable and support a bunch of features. If some binary is missing that popup the error message let me know.
 
 ### Documentation
 You can read new documentation how install and work with engine, how write scripts and make games [here](https://danil-dukhovenko.gitbook.io/force/).
