@@ -71,3 +71,12 @@ Logo released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 * Mono
 * Box2D
 * OpenAL Soft
+* sndfile
+* libmp3lame
+* mpg123
+* ogg
+* flac
+* opus
+* Mono
+* Box2D
+* OpenAL Soft
