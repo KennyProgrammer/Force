@@ -1,952 +1,1139 @@
 # Force-Log
 
-**0.4.0+:**   
-	** Q1 (Done) **   
-	** Q2 (Working) **   
-	** Q3 (Up-Coming) **   
-	   
-	- UI: Starting working on Force UI System.   
-	- UI: Add first few template components for UI: FrameComponent, FrameRendererComponent, ImageComponent, ButtonComponent, UITransform. The are for now do noting.   
-	- Editor: Add the new beta rect tool, that will be using for controling UI images, buttons and in general 2D sprites.   
-	- Editor: Add 2D grid, in orthographic view of editor camera.   
-	- Platform: Add NotificationClient to recive device changes.   
-	- Editor: Add way to fully reload audio device by Force.   
-	- Editor: Add messages when assets is reloaded/reimported and optimise mechanism reimporting, now it happens at end of the frame not in the middle.   
-	- Editor: Add Startup Window in the Menu Bar. Also fixed tons bugs with dialogs, incurrect messages boxes. Rework the startup screen and add few context menus.   
-	- Editor: Dialogs last and final changes and fixes commit. Add new icon for Open Project/Scene. Dialogs are now stable.   
-	- Gizmos: Rework the ImGuizmo Bounds tool specific for Rect tool, and add the ability to check that mouse is over Rect gizmos. Rect tool now renders only one XY axis as it should.   
-	- Gizmos: Fix incurrect Rect bounds rendering, and fix incurrect discarding Rect lines for 2D view mode.   
-	- Editor: Create a MonoBuildManager and move all code relative to script building from editor to there. Start to clean up EditorElement.   
-	- Editor: Create a EditorPlayer and move all code relative to playing scenes from EditorElement to there.   
-	- Editor: Add new View button on Toolbar to change the Editor View.   
-	- Editor: Add new Window Menu Bar and move Panels to there, add Assets Menu Bar (as short cut for Asset Browser) and completly redo the File Menu Bar.   
-	- Editor: Add also Layouts menu. Restore PanelUndoRedoDebug, now its called PanelUndoRedoHistory.   
-	- Editor: Add bunch of actions to Edit Menu Bar, and add logo for Box2D and The Mono Project to About Dialog.   
-	- Animation: Add simple Animantion interface. Editor: Add way to focus to object by pressing F.   
-	- Editor: Add way to import new asset via menu the same as thowing files to Assets Browser.   
-	- Editor: Add PanelAssetsPreview seprated and move all code form PanelInspector that draws assets preview to there. Now assets preview can be show on different panel and allow modify along with selected object.   
-	- AssetsBrowser: Restore and redo the search filter. Complete AssetsBrowser.   
-	- Networking: Add raw Curl library for downloading files from urls. Editor: Add DialogCheckUpdates for checking Force updates, for now just dialog with out cheking itself.   
-	- AssetsBrowser: Fixed bugs with reimporing assets, redraw asset table, and with creating folders with the same name.   
-	- ParticleSystem: Start to work on Force particle system. Add ParticleSystemComponent, and restore the old ParticleSystem class.   
-	- ParticleSystem: Serialize/Deserialize ParticleSystemComponent. Add opportunity to set the sprite on particle.   
-	- ParticleSystem: Add playing state of particles, add simulation particle with specific time, add more function for emit particle without changing its properties by system.   
-	- Scripting: Add ParticleSystem component and Particle classes, for C#, and implement C++ API to C#.  Add GameObject_GetComponent function.   
-	- AssetsBrowser: Fixed incurrect image size rendering, that makes no visible button hovering state.   
-	- Inspector: Add search filter for components menu. Now user can search components there.   
-	- Scripting: Add Force Debugger extension support for debugging C# code. But extension is not working for now because Mono.Debugging.VisualStudio.all is incompatble.   
-	- Explorer: Rework the explorer, now scene node displayes like normal button without tree node, but works as tree node. Tooltips now are displayed on explorer buttons. Fixed Attach Mode via Ctrl+F2. Fixed dragging object from Explorer to Browser to make a prefab. Selected object now displays with bold font.   
-	- Inspector: Fix couple bugs with Inspector. Now in components menu search text are displaying. Fixed incurrent DrawComponent buttons positions.   
-	- AssetsBrowser: Fix bug with renaming assets by pressing F2, before it acts as creation state to leak to crash. Fix bug while renaming user cannot see label if thumbnail asset is below first row.   
-	- Editor: Add open scenes and projects files to by dragging and dropping on viewport of Force. Platfrom: Rework DragDrop API.   
-	- Editor: Expand the OpenScene function to support opening project outside Force and if scene asset file already exist.   
-	- SceneManagment: Add way to handle objects and components if it asset is not exist or not valid for couple of reasons while deserializing scene and notify user in editor.   
-	- Editor: ImportNewAsset now opens in current project path not with system defaults.   
-	- AssetsBrowser: Now folders in browsers displays first then other asset files. Move CopyFileTo AssetImporter.   
-	- AssetImporter: Expand concept of handleing handle objects and components during scene opening. Add AssetImporter and opportunity to reimport unexising asset to project and component.   
-	- AssetsBrowser: Fix bug that while rename script asset not rename script class name.   
-	- FontRendering: Add msdfgen and msdf-atlas-gen with freetype libraries, and setting up basic example class and code to work with Font's.   
-	- DXGI: Add support for (24-bit) textures for DX11, DX10 with DXGI_FORMAT_B8G8R8X8_UNORM format. (GL4 already has it with GL_RGB).   
-	- DX11: Refact some code with D3DTexture2D, update SetTexturePixels that currect accept size and for D3D11_USAGE_IMMUTABLE recreates texture for other types UpdateSubresource.   
-	- Graphics: Refact Texture API, now TextureStatus do more work, add TextureFormatGetChannels, now all ctors accepts TextureSpecification.   
-	- FontRendering: Add way to generate font atlas from specific charset and preview it in editor.   
-	- GL4: After destroying LogoScreen GL not switch contexts so destroyes graphics object from other context.   
-	- WGL: Completly rewrite WGL context, because HDC and HGLRC was not attached to its context, so causing problems during context and window destruction.   
-	- FontRendering: Add generator for RGBA8 texture, so this completly fix uncurrect displaying texture for example on DX10/DX11.   
-	- AssetImporter: Add DialogAssetImporter, and now is scene has missing assets, this dialog will opened and allow user import missing assets with new UI.   
-	- Editor: Add new Toolbar button Play Mode Properties with new Focused Mode. Its allows to input only when mouse is over Scene/Game Panel.   
-	- Editor: Fixed really annouing bug, when user focused on Scene/Game Panel it can scrool Scene/Game and content in Inspector, Explorer, AssetsBrowser, Console.   
-	- Force: Completly cut-off WinAPI includes from public Force API includes. Add ForceMinInclude.h, and Config.h and sort all additional configuration defines that play role on Force include order. Optimize Force Editor compilation time.   
-	- SceneManagment: Now project file accept startup scene as asset UUID. Fix bug with saving incurrent scene by name (now by asset UUID), fix bug that during reloading audio device incurrent scene was opened.   
-	- RenderEngine2D: Add RenderText, and RenderCharacter functions to render text.   
-	- FontRendering: Add way to render text, using new text shader, working for all supported API's.   
-	- AssetsBrowser: Again shitty browser, how i tired to fix it already so far, it just crazy. Fix couple bugs with it, update design and add way to move asset using hierary side of browser.   
-	- Editor: Refact the editor reloading system, now user can cancel reloading. Add reloading editor assets feature. If one of Editor/Resources files missing Force not let you to do that.   
-	- AssetsPreview: Update UI, and add Asset Properties, Select In Browser parameters.   
-	- FontRendering: Add Font asset type and UI for it.   
-	- Editor: Completly regisign Force UI. Redraw all icons on dark and white styles. New Force logo. With this commit fixed some bugs.   
-	- Dialog: Add new DialogSelectFont and fixed some bugs with DialogSelectImage.   
-	- FontRendering: Add Font component, and it Inspector UI, MainMenu Bar. Now text renders throw SceneRenderer.   
-	- Inspector: Complete feature when modified one of component values it set scene to be modified. Ealry works but not with all components.   
-	- FontRendering: Add way to load default font if it not exist in project during AddComponent. (unfinshed)   
-	- Audio: Add progress bar that show time have passed from start playing clip.   
-	- Editor: Fixed tons of bugs during drag and drop assets, render highlights, etc. (See ForceBugs.md "#0189-#0195")   
-	- Inspector: Fixed critial bug when physical asset is missing or not even exist but attached to component its cause Force to crazy lag. Update AssetWidgets add Select In Browser button.   
-	- Audio: Fixed bug with audio loading with russian letters.   
-	- Platform: Add support for Utf16 OpenFileBox and SaveFileBox, to proper import assets and save project/scenes with russian letters.   
-	- Texture: Update Texture API to support Path instead of String, this fix issuies with incurrect filepath format Utf16/Utf8 situations.   
-	- StatusBar: Redo Status Bar, add Background Playback to let user see witch clips was playing in background mode, because Force can play more that one clip at the same time.   
-	- Widgets: Add custom Slider API that can be used for example for audio volume or speed.   
-	- AssetManagment: Increase speed of reimporting and importing assets, now its happens really fast.   
-	- AssetsBrowser: Again, again this browser, how i love fixing it daaaam :(. Fixed bug that in edit mode during dragging items show its colors Add hightlight rect when drag asset to folder.   
-	- FileSystem: Expand Force filesystem to support more operations.   
-	- PlatformUtils: Add support for Utf16/Utf8 OpenDirectory.   
-	- Dialog: Add support for russian input in dialogs like NewScene, NewPrefab, NewScript.   
-	- PlatformUtils: Win32: Add rest of API to support Utf16 and parsing russian text to Win32. WindowWin32: Add support to parse window title in Utf16.   
-	- Editor: Open/Save/ChooseDirectory file dialogs now translated.   
-	- Dialog: Add support for creating project with russian names.   
-	- AssetsBrowser: Complety rewrite hierarchy part of browser, add way to drag asset to hierary, add content pop-up to hieraty, and scroll to asset and fixed another pack of bugs.   
-	- Dialog: Add way to create scenes and prefabs, presets with russian names.   
-	- Inspector: Rework the asset witgets, and improve asset imporing speed now with script asset widget.   
-	- AssetsBrowser: Disable nav-input from some sub bars, and finally implement selectable feature on thumbnail, now all thumbnails can be selected from keyboard and its state its matches.   
-	- Dialog: Replace all buttons in drop-down lists to selectables.   
-	- Console: Rework the Console Panel, now console is a table, text are wrapped, and when new message printed it scroll to that message.   
-	- Graphics: Refact Shader API, now it also works with Path API not String and has ShaderStatus and ShaderErrorCode. Now shader error can be catched from Editor.   
-	- Utils: Add new DialogBox API, update dialog icons to Windows10 version.   
-	- Core: Improve the ecxception handleing. Now exceptions print a full Crash Report.   
-	- Window: Improve Window API, add Focus(), Maximize(), Minimize(), Restore(), rename TitleFlags to WindowTitleFlags, and all flags that window specific.   
-	- Dialog: Improve Dialog system, fix confict Dialog & Panel interaction when Dialog is openend and Panel became a platform window.   
-	- AssetsBrowser: Add dropdown box when click on sub-sub bar arrow button.   
-	- Panel: Seperate PanelSceneGame in to PanelScene and PanelGame, but this cause problems and now we need to refact the rendering and updating code of main editor pass, and make few tests.   
-	- Explorer & Toolbar: Move Redo/Undo buttons to Toolbar, and add New Object button to explorer.   
-	- Editor: Add new feature when using ALT & Mouse for rotation/zomming mouse cursor now will be moved back/forward on X/Y if outside window to let user always move camera not block by end of the window.   
-	- ScenePanel: Seperate the EditorElement (Dialog) events when Scene and Game events.   
-	- ScenePanel: Now panel is closable. Also refact Panel API to support more features. Inspector also now closable.   
-	- DX10/DX11: Implement hole system to reload and reset device if it was lost, because framebuffer, on resize crashes, but actually then i realise that was pointles.   
-	- Core: Now main application thread will be slepped when window is minimized, and not let CPU usage rises to about 50% of time.   
-	- Explorer: Start redo explorer, fix some commands like Copy, Cut, Paste with another scene, andd Move and Paste command to another scene.   
-	- AssetsBrowser: Implement multiselection with thumbnails, with CTRL (add to current selected) and with Shift (select area of thumbnails).   
-	- AssetsBrowser: Implement deletion assets with multiselection.   
-	- AssetsBrowser & AssetsPreview: Add opportunity to preview raw .ext files and broken .ext (in case if physical file is missing).   
-	- AssetsBrowser: Implement copy/pasting assets with multiselection.   
-	- Core: Move ApplicationWindowSpecification to Window and its now called WindowSpecification.   
-	- Platform: Win32: Create a new system for creation custom at background dialogs. Omg is by far most hard thin that i've ever done since stated working on Force.   
-	- Dialog: Add dialog when project is creating, project is opening, scene is opening.
-	- AssetsBrowser: Add dialog that shows during assets preview loading asset. It shows only if asset loading longer that 4secs.   
-	- AssetsBrowser: Implement cutting assets & multiselection cutting (Not fully tested.) Need refactoring .ext files displaying.   
-	- AssetManagment: Starting to refact assets change detection system.   
-	- AssetManagment: Now Force will reimport assets if they change outside only if window is focused.   
-	- AssetsBrowser & Multithreading: Implementing multithreading to show aseet dialog & refactoring asset detection system. (Broken & Working)   
-	- AssetManagment: Add AssetExt that contains status of .ext during reading.   
-	- AssetManagment: Refact the ImportAssets & ImportAsset functions, add AssetManagerImportFlags, that (details it files.), for ReadExtFile, GetUID, GetAssetByExt implement AssetExtFormatStatus that allows get more info about errors happens during reading .ext files.   
-	- AssetsBrowser: Fix that filewatcher that recursivly detects asset change state every frame, implement CreateFolder for new detection system.   
-	- Core: Fix bug that DialogBoxProgress not destroyed itself on exit and its thread.   
-	- AssetManagment: Remove AssetModificationState now its a AssetImport (witch means how asset will or was imported). AssetManager add GetAssetByPath().   
-	- AssetsBrowser: Completly rewrite and sort out AssetsBrowser header. Woking on new Assets importing API.   
-	- StatusBar: Now warning and error messages marks in status bar and user can see preview of error/warn or open a console.   
-	- PanelScene: Fixed bug that when user navigate in browser thorow nav keys, camera also moves.   
-	- AssetManagment: Rename AssetManager_ flags to Asset_ type. For RemoveAsset add removing only from database.   
-	- AssetsBrowser: Completly redo AssetProcessReimprort now it called AssetProcess. Working on asset changing outside Force.   
-	- Window: Add support for blank windows. Win32: Blank windows now can be dragged and resizeble.   
-	- Dialog: Dialogs nows have border around it.   
-	- Editor: Add thin-border around the window.   
-	- Dialog: Remove platform title bar, from main window and all dialogs, and now we draw Force non-client area, and have own buttons.   
-	- AssetsBrowser: Reworking browser thumbnail drawing. (Working)   
-	- Core: Add new Thread class as wrapper over std::thread with some features.   
-	- Graphics: Rename GraphicsAPI to Device (it means more sence).   
-	- Graphics: Add ContextManager that managers all created and active contexts.   
-	- Platform: Win32: Playaround with some WIndows Undocumented API for styling.   
-	- LogoScreen: Fix unresposable logo, now it creates on another thread. Firsly here i use Mutex, Condition, Atomic.   
-	- Graphics: Rename typedefs in Common.h (because its old style). Now Device accept the RendererAPI.   
-	- Editor: Add dialog when audio device is reloading.   
-	- Example: Apply changes in examples to be compatable with new Force API code.   
-	- Example: Fix problem that ExampleApplication not compiled.   
-	- Nave: Make Nave runnable on new Force API. Now Nave support 0.3.10 and feature 0.4.0+ versions.   
-	- Window: Complelty rework fullscreen mode. Now window have simple SetFullscreen function.   
-	- Editor: Remove Fullscreen parameter from Preferences, and now all Dialogs works fine in fullscreen.   
-	- Runtime: Rewrite runtime to be support with 0.4.0+ API.   
-	- Debug: Add StdLogger to log in release.   
-	- Window: Fix bug when restore from taskbar in not currectly fit the monitor, fix the exiting from fullscreen.   
-	- Preset: Add function to create preset from component type.   
-	- AssetsBrowser: Add selection all assets by press Ctrl+A. MenuBar: Add recent project list there.   
-	- Dialog: Make a new UI from Startup Page, New Project and Open Project dialogs.   
-	- Dialog: Remove NewScene, NewScript, NewPrefab dialogs, and new NewAsset dialog that manages creation all of this assets + add creation presets.   
-	- Core: Implement the CrashReport saving into Log system + increase size of LogoScreen.   
-	- Utils: Add new library hwinfo for retriving information about hardware, used for CrashReport.   
-	- Utils: Win32: Add OpenDirectoryAndSelectFiles function to open explorer and select files, usefull in AssetsBrowser.   
-	- Vulkan: During refactoring code refact some old code that was suposted run Vulkan.   
-	- Build: Made some big changes with build files in Force, not all Win32 files will only builds on Windows.   
-	- Console: Rework Console Panel, add new icons, and now it fully resizeble.   
-	- AssetsBrowser: Start working on list thumbnails view + ShowInSystemExplorer now select this files.   
-	- Widgets: Add rounded search filter.   
-	- AssetsBrowser: Fully implment list view of thumbnails.   
-	- AssetsBrowser: Fix bugs with creating folder and renaming assets, asset either not created or not refresh.   
-	- Dialog: Add UI for choosing custom path for searching projects.   
-	- Editor: Fixed bug with lost focus to main window when progerss dialog is finished, and fix icon diplaying in status bar or error status.   
-	- AssetManager: Complely starts reworking the hold defention of asset system and asset itself, because fix already stuid system is inreasonable. Remove linked assets from AssetPreview.   
-	- AssetManagment: Complelty rewrite AssetManager Moving/Copy/Renaming API. Add new MoveAsset API. Remove LinkeAssets API, and relative paths from .ext file.   
-	- AssetManagment: Add AssetExtCreateFlags structure.   
-	- AssetsBrowser: Remove MoveAssetItem, MoveAssetFolder and a lot of old move API, and add dialog version of AssetManager::MoveAsset(). Implementing Move, Copy, Rename, Cutting.   
-	- ScenePanel: Fix a litter bug when drag panel resize border and use mouse it rotate and resize window.   
-	- AssetsBrowser: Implement multiselection moving assets, add new UI when move two or more assets. And fix bugs with asset selection and deselection.   
-	- AssetManagment: Add feature to MoveAsset as Copy to the same directory without overriding.   
-	- AssetsBrowser: Restore Shift selection, add support to open multiple assets, fix multiple assets dragging.   
-	- AssetDatabase: Add new PanelAssetsDatabase to searching assets from Global Assets Database, as non-tree view.   
-	- Platform: Win32: Sometimes then focus to main window from progress window its crashes in ntdll, or TextInputFramework.   
-	- AssetsDatabase: Add multiselection to database panel.   
-	- AssetsBrowser: Add tile and list view buttons on down bar with slider bar.   
-	- Dialog: Fix bug when panel is platform window i cannot be dragged.   
-	- Window: Add new MenuBarActiveItem callback, and fix bug that somethings when window to small, non-client area overlaps the client area.   
-	- Dialog: Fix bug that when draggind panel outside main window it stops to react on drag drop of windows or was glitched.   
-	- Editor: Place all commands that used by menu bar and most global commands in to Command API.   
-	- Preferences: Add new system theme, rework some settings.   
-	- Layout: Fix bug with uncurrect Edit Layout.   
-	- AssetsBrowser: Replace all wait conditions to Mutex and Condition for AssetLoadPrev, ImportAsset threads.   
-	- Dialog: Fix bug when setting Open Last Project, it was fails.   
-	- GlobalSearch: Add the global search panel that allows to find avaliable commands in Force. Very usefull feature.   
-	- Panel: Fix bug that panel states was not reset if panel is hidden so lead to variaous bugs.   
-	- Dialog: Fix incurrect recent projects, and UI in database and globalsearch.   
-	- AssetsBrowser: Redo the import asset from os and drag drop now its work perfectly with new system.   
-	- AssetsBrowser: Implement complete reimporit assets, finally.  Assets browser now finally totaly complete and adapted to new importing system.   
-	- Panel: Fix bug that elements in datbase and global search can be activated by Enter even if its panel not hovered.   
-	- Fixed wrong thing, when select asset it deselect game object.   
-	- Explorer: Start working on multiselecion of game objects and redo-system of handeling multiple scenes.   
-	- Explorer: Add multiselection via Shift, and add Ctrl+A to select all objects.   
-	- SceneRenderer: Add visual displaying for multiple selection objects.   
-	- Core & Editor: Fix bug when during shutdown if scene modified it not allowed to return to editor and menu bar renders weird during message box.   
-	- PanelScene: Fixed bug that gizmos renders on top of preview and UIToolbar buttons, and ability to use gizmos when click on them.   
-	- Gizmos: Starting work on multiselection gizmo interaction.   
-	- Dialog: Fix tooltip can be shows from panel when dialog opened, and fixed some colors.   
-	- Win32: Fix bug that cause glitch when focus to main window from dialog, or custom ImGui parent window.   
-	- Win32: Update the ImGuiWin32 backend to stick with last changes.   
-	- Utils: Add ToString for all types of vectors and integeral types.   
-	- Math: Finally replace ForceML fully by GLM. But old ForceML also present and was updated.   
-	- Commands: Implement new beta Commands API.   
-	- Commands: Add new commands and integrate Command API with GlobalSearch.   
-	- Debug: Implement new Debug ImGuiDemo Panel for debugging.   
-	- Element: Implment new OnNextFrame function to call some logic on next frame.   
-	- AssetsBrowser: Implement Command API to browser, and fix couble bugs wtih dragging.   
-	- Utils: Implement ToString to bool and for matrices.   
-	- Math: Add missing GLM operators for vectors.   
-	- Editor: Still working on proper disabled/hovered colors when Dialog is active, because of annoying bug mouse hover detection on thin part of dialog window.   
-	- Inspector: Implement new UI for Transform Component if inspector is too small and with buttons on component tree that was overlap tree arrow then too small.   
-	- Console: Implement new UI for console if console too small and implment Command API to it.   
-	- Explorer: Fix couble bugs with selection, deselection, cutting, pasting objects + implment  Command API for it.   
-	- Player: Fix couble bugs with go to play/simulate mode and implement auto selection for multiple objects.   
-	- PanelBars & PanelScene: Implement Commands API for it.   
-	- Window: Callback functions now a part of Window no as globals. And fix bug that different cursors was not displaying on input box, resize border, etc.   
-	- Math: Restore support for ForceML as internal by ML_*.   
-	- Widget: Add popup with right clicking on any input box, search filter (working).   
-	- SceneManagment: Add ComponentType and replace string types to enum. Add PresetType.   
-	- SceneManagment: Create new wrapper over Entt, System.h that now can accept Identifier, and FUID as ID's to find object or component.   
-	- SceneManagment: Create new version of GameObject without tempalte passing when retriving components. Also decrease inlcude size. Will frequent using by scripting.   
-	- SceneManagment: ComponentManager and conversion between ComponentType and PresetType.   
-	- SceneManagment: Replace all Component& by Component because GetComponent/AddComonent now returns Component.   
-	- Core: Add Memory Utils.   
-	- Force: Rename ForcePreCompile.h to ForcePCH.h for short name.   
-	- Commands: Add new API for copying arguments for special command.   
-	- Inspector: Remove RemoveComponent and implement this via Command::RemoveComponent that already can destoy component from editor or runtime.   
-	- Editor: Add precompiled header for Editor ForceEditorPCH.h and commit rest files from prev commits.   
-	- Editor: Add new SceneCommands API + Add/Remove Component as commands with Mono Support.   
-	- Inspector & Commands: Add Copy/Paste/Cancel Copy/Delete components as commands.   
-	- Scripting: Add MonoComponentUploader to send components to Mono, moved it from Inspector.   
-	- Editor: Fixed bug with hovering toolbars and window is lose focus and glitch the new UI thin-border.   
-	- Core: Move types from Memory.h, and new RefWeak and add new containers.   
-	- Platform: Win32: Fix bug that CreateFile still use A instead W version to lead to crash.   
-	- Dialog: Fixed bug that when tooltip or popup opens in dialog outside main window it lose focus.   
-	- Memory: Rename CreateReference to CreateRef.   
-	- Serialization: Add ProjectSearch & RecentProjects serializers + now it creates files in Force/Editor/Ver folder.   
-	- Utils: Add new ColorEditor as redesined version of ColorEdit3 & ColorEdit4.   
-	- IO: Remove macros key codes and replace by enum version. Improve Input.   
-	- Platform: Win32: Add support for haneling input from mouse on non-client area of the window.   
-	- IO: Add String, Key/MouseButton, and int versions of input calls.   
-	- UserManagment: Add new UserManagment API and remove old one from Application.cpp. Add UserSerializer.   
-	- Platform: Rename NotificationClient to NotifyClient.   
-	- Utils: For ColorEditor add Apply option.   
-	- Editor: Remove obsolete IsFirstUsage from EditorElement.   
-	- Serialization: Rework some serializers format, make a new format for PreferencesSerializer.   
-	- IO: Remove macroses key/buttons from rest of input and add InputStates.h.   
-	- Window: Add WindowActiveParent & MouseButtonNC callbacks, also add its events for IO + refact window platform code.   
-	- Editor: Using new callbacks finally add support for closing popups when: click on NC area, click outside window, click outside dialog.   
-	- Core: Fix bug that in Debug build Scripting Backend was not be intialized because of missing left brachet.   
-	- Platform: Win32: Fix bugs with initializing COM library.   
-	- Dialog: Add hide state for dialogs.   
-	- Editor: Add new button for dialog to hide it, and add new UI menu that allows to restore the hided dialogs.   
-	- Platform: Win32: Add OleInitializeHelper.   
-	- DragDrop: Fixed bug that drag drop was not initialized because of Co and Ole differ threading model.   
-	- IO: Rename MouseButton to Mouse and rename MouseButton_ function to Mouse_ For short name reason.   
-	- Core: Fixed bug that from Application ImGui Popups closed, it should be here.   
-	- IO: Improve Input System, add clicked counted system and more. Separate the Keys & Mouse Update events.   
-	- Platform & Editor: Fixed bug that block drag when mouse outside window + create new one (lose focus) and popup dissapears.   
-	- AssetsBrowser: Implment new Thumbnails API to browser, and add some new widgets.   
-	- AssetsBrowser: Fix toons of final bugs with browser, espesially with dragging.   
-	- Commands: Add MaximizeRuntime command.   
-	- Toolbar: Implement new Toolbar's API.   
-	- Panel: Remove PanelBars, and replace by PanelMenuBar, PanelStatusBar, PanelToolbar.   
-	- Toolbar: Add toolbar settings button.   
-	- Editor: Fixed rest of button hovered UI issues, continue working on Gizmos & Explorer.   
-	- DragDrop: Fixed bug that in runtime drag-drop was disabled.   
-	- AssetsBrowser: Fixed bug with incurrent selected group of assets via Shift.   
-	- Commands: Add Restart command.   
-	- Commands: Toolbar: Add more items to toolbar and now if items not fits appears new button to show hidden items.   
-	- AssetsBrowser: Impove browser, not we can select assets and safly dragging when mutiple selected + fixed bug with rendering drag drop.   
-	- Commands: Add ResetComponent as command.   
-	- Inspector: Remove Paste/Copy/Reset components now is a commands, remove all Send relative functions now is part of MonoComponentUploader.  
-	- Commands: Add SelectAssetInBrowser as command.   
-	- Audio: From Command_ResetComponent start complelty rewriting Audio handleling system. Rename Sound_ to Audio_.   
-	- Audio: Add AudioData that represents one single loaded Audio asset data. To not load multiple audios for the same asset if it already was loaded.   
-	- Audio: Rename Sound to AudioClip. Now AudioClip not creates a buffers for Audio, but create a AudioSource from already loaded AudioData (AudioBuffer's).   
-	- Audio: Refork AudioEngine for new Audio system. Add bunch of new functions to Find, Load, Unload, clips and audio data.   
-	- Serialization: Increase SerializingVersion to 1002, rework AudioSourceComponent serialization code.   
-	- Scripting: Rework AudioSource, for new Audio API.   
-	- AssetManagment: Upgrade AssignAssetToComponent to support raw Component_ and ComponentType. Rework LoadAssetFromAudio.   
-	- SceneManagmnet: Remove AudioClipComponent from AudioSourceComponent, now AudioClip not contains AudioData, just AudioClip (AudioSource) that can be safly deleted  on component destruction.   
-	- SceneManagment: Rework Scene and SceneManager for new Audio API.   
-	- Editor: Remove Temp API from SceneCommands for Audios.   
-	- Inspector: Rework some widgets, now Assets use AssignAssetToComponent when drag on widget. Rework DrawComponent_AudioSource.   
-	- SceneManagment: Remove SceneState from Editor, moved to SceneManager.   
-	- SceneManagment: Remove old SceneAccessor API. Code clean up.   
-	- Editor: More clean-upping for EditorElement.   
-	- Scripting: Replace all GameObjectT to GameObject + made some refactoring.   
-	- Scripting: Add MonoComponentSender, and MonoComponentReciver, move MonoComponentUploader from Editor to Engine.   
-	- Physics: Replace GameObjectT to GameObject.   
-	- Commands: Add AddTag/RemoveTag as commands.   
-	- Core: Move all Force-defined types to Force namespace.   
-	- Force: Remove Win32 -> SimplePrint that was in Profiling that was included to ForcePCH.h.   
-	- Core: Clean-up CoreBase.   
-	- Core: Move Profiling & Logger macroses to its files. SimplePrint now only compiles for Debug.   
-	- Core: Remove CoreBase, and add BuildProcess, CallConvertions, LocaleUtils, BreakPoint + refact Main, Profiling, SimplePrint, Core.   
-	- Core: Remove old FE_DISABLE_CONFIG_TXT + Save/LoadGlobals, FE_ENGINE_ASSSET, FE_GRAPHICS_API_NOT_FOUND.   
-	- Platform: Remove FE_CURSOR_TYPE_, replace by enum MouseCursorType.   
-	- Core: Rename FUID to UUID and fix that old DirectX typedef GUID UUID include conflict.   
-	- SceneManagment: Replace all templated GameObjects to not templeted. (exclude OnUpdate/OnRender).   
-	- Serialization: Replace all GameObject templated to not templated version + fix serialize/deserialize gameobject.   
-	- Force: Commit reset files to match lateset changes.   
-	- SceneManagment: Replace all reset scene managment code to use non templated GameObject, and fix another set of bugs with Force::UUID and Win32 GUID UUID.   
-	- Audio: Fix bug that audio buffers want not added to audio clip. and bug that audio was not loading.   
-	- Audio: Audio Clip now loaded perfectly with new Audio API, now only one audio data with this asset with loaded to multiple sources.   
-	- Audio: Add new functionality to Clips, now Audio Data, and ref clips loads, and unloads from memory perfectly in edit mode.   
-	- Inspector & Preview: Fix bugs with applying parameters to audio when click to play.   
-	- Core: Add applicationCount and reimplement DestroyApplication.   
-	- Texture & AssetManagment: Implment TextureManager to contoll loading textures for scene's components.   
-	- Utils: Add StringUtils, SystemUtils, and move some FileSystem API from AgnosticUtils to FileSystem.   
-	- Utils: Remove AgnosticUtils.   
-	- Platform: Add new callback for Window to define custom non client area + fix nc area bounds.   
-	- Platform: Win32: Fix glitch bug when minimize/maximize window from OS messages and that was unnessasary PresentFrame call.   
-	- AssetManager: Fix bug that asset cannot be unassigned to zero if asset was not valid or missing.   
-	- Core: Simplifyes application creation. Now we just need to implment CreateApplication() instead of creation a specific class.   
-	- Commands: Add ImportAssetForce command + fix importing assets throw AssetImporter.   
-	- Editor: Major Force Editor refactoring and clean upping. Now Editor has a Core module, removed a hell of grarbage from EditorElement, now is simple as possible, moved and created new files from exising code that previosly was in EditorElement + more.   
-	- Core: Move fps, and frame count from editor to application side events.   
-	- Platform: Drag Drop: Imporve drag drop, if files is not supported by Force it will render with diff icon, and color in browser.   
-	- Editor: Move all misc functions from EditorElement to AssetsProjectUtils.h.   
-	- Editor: Add new file for handleing error codes from engine objects + move some of it from EditorElement.h.   
-	- Editor: Rename EditorCommands to UndoRedoManager.   
-	- Commands: Add new global commands API that was just function in EditorElement.   
-	- Editor: Move editor assets code to EdtiorAssets from EditorElement.h.   
-	- Dialog: Add new DialogStartup as as seperate dialog from DialogNewProject.   
-	- Panel: Add DockspaceViewport as main handle for all panels and dialogs, and also move bunch of this code from EditorElement.   
-	- Editor: Fix bug that non-client area was too big for MaximizeRuntime mode.   
-	- Editor: Fix bugs with some incurrect key short cuts.   
-	- Editor: Fix bug with text input and searching with russian letters.   
-	- Commands: Fix bug that sometimes command that was not processed, then was ececuted multiple time from queue.   
-	- Commands: Add AddGameObject & RemoveGameObject commands, remove RemoveGameObject from Inspector.   
-	- Commands: Add new CopyGameObject command with mono support.   
-	- Commands: Add SaveAllScenes command + fix some issue with SaveScene & SaveSceneAs.   
-	- Commands: Add RenameScene as command + Fix SaveSceneAs bug that SaveFileBox was unnessesary modify browser's filewatch.   
-	- Element: Add support for changing N-count of frames for Element OnNextFrame + fix calling CallOnNextFrame when its was procesed already.   
-	- Commands: Refact the Core of Command API, rename some functions remove unused functionlaity + fix bugs. Not CommandManager is stable API at the core.   
-	- Commands: Add RenameAsset as command, and move MoveAsset, RenameAsset, from browser now its part of AssetsCommands.   
-	- Commands: Integrate global commands API to CommandManager. To AssetPreview add commands ReimportAsset, DeleteAsset.   
-	- AssetManagment: Fixed bug that when new project opened, it not update Applications's startProjectPath from Asset::GetFullPath that cause to remove loaded assets from GAssets.   
-	- Commands: Add MoveAssets & DeleteAssets for AssetsCommand moved it from Browser.   
-	- Commands: Add support for holding and retriving error codes from enums for some commands.   
-	- Commands: Add Move/Copy/Rename/Delete/Reimport/MoveAssets/DeleteAssets as commands, refact CopyClipboard, OpenInExplorer commands.   
-	- AssetManagment: Fixed bug that when Audio asset create .ext file with writeExisting it sill load audio data, so slow down moving, pasing audio assets.   
-	- AssetsBrowser: Fixed bug that modification files by OS casue ProcessAssets during drag so currupt drag icon.   
-	- AssetManagment: Add threaded dialog when assets moving to long.   
-	- Editor: Fixed bug that project can be saved by Ctrl+Shift+S when is not opened.   
-	- Core: Improve ResolutionTimer.   
-	- Platform: Win32: Fixed but that OpenFile was not opened file with default assisiated program.   
-	- Commands: Add SelectAllAssetsInBrowser command + refact Open, OpenInExplorer commands.   
-	- Panel: Status bar now prints 'Ready' every 20 seconds after last sended message to status bar.   
-	- Platform: Add FileSystemObserver as rewrtited of legacy FileWatcher.   
-	- AssetManagment: Add support to skip process assets from engine via callback, for example for internal importing.   
-	- AssetImporter: Remove AssetImport API to AssetImporter from browser, also fix bug that ProcessAssets was happen when user inside Force (i.e notify that some files was changed (opened/attributes) but not actualy writed).   
-	- Commands: Rework the assets importing commands, connect it with new importing system.   
-	- Multithreading: Completly rework behaviour of Dialog Background thread is fully synchronized with main thread (I hope).   
-	- Multithreading: Rework Asset Importer system and importer thread. Now it works well with Mutexes and Promises.   
-	- Multithreading: Rework the Asset Preview thread, it also use Mutexes, Promises, and Future now. And dialogs displays always it setted amout of time.   
-	- Multithreading: Create a Asset Commands Thread that will show dialog when some operaiton of GlobalAssets take to much time.   
-	- AssetsBrowser: Add new AutoPreview option to browsers settings.   
-	- Editor: Rename Panel/Dialog NonClientArea to TitleBar.   
-	- Theme: Add new colors to light theme, dialog border now widther and rework opening scene by dragging it from brower to scene viewport.   
-	- ProjectManagment: Now projects minimum loading time is 1 second, because projects cannot load immiditaly even if fast CPU.   
-	- SceneManagment: Fixed bug that during creating scene via new project it title not shows.   
-	- AssetManagment: Add few new rules for asset importing. Now system or hidden files will not be imported.   
-	- Commands: Fixed unconsistency with Delete & Remove commands. Add new icon for Remove (Move to Backup).   
-	- Commands: Expand CommandManager, now it support execution command via function. That means you dont need register it.   
-	- Dialog: Recreate DebugInfo dialog. Now it show a lot more information.   
-	- Core: Fix bug that when user click on LogoScreen X button in title bar window is destroyed. Now Force immidiatly exit.   
-	- Force & ImGui: Rewrite imgui.h/cpp files with features that Force modify in imgui core itself. Fixed some bugs, and document every change that Force modify in imgui, for feature updating.   
-	- Platform: Win32: Fixed bug that progress dialog re-focus to main window even if it was focused. If cause a glitch.   
-	- Editor: Finally add icons to panels title bars using new Font Icons API.   
-	- Editor: Impove font icons + add Debug panel utitlity.   
-	- ProjectManagment: Remove editor settings from project settings, move some editor settings that belongs to project here. Projects files not have new format.   
-	- Editor: Completly redo Edtior Settings, seperate Project and Editor Settings. also settings that not serializeble now is called Internal.   
-	- Editor: Update format of EditorSettings, add new settings, and remove unused like Font Size.   
-	- Dialog: Update UI from Preferences dialog. Now it display project and editor settings seperatly. Also to project settings add Physics2D settings.   
-	- Utils: Rename some widgets and fixed bug with focusing to dialog.   
-	- Panel: MenuBar: Fixed bug that whne project was not opened one condition not init and that block OS window move events.   
-	- Preferences: Fixed theme settings, and redo SavePanelStates setting.   
-	- Commands & Preferences: Fixed more bugs with Theme, improve loading editor layouts. Add missing commands to GlobalSearch.   
-	- Inspector: Add CopyPath, CopyUUID, Properties to DrawWidgetPopup.   
-	- Panel: Add callbacks OnOpen/OnClose global to catch modification panel show state.   
-	- Preferences: Implement new EditorLayout API, now layout can be saved, loaded removed.   
-	- Commands: Add Set, Save, Load, Delete, ResetAll Layout commands.   
-	- Editor: Rework system of loading Editor Assets. Now EditorGuiSettings.ini is also CurrentLayout.layout and EditorSettings now is .data file.   
-	- ProjectManagment: Now .fpo lock file writes the ProcessID to check if project was opened with the same instnace of Force.   
-	- Scene: Rework the scene controls and events, now we drag scene window it not move/rotate camera, when pan is used gizmos is hided and more little fixes.   
-	- Preferences: Fix uncurrent setting with BlockZoomOnSelection and BlockZoom and Browser.Layout.   
-	- EditorCamera: Add zeroDeltaEvent, and fix bug when mouse jumping from one point to another on screen it was glitch on camera rotation/pan.   
-	- Editor: Move collapse button to right side.   
-	- AssetManagment: Remove AssetTypeDescription API, preparing to new Importer API.   
-	- AssetManagment: Add ImporterData as old AssetTypeDescription storage for underline asset data. Integrate it to Asset, and made few changes.   
-	- AssetManagment: Complely rewrite WriteExt function, add new flags. Now Write/ReadExt functions use new Importers API to read/write to .ext.   
-	- AssetManagment: Expand AssetDatabase, move it from AssetManager to AssetDatabase class, add more functionality.   
-	- AssetManagment: Add new Importers API and change format for .ext file. Now .ext files load and write throw Importer. Different type of assets can have its own Importer.   
-	- AssetManagment: Add ImporterDefault for default assets that not have additional properties such a Folder, File, Script or Scene.   
-	- AssetManagment: Add Prefab, Preset, Texture importers, this has the same properties as before in AssetTypeDescription.   
-	- AssetManagment: Add TrueTypeFont importer for Font Asset. Generally font asset is in beta state now, in future change happen big changes.   
-	- AssetManagment: Add Model importer, for MeshRenderer, for now it do nothing because Force not have 3D yet.   
-	- AssetManagment: Add Audio importer, improve Audio loading system because later will be commits with new Audio Streaming API.   
-	- AssetManagment: Add Reimport/ReimportAll assets function. Connect new AssetDatabase, add ResetAsset function. Remove a lot api form AssetManager.   
-	- AssetManagment: Change a LOT stuff in AssetManager. Connect Importers API, rewrite Create/Read/Write to Ext functions, fix a lot of bugs there.   
-	- Core: Add new min-max macros, new FE_BIND_FN, and add FE_GET macro for Commands API.   
-	- Core: Add support for new Console Applications. Console Application will not process any rendering, scripting, and 90% of engine, excluding Audio, Elements, etc.   
-	- Core: Expand CoreSpecification, add initConsoleInRelease, initLoggerInRelease, setConsoleRussianLocale.   
-	- Localization: Rename LangData_ to FE_LANG_ for all versions. Add new format lang with N-arguments function LangFormat or FE_LANGF. And also rename 250+ files in Editor where lang is used.   
-	- IO: Add new EventManager class, remove and merge EventDispatcher. Add new new API for add events via AddEvent(). Remove InvokeEvent from global namespace.  Add event collection system.   
-	- IO: Add IsMouseClickedOn, IsMoisePosValid, IsAny_. Rename ProcessKey, ProcessButton. Rework completly IO System. Now its not attached to window and applications.   
-	- IO: Improve IO handeling system, fix bug with mouse click count, it was count click from anywhere not from clicked position.   
-	- Utils: Add couple new functions to StringUtils as FromString and more.   
-	- Utils: Add way to read files with UTF-8 codepage not ASCII via ReadFileUtf8().   
-	- Platform: To PlatformUtils add GetClipboardText, GetClipboardTextUtf16, SetCursorPos, GetCursorPos.   
-	- Platform: Win32: Make a MessageBoxes be MB_TOPMOST for general reasons. Fix MAJOR bug #0126 or now #0263.   
-	- Platform: GLFW: Integrate new Input API to GLFW window backend.   
-	- Platform: Window: Win32: Add Emulate/Key/Mouse press/release.   
-	- Platform: Window: Integrate new Input and Event system to Window and remove input instance from window.   
-	- Platform: ImGui: Fix bug that mouse cursor was not updated in ImGui widgets.   
-	- Add Force Win32 events invoker. Some events from other platform windows we should process as well to Force::Input legacy input handler system for engine to have apportunity to use Input::IsMouseXXX or Input::IsKeyXXX properly from platform windows that was created by ImGui.   
-	- Platform: Add new Console class as wrapper over OS console API's. Will be used with new ConsoleApplication's.   
-	- Serialization: Add way to report errors from YAML directly to editor console, tigly used with Importers and Scene/Prefab/Preset file formats.   
-	- Serialization: Add SceneSerializerYamlErrorFn to report error to editor.   
-	- Serialization: Add PrefabSerializerYamlErrorFn to report errors to editor.   
-	- Serialization: Fix bug that Windows property in .forceproj file was not deserialized.   
-	- SceneManagment: Add way to parse scripts compilation error directly to editor console.   
-	- SceneManagment: Fix couple bugs in Scene class and add missing Event implementatinos.   
-	- SceneManagment: To CsScriptComponent add allowEditFile for future Script Quick Editor in Editor.   
-	- Scripting: To MonoField add useInputWidget to allow change widget type in Inspector from Input to Drag in CsScriptComponent.   
-	- Scripting: Add LoadFile function to dynamicaly re-read script file when in changes. (For Quck Script Editor).   
-	- Scripting: Fix bug that String was converted to c_str() inline (e.g String itself was temprary and lead to crash in Mono).   
-	- Scripting: Add new arguments to CsProjectBuild for logging compilation in to file and then copying its data and displaying in console.   
-	- Graphics: Add new EditorCameraSettings, that in future will be serializable.   
-	- Graphics: Redo editor camera movement, scrolling controls, improve Pan, Zooming, Rotation. Add support to use this camera on multi-views.   
-	- Graphics: MathTransform: Fixed bug that clip editor grid in 2D view because of error in Dot3 function.   
-	- Graphics: Some cameras & events changes.   
-	- Graphics: Add TextureStatus_UnsupportType enum value for some error messages in editor.   
-	- Audio: Move Audio/AL to Platform/Audio/AL.   
-	- Examples: Add Console Application exmaple. For now it contains Streaming Audio Example Test.   
-	- Audio: Removed AudioUtils and start working on new Audio Streaming API.   
-	- Audio: Streaming: AudioBuffer: Removed AudioInfo, AudioInfoStream, AudioInfoDecoded, LoadAudioFile(), UnloadAudio(). Move AudioSoundFormat to AudioFile.h.   
-	- Audio: Streaming: Removed: CreateSource() now source creates by AudioClip::Create(). Removed: DestroySource(). Add missing SetOrientation and SetVelocity.   
-	- Audio: Streaming: Added: AudioSubFormat, AudioBPSFormat, AudioDataFormat, AudioChannelFormat, renamed AudioSoundFormat to AudioFinalFormat.   
-	- Audio: Streaming: AudioData: Rename AudioInfo to AudioData. AudioData conintas almost the same as old AudioInfo + AudioUtils Open/Decode/Close/ReadFormat APIs. Main difference this support loading [OGG, FLAC, AIFF, ALAC] and load piece of audio data into buffer.   
-	- Audio: Streaming: AudioSource: In general main difference from prev API, this actually supports a streaming mechanism.   
-	- Audio: Streaming: AudioClip: Change way of loading clips, and generating source. Add Streamer & Track. Reast of API is the same as AudioSource only with high-level abstraction.   
-	- Audio: Streaming: Add new AudioDataError codes.   
-	- Audio: Streaming: AL: Rename some format functions.   
-	- Audio: AudioEngine: Streaming: Refact AudioEngine to load and use Streamers. Without AudioStreamerThread yet.  
-	- Examples: Made a few changes in examples.  
-	- Utils: Dialogs: Add HideCallback and fix bug that tooltips was steal focus from main window.   
-	- Utils: Panels: Add borderColor, hoveredAll, focusedAll, coloredBorders, renderColBorders, mouseButtonXInView properties.   
-	- Utils: Panels: Add new beta Mutil-View panel API.   
-	- Force: Add to premake5.lua's ConsoleApplication, and other platform file includes.   
-	- AssetImporter: Add repreview asset after reimport, add reimport/reimport all and make some changes with importing itself.   
-	- AssetsBrowser & AssetOpener: Move API for open assets from browser to new AssetOpener class.   
-	- AssetCommands: Fixed bug when asset failed to move or operate it not hide dialog and was not sleep its thread.   
-	- Commands: Add new type of commands Inner type that allow to execute commands inside command that was processed in Queue.   
-	- Commands: Add RegisterQueue(), InnerQueue, LockQueue and implementation for Inner commands. Also fix some bugs with Command API.   
-	- Commands: Rework Open, OpenInExplorer, NewAsset commands, add more arguments.   
-	- Commands: Add commands for new SceneView such as GIzmoTRS, CameraPan/2DView/GamePreview/EditorGid/BlockAlt/Zoom/Focus/Reset/Settings etc.   
-	- Commands: Rework NewProject. OpenProject, SaveProject, SaveScene, SaveSceneAs commands.   
-	- Commands: GlobalCommands: Made few fixes with global commands.   
-	- Editor: Add few message to console from EditorLayout API.   
-	- Editor: Add handeling errors from Importers, Scenes, Prefabs from Yaml. add HandleMonoScriptClassStatus.   
-	- Editor: Add few new font icons and one for Settings.   
-	- Editor: Add PreviewView.h file. Remove InspectorView_TagManagerWithPrefab mode. Add wasFinished for future InputBox fix.   
-	- EditorElement: Add OnApplicationReloadResourcesEvent, connect Audio Streaming and register SceneSerializer, PrefabSerializer, Importer YamlError callbacks.   
-	- Editor: UI: Replace old ImGuiWidgetUtils by new GUI library. This library contains toons of new widgets from ImGui.   
-	- Editor: UI: Add GUITable API as replacement for old columed API that used in Inspector, Preferences, AssetsPreview, etc.   
-	- Editor: UI: Add new GUIScriptEditor that allows modify script file inside Force CsScriptComponent.   
-	- Editor: UI: Rework and improve PrefabEditor and moved it from PanelAssetsPreview to GUIPrefabEditor.   
-	- Editor: UI: Moved ColorEditor to GUIColorEditor aswell rework all widgets from to new GUI API.   
-	- Editor: Utils: Rework DialogData.   
-	- Editor: Serialization: Fixed few settings that was not serialized, also add serialization for PanelPreferences.   
-	- GIzmos: Connect new modified ImGuizmo to Force.   
-	- Scripting: Rework threads that builds scripts, and implement logging error for MsBuild to Force console.   
-	- PanelScene & SceneView: Add support for scene multi-view. Only gizmos not work yet.   
-	- AssetsPreview: As well add SceneViewPreview for preview scenes/prefab assets.   
-	- Toolbars: Add few changes in Toolbar.h/cpp for feature toolbars.   
-	- Toolbars: Rework ToolbarStandard. Remove SceneView commands from there and add few new.   
-	- Toolbars: Add toolbar for SceneView. And this toolbar can be displayed on all four sides of the PanelScene.   
-	- Toolbars: Add toolbar for SceneViewPreview as well.   
-	- TitleBar: Fixed bug that if window to small conents for title bar was cross window buttons.   
-	- Preferences: Now preferences is Panel and update it UI.   
-	- MenuBar: Remove Preferences from HELP,  add Preferences and new ProjectSettings menusitems to FILE.   
-	- AssetsBrowser: Improve browser from UI and logic size. Too much changes happens.   
-	- StatusBar: Fixed bug that scripting compilation circle was not show, and warn/error too. Made status bar a little smaller.   
-	- Console: Add new console feature that allows in small view copy text from message as regular input box.   
-	- AssetsPreview: Recreate complely assets preview with this new UI, fix toon of bugs with Prefabs, Scenes, add muti-view for preview scenes/prefabs, replace come code to commands, etc.   
-	- Inspector: Replace old columns API to new GUITable. As well with new buttons, popups, tooltips, combos, treenodes style. Add script editor, add new popup opened mechanism and more.   
-	- Editor: UI: Add new UI to all panels.   
-	- Editor: UI: Add new UI for all dialogs.   
-	- Editor: UI: Remove rest of old Columed API from new GUI library.   
-	- 
-	- ...   
-**0.3.10:**   
-    - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
-	- Editor: Fixed couples bugs with gizmo ui buttons, incurrent camera switching, blocking alt, editor view gizmos, now not user cannot drag object immidiatly when another is selected.   
-	- Editor: Fixed another batch of bugs with sending transform to undo and show scene modified, and bug with zooming when object selected and when gizmo is using.   
-	- Platform: Rework the window system to handle multiple windows at the same time. Win32: For Win32 window user can set its own proccdure.   
-	- Core & Graphics: Add LogoRenderer, and LogoScreen, that now appears when engine and editor is loading.   
-	- Graphics: Editor Camera: Rework the editor camera that is now more controllable and support a lot more controlls from WASD, Num Keys, Key Rotation, Key Zooming, fixing angles.   
-	- Editor: Add more buttons to camera's toolbar, such enabling grid, and add new camera properties window.   
-	- Editor: Fix a lot of buts with gizmos and its controlling not objects cannot be immidiatly moved, now need select object then move.   
-	- Editor: Starting to rework the Gizmos API. Start to write the Gizmos API for Rect tool and custom gizmos in future. Add new icon on camera view tool.   
-	- Editor: Rework the Toolbar. Move all buttons from Preview to Toolbar where all buttons like Play hang out.   
-	- Editor: Add new Pan tool, that allows move camera with mouse on X and Y axis. Now ToolbarUI can be show horizontal and match the size of viewport.   
-	- Editor: Rework the tooltips. Add tooltips almost in every place when its possible, some components may not have it.   
-	- Editor: Add rest of the tooltip messages to components.   
-	- SceneManagment & Editor: Fix bunch of bugs with scenes loading for example scene has wrong format, and also add another bunch of tooltip messages.   
-**0.3.9:**   
-	- Scripting: Expands the Scripting API (Debug, GameObject), add Window, PrimitiveType, Utils, Vector2i, Vector2i.   
-	- Scripting: Major scripting update. Now all core of C# library stores in different module ForceCSCore.dll that now links to user scripts file ForceCS.dll.   
-	- Scripting: Now project link the ForceCSCore.dll directly to EditorPath.
-	- Project: Add to config EditorPath and LastEditorPath to save the editor path for linking other dynamic libraries.   
-	- SceneManagment: Fix bugs with scene manager, replace RemoveByAddress on Unload for removing scene from memory.   
-	- SceneManagment: Add support for sorting gameobject node by name, uuid, transform.   
-	- Core: Element System: Improve the element system, add category for element and advanced callaback sending via ElementCallbackClass.   
-	- Scripting: Starting work on SceneManager API for script, add Scene.cs and SceneManager.cs classes, and now C++ SceneManager has termin of scenes that was created by script at runtime.   
-	- Inspector & Explorer: Components View now will displayed specific for Edit Mode and Runtime Mode. In runtine when we select object on scene from script Explorer will send the context to Inspector.   
-	- Core: Application System: Replace old Config class by new ApplicationSpecificaion.   
-	- Core: Application System: Add ApplicationCmdArgsSpecification, ApplicationWindowSpecification. Now application knows about its worlking path and resources directory.   
-	- Runtime: Add new ForceRuntime project. This project will used to play final excecutable project/product.   
-	- Core: Application System: Add ApplicationUserSpecification instead of Project::ProjectConfig. Remove Project::ProjectConfig.   
-	- Core: Application System: Now instead ForceConfig.json Force creates ForceUser.json from ApplicationUserSpecification.   
-	- Runtime: Start working on integration playable runtime application. Starts with RuntimeElement.   
-	- Runtime: Completed playable runtime application. Now at this point user project that created in Editor can be run inside Force Runtime shell, and be kinda executable.      
-    - Runtime: Now runtime application have two state of excetution, one is when we run in IDE (search by start project path and use ForceUser.json), and second is final game app (all assets, resources and paths relative to game .exe file).   
-	- Runtime: Add support for raw application exporting in Force Editor (Build), only throw Force solution, other no have any idea how to implement.   
-	- Platform: Window: Add support for maximize window for ShowWindow function, add PayWindowAttention funtion.   
-	- Editor: Add Platfrom Configuration settings and Scenes Build settings. Now this settings does nothing.   
-	- Platform: Window: Add support for dark mode. Win32 API: Expose uxtheme.dll functions. GLFW: Not supported by its core.   
-	- Editor: Fix the white theme in some places with incurrect colors.   
-	- Core: Application System: Application now can runs without ImGui context and element. Add ApplicationPlatformSpecification.   
-	- Platfrom: Window: Add MouseCursorType enum. Win32: Fix not even loaded cursor. (Founds out when remove ImGuiElement and test without it.).]
-	- Core: Application System: Refresh, redising, update, remove unnessisary code.   
-	- Platform: Now platform detects not as part of Application, but part of each OS Entry Point.   
-	- Scripting: Now scripting backend initialize not by Application, by platform Entry Point. Because Mono JIT cannot be reloaded if it was CleanUp.   
-	- Graphics: Match all graphics creation code to PlatfromLibraryAPI.   
-	- D3D10/D3D11: Fix the bug with not setted primitive topology, to render all primitives as lines not triangles.   
-	- Platfrom & Debug: Match ImGui Element by PlatformLibraryAPI. Graphics: Also PlatfromAPI was renamed to RendererAPI, and the same with FE_RENDERER_ macros.   
-	- Editor: Add renderer support for building. Uncomplited.   
-	- Core: Application System: Update the application system, add Core.h/cpp files that initialize the core systems. Improve closing via new Shutdown function. Now application update loop is updates by running flag not by window->IsCloseRequested.   
-	- Nave: Starting working on super simple Launcher for Force (Force Nave).   
-	- Core: Now user can use ManagedInitializeCore() to disable Core engine.   
-	- Core: Application System: Now user can disable rendering and audio engines. (But it will still links and requrie DLL's.)   
-	- Nave: Raw implement the Force Builds (Installs) property.   
-	- Core: Application System: Add ApplicationVersionFlags to decompose the compared version by Application::CompareVersion().   
-	- Localization: Move language system to Force Engine from Editor and rewrite it to be accessable for Nave.   
-	- Nave: Implement the Installs and documentation pages. Working on Projects Tab.   
-	- Nave: Implement Projects Tab. Force Builds now can be opened. Improve Installs tabs.   
-	- Serialization: Write new Wrapper YAML API based on YAML.   
-	- ImGui: Editor and Nave now save imgui configs not imgui.ini, but in Resources/Application/GuiSettings.ini.   
-	- Other: Add the ResourceScript.rc for each project and output executable now have its icons.   
-	- Core: Application System: ApplicationBootSpecification now accept list of arguments that comes from cmdlineArguments.   
-	- Editor: Add way to load project that comes from cmdLineArguments if not load with standard way.   
-	- Nave: Implement Open Project/Force button and loading Force with selected project and without it.   
-	- Input: Fixed bug with Creating input as Ref but also deleting raw pointer at initialization/deinitialization.   
-	- Nave: Add Tabs icons, add Create Project Tab.   
-	- Graphics: Add .ShaderCache, that now contains all in-build engine shaders for renderers. Shaders now load in-build default shaders if user not provide custum implemention.   
-	- RenderEngine2D: Add asserts if we trying to render primivites outside the scope Begin() - End(), or if we call End/Begin to many times. If we call one of render function outside scope this primitives will be skipped.   
-	- Math: Few refactoring in math for current Force API. Add GetTransform(), GetView() functions for common usage.   
-	- RenderEngine2D: Fix bug the renderer not free vertex buffer/index buffer from GPU.   
-	- Graphics: Major graphics clean-up and refactoring. See Force-Log_RendererRefactoring.md for details.   
-	- IO: Move IO module from Force::Core to Force::IO, now its indemendent module.   
-	- Graphics: GL: D3D: Fix the Uniform buffer binding index, blocks situation again. Now its should work in all cases.   
-	- Graphics: Rewrite Model and Mesh classes and Face, add MaterialTextureType, restore basic 3d renderer and loading model via new API.   
-	- RenderEngine: Clean-up and rewrite the 3D renderer, restore it at that state where we can render something with it.   
-	- Examples: Add the new ExampleApplication Project to test core and rendering in future. This example is explaned in docs on For Engine Developers page.   
-	- Nave: Add new window for creating projects and loading it from Force Editor. This UI also moved soon in Editor creation project window.   
-	- Project: Refactoring project creation. Rename Configurate to Setup. Add SetupSpecification that automatically currect project data fully.   
-	- Core: Application System: Add SetupSpecification for Application. And connect last project and window changes, such as checking to all Window's was destroyed.   
-	- Editor: Remove the BasePanel file, and move some functions to Force ImGuiWidgetUtils some to other new utils files in Editor. Rename BasePanel to Panel. Remove old DialogPanel files. Clean-up the Editor completly, now its maybe unstable.   
-	- Project: Now opened project has state and it files cannot be removed until it not be closed.   
-	- Editor: Starting rework the dialog system. Starting with DialogNewProject. Add new UI.   
-	- Nave: Now project cannot be deleted until is opened in Editor.   
-	- Editor: Add DialogOpenProject and rework the project loading on first time or if project not found.   
-	- Editor & Project: Make a lot improvements with Open/Create projects, and fix but with loading project without exising startup scene.   
-	- Editor: Fixed bugs with viewports and camera resettings in Open/Create project.   
-	- Editor: Add Startup Page (Create Project or Open Project). Add Close Project button. Fix menubar icons.   
-	- Nave: Fix issues with older Force versions, that lead to crash.   
-	- SceneManagment: Add SceneSpecification and remove some SceneInitFlags.   
-	- Editor: Add DialogNewScene and fix couple issues with Browser and Explorer.   
-	- AssetManagment: Completly rewrite most function in AssetManager fix tons of bugs with copying, renaming, and add contept of Relative Vs Full Paths.   
-	- Editor: Browser: Completly rewrite the Browser, fix CopyAsset, MoveAsset, RenameAsset, Paste Asset, add new icons, and fix toons of bugs. See Force-Log_BrowserAndAssetsRefactoring.md.   
-	- AssetManagment: CreateAsset now supports create physical file.   
-	- Utils: Complete the Panel and Dialog API, now its moved to Force from Editor.   
-	- Inspector: Fix bug that asset preview button (show/hide) not hide preview some assets.   
-	- Editor: Add DialogNewScript and fix bugs with Inspector.   
-	- Editor: Add DialogNewPrefab and fix bugs with Inspector.   
-	- Editor: Add DialogSelectPreset and finally completle the new Dialog system. Remove old ProjectPanels/PanelDialogOld.   
-	- Inspector: Fix the name and tag input box.   
-	- Scripting: ScriptSystem v3.0. Part_1. In progress.   
-	- Scripting: ScriptSystem v3.0. Part_2. In progress.   
-	- Editor: Fix Transform Component UI via new Table API, fix other widgets, fix Console, remove doubled unused menubar, fix Tag and Object Name input boxes, improve UIToolbar.   
-	- Serialization: Make new API for Serializers. Add template Serializer class that allows easly create new Serializer. Renson for this, because Force already has at least six serializers.   
-	- Editor: Add actually preview for Scene and Prefab in Inspector. (Bonus)   
-	- Editor: Fix Undo/Redo with Create/Destroy/Paste/Cut/Duplicate objects, and fix some issues with Explorer (sorting by Name, popups, widgets).   
-	- Editor: Finish fixing Undo/Redo, and fix more issues with Explorer (popups, widgets, states).   
-	- Editor: Add dialogs with link to documentation.   
-	- Scripting: ScriptSystem v3.0. Part_3. In progress. Rebuild And Continue Play.   
-	- Scripting: Fix a lot of memory leak in components and Mono Runtime.   
-	- Editor: Upgrade the Preferences to use the Table API, and that fix ugly glitched resizing on columns and uncurrect separator.   
-	- Editor: Add new DialogSelectImage to select images when no apportunity to currect drag it from browser (for example in prefab editor).   
-	- Scripting: Recreate the attach and instantiation prefabs throw fields. Works with Rebuild And Continue Play.   
-	- Editor: Preferences: Add support for exiting from full screen mode, and go back with reloading application.   
-	- Editor: Preferences: Fix settings UI and change some descriptions.   
-	- Scripting: Now Force detect status of build script project from MSBuild, and print correspond messages.   
-	- Editor: Add key-codes for Play (F5) / Simulatie (F6) and Build Script Project (Shift+F5).   
-	- Editor: Add GameObjectProperties popup on GameObject icon in inspector.   
-	- Scripting: Refact the NativeScript API (C++ scripting) simular to MonoScript API (C# scripting). But C++ is unusles because its not have hot script recompiling yet.   
-	- Editor: Fix couple bugs with CSharpScriptComponent rendering and move build button on top of UIToolbar. Add button help for each component.   
-	- Scripting: Add OnEnable() and OnDisable() method-events.   
-	- Scripting: Fix transform and with physics in runtime not affect on instance of object, and runtime fixture not became NULL on colliders when body destroy it.   
-	- Scripting: Fix the C# physics rigidbody method AddForce now its actaully add force to game object position.   
-	- Editor: Fix issue that save mark appears in simulation, and fix uncurrent scene node sort order when go to runtime.   
-	- Editor: Fix couple bugs with explorer nodes and script fields not appears in simulation mode.   
-	- Platform: Fixed very old bug, to not redraw content with any GraphicsAPI on Win32 client area when move/resize messages as sended.   
-	- Audio: Fix couble bugs with deserializing audio when asset .ext is missing.    
-	- Audio: Improve Audio clean-up with projects and scenes.   
-	- Editor: Fix the UIToolbar not overlaping now, add spinner when script project is building, block the open/close project, and open/close/unload/delete scene if script project is building.   
-	- Editor: Fix a lot of UI stuff, finally fully fixed White theme, and some uncurrent buttons.   
-	- Core: Application System: Remove old OnUpdate function, devide it to BeginFrame and EndFrame, and add PresentFrame with two different modes.   
-	- Editor: Now projects creates, and opens half-dynamic on OnFrameOver function, and show messages-step with kinda of loading step it is dynamically.   
-	- Editor: Fix some bugs with fullscreen mode, disable open any dialog in fullscreen.   
-	- Editor: When build scripts is now shows Spinner.   
-	- Editor: All actions with saving/opening scenes, projects now show in StatusBar.   
-	- Editor: Add DialogAbout to see who creators of the Force.   
-	  Editor: Fix bunch of bugs with creation/loading project dynamically situations.   
-	- Editor & Nave: Now Nave & Editor checks its resources and binaries.   
-	- Nave: Fix bug that Nave create startup scene with default name.   
-	- Editor: Extend the Create Project Dialog, and More button, and screen.   
-	- Scripting: Add DisableInInspector & ShowInInspector attributes, and add opportunity to show or disable fields in inspector throw script.   
-	- Scripting: Add AudioSource.SetClip method and fix AudioClip.LoadAudioClip & AudioClip.UnloadAudioClip.   
-	- Scripting: MonoBackend: Add StringToUtf8 and few new functions, rewrite API. Remove from CsGameObject vars stay only internal calls and garbage GameObject creation using wrappers. SceneManager API: Add access to scene throw C# GameObject.   
-	- Scripting: Remove all garbage wrappers form MonoInternalCalls and rewrite the MonoObjectWrappers NewComponent_ API, not code not duplicate at some placeses and should be faster.   
-	- Scripting: Rewrite the MonoObjectWrappers Set_ API, now more officent and takes less code.   
-	- Scripting: Extend the RigidBody2D API, add a lot of missing methods for contrilling bodies.   
-	- Scripting: Continue extend script API. Add Object base class, add MonoScript.IsMakedGameObject/RemoveMakedGameObject/Enable/Disable, add OnDisabled() event to allow user enable script again.   
-	- Physics2D: Make a new module for Physics. Move all physics 2d relative stuff to there.   
-	- Scripting: Extend the Physics API for scripts. Add AABB, PhysicsShape2D, PhysicsShape2DType, Physics2DSettings, Transform2D, and expand Collider2D and Rigidbody2D.   
-	- Scripting: Last script core rewriting. Finally add support for Instnatiate/Destroy/Get any MonoScript from script as other components.   
-	- Scripting: Finally continue work on SceneManager API. Now all scenes has concept of playable, just 'playing' flag that can be access from script.   
-	- Scripting: Add oportunity to unload current playing scene (play next found scene), and remove GameObjects, remove/add Components on objects from current & different runtime scenes.   
-	- Scripting: Improve UnloadScene and add LoadScene API.   
-	- Scripting: Add StartScene API, but with bugs for now. Cannot move object in inspector in second start scene.  
-    - Scrtpting: Fix upper bug with dragging objects, add opportunity to re-play runtime scene and reset to state where it was loaded, to re-play from start.   
-	- Physics2D: Improve simulation mode, now physics dynamic bodies not sleep, because in simulation mode we need always run simulation and we cannot controll awaking from scripts.   
-	- Explorer: Rework the draw system of scene nodes in different scene, loading/unloading scenes, and add more states to UIToolbar.   
-**0.3.5:**   
-	- SceneManagment: Fix saving scene with incurrect name.   
-	- Project: Fix saving project with current scene not make it startup.   
-	- Editor: Fix bug when attach another script to object, not displayed add button.   
-	- Scripting: Now all prefabs instantiate staticaly before copy scene objects to mono.   
-	- Editor: Fix bug with incurrect viewport resizing at start of runtime scene.   
-	- Scripting: We dont need to set the 'ratio' from Mono.   
-	- Scripting: Support for multiple camera holding and switching between them.   
-	- Scripting: Fix bug with writing updated camera projection.   
-	- Graphics: UniformBuffer: Add function SetBuffer to pass raw data to shader buffer.   
-	- Scripting: Add Shader, ShaderBufferBlock, StructuredBuffer, Math, Color, Color32 classes to deal wtih shaders and colors. BETA commit.
-	- RenderEngine2D: Fix bug with using three identical buffers of VP to one, and remove shaders binding when upload data in Begin().   
-	- UniformBuffer: GL: Fix bug: OpenGL uniform buffer was not realocate the buffer when pass data with different size in PutData() and SetVariable().   
-	- Scripting: Add functionality to create a uniform buffers (ShaderBuffers/Blocks) throw script using Shader.CreateBlock() and dynamically set the data by Shader.SetBuffer().
-	- Scripting: Fix bug with recompiling assembly when binary file actually locked by another procces.   
-	- Scripting: Fix issues with Color, Color32, and Vectors beeing rendered in inspector and update values.   
-	- Audio: Starting to implementing the Audio system for Force. Add AudioContext, SoundBuffer, SoundSource, AudioEngine per platfom classes with backend OpenAL.   
-	- Audio: Add SoundSourceSpecification and make some chanages in AudioEngine.   
-	- Audio: Add support for .ogg, .mp3, and other formats sound loading with sndfile library. Add test playing and test streaming.   
-	- Audio: Add Sound class for streaming sounds with multiple buffers working nicely.   
-	- Audio: Upgrade AudioEngine to support loading streaming and non-streaming audios.   
-	- Audio: Implement Stop() function and add way to pause source in Play() function.   
-	- Audio: Add SoundListener class. Add way to change the position, gain, and velocity of the Mono sound.   
-	- Editor: Add way to loading and playing audio clips in editor throw new editor audio inspector UI.   
-	- Editor: Upgrade Audio Clip Manager and localized it.   
-	- Editor: Add playback timer to Audio Clip. Add Script & Prebab file managers to preview the assets.   
-	- SceneManagment: Add AudioClip, AudioSource & AudioListener components + serialization. Each new scene have by default AudioListener attached to position of camera.   
-	- Editor: Make a UI for AudioSource & AudioListener components.   
-	- Editor: Settings: Add new Audio Settings manager, that allow controll the global editor playback of clips.   
-	- Editor: Create new Tag Manager.   
-	- Editor: Add Scene icon and name of it in Explorer with it state.   
-	- Editor: Add to project browser settings with context type.   
-	- Editor: Fix bug with reseting components at runtime.   
-	- Scripting: Add AudioClip, AudioSource, AudioListener components to C#. User now can play sounds using script. Not all features is present.   
-	- Editor: Fixed ton of bugs in ProjectBrowser with renamed dirs, and input box. Add/Remove components now set SceneChanged on true.   
-	- Scripting: Add AudioListener implementation. Fix AudioSource fields.   
-	- Build: Tested current build on Release.   
-	- Project: Add the Build settings and Visual Studio paths.   
-	- Scripting: Now .cs files builds automatically on Play without Visual Studio.   
-	- Utils: Win32: Add support for Toolbar ProgressBar.   
-	- Editor: Add new GameObject Icon on Explorer.   
-	- Editor: SceneExplorer: Add new settings button with scene options, loading, unloading, set as editable, etc.   
-	- Editor: ProjectBrowser: Add buch of fixes, and add new popup on black space and on item space click.   
-	- Editor: SceneExplorer: Add new menu if none of scenes is not loaded.   
-	- Editor: Add multiple scene holding and editing. Now user can edit multiple scenes and save it at the same time and play it.   
-	- Editor: Update explorer panel, add new buttons and popup-UIs.   
-	- Editor: Add scene loading-unloading state, now scenes can be unloaded and stay in explorer or loaded back, and then deleted.   
-	- SceneManagment: Add camera background field.   
-	- Editor: Settings: Add new Profiler & Colors setting tabs.   
-	- Editor: Add colored outlines for selected objects.   
-	- RenderEngine2D: Expand the renderer and add the RenderGrid() function to render grid of lines.   
-	- RenderEngine2D: In line renderer now lines check on depth.   
-	- Editor: Add the 2D Mode button and Alt/Block/Alt modes when in 2D mode. 2D Mode button make the 2D view of scene.   
-	- Platform: Add the DragDrop class. Win32: Add DragDropWin32 class.   
-	- AssetManagment: Preparing for Asset System. Force now tracks that Assets folder was changed, add add grag & grop files from system (OS) explorer to project browser.   
-	- AssetManagment: Starting to implement Asset System.   
-	- AssetManagment: Add reimport assets. Starting to implement Image Asset type description.   
-	- Editor: Add visual representation of Asset Manager and assets via Inspector. Begin with Image Asset.   
-	- Editor: ProjectBrowser: Now he displaying images instead old file icon.   
-	- Graphics: Texture: Add TextureType enum class. Add conversion between other texture enums.   
-	- AssetManagment: Add renaming with keeping the same UID, and removing asset to "Backup" or removing it completle.   
-	- AssetManagment: Assets now automatically reimports when some of it changes inside the Editor. Note: If asset removes/renames outside the Force it break the asset and it UID and create new asset with new UID.   
-	- Editor: Fix the Browser OS drag-drap rectable.   
-	- Editor: Add custom implementation of slider using ImGui.   
-	- Editor: ProjectBrowser: Update design.   
-	- Editor: Console: Update design and information about saving project & scenes.   
-	- Graphics: Texture: Fix the incurrect filter1 value was not passing in the specification.   
-	- Graphics: Texture: Update the DymamicTextureSpecification & TextureFilterType API.   
-	- AssetManagment: Extend the Asset & AssetManagment to support loading, saving the Image type assets.   
-	- SceneManagment: SpriteRenderer Component now accept the assetUID not filepath.   
-	- Editor: Add Drag & Drop and UI for Image Asset.   
-	- Editor: Fix incurrect offset of buttons, redesign the some widgets and style.   
-	- Editor: Add support for components moving up and down.   
-	- AssetManagment: Now if .ext file exist, but local file not it will attempt to load this asset.   
-	- AssetManagment: Image asset load texture when it file is appears in Assets, if not show message Missing.   
-	- AssetManagment: Starting to implement Image Audio type.   
-	- Editor: Add visual representation of Audio Asset.   
-	- AssetManagment: Fix bunch of issues with Audio & Image asset and improve it.   
-	- Editor: ProjectBrowser: Fix uncorrect drag-drop icons event.   
-	- Editor: ProjectBrowser: Remove refresh and open folder buttons. Add new sub-panel.   
-	- AssetManagment: Upgrade the asset manager and fix issues in some functions.   
-	- Editor: ProjectBrowser: Start working on draging items to folders. (Not working if file is opened by another proccess).   
-	- Editor: ProjectBrowser: Fix bugs with dragging state and audio files.   
-	- Editor: ProjectBrowser: Add support for moving files in back directory (displayed with new icon).   
-	- AssetManagment: Add CreateAsset function. And fix bugs #0073 & #0074.   
-	- Editor: ProjectBrowser: Fix bugs with folder assets. And fix  #0075 & #0076 & #0077.   
-	- AssetManagment: Add support for removing complex assets. Add RemoveLinkedAssets(), PushLastAssetIndex(), PopLastAssetIndex().   
-	- AssetManagment: Add support for moving complex assets. Moving folder asset to anohter folder.   
-	- Editor: ProjectBrowser: Add new button Copy and Paste asset.   
-	- AssetManagment: Add support for renaming assets. Complete.   
-	- AssetManagment: Add visual representation of Scene Asset. Scenes now can be opened from asset.   
-	- Editor: Add Scene Dialog window for creation scenes. Now scenes create as asset.   
-	- AssetManagment: Now asset manager skip hidden special OS files/folder starting with "." or ends with "~".   
-	- AssetManagment: Starts working on CSharp Script Asset.   
-	- AssetManagment: Now scripts can be draged on dropped as actual asset.   
-	- Editor: Regesign the CSharpScriptComponent UI for asset button.   
-	- Scripting: Little rewrite MonoBackend for assets scripts.   
-	- Scripting: Now EditorElement has global BuildScriptEngine function that eventially do all work with compiling, moving ForceCS.dll files and compiling to Mono scripts.   
-	- SceneManagment: SceneSerializer: Add root header as Force version, and Serializeble Version for scene, that scenes can detect if feature version of Force update SceneSerializer, and block loading scenes if scene version < Serializeble Version.   
-	- AssetManagment: Starts working on Prefab asset.   
-	- Editor: Add support to dragging prefabs in to Explorer with highlight.   
-	- Scripting: When moving script file to another folder (In Assets) it automatically regen the script project. (If moving folder -> scripts not working).   
-	- Editor: Add Prefab Dialog window for creation prefab. Now prefabs create as asset.   
-	- Win32 + ImGui: Add support for dialog window renders as normal Win32 windows and block parent window.   
-	- Editor: Add new dialog windows for opened project and scene. Add project name on top on menu bar.   
-	- Editor: Refacting the Menu Bar, now Play,Stop buttons not part of dockspace. Add new StatusBar panel.   
-	- Editor: Add Copy & Paste components in component settings.   
-	- Scripting: Fix bug when call one of Find_() methods its return new instance to C# object not that witch exist in monoGameObjects, and its block opportunity to change object in script.   
-	- Editor & Scripting: Upgrade the prefab system. Now prefabs can be automatically init by Force or manially by user in script.   
-	- Build: Update the build and SMI configurations.   
-	- AssetManagment: Starts working on brand new Preset asset.   
-	- SceneManagment: Split the component serialiation to SerializeComponent/DeserializeComponent functions. (For Preset System)   
-	- Editor: Inspector: Split component drawing by types. ByRegistry, ByInstance. Add new drawing component type, its ByInstance (directly access to component without using the GameObject). (For Preset System)   
-	- Editor: Add Preset Drag Drop.   
-	- Editor: Add Physics Simulation Mode.   
-	- Scripting: Fixing bug that GameObject that was created from script not send its components data to Force.   
-	- Scripting: Fixing bug that GameObjects transforms and physical data not currenlty updates to/from Mono.   
-	- Scripting: Fixing bug data not send to Mono after OnStart().   
-	
-**0.2.16 to 0.3.3:**   
-	- Core: Update ForceML. Added new Typed^ types of vector to easy indentify it and recreate Vector^ operators. Status: in progress.   
-	- Graphics: Refactoring in VertexArrayObject, VertexBufferObject, IndexBufferObject, replace create(), destroy() functions by constructors and destructor.    
-	- Core & Window: Fix nasty bug when engine crashing on window exit button or randomly when using PlatformApplication::Exit() function.   
-	- Graphics: GL: Wrap some function in FE_GLCALL(...) with basic glGetError(). GL4: Add modern debug support with GL_DEBUG_CONTEXT. And made a lot of changes in other 
-	Graphics files.   
-	- Editor: New beta Project System.    
-	- Core: Remove from GraphicsAPI.cpp / RenderEngineHelper.cpp commented preprocessor platform defines + add if statement to check define dynamic API and create 
-	FE_GRAPHICS_API_DEFAULT macro in PlatformApplication.h.   
-	- Core: Remove Render*RotWith* API from RenderEngine2D.h.   
-	- Editor: Add Project Browser Panel + Finished Project System. Now user can load projects/scenes and save it on disk. 
-	- Core: Add IDStack concept, and refresh BasePanel.h file.   
-	- Editor: Fix Console Panel on delete + Fix Settings Panel.   
-	- Editor: Fix dymanic changing theme.   
-	- Editor: Add new 'Editor Beta Features' & 'Font Size' settings. Finally fix all bugs and/with style with ProjectSettingsPanel.  
-	- Editor: Add opportunity to open scene from Drag & Drop. Optimize the Project Browser Panel.   
-	- Editor: Add Search filter and add texture using Drag & Drop. Refreshing the API.   
-	- Editor: Add dynamic Window X System change from Editor option in Graphics Settings. Window: Add TitleFlags to construct default title.   
-	- Platfrom: Remove platform init from window / context classes, and create seperate files for each platform that will init all .dlls / functions specific for that platform.   
-	- Platform: Remove Force::Window namespace (renamed PlatformWindow to Window), all classes moved to Force::Platform::/GLFW/Win32 namespaces.   
-	- Platform: Moved (renamed PlatformTimer to Timer) to Force::Platform namespace with GLFW/Win32 implementations.   
-	- Core: Renamed PlatformApplication to Application for simpleset.   
-	- Platform: Updating the Win32 Library.  
-	- DX11: Add mipmapping support for textures. 
-	- UniformBuffer: Add Upload() function and UploadAndSet() function to manually set uniform and then upload in GPU if requries.   
-	- DX11: Add support for Framebuffers (RenderTargetView + Texture2D + ShaderResourceView).  
-	- Graphics: Add RenderCmd::CullMode & RenderCmd::SetCounterClockwise API for OpenGL & DirectX 11.   
-	- UniformUploader: Add SetVector(), SetFloat() & SetInt() functions. Uniform Buffers now at working stage.   
-	- Graphics: Add UniformBlock and UniformUploader API. Sonner will replace old Shader loading unfiorms API. DX11 & GL: Now supports multiple buffers loading, but some problems has with OpenGL.   
-	- DX11: Add in Win32 proc WM_SIZE DirectX 11 SwapChain resizing. Add almost full integration ImGui with DirectX 11 (Docking & Viewport_Enabled).   
-	- Core: Add UUID system. DX11 & GL: Fixed not renderable texture in shader.   
-	- SceneManagment: Add CreateObjectWithUUID() and diserizliztion for UUID. Core: Add beta Reload() func in FE_EXPEREMENTAL. DX11: Starting to implement mipmapping.   
-	- DX11: Add D3DImage and GDIPlus to load textures using GDI, not throw WIC or DSS. Also fixed texture filtering, and add new combined filter flags.   
-	- Graphics: Added TextureWrappingMode platfrom structure. DX11: Framebuffer now support multiple render targets rendering. And fix the ReadPixel() function, now you can select object from scene by clicking on it.   
-	- Editor: Refact the UI Play/Stop/Pause/Resume buttons, recreate hole framebuffer switching/resizing situation in EditorElement.cpp and create SceneState structure.   
-	- Physics2D: Add the Box2D physics library and interate it to the editor with BoxCollider2DComponent and RigidBody2DComponent. And serialize-desirialize this components.   
-	- Editor: Fix the ImGuizmo rotation bug with uncurrect text formating.   
-	- Editor: Add scene Copy functions and CopyComponent to reset the scene and switch to editor scene when not playing and then back to runtime if we play.   
-	- Editor: Add EditorCamera free moving. (Early test)   
-	- Build: Add python scripts to automatically download all additional resources want we need and generate project on Windows, insted of old CMI.bat on Batch.   
-	- SceneManagment: Project and Scenes open functions now use the Path(std::path) instead of String(std::string). Add check filepath on extensions.   
-	- Physics2D: Add more paramteters to RigidBody2DComponent such a mass, inertia, gravityScale, gravityVelocity etc.    
-	- SceneManagment: Add to SceneSerializer.cpp Get and Set templates functions to automatically set values if in the that not exist.   
-	- Physics2D: Add 'simulated' param to BoxCollider2DComponent. Dont create Physics2D World if no object in scene hasnt 2D components.   
-	- DX10: Implement fully functional DirectX 10 Graphics API for older GPU's, like GL3.3.  
-	- Platform: Add new FE_PLATFORM_WINDOWS_WINx macros to determine extatly witch version of Windows we need use to compile code. For example if we compile to Win7 we not want to use d3d12.lib at all and all D3D12 code.  
-	- RenderEngine2D: Add circle renderer and CircleRenderer component.   
-	- RenderEngine2D: Remove a lot of RenderRectangle unused overloads functions. 
-	- Physics2D: Added the Circle2DCollider component and circle physics.  
-	- RenderEngine2D: Add line renderer and line rectangle renderer.   
-	- Editor: Add new components to menu bar, add icon to component settings, add reset button to reset components.  
-	- Editor: Add visual camera sprite that renders on camera position, and add visual camera aspect.   
-	- Scripting: Add test Mono integrations and create ForceCS project in C# to create scripts. For now not working with premake5.lua.   
-	- Editor: Add visual debug rendering for box and circle colliders.   
-	- Editor: Add the controll list in settings panel to see all keys using in Force.   
-	- Build: Add Python Mono script, and optimize the compilation.   
-	- Core: Add header include for each Force Module, like Force_Core or Force_Scripting.   
-	- Core: Add ForceExceptionCallback and SetExceptionCallback function.   
-	- Editor: Add new setting group and new settings: OpenLastProject, Autosave, SaveOnExit.     
-	- Core: Add ResolutionTimer.h class to simple run the timer and measuare time in seconds.   
-	- Editor: Add the new Dialog Boxes to ProjectManager is scene/project not loaded.   
-	- Editor: Fix text input and camera moving at the same time.   
-	- Editor: Add new component icons and refact/fix size of others.
-	- Core: Add new HandleException() function.   
-	- Editor: Fix all text inputs, fix not updating project info data when project is loading, add close buttons on some panels.   
-	- Editor: Add Undo/Redo system for Create/Destrying Objects, Transform, Colors, Textures, Copy & Paste & Duplicate commands.    
-	- Editor: Add panels reseting & new icons/redesize old.   
-	- SceneManagment: ECS now has Unsafe function create by me, without assert if entity is not valid for Undo/Redo system.   
-	- Editor: Update the Console Panel.   
-	- Scripting: Add almost full intergration C# scripting: Debug, Input, GameObject and Components integration. Only for now Force not support runtime recompilation scripts/assemblies.   
-	- Scripting: Add a lot of functionality to script system. Now script can hold: OnCreate(), OnStart(), OnUpdate(), OnPreRender(), OnRender(), OnPostRender(),OnRenderGUI(), OnDestroy() events.   
-	- Scripting: Add EditorPanel class as wrapper over ImGui. Usage of it is just debugging with UI throw script.   
-	- Scripting: Add Matrix4, Matrix3 and RenderEngine2D classes. Throw this in OnRender() you can render primitives throw script.   
-	- Scripting: User now can create / copy objects throw scripts. Now MonoScript stores all objects created in script in runtime.   
-	- Scripting & Editor: All basic type field now can be displayed in Inspector and user can change. Scripts now can be created in custom namespace.   
-	- Scripting: Script engine now full dynamically recompiled. 98procents of crashes is gone.   
-	- Scripting & Editor: Add new prefab type support. Users can create prefabs and attach it to script in inspector.   
-	- Editor: Upgrade the ProjectBrowser Panel.   
-	- Editor: Settings: Add new Build setting that hold info about how sould build project.   
-	- Editor: Settings: Add new User (preparing for exporting Application now this does nothing).   
-	- Editor: Add UI for creating script files.   
-	
-**0.2.0 to 0.2.9:**   
-	- Graphics: WGL: Add more funtionality to Win32 WGL Context.    
-	- Editor: Settings, Language and imgui.ini files are now creates automatically if its not on the disk.   
-	- Graphics: GL3: Fix bug: Doesn't render textures in batch renderer.   
-	- Graphics: GL3: Now framebuffer support it, and render all currectly. RenderEngine2D: GL3: Doesn't render textures in batch renderer since 0.1.20.3.7c.   
-	- Graphics: GL4: Recreate Framebuffer API, now is more structured and support easing attaching Render Targets. GL3: Framebuffer doesnt render anything, black texture.   
-	- Graphics: Written new GLH API instead old one GLHelper, now is more usable and not recall gl functions.   
-	- Win32: WGL: Fully recreate WGL context, now all WGL_CONTEXT_CORE_PROFILE_BIT_ARB, WGL_CONTEXT_COMPAT_PROFILE_BIT_ARB, WGL_CONTEXT_FORWARD_COMPAT and WGL_CONTEXT_DEBUG_BIT_ARB works perfectly with all extensions.    
-	- Editor: Add preview of runtime view in editor. And add 'play' button to runs the scene-application and stopping it by pressing escape.   
-	- Window: Fix uncorrect title when new scene is created, displayed old scene title.   
-	- Graphics: RenderEngine2D: Add support for 'Selection' of GameObject's using objectID as vertex buffer attribute to determite pixel on screen as id or empty space.   
-	- Graphics: RenderEngine: Add the EditorCamera class, and now editor scene will render throw that camera. Also Rewrite the RuntimeCamera class. Editor: Add control buttons to easy changing the gizmo types and EditorCamera projection.   
-	- Editor: Add snapping to Gizmos using Alt/Alt+Shift when moving. Fixed shifting the Gizmo model itself in other game objects.   
-	- Editor: Fix 'Gizmo Lock' with rotation gizmo. Fix incorrect displaying '#n' as '\n' form lang file. Fix SaveAs without format.   
-	- Editor: Settings Panel + Localization: English, Russian + Basic Gizmos support + fixed #0002 bug.   
-	- Core: Recreate the Force Application system. Removed CoreApp, and replace by ApplicationPlatform.   
-	- Editor: Recreate and improve Console Log panel, fix bugs with coping/pasting unvalid game objects.   
-	- Editor: Add console log panel, when shows all major changes, and more icons.   
-	- Graphics: WGL: Context now creates natively using wglCreateContextWithAttribs().   
-	- Graphics: RenderEngine2D: Add beginBatch() and beginNewBatch() functions + fix memory leak on destroying renderer.    
-	- Debug: Profiling: Fix memory leak in Instrumentator. (don't have destructor.)   
-	- Core: CTXEngine renamed to Force.   
-	- Editor: Add support for saving tags per scene. Copy-Cut-Paste system, user can now copying, pasting, cutting the game objects with UI Menus and shortcuts.   
-	- Window: Win32: Fix the minimum size of window.   
-	
-**0.1.21.3.12 to 0.2.0:**   
-	- Editor: Added YAML Serializing library. Now user can load and save scenes in/from .ctx format pretty easly. Also added editor icons on InpsectorPanel. Refresh desing of CTXEditor.   
-	- Editor: Recreate the UI for transform component, add colored XYZ reset-buttons and move the labels in to left side. Graphics: GL3: Refactoring GLIndexBufferObject, now OpenGL 3.x support 16 bit IndexBuffers.   
-	- Graphics: DX11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
-	- Graphics: DX11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
-	- Graphics: DX11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
-	- Graphics: DX11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
-	- Graphics: D3DDX1111: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
-	- Window: Win32: Fixed visibale flag, and now window can be showed or not by controlling flag. WindowPlatfrom in win32 now stores hInstance and hwndClass pointers.   
-	- Window: Win32: Fixed back (Y axis) mouse scrolling. Fix bug with cursor when updating in rect of window. Add to handle five new messages in WinProcc.   
-	- Editor: Improve editor functionality. Fully recreate desing. Add dark and white themes.   
-	- RenderEngine: Add support for basic lighting.   
-	- Window: Fix displaying of uncorrect title.   
-	- Editor: Add Tag Component UI, Tag list, Tag Add button, GameObject Add button.   
-	- Editor: Add Camera Properies UI Panel. And upgrade editor, fix uncurrect projection resize.   
-	- RenderEngine: Update RenderEngine 3D, add support for TextureCube, advanced Depth Testing. Editor: Inspector panel now shows currect data about GameObject's and Components.   
-	- Editor: Add support to loading any model from modeling program, and add new Editor Panels.   
-	- Input: Recreate fully input system. Window: Add global callback system.   
-	- Window: Add global callback system, i.e Win32 and GLFW works uses CTXEngine callbacks.   
-	- ECS: Added Components, GameObject and Scene classes.   
-	- Win32 Support: Window, OpenGL context, ImGui + lazzy Input.   
-	- Core & SceneManagment: EnTT and Core Refactoring.   
-	
+Each latest feature in each version reads from bottom -> top.
+
+## Force 0.4.0 (Q1, Q2, Q3)   
+ - UI: Starting working on Force UI System.   
+ - UI: Add first few template components for UI: FrameComponent, FrameRendererComponent, ImageComponent, ButtonComponent, UITransform. The are for now do noting.   
+ - Editor: Add the new beta rect tool, that will be using for controling UI images, buttons and in general 2D sprites.   
+ - Editor: Add 2D grid, in orthographic view of editor camera.   
+ - Platform: Add NotificationClient to recive device changes.   
+ - Editor: Add way to fully reload audio device by Force.   
+ - Editor: Add messages when assets is reloaded/reimported and optimise mechanism reimporting, now it happens at end of the frame not in the middle.   
+ - Editor: Add Startup Window in the Menu Bar. Also fixed tons bugs with dialogs, incurrect messages boxes. Rework the startup screen and add few context menus.   
+ - Editor: Dialogs last and final changes and fixes commit. Add new icon for Open Project/Scene. Dialogs are now stable.   
+ - Gizmos: Rework the ImGuizmo Bounds tool specific for Rect tool, and add the ability to check that mouse is over Rect gizmos. Rect tool now renders only one XY axis as it should.   
+ - Gizmos: Fix incurrect Rect bounds rendering, and fix incurrect discarding Rect lines for 2D view mode.   
+ - Editor: Create a MonoBuildManager and move all code relative to script building from editor to there. Start to clean up EditorElement.   
+ - Editor: Create a EditorPlayer and move all code relative to playing scenes from EditorElement to there.   
+ - Editor: Add new View button on Toolbar to change the Editor View.   
+ - Editor: Add new Window Menu Bar and move Panels to there, add Assets Menu Bar (as short cut for Asset Browser) and completly redo the File Menu Bar.   
+ - Editor: Add also Layouts menu. Restore PanelUndoRedoDebug, now its called PanelUndoRedoHistory.   
+ - Editor: Add bunch of actions to Edit Menu Bar, and add logo for Box2D and The Mono Project to About Dialog.   
+ - Animation: Add simple Animantion interface. Editor: Add way to focus to object by pressing F.   
+ - Editor: Add way to import new asset via menu the same as thowing files to Assets Browser.   
+ - Editor: Add PanelAssetsPreview seprated and move all code form PanelInspector that draws assets preview to there. Now assets preview can be show on different panel and allow modify along with selected object.   
+ - AssetsBrowser: Restore and redo the search filter. Complete AssetsBrowser.   
+ - Networking: Add raw Curl library for downloading files from urls. Editor: Add DialogCheckUpdates for checking Force updates, for now just dialog with out cheking itself.   
+ - AssetsBrowser: Fixed bugs with reimporing assets, redraw asset table, and with creating folders with the same name.   
+ - ParticleSystem: Start to work on Force particle system. Add ParticleSystemComponent, and restore the old ParticleSystem class.   
+ - ParticleSystem: Serialize/Deserialize ParticleSystemComponent. Add opportunity to set the sprite on particle.   
+ - ParticleSystem: Add playing state of particles, add simulation particle with specific time, add more function for emit particle without changing its properties by system.   
+ - Scripting: Add ParticleSystem component and Particle classes, for C#, and implement C++ API to C#.  Add GameObject_GetComponent function.   
+ - AssetsBrowser: Fixed incurrect image size rendering, that makes no visible button hovering state.   
+ - Inspector: Add search filter for components menu. Now user can search components there.   
+ - Scripting: Add Force Debugger extension support for debugging C# code. But extension is not working for now because Mono.Debugging.VisualStudio.all is incompatble.   
+ - Explorer: Rework the explorer, now scene node displayes like normal button without tree node, but works as tree node. Tooltips now are displayed on explorer buttons. Fixed Attach Mode via Ctrl+F2. Fixed dragging object from Explorer to Browser to make a prefab. Selected object now displays with bold font.   
+ - Inspector: Fix couple bugs with Inspector. Now in components menu search text are displaying. Fixed incurrent DrawComponent buttons positions.   
+ - AssetsBrowser: Fix bug with renaming assets by pressing F2, before it acts as creation state to leak to crash. Fix bug while renaming user cannot see label if thumbnail asset is below first row.   
+ - Editor: Add open scenes and projects files to by dragging and dropping on viewport of Force. Platfrom: Rework DragDrop API.   
+ - Editor: Expand the OpenScene function to support opening project outside Force and if scene asset file already exist.   
+ - SceneManagment: Add way to handle objects and components if it asset is not exist or not valid for couple of reasons while deserializing scene and notify user in editor.   
+ - Editor: ImportNewAsset now opens in current project path not with system defaults.   
+ - AssetsBrowser: Now folders in browsers displays first then other asset files. Move CopyFileTo AssetImporter.   
+ - AssetImporter: Expand concept of handleing handle objects and components during scene opening. Add AssetImporter and opportunity to reimport unexising asset to project and component.   
+ - AssetsBrowser: Fix bug that while rename script asset not rename script class name.   
+ - FontRendering: Add msdfgen and msdf-atlas-gen with freetype libraries, and setting up basic example class and code to work with Font's.   
+ - DXGI: Add support for (24-bit) textures for DX11, DX10 with DXGI_FORMAT_B8G8R8X8_UNORM format. (GL4 already has it with GL_RGB).   
+ - DX11: Refact some code with D3DTexture2D, update SetTexturePixels that currect accept size and for D3D11_USAGE_IMMUTABLE recreates texture for other types UpdateSubresource.   
+ - Graphics: Refact Texture API, now TextureStatus do more work, add TextureFormatGetChannels, now all ctors accepts TextureSpecification.   
+ - FontRendering: Add way to generate font atlas from specific charset and preview it in editor.   
+ - GL4: After destroying LogoScreen GL not switch contexts so destroyes graphics object from other context.   
+ - WGL: Completly rewrite WGL context, because HDC and HGLRC was not attached to its context, so causing problems during context and window destruction.   
+ - FontRendering: Add generator for RGBA8 texture, so this completly fix uncurrect displaying texture for example on DX10/DX11.   
+ - AssetImporter: Add DialogAssetImporter, and now is scene has missing assets, this dialog will opened and allow user import missing assets with new UI.   
+ - Editor: Add new Toolbar button Play Mode Properties with new Focused Mode. Its allows to input only when mouse is over Scene/Game Panel.   
+ - Editor: Fixed really annouing bug, when user focused on Scene/Game Panel it can scrool Scene/Game and content in Inspector, Explorer, AssetsBrowser, Console.   
+ - Force: Completly cut-off WinAPI includes from public Force API includes. Add ForceMinInclude.h, and Config.h and sort all additional configuration defines that play role on Force include order. Optimize Force Editor compilation time.   
+ - SceneManagment: Now project file accept startup scene as asset UUID. Fix bug with saving incurrent scene by name (now by asset UUID), fix bug that during reloading audio device incurrent scene was opened.   
+ - RenderEngine2D: Add RenderText, and RenderCharacter functions to render text.   
+ - FontRendering: Add way to render text, using new text shader, working for all supported API's.   
+ - AssetsBrowser: Again shitty browser, how i tired to fix it already so far, it just crazy. Fix couple bugs with it, update design and add way to move asset using hierary side of browser.   
+ - Editor: Refact the editor reloading system, now user can cancel reloading. Add reloading editor assets feature. If one of Editor/Resources files missing Force not let you to do that.   
+ - AssetsPreview: Update UI, and add Asset Properties, Select In Browser parameters.   
+ - FontRendering: Add Font asset type and UI for it.   
+ - Editor: Completly regisign Force UI. Redraw all icons on dark and white styles. New Force logo. With this commit fixed some bugs.   
+ - Dialog: Add new DialogSelectFont and fixed some bugs with DialogSelectImage.   
+ - FontRendering: Add Font component, and it Inspector UI, MainMenu Bar. Now text renders throw SceneRenderer.   
+ - Inspector: Complete feature when modified one of component values it set scene to be modified. Ealry works but not with all components.   
+ - FontRendering: Add way to load default font if it not exist in project during AddComponent. (unfinshed)   
+ - Audio: Add progress bar that show time have passed from start playing clip.   
+ - Editor: Fixed tons of bugs during drag and drop assets, render highlights, etc. (See ForceBugs.md "#0189-#0195")   
+ - Inspector: Fixed critial bug when physical asset is missing or not even exist but attached to component its cause Force to crazy lag. Update AssetWidgets add Select In Browser button.   
+ - Audio: Fixed bug with audio loading with russian letters.   
+ - Platform: Add support for Utf16 OpenFileBox and SaveFileBox, to proper import assets and save project/scenes with russian letters.   
+ - Texture: Update Texture API to support Path instead of String, this fix issuies with incurrect filepath format Utf16/Utf8 situations.   
+ - StatusBar: Redo Status Bar, add Background Playback to let user see witch clips was playing in background mode, because Force can play more that one clip at the same time.   
+ - Widgets: Add custom Slider API that can be used for example for audio volume or speed.   
+ - AssetManagment: Increase speed of reimporting and importing assets, now its happens really fast.   
+ - AssetsBrowser: Again, again this browser, how i love fixing it daaaam :(. Fixed bug that in edit mode during dragging items show its colors Add hightlight rect when drag asset to folder.   
+ - FileSystem: Expand Force filesystem to support more operations.   
+ - PlatformUtils: Add support for Utf16/Utf8 OpenDirectory.   
+ - Dialog: Add support for russian input in dialogs like NewScene, NewPrefab, NewScript.   
+ - PlatformUtils: Win32: Add rest of API to support Utf16 and parsing russian text to Win32. WindowWin32: Add support to parse window title in Utf16.   
+ - Editor: Open/Save/ChooseDirectory file dialogs now translated.   
+ - Dialog: Add support for creating project with russian names.   
+ - AssetsBrowser: Complety rewrite hierarchy part of browser, add way to drag asset to hierary, add content pop-up to hieraty, and scroll to asset and fixed another pack of bugs.   
+ - Dialog: Add way to create scenes and prefabs, presets with russian names.   
+ - Inspector: Rework the asset witgets, and improve asset imporing speed now with script asset widget.   
+ - AssetsBrowser: Disable nav-input from some sub bars, and finally implement selectable feature on thumbnail, now all thumbnails can be selected from keyboard and its state its matches.   
+ - Dialog: Replace all buttons in drop-down lists to selectables.   
+ - Console: Rework the Console Panel, now console is a table, text are wrapped, and when new message printed it scroll to that message.   
+ - Graphics: Refact Shader API, now it also works with Path API not String and has ShaderStatus and ShaderErrorCode. Now shader error can be catched from Editor.   
+ - Utils: Add new DialogBox API, update dialog icons to Windows10 version.   
+ - Core: Improve the ecxception handleing. Now exceptions print a full Crash Report.   
+ - Window: Improve Window API, add Focus(), Maximize(), Minimize(), Restore(), rename TitleFlags to WindowTitleFlags, and all flags that window specific.   
+ - Dialog: Improve Dialog system, fix confict Dialog & Panel interaction when Dialog is openend and Panel became a platform window.   
+ - AssetsBrowser: Add dropdown box when click on sub-sub bar arrow button.   
+ - Panel: Seperate PanelSceneGame in to PanelScene and PanelGame, but this cause problems and now we need to refact the rendering and updating code of main editor pass, and make few tests.   
+ - Explorer & Toolbar: Move Redo/Undo buttons to Toolbar, and add New Object button to explorer.   
+ - Editor: Add new feature when using ALT & Mouse for rotation/zomming mouse cursor now will be moved back/forward on X/Y if outside window to let user always move camera not block by end of the window.   
+ - ScenePanel: Seperate the EditorElement (Dialog) events when Scene and Game events.   
+ - ScenePanel: Now panel is closable. Also refact Panel API to support more features. Inspector also now closable.   
+ - DX10/DX11: Implement hole system to reload and reset device if it was lost, because framebuffer, on resize crashes, but actually then i realise that was pointles.   
+ - Core: Now main application thread will be slepped when window is minimized, and not let CPU usage rises to about 50% of time.   
+ - Explorer: Start redo explorer, fix some commands like Copy, Cut, Paste with another scene, andd Move and Paste command to another scene.   
+ - AssetsBrowser: Implement multiselection with thumbnails, with CTRL (add to current selected) and with Shift (select area of thumbnails).   
+ - AssetsBrowser: Implement deletion assets with multiselection.   
+ - AssetsBrowser & AssetsPreview: Add opportunity to preview raw .ext files and broken .ext (in case if physical file is missing).   
+ - AssetsBrowser: Implement copy/pasting assets with multiselection.   
+ - Core: Move ApplicationWindowSpecification to Window and its now called WindowSpecification.   
+ - Platform: Win32: Create a new system for creation custom at background dialogs. Omg is by far most hard thin that i've ever done since stated working on Force.   
+ - Dialog: Add dialog when project is creating, project is opening, scene is opening.
+ - AssetsBrowser: Add dialog that shows during assets preview loading asset. It shows only if asset loading longer that 4secs.   
+ - AssetsBrowser: Implement cutting assets & multiselection cutting (Not fully tested.) Need refactoring .ext files displaying.   
+ - AssetManagment: Starting to refact assets change detection system.   
+ - AssetManagment: Now Force will reimport assets if they change outside only if window is focused.   
+ - AssetsBrowser & Multithreading: Implementing multithreading to show aseet dialog & refactoring asset detection system. (Broken & Working)   
+ - AssetManagment: Add AssetExt that contains status of .ext during reading.   
+ - AssetManagment: Refact the ImportAssets & ImportAsset functions, add AssetManagerImportFlags, that (details it files.), for ReadExtFile, GetUID, GetAssetByExt implement AssetExtFormatStatus that allows get more info about errors happens during reading .ext files.   
+ - AssetsBrowser: Fix that filewatcher that recursivly detects asset change state every frame, implement CreateFolder for new detection system.   
+ - Core: Fix bug that DialogBoxProgress not destroyed itself on exit and its thread.   
+ - AssetManagment: Remove AssetModificationState now its a AssetImport (witch means how asset will or was imported). AssetManager add GetAssetByPath().   
+ - AssetsBrowser: Completly rewrite and sort out AssetsBrowser header. Woking on new Assets importing API.   
+ - StatusBar: Now warning and error messages marks in status bar and user can see preview of error/warn or open a console.   
+ - PanelScene: Fixed bug that when user navigate in browser thorow nav keys, camera also moves.   
+ - AssetManagment: Rename AssetManager_ flags to Asset_ type. For RemoveAsset add removing only from database.   
+ - AssetsBrowser: Completly redo AssetProcessReimprort now it called AssetProcess. Working on asset changing outside Force.   
+ - Window: Add support for blank windows. Win32: Blank windows now can be dragged and resizeble.   
+ - Dialog: Dialogs nows have border around it.   
+ - Editor: Add thin-border around the window.   
+ - Dialog: Remove platform title bar, from main window and all dialogs, and now we draw Force non-client area, and have own buttons.   
+ - AssetsBrowser: Reworking browser thumbnail drawing. (Working)   
+ - Core: Add new Thread class as wrapper over std::thread with some features.   
+ - Graphics: Rename GraphicsAPI to Device (it means more sence).   
+ - Graphics: Add ContextManager that managers all created and active contexts.   
+ - Platform: Win32: Playaround with some WIndows Undocumented API for styling.   
+ - LogoScreen: Fix unresposable logo, now it creates on another thread. Firsly here i use Mutex, Condition, Atomic.   
+ - Graphics: Rename typedefs in Common.h (because its old style). Now Device accept the RendererAPI.   
+ - Editor: Add dialog when audio device is reloading.   
+ - Example: Apply changes in examples to be compatable with new Force API code.   
+ - Example: Fix problem that ExampleApplication not compiled.   
+ - Nave: Make Nave runnable on new Force API. Now Nave support 0.3.10 and feature 0.4.0+ versions.   
+ - Window: Complelty rework fullscreen mode. Now window have simple SetFullscreen function.   
+ - Editor: Remove Fullscreen parameter from Preferences, and now all Dialogs works fine in fullscreen.   
+ - Runtime: Rewrite runtime to be support with 0.4.0+ API.   
+ - Debug: Add StdLogger to log in release.   
+ - Window: Fix bug when restore from taskbar in not currectly fit the monitor, fix the exiting from fullscreen.   
+ - Preset: Add function to create preset from component type.   
+ - AssetsBrowser: Add selection all assets by press Ctrl+A. MenuBar: Add recent project list there.   
+ - Dialog: Make a new UI from Startup Page, New Project and Open Project dialogs.   
+ - Dialog: Remove NewScene, NewScript, NewPrefab dialogs, and new NewAsset dialog that manages creation all of this assets + add creation presets.   
+ - Core: Implement the CrashReport saving into Log system + increase size of LogoScreen.   
+ - Utils: Add new library hwinfo for retriving information about hardware, used for CrashReport.   
+ - Utils: Win32: Add OpenDirectoryAndSelectFiles function to open explorer and select files, usefull in AssetsBrowser.   
+ - Vulkan: During refactoring code refact some old code that was suposted run Vulkan.   
+ - Build: Made some big changes with build files in Force, not all Win32 files will only builds on Windows.   
+ - Console: Rework Console Panel, add new icons, and now it fully resizeble.   
+ - AssetsBrowser: Start working on list thumbnails view + ShowInSystemExplorer now select this files.   
+ - Widgets: Add rounded search filter.   
+ - AssetsBrowser: Fully implment list view of thumbnails.   
+ - AssetsBrowser: Fix bugs with creating folder and renaming assets, asset either not created or not refresh.   
+ - Dialog: Add UI for choosing custom path for searching projects.   
+ - Editor: Fixed bug with lost focus to main window when progerss dialog is finished, and fix icon diplaying in status bar or error status.   
+ - AssetManager: Complely starts reworking the hold defention of asset system and asset itself, because fix already stuid system is inreasonable. Remove linked assets from AssetPreview.   
+ - AssetManagment: Complelty rewrite AssetManager Moving/Copy/Renaming API. Add new MoveAsset API. Remove LinkeAssets API, and relative paths from .ext file.   
+ - AssetManagment: Add AssetExtCreateFlags structure.   
+ - AssetsBrowser: Remove MoveAssetItem, MoveAssetFolder and a lot of old move API, and add dialog version of AssetManager::MoveAsset(). Implementing Move, Copy, Rename, Cutting.   
+ - ScenePanel: Fix a litter bug when drag panel resize border and use mouse it rotate and resize window.   
+ - AssetsBrowser: Implement multiselection moving assets, add new UI when move two or more assets. And fix bugs with asset selection and deselection.   
+ - AssetManagment: Add feature to MoveAsset as Copy to the same directory without overriding.   
+ - AssetsBrowser: Restore Shift selection, add support to open multiple assets, fix multiple assets dragging.   
+ - AssetDatabase: Add new PanelAssetsDatabase to searching assets from Global Assets Database, as non-tree view.   
+ - Platform: Win32: Sometimes then focus to main window from progress window its crashes in ntdll, or TextInputFramework.   
+ - AssetsDatabase: Add multiselection to database panel.   
+ - AssetsBrowser: Add tile and list view buttons on down bar with slider bar.   
+ - Dialog: Fix bug when panel is platform window i cannot be dragged.   
+ - Window: Add new MenuBarActiveItem callback, and fix bug that somethings when window to small, non-client area overlaps the client area.   
+ - Dialog: Fix bug that when draggind panel outside main window it stops to react on drag drop of windows or was glitched.   
+ - Editor: Place all commands that used by menu bar and most global commands in to Command API.   
+ - Preferences: Add new system theme, rework some settings.   
+ - Layout: Fix bug with uncurrect Edit Layout.   
+ - AssetsBrowser: Replace all wait conditions to Mutex and Condition for AssetLoadPrev, ImportAsset threads.   
+ - Dialog: Fix bug when setting Open Last Project, it was fails.   
+ - GlobalSearch: Add the global search panel that allows to find avaliable commands in Force. Very usefull feature.   
+ - Panel: Fix bug that panel states was not reset if panel is hidden so lead to variaous bugs.   
+ - Dialog: Fix incurrect recent projects, and UI in database and globalsearch.   
+ - AssetsBrowser: Redo the import asset from os and drag drop now its work perfectly with new system.   
+ - AssetsBrowser: Implement complete reimporit assets, finally.  Assets browser now finally totaly complete and adapted to new importing system.   
+ - Panel: Fix bug that elements in datbase and global search can be activated by Enter even if its panel not hovered.   
+ - Fixed wrong thing, when select asset it deselect game object.   
+ - Explorer: Start working on multiselecion of game objects and redo-system of handeling multiple scenes.   
+ - Explorer: Add multiselection via Shift, and add Ctrl+A to select all objects.   
+ - SceneRenderer: Add visual displaying for multiple selection objects.   
+ - Core & Editor: Fix bug when during shutdown if scene modified it not allowed to return to editor and menu bar renders weird during message box.   
+ - PanelScene: Fixed bug that gizmos renders on top of preview and UIToolbar buttons, and ability to use gizmos when click on them.   
+ - Gizmos: Starting work on multiselection gizmo interaction.   
+ - Dialog: Fix tooltip can be shows from panel when dialog opened, and fixed some colors.   
+ - Win32: Fix bug that cause glitch when focus to main window from dialog, or custom ImGui parent window.   
+ - Win32: Update the ImGuiWin32 backend to stick with last changes.   
+ - Utils: Add ToString for all types of vectors and integeral types.   
+ - Math: Finally replace ForceML fully by GLM. But old ForceML also present and was updated.   
+ - Commands: Implement new beta Commands API.   
+ - Commands: Add new commands and integrate Command API with GlobalSearch.   
+ - Debug: Implement new Debug ImGuiDemo Panel for debugging.   
+ - Element: Implment new OnNextFrame function to call some logic on next frame.   
+ - AssetsBrowser: Implement Command API to browser, and fix couble bugs wtih dragging.   
+ - Utils: Implement ToString to bool and for matrices.   
+ - Math: Add missing GLM operators for vectors.   
+ - Editor: Still working on proper disabled/hovered colors when Dialog is active, because of annoying bug mouse hover detection on thin part of dialog window.   
+ - Inspector: Implement new UI for Transform Component if inspector is too small and with buttons on component tree that was overlap tree arrow then too small.   
+ - Console: Implement new UI for console if console too small and implment Command API to it.   
+ - Explorer: Fix couble bugs with selection, deselection, cutting, pasting objects + implment  Command API for it.   
+ - Player: Fix couble bugs with go to play/simulate mode and implement auto selection for multiple objects.   
+ - PanelBars & PanelScene: Implement Commands API for it.   
+ - Window: Callback functions now a part of Window no as globals. And fix bug that different cursors was not displaying on input box, resize border, etc.   
+ - Math: Restore support for ForceML as internal by ML_*.   
+ - Widget: Add popup with right clicking on any input box, search filter (working).   
+ - SceneManagment: Add ComponentType and replace string types to enum. Add PresetType.   
+ - SceneManagment: Create new wrapper over Entt, System.h that now can accept Identifier, and FUID as ID's to find object or component.   
+ - SceneManagment: Create new version of GameObject without tempalte passing when retriving components. Also decrease inlcude size. Will frequent using by scripting.   
+ - SceneManagment: ComponentManager and conversion between ComponentType and PresetType.   
+ - SceneManagment: Replace all Component& by Component because GetComponent/AddComonent now returns Component.   
+ - Core: Add Memory Utils.   
+ - Force: Rename ForcePreCompile.h to ForcePCH.h for short name.   
+ - Commands: Add new API for copying arguments for special command.   
+ - Inspector: Remove RemoveComponent and implement this via Command::RemoveComponent that already can destoy component from editor or runtime.   
+ - Editor: Add precompiled header for Editor ForceEditorPCH.h and commit rest files from prev commits.   
+ - Editor: Add new SceneCommands API + Add/Remove Component as commands with Mono Support.   
+ - Inspector & Commands: Add Copy/Paste/Cancel Copy/Delete components as commands.   
+ - Scripting: Add MonoComponentUploader to send components to Mono, moved it from Inspector.   
+ - Editor: Fixed bug with hovering toolbars and window is lose focus and glitch the new UI thin-border.   
+ - Core: Move types from Memory.h, and new RefWeak and add new containers.   
+ - Platform: Win32: Fix bug that CreateFile still use A instead W version to lead to crash.   
+ - Dialog: Fixed bug that when tooltip or popup opens in dialog outside main window it lose focus.   
+ - Memory: Rename CreateReference to CreateRef.   
+ - Serialization: Add ProjectSearch & RecentProjects serializers + now it creates files in Force/Editor/Ver folder.   
+ - Utils: Add new ColorEditor as redesined version of ColorEdit3 & ColorEdit4.   
+ - IO: Remove macros key codes and replace by enum version. Improve Input.   
+ - Platform: Win32: Add support for haneling input from mouse on non-client area of the window.   
+ - IO: Add String, Key/MouseButton, and int versions of input calls.   
+ - UserManagment: Add new UserManagment API and remove old one from Application.cpp. Add UserSerializer.   
+ - Platform: Rename NotificationClient to NotifyClient.   
+ - Utils: For ColorEditor add Apply option.   
+ - Editor: Remove obsolete IsFirstUsage from EditorElement.   
+ - Serialization: Rework some serializers format, make a new format for PreferencesSerializer.   
+ - IO: Remove macroses key/buttons from rest of input and add InputStates.h.   
+ - Window: Add WindowActiveParent & MouseButtonNC callbacks, also add its events for IO + refact window platform code.   
+ - Editor: Using new callbacks finally add support for closing popups when: click on NC area, click outside window, click outside dialog.   
+ - Core: Fix bug that in Debug build Scripting Backend was not be intialized because of missing left brachet.   
+ - Platform: Win32: Fix bugs with initializing COM library.   
+ - Dialog: Add hide state for dialogs.   
+ - Editor: Add new button for dialog to hide it, and add new UI menu that allows to restore the hided dialogs.   
+ - Platform: Win32: Add OleInitializeHelper.   
+ - DragDrop: Fixed bug that drag drop was not initialized because of Co and Ole differ threading model.   
+ - IO: Rename MouseButton to Mouse and rename MouseButton_ function to Mouse_ For short name reason.   
+ - Core: Fixed bug that from Application ImGui Popups closed, it should be here.   
+ - IO: Improve Input System, add clicked counted system and more. Separate the Keys & Mouse Update events.   
+ - Platform & Editor: Fixed bug that block drag when mouse outside window + create new one (lose focus) and popup dissapears.   
+ - AssetsBrowser: Implment new Thumbnails API to browser, and add some new widgets.   
+ - AssetsBrowser: Fix toons of final bugs with browser, espesially with dragging.   
+ - Commands: Add MaximizeRuntime command.   
+ - Toolbar: Implement new Toolbar's API.   
+ - Panel: Remove PanelBars, and replace by PanelMenuBar, PanelStatusBar, PanelToolbar.   
+ - Toolbar: Add toolbar settings button.   
+ - Editor: Fixed rest of button hovered UI issues, continue working on Gizmos & Explorer.   
+ - DragDrop: Fixed bug that in runtime drag-drop was disabled.   
+ - AssetsBrowser: Fixed bug with incurrent selected group of assets via Shift.   
+ - Commands: Add Restart command.   
+ - Commands: Toolbar: Add more items to toolbar and now if items not fits appears new button to show hidden items.   
+ - AssetsBrowser: Impove browser, not we can select assets and safly dragging when mutiple selected + fixed bug with rendering drag drop.   
+ - Commands: Add ResetComponent as command.   
+ - Inspector: Remove Paste/Copy/Reset components now is a commands, remove all Send relative functions now is part of MonoComponentUploader.  
+ - Commands: Add SelectAssetInBrowser as command.   
+ - Audio: From Command_ResetComponent start complelty rewriting Audio handleling system. Rename Sound_ to Audio_.   
+ - Audio: Add AudioData that represents one single loaded Audio asset data. To not load multiple audios for the same asset if it already was loaded.   
+ - Audio: Rename Sound to AudioClip. Now AudioClip not creates a buffers for Audio, but create a AudioSource from already loaded AudioData (AudioBuffer's).   
+ - Audio: Refork AudioEngine for new Audio system. Add bunch of new functions to Find, Load, Unload, clips and audio data.   
+ - Serialization: Increase SerializingVersion to 1002, rework AudioSourceComponent serialization code.   
+ - Scripting: Rework AudioSource, for new Audio API.   
+ - AssetManagment: Upgrade AssignAssetToComponent to support raw Component_ and ComponentType. Rework LoadAssetFromAudio.   
+ - SceneManagmnet: Remove AudioClipComponent from AudioSourceComponent, now AudioClip not contains AudioData, just AudioClip (AudioSource) that can be safly deleted  on component destruction.   
+ - SceneManagment: Rework Scene and SceneManager for new Audio API.   
+ - Editor: Remove Temp API from SceneCommands for Audios.   
+ - Inspector: Rework some widgets, now Assets use AssignAssetToComponent when drag on widget. Rework DrawComponent_AudioSource.   
+ - SceneManagment: Remove SceneState from Editor, moved to SceneManager.   
+ - SceneManagment: Remove old SceneAccessor API. Code clean up.   
+ - Editor: More clean-upping for EditorElement.   
+ - Scripting: Replace all GameObjectT to GameObject + made some refactoring.   
+ - Scripting: Add MonoComponentSender, and MonoComponentReciver, move MonoComponentUploader from Editor to Engine.   
+ - Physics: Replace GameObjectT to GameObject.   
+ - Commands: Add AddTag/RemoveTag as commands.   
+ - Core: Move all Force-defined types to Force namespace.   
+ - Force: Remove Win32 -> SimplePrint that was in Profiling that was included to ForcePCH.h.   
+ - Core: Clean-up CoreBase.   
+ - Core: Move Profiling & Logger macroses to its files. SimplePrint now only compiles for Debug.   
+ - Core: Remove CoreBase, and add BuildProcess, CallConvertions, LocaleUtils, BreakPoint + refact Main, Profiling, SimplePrint, Core.   
+ - Core: Remove old FE_DISABLE_CONFIG_TXT + Save/LoadGlobals, FE_ENGINE_ASSSET, FE_GRAPHICS_API_NOT_FOUND.   
+ - Platform: Remove FE_CURSOR_TYPE_, replace by enum MouseCursorType.   
+ - Core: Rename FUID to UUID and fix that old DirectX typedef GUID UUID include conflict.   
+ - SceneManagment: Replace all templated GameObjects to not templeted. (exclude OnUpdate/OnRender).   
+ - Serialization: Replace all GameObject templated to not templated version + fix serialize/deserialize gameobject.   
+ - Force: Commit reset files to match lateset changes.   
+ - SceneManagment: Replace all reset scene managment code to use non templated GameObject, and fix another set of bugs with Force::UUID and Win32 GUID UUID.   
+ - Audio: Fix bug that audio buffers want not added to audio clip. and bug that audio was not loading.   
+ - Audio: Audio Clip now loaded perfectly with new Audio API, now only one audio data with this asset with loaded to multiple sources.   
+ - Audio: Add new functionality to Clips, now Audio Data, and ref clips loads, and unloads from memory perfectly in edit mode.   
+ - Inspector & Preview: Fix bugs with applying parameters to audio when click to play.   
+ - Core: Add applicationCount and reimplement DestroyApplication.   
+ - Texture & AssetManagment: Implment TextureManager to contoll loading textures for scene's components.   
+ - Utils: Add StringUtils, SystemUtils, and move some FileSystem API from AgnosticUtils to FileSystem.   
+ - Utils: Remove AgnosticUtils.   
+ - Platform: Add new callback for Window to define custom non client area + fix nc area bounds.   
+ - Platform: Win32: Fix glitch bug when minimize/maximize window from OS messages and that was unnessasary PresentFrame call.   
+ - AssetManager: Fix bug that asset cannot be unassigned to zero if asset was not valid or missing.   
+ - Core: Simplifyes application creation. Now we just need to implment CreateApplication() instead of creation a specific class.   
+ - Commands: Add ImportAssetForce command + fix importing assets throw AssetImporter.   
+ - Editor: Major Force Editor refactoring and clean upping. Now Editor has a Core module, removed a hell of grarbage from EditorElement, now is simple as possible, moved and created new files from exising code that previosly was in EditorElement + more.   
+ - Core: Move fps, and frame count from editor to application side events.   
+ - Platform: Drag Drop: Imporve drag drop, if files is not supported by Force it will render with diff icon, and color in browser.   
+ - Editor: Move all misc functions from EditorElement to AssetsProjectUtils.h.   
+ - Editor: Add new file for handleing error codes from engine objects + move some of it from EditorElement.h.   
+ - Editor: Rename EditorCommands to UndoRedoManager.   
+ - Commands: Add new global commands API that was just function in EditorElement.   
+ - Editor: Move editor assets code to EdtiorAssets from EditorElement.h.   
+ - Dialog: Add new DialogStartup as as seperate dialog from DialogNewProject.   
+ - Panel: Add DockspaceViewport as main handle for all panels and dialogs, and also move bunch of this code from EditorElement.   
+ - Editor: Fix bug that non-client area was too big for MaximizeRuntime mode.   
+ - Editor: Fix bugs with some incurrect key short cuts.   
+ - Editor: Fix bug with text input and searching with russian letters.   
+ - Commands: Fix bug that sometimes command that was not processed, then was ececuted multiple time from queue.   
+ - Commands: Add AddGameObject & RemoveGameObject commands, remove RemoveGameObject from Inspector.   
+ - Commands: Add new CopyGameObject command with mono support.   
+ - Commands: Add SaveAllScenes command + fix some issue with SaveScene & SaveSceneAs.   
+ - Commands: Add RenameScene as command + Fix SaveSceneAs bug that SaveFileBox was unnessesary modify browser's filewatch.   
+ - Element: Add support for changing N-count of frames for Element OnNextFrame + fix calling CallOnNextFrame when its was procesed already.   
+ - Commands: Refact the Core of Command API, rename some functions remove unused functionlaity + fix bugs. Not CommandManager is stable API at the core.   
+ - Commands: Add RenameAsset as command, and move MoveAsset, RenameAsset, from browser now its part of AssetsCommands.   
+ - Commands: Integrate global commands API to CommandManager. To AssetPreview add commands ReimportAsset, DeleteAsset.   
+ - AssetManagment: Fixed bug that when new project opened, it not update Applications's startProjectPath from Asset::GetFullPath that cause to remove loaded assets from GAssets.   
+ - Commands: Add MoveAssets & DeleteAssets for AssetsCommand moved it from Browser.   
+ - Commands: Add support for holding and retriving error codes from enums for some commands.   
+ - Commands: Add Move/Copy/Rename/Delete/Reimport/MoveAssets/DeleteAssets as commands, refact CopyClipboard, OpenInExplorer commands.   
+ - AssetManagment: Fixed bug that when Audio asset create .ext file with writeExisting it sill load audio data, so slow down moving, pasing audio assets.   
+ - AssetsBrowser: Fixed bug that modification files by OS casue ProcessAssets during drag so currupt drag icon.   
+ - AssetManagment: Add threaded dialog when assets moving to long.   
+ - Editor: Fixed bug that project can be saved by Ctrl+Shift+S when is not opened.   
+ - Core: Improve ResolutionTimer.   
+ - Platform: Win32: Fixed but that OpenFile was not opened file with default assisiated program.   
+ - Commands: Add SelectAllAssetsInBrowser command + refact Open, OpenInExplorer commands.   
+ - Panel: Status bar now prints 'Ready' every 20 seconds after last sended message to status bar.   
+ - Platform: Add FileSystemObserver as rewrtited of legacy FileWatcher.   
+ - AssetManagment: Add support to skip process assets from engine via callback, for example for internal importing.   
+ - AssetImporter: Remove AssetImport API to AssetImporter from browser, also fix bug that ProcessAssets was happen when user inside Force (i.e notify that some files was changed (opened/attributes) but not actualy writed).   
+ - Commands: Rework the assets importing commands, connect it with new importing system.   
+ - Multithreading: Completly rework behaviour of Dialog Background thread is fully synchronized with main thread (I hope).   
+ - Multithreading: Rework Asset Importer system and importer thread. Now it works well with Mutexes and Promises.   
+ - Multithreading: Rework the Asset Preview thread, it also use Mutexes, Promises, and Future now. And dialogs displays always it setted amout of time.   
+ - Multithreading: Create a Asset Commands Thread that will show dialog when some operaiton of GlobalAssets take to much time.   
+ - AssetsBrowser: Add new AutoPreview option to browsers settings.   
+ - Editor: Rename Panel/Dialog NonClientArea to TitleBar.   
+ - Theme: Add new colors to light theme, dialog border now widther and rework opening scene by dragging it from brower to scene viewport.   
+ - ProjectManagment: Now projects minimum loading time is 1 second, because projects cannot load immiditaly even if fast CPU.   
+ - SceneManagment: Fixed bug that during creating scene via new project it title not shows.   
+ - AssetManagment: Add few new rules for asset importing. Now system or hidden files will not be imported.   
+ - Commands: Fixed unconsistency with Delete & Remove commands. Add new icon for Remove (Move to Backup).   
+ - Commands: Expand CommandManager, now it support execution command via function. That means you dont need register it.   
+ - Dialog: Recreate DebugInfo dialog. Now it show a lot more information.   
+ - Core: Fix bug that when user click on LogoScreen X button in title bar window is destroyed. Now Force immidiatly exit.   
+ - Force & ImGui: Rewrite imgui.h/cpp files with features that Force modify in imgui core itself. Fixed some bugs, and document every change that Force modify in imgui, for feature updating.   
+ - Platform: Win32: Fixed bug that progress dialog re-focus to main window even if it was focused. If cause a glitch.   
+ - Editor: Finally add icons to panels title bars using new Font Icons API.   
+ - Editor: Impove font icons + add Debug panel utitlity.   
+ - ProjectManagment: Remove editor settings from project settings, move some editor settings that belongs to project here. Projects files not have new format.   
+ - Editor: Completly redo Edtior Settings, seperate Project and Editor Settings. also settings that not serializeble now is called Internal.   
+ - Editor: Update format of EditorSettings, add new settings, and remove unused like Font Size.   
+ - Dialog: Update UI from Preferences dialog. Now it display project and editor settings seperatly. Also to project settings add Physics2D settings.   
+ - Utils: Rename some widgets and fixed bug with focusing to dialog.   
+ - Panel: MenuBar: Fixed bug that whne project was not opened one condition not init and that block OS window move events.   
+ - Preferences: Fixed theme settings, and redo SavePanelStates setting.   
+ - Commands & Preferences: Fixed more bugs with Theme, improve loading editor layouts. Add missing commands to GlobalSearch.   
+ - Inspector: Add CopyPath, CopyUUID, Properties to DrawWidgetPopup.   
+ - Panel: Add callbacks OnOpen/OnClose global to catch modification panel show state.   
+ - Preferences: Implement new EditorLayout API, now layout can be saved, loaded removed.   
+ - Commands: Add Set, Save, Load, Delete, ResetAll Layout commands.   
+ - Editor: Rework system of loading Editor Assets. Now EditorGuiSettings.ini is also CurrentLayout.layout and EditorSettings now is .data file.   
+ - ProjectManagment: Now .fpo lock file writes the ProcessID to check if project was opened with the same instnace of Force.   
+ - Scene: Rework the scene controls and events, now we drag scene window it not move/rotate camera, when pan is used gizmos is hided and more little fixes.   
+ - Preferences: Fix uncurrent setting with BlockZoomOnSelection and BlockZoom and Browser.Layout.   
+ - EditorCamera: Add zeroDeltaEvent, and fix bug when mouse jumping from one point to another on screen it was glitch on camera rotation/pan.   
+ - Editor: Move collapse button to right side.   
+ - AssetManagment: Remove AssetTypeDescription API, preparing to new Importer API.   
+ - AssetManagment: Add ImporterData as old AssetTypeDescription storage for underline asset data. Integrate it to Asset, and made few changes.   
+ - AssetManagment: Complely rewrite WriteExt function, add new flags. Now Write/ReadExt functions use new Importers API to read/write to .ext.   
+ - AssetManagment: Expand AssetDatabase, move it from AssetManager to AssetDatabase class, add more functionality.   
+ - AssetManagment: Add new Importers API and change format for .ext file. Now .ext files load and write throw Importer. Different type of assets can have its own Importer. 
+ - AssetManagment: Add ImporterDefault for default assets that not have additional properties such a Folder, File, Script or Scene.   
+ - AssetManagment: Add Prefab, Preset, Texture importers, this has the same properties as before in AssetTypeDescription.   
+ - AssetManagment: Add TrueTypeFont importer for Font Asset. Generally font asset is in beta state now, in future change happen big changes.   
+ - AssetManagment: Add Model importer, for MeshRenderer, for now it do nothing because Force not have 3D yet.   
+ - AssetManagment: Add Audio importer, improve Audio loading system because later will be commits with new Audio Streaming API.   
+ - AssetManagment: Add Reimport/ReimportAll assets function. Connect new AssetDatabase, add ResetAsset function. Remove a lot api form AssetManager.   
+ - AssetManagment: Change a LOT stuff in AssetManager. Connect Importers API, rewrite Create/Read/Write to Ext functions, fix a lot of bugs there.   
+ - Core: Add new min-max macros, new FE_BIND_FN, and add FE_GET macro for Commands API.   
+ - Core: Add support for new Console Applications. Console Application will not process any rendering, scripting, and 90% of engine, excluding Audio, Elements, etc.   
+ - Core: Expand CoreSpecification, add initConsoleInRelease, initLoggerInRelease, setConsoleRussianLocale.   
+ - Localization: Rename LangData_ to FE_LANG_ for all versions. Add new format lang with N-arguments function LangFormat or FE_LANGF. And also rename 250+ files in Editor where lang is used.   
+ - IO: Add new EventManager class, remove and merge EventDispatcher. Add new new API for add events via AddEvent(). Remove InvokeEvent from global namespace.  Add event collection system.   
+ - IO: Add IsMouseClickedOn, IsMoisePosValid, IsAny_. Rename ProcessKey, ProcessButton. Rework completly IO System. Now its not attached to window and applications.   
+ - IO: Improve IO handeling system, fix bug with mouse click count, it was count click from anywhere not from clicked position.   
+ - Utils: Add couple new functions to StringUtils as FromString and more.   
+ - Utils: Add way to read files with UTF-8 codepage not ASCII via ReadFileUtf8().   
+ - Platform: To PlatformUtils add GetClipboardText, GetClipboardTextUtf16, SetCursorPos, GetCursorPos.   
+ - Platform: Win32: Make a MessageBoxes be MB_TOPMOST for general reasons. Fix MAJOR bug #0126 or now #0263.   
+ - Platform: GLFW: Integrate new Input API to GLFW window backend.   
+ - Platform: Window: Win32: Add Emulate/Key/Mouse press/release.   
+ - Platform: Window: Integrate new Input and Event system to Window and remove input instance from window.   
+ - Platform: ImGui: Fix bug that mouse cursor was not updated in ImGui widgets.   
+ - IO: Add Force Win32 events invoker. Some events from other platform windows we should process as well to Force::Input legacy input handler system for engine to have apportunity to use Input::IsMouseXXX or Input::IsKeyXXX properly from platform windows that was created by ImGui.   
+ - Platform: Add new Console class as wrapper over OS console API's. Will be used with new ConsoleApplication's.   
+ - Serialization: Add way to report errors from YAML directly to editor console, tigly used with Importers and Scene/Prefab/Preset file formats.   
+ - Serialization: Add SceneSerializerYamlErrorFn to report error to editor.   
+ - Serialization: Add PrefabSerializerYamlErrorFn to report errors to editor.   
+ - Serialization: Fix bug that Windows property in .forceproj file was not deserialized.   
+ - SceneManagment: Add way to parse scripts compilation error directly to editor console.   
+ - SceneManagment: Fix couple bugs in Scene class and add missing Event implementatinos.   
+ - SceneManagment: To CsScriptComponent add allowEditFile for future Script Quick Editor in Editor.   
+ - Scripting: To MonoField add useInputWidget to allow change widget type in Inspector from Input to Drag in CsScriptComponent.   
+ - Scripting: Add LoadFile function to dynamicaly re-read script file when in changes. (For Quck Script Editor).   
+ - Scripting: Fix bug that String was converted to c_str() inline (e.g String itself was temprary and lead to crash in Mono).   
+ - Scripting: Add new arguments to CsProjectBuild for logging compilation in to file and then copying its data and displaying in console.   
+ - Graphics: Add new EditorCameraSettings, that in future will be serializable.   
+ - Graphics: Redo editor camera movement, scrolling controls, improve Pan, Zooming, Rotation. Add support to use this camera on multi-views.   
+ - Graphics: MathTransform: Fixed bug that clip editor grid in 2D view because of error in Dot3 function.   
+ - Graphics: Some cameras & events changes.   
+ - Graphics: Add TextureStatus_UnsupportType enum value for some error messages in editor.   
+ - Audio: Move Audio/AL to Platform/Audio/AL.   
+ - Examples: Add Console Application exmaple. For now it contains Streaming Audio Example Test.   
+ - Audio: Removed AudioUtils and start working on new Audio Streaming API.   
+ - Audio: Streaming: AudioBuffer: Removed AudioInfo, AudioInfoStream, AudioInfoDecoded, LoadAudioFile(), UnloadAudio(). Move AudioSoundFormat to AudioFile.h.   
+ - Audio: Streaming: Removed: CreateSource() now source creates by AudioClip::Create(). Removed: DestroySource(). Add missing SetOrientation and SetVelocity.   
+ - Audio: Streaming: Added: AudioSubFormat, AudioBPSFormat, AudioDataFormat, AudioChannelFormat, renamed AudioSoundFormat to AudioFinalFormat.   
+ - Audio: Streaming: AudioData: Rename AudioInfo to AudioData. AudioData conintas almost the same as old AudioInfo + AudioUtils Open/Decode/Close/ReadFormat APIs. Main difference this support loading [OGG, FLAC, AIFF, ALAC] and load piece of audio data into buffer.   
+ - Audio: Streaming: AudioSource: In general main difference from prev API, this actually supports a streaming mechanism.   
+ - Audio: Streaming: AudioClip: Change way of loading clips, and generating source. Add Streamer & Track. Reast of API is the same as AudioSource only with high-level abstraction.   
+ - Audio: Streaming: Add new AudioDataError codes.   
+ - Audio: Streaming: AL: Rename some format functions.   
+ - Audio: AudioEngine: Streaming: Refact AudioEngine to load and use Streamers. Without AudioStreamerThread yet.  
+ - Examples: Made a few changes in examples.  
+ - Utils: Dialogs: Add HideCallback and fix bug that tooltips was steal focus from main window.   
+ - Utils: Panels: Add borderColor, hoveredAll, focusedAll, coloredBorders, renderColBorders, mouseButtonXInView properties.   
+ - Utils: Panels: Add new beta Mutil-View panel API.   
+ - Force: Add to premake5.lua's ConsoleApplication, and other platform file includes.   
+ - AssetImporter: Add repreview asset after reimport, add reimport/reimport all and make some changes with importing itself.   
+ - AssetsBrowser & AssetOpener: Move API for open assets from browser to new AssetOpener class.   
+ - AssetCommands: Fixed bug when asset failed to move or operate it not hide dialog and was not sleep its thread.   
+ - Commands: Add new type of commands Inner type that allow to execute commands inside command that was processed in Queue.   
+ - Commands: Add RegisterQueue(), InnerQueue, LockQueue and implementation for Inner commands. Also fix some bugs with Command API.   
+ - Commands: Rework Open, OpenInExplorer, NewAsset commands, add more arguments.   
+ - Commands: Add commands for new SceneView such as GIzmoTRS, CameraPan/2DView/GamePreview/EditorGid/BlockAlt/Zoom/Focus/Reset/Settings etc.   
+ - Commands: Rework NewProject. OpenProject, SaveProject, SaveScene, SaveSceneAs commands.   
+ - Commands: GlobalCommands: Made few fixes with global commands.   
+ - Editor: Add few message to console from EditorLayout API.   
+ - Editor: Add handeling errors from Importers, Scenes, Prefabs from Yaml. add HandleMonoScriptClassStatus.   
+ - Editor: Add few new font icons and one for Settings.   
+ - Editor: Add PreviewView.h file. Remove InspectorView_TagManagerWithPrefab mode. Add wasFinished for future InputBox fix.   
+ - EditorElement: Add OnApplicationReloadResourcesEvent, connect Audio Streaming and register SceneSerializer, PrefabSerializer, Importer YamlError callbacks.   
+ - Editor: UI: Replace old ImGuiWidgetUtils by new GUI library. This library contains toons of new widgets from ImGui.   
+ - Editor: UI: Add GUITable API as replacement for old columed API that used in Inspector, Preferences, AssetsPreview, etc.   
+ - Editor: UI: Add new GUIScriptEditor that allows modify script file inside Force CsScriptComponent.   
+ - Editor: UI: Rework and improve PrefabEditor and moved it from PanelAssetsPreview to GUIPrefabEditor.   
+ - Editor: UI: Moved ColorEditor to GUIColorEditor aswell rework all widgets from to new GUI API.   
+ - Editor: Utils: Rework DialogData.   
+ - Editor: Serialization: Fixed few settings that was not serialized, also add serialization for PanelPreferences.   
+ - GIzmos: Connect new modified ImGuizmo to Force.   
+ - Scripting: Rework threads that builds scripts, and implement logging error for MsBuild to Force console.   
+ - PanelScene & SceneView: Add support for scene multi-view. Only gizmos not work yet.   
+ - AssetsPreview: As well add SceneViewPreview for preview scenes/prefab assets.   
+ - Toolbars: Add few changes in Toolbar.h/cpp for feature toolbars.   
+ - Toolbars: Rework ToolbarStandard. Remove SceneView commands from there and add few new.   
+ - Toolbars: Add toolbar for SceneView. And this toolbar can be displayed on all four sides of the PanelScene.   
+ - Toolbars: Add toolbar for SceneViewPreview as well.   
+ - TitleBar: Fixed bug that if window to small conents for title bar was cross window buttons.   
+ - Preferences: Now preferences is Panel and update it UI.   
+ - MenuBar: Remove Preferences from HELP,  add Preferences and new ProjectSettings menusitems to FILE.   
+ - AssetsBrowser: Improve browser from UI and logic size. Too much changes happens.   
+ - StatusBar: Fixed bug that scripting compilation circle was not show, and warn/error too. Made status bar a little smaller.   
+ - Console: Add new console feature that allows in small view copy text from message as regular input box.   
+ - AssetsPreview: Recreate complely assets preview with this new UI, fix toon of bugs with Prefabs, Scenes, add muti-view for preview scenes/prefabs, replace come code to commands, etc.   
+ - Inspector: Replace old columns API to new GUITable. As well with new buttons, popups, tooltips, combos, treenodes style. Add script editor, add new popup opened mechanism and more.   
+ - Editor: UI: Add new UI to all panels.   
+ - Editor: UI: Add new UI for all dialogs.   
+ - Editor: UI: Remove rest of old Columed API from new GUI library.   
+ - Editor: UI: Rename ImGuiPanel to GUIPanel and move it on editor side. Because Force do nothings with Panels on engine side. Add feature that last panel cannot be closed.   
+ - Debug: ImGui: Remove ImGuiWidgets, create new ImGuiEditorExtension.h to allow access to Dialog's state from engine side if callbacks are installed.   
+ - Editor: UI: Rename ImGuiDialog to GUIPanel and move it to editor side.   
+ - Panel: Dockspace: Add feature that to central node of dockspace (empty gray node) can dock only to central itself.   
+ - Panel: MultiView: Fix some bugs on closing main view first with it states, incorrent opened panels count, and add render colored borders for view as well.   
+ - Panel: MultiView: Fix bug that when changing editor layout additional views was not closed.   
+ - Panel: MultiView: Something was modified in Multi-View API to lead to resolving not interacting gizmos on all views. I have not idea what.   
+ - Preferences: Replace Icon of Application parameter from Path to Asset and add drop drop to it.   
+ - Preferences: Fix bugs with colors when dialog active.   
+ - Editor: UI: Improve tooltips, now tooltips automatically hides after amout of time, and fix couple bugs with it.   
+ - Toolbars: Move preview scene view toolbar code from AssetsPreview to complete ToolbarSceneViewPreview.   
+ - Dialog: Fix bug with clicking on OpenProject selectSearchPath button.   
+ - Panel: MultiView: Add functionality to reload views when project is opening or creating.   
+ - Toolbars: Replace Editor Settings WorkspaceView to new ToolbarSide, now each toolbar have it own state, witch good for multiviews.   
+ - Serialization: Add serialization for editor camera on project side, remove it from Editor Settings. Fix some bugs with loading and saving editor camera settings.   
+ - Serialization: Improve preferences serializer add way to send errors to editor console.   
+ - Serialization: Improve ProjectSerializer add way to send errors to editor console. Add Project::CreateAcesssInstance instead of old checking NOT_LOADED_PROJECT.   
+ - Project: Add ProjectType to specification. Move EditorCameraProjection from project to EditorCameraSettings.   
+ - Project: Make a new module ProjectManagment. Move Project from SceneManagment to ProjectManagment.   
+ - Panel: Fix bug with incurrect active border rendering + create mini API for GUIDebugPanel.   
+ - AssetsBrowser: Add new icons for Back/Forward/Up API.   
+ - AssetsBrowser: Implement Back/Forward/Up navigation API.   
+ - AssetsBrowser: Fix bug that when directory that we in to, removed outside Force, it crash now go to Assets.   
+ - TitleBar: Remove scene name from title and move Force title at the centrer of the TitleBar.   
+ - SceneManagment: Add Component private data struct to have ability store internal properties, that will be used in editor.   
+ - SceneManagment: Add callback OnSceneDelete to notify that raw scene pointer called delete operator. Usefull for dialogs in editor.   
+ - Commands: Add SelectGameObject command and improve and fix some other commands.   
+ - Serialization: Add GlobalSearch Serializer to save properties of global search.   
+ - Serialization: Improve ToolbarSerializer now it has ability to save toolbar rendering order and global show state.   
+ - Panel: GlobalSearch: Add new UI for search and add opportunity to search game objects from explorer.   
+ - Panel: AssetsDatabase: Add new UI for assets database, now it looks pretty the same as browser.   
+ - AssetsBrowser: Of cource add new UI for it, also it was main reason of little redesining UIs. Main fix was that it has uncurrent main panel space for rendering to lead uncurrect table scrollbar rendering outside workarea.   
+ - AssetsPreview & Console: Update its UIs to new, especially with spacing between separator and child windows.   
+ - Explorer: Fix couble bugs with drag dropping uncurrect rect rendering, update new UI + still working on scene header.   
+ - Inspector: Add new popups to DrawComponent, update UI, and add visual UI for selected components.   
+ - Panel: Scene: Fix uncurrent drag drop rect rendering.   
+ - Editor: Improve UIs for other elements.   
+ - Editor: UI: Fix bug that on MenuItem checkmark was not pass that right texture id.   
+ - Toolbars: Add global saving state, new item separator and new item options buttons.   
+ - Toolbars: Separate Game buttons from StandardToollbar. Add new GameplayToolbar.   
+ - Toolbars: Improve toolbar handling system, fixed couble bugs, and add new ToolbarObjects.   
+ - ProjectManagment: Remove debugBuild property, e.g it was already replaced by ProjectConfiguration.   
+ - Toolbars: Fix bugs with toolbar options tooltip.   
+ - Core: Fixed bug that crash-report not even shows when crash happens during LogoScreen Thread active + Help button was not working + Assimp now loads debug/release binaries.   
+ - Serialization: Add build version in to Preferences Serializer.   
+ - Nave: Take a little break from Editor. Starting to recovering broken Nave. Add Client build mapping API.   
+ - Nave: Move images, icons. fonts from NaveElement to proper module identical as for EditorElement.   
+ - Nave: Add short version of new GUILibrary to Nave. Make Nave even compile again.   
+ - Nave: Refact Nave structure, move element, applications to Core, create Module module the same as Panel for Editor.   
+ - Platform: Win32: Fix bug that cause crash on lower Windows 10, even Windows 7 where are dark mode is not supported.   
+ - Platform: Win32: Somehow restore support Force on Windows 7 for my old laptop. It still propbaly will crash until Windows not change it comptatibivity support.   
+ - Commands: Add ExecuteGlobal specific for global commands, and add checks to Execute/ExecuteQueue to call only not global commands.   
+ - Graphics: DX10/DX11: Fix bug that exceptions was not called during logo screen.   
+ - Core & Editor: Fix bug that user cannot close application if it was minimized.   
+ - Nave: Increase title bar NC area and fix bug that user cannot close Nave because if overlapping NC area.   
+ - Core: Change formatting in the exceptions, not it pritnts actual module instead of full path to file. Add FormatException.   
+ - Graphics: Make a few changes in Context's. Add ContextStatus.   
+ - Platform: Window: Add WindowStatus to make opportunity to create windows without thowing exceptions if it fails, for future systems.   
+ - Core: Add system to select renderer before application creates it instance.   
+ - Editor: Create DebugRP and RendererSelector. It allows select renderer before Editor runs from DebugRP.data or find it automatically by RendererSelector.    
+ - Graphics: DX11: Renamed D3D to D3D11 for all module. Actually needs to be done a long time ago.   
+ - Graphics: Context: Remove ContextFlags_Normal, add ContextFlags_NoDebugInfo.   
+ - Platform: Window: Remove old WindowModFlags API, add WindowFlags_NoDebugInfo.   
+ - Platform: GLFW: Fix bug that when WindowFlags_NoContext used, GLFW still create context.   
+ - Core: Implement Hook API for Applications. Now user can enject ther code from external application at severt step of loading.   
+ - Platform: Utils: Win32: Add way to set initial position of progress bar dialog.   
+ - Editor: Add EditorLoader witch now can show Logo, Progress screens at the same time or sepepartly. Add Progress Screen before loading application witch show every step engine and editor loading.   
+ - Core: FIx bug that crash report is not showing when there are no applications.   
+ - Layouts: Fix bug that for custom layouts panel visible states was not saved. Add EditorLayoutSerializer.   
+ - LogoScreen: Fix bug that LogoScreen clear not exising stencil buffer instead of color buffer.   
+ - Editor: Fix bug when application reloading it break panels layout and dialog preview on browser was still active.   
+ - Editor: FIx bug that global editor callbacks was not resetted so cause NB when application reloading. Separate callbacks from EditorElement to EditorCallbacks.   
+ - SceneView: Fix bug with incurrect object hovering state.   
+ - Graphics: GL: Fix critical bug with Vertex/Index buffers that when realocation happens it not bind buffer, so let to currupt/seg fault memory and other buffers.   
+ - Graphics: GL: Fix bug that UI shader was not have mode attribute and wrong position type attribute that not allow us to select objects.   
+ - Graphics & Editor: Add RendererGlobalSettings and opprtunity to create OpenGL debug context only if isBeta property is set.   
+ - StatusBar: Add clipping on base text and informational texts. Now this texts not overlap each other and base text can render by width of the window.    
+ - Platform: Win32: GL: Fix bug that tooltips still focus from main window but they should. Also make few other fixes.   
+ - Graphics: Shader: Fixed bugs with shaders loading from Resources and .ShaderCache. Before all shaders actaully was loaded from .ShaderCache and i didn't notice it.   
+ - Force: Add ats into exceptions for shaders.   
+ - Graphics: Add missing shaders to .ShaderCache for OpenGLCore 3_3.   
+ - Graphics: GL: Separate OpenGL 4.x and OpenGLCore 3.3. Finally restore full support for OpenGLCore 3_3.   
+ - Platform: Win32: Fixed bug with BeginToolbarProgressBar was not destroying sometimes.   
+ - MonoBuildManager: Building and Updating scripts not happens in background (e.g command window is hidden now).   
+ - Nave: Continue refactoring Nave. Refact Tabs, Settings, Builds, Docs. Add custom TitileBar. Fixed some bugs.   
+ - Nave: Write new Client API, add client manager, command manager, improvie search clients, fix couple bugs and style changes.   
+ - Nave: Fix bug that during loading clients and projects it duplicate it.   
+ - Nave: Finish Client Page, and add FindThread to display spinner while searching.   
+ - Platform: Utils: Win32: Add new OpenDirectory instead of old ChooseDirectoryBox.   
+ - Nave: Complete Settings Tab. Add Installs and Downloads paths for future. Fixed bugs that some settings was not saved.   
+ - Nave: Complte Projects Tab, add Find Threads for clients and project searching and new UI.   
+ - Nave: Complete NewProjects Tab, recreate creation project system for Nave, and add new thread and new UI.   
+ - Platform: Utils: Win32: Add GetFileDescription to retrive description of executable files.   
+ - Nave: Fixed bug that if Force.exe property compnay is not Kenny Company that files now is not Force applications. So versions < 0.3.9 cannot be opened by launcher.   
+ - Networking: At this time fully integrade Curl library in to Force. See comments in how_to_build and premake5.lua files for details.   
+ - Networking: Create API to downloading files and arhives from server.   
+ - Networking: Extend Url API, add connection check and progress callback.   
+ - Nave: Add way to retrive OnlineClient's from downloaded Builds.data. Add setup for downloads and installs directories.   
+ - Nave: Add Download 1/2 and CheckConnection threads. Now user can download latest Force releases and they stored in donwloads directory.   
+ - Force: Remove curl librariy from submodule because it installs now using VCPKG as well as sndfile. All info present in Build/how_to_install.   
+ - Force: Add libzip library for zipping and unzipping .zip arhives. To properly use it requred zlib library that will be installed along with curl via VCPKG.   
+ - Force: Update root Resources and all premake5.lua with use new libraries.   
+ - Utils: Add new ZipUtils that allows zip and un-zip the archive.   
+ - Nave: Update GUI library.   
+ - Nave: Complete full downloading and instalation Force using from cloud. Add downloading VisualStudio aswell.   
+ - Nave: Improve Docs page. Now all contents from it downloading from cloud.   
+ - Nave: Complete ForceNave. Not it out of pre-release state. Offical stable release is 1.0.4.   
+ - Force: Remove old unused audiofile library, becuase sndfile used instead.   
+ - Force: Remove assimp lib to resetup it with current remove branch.   
+ - Force: Re-add assimp library with lastest updated remove branch.   
+ - Force: Remove sndfile library and update premake5.lua because its builds via VCPKG.   
+ - Force: Remove local copy of stb image. Will add it as submodue.   
+ - Force: Add stb libraries as force module.   
+ - Force: Update dxerr library, create new project for it.   
+ - Force: Create premake5.lua for imguizmo library now it properly setup.   
+ - Force: Add EnTT as library instead of old including to project.   
+ - Force: Make linking opengl32.lib inside OpenGL (Glad) project, because all its part of OpenGL.   
+ - Force: Starting completly rework libraries handling and linking via premake. Add mono as header only submodule.   
+ - Force: Remove old glm submodule becaue it was not fork, just direct link to original repo.   
+ - Force: Update glad, glfw, glm, mono submodules to latest commit.   
+ - Force: Remove openal-soft submodule because now it builds and handles via VCPKG.   
+ - Force: Update dxtk submodule add linking dxguid.lib inside this project, add DxTK.lua.   
+ - Force: Remove yaml-cpp submodule for reinit, because it was point to detached HEAD, and to update yaml-cpp aswell.   
+ - Force: Add new version of yaml-cpp with Yaml.lua file.   
+ - Force: Update hwinfo submodule and add HwInfo.lua file.   
+ - Force: Update box2d submodule and add Box2D.lua file.   
+ - Force: Update msdf-atlas-gen, msdf-gen, freetype submodules and add new premake files to them.   
+ - Force: Update stb submodule and add Stb.lua file.   
+ - Force: Update entt, imgui submodule and add EnTT.lua, ImGui.lua files.   
+ - Force: Move binaries submodule to Build/Binary.   
+ - Editor: Update ForceEditor logo screen.   
+ - Force: Move binaries module to Build/BinModule (done)   
+ - Force: Reorganize the Build folder, and modify some scripts.   
+ - Force: Add libsndfile as submodule with LibSndFile.lua file.   
+ - Force: Add openal-soft as submodule with OpenAL.lua file.   
+ - Force: Update assimp library. Now its just thunk library with only Assimp.lua to configure.   
+ - Force: Finally done with refactoring all submodules.   
+ - Force: Move Scripts folder from Build to ForceDev root. Add buch of new python scripts: Git, Mono, Premake, Python, VcPkg installation, Vulkan. Update all Build *and Generate* bat scripts on Windows.   
+ - Force: Add GETTING_STARTED.txt and update README.md.   
+ - Examples: Seperate AudioElement with ConsoleElement.   
+ - ProjectManagment: Improve script build system because relative paths, ForceCS.dll located directly inside project, and ForceCSCore.dll is can be part of project or part of Force.   
+ - MonoBuildManager: Now script project compiles before creating new project, or opening.   
+ - Scripting: Add way to completly cut off the Mono library linking by configuring ForceEngine.lua.   
+ - Graphics: Add way to completly cut off the Assimp library linking by configuring ForceEngine.lua.   
+ - Audio: Add way to completly cut off the OpenAL, SndFile and all references libraries linking by configuring ForceEngine.lua.   
+ - Graphics: Add way to completly cut off the Glfw library linking by configuring ForceEngine.lua. And probably OpenGL.   
+ - Editor: Make few changes with title bar buttons now it has larger framepadding.   
+ - TitleBar: Fix bug with renaming project in runtime and with maximize/minimize runtime button and displaying.   
+ - Scripting: Add few new MonoClassStatus error codes, and block using script if core assembly or project assembly is not loaded with error message to console.   
+ - AssetsBrowser: Now browser displays only that assets that was actually imported.   
+ - Scripting: Rename ForceCSCore project to ForceCSharpCore and now it compiles to Force.CSharp.Core.dll.   
+ - Scripting: Remove a lot of deprecated code. Now each project has Force.CSharp.Core.dll and Force.CSharp.Project.dll depends on name.   
+ - ProjectManagment: Refact project loading system, recompiling script assemblies and they now opens in project .runtime folder and let as safely reload assemblies and build it while some of it loaded to Mono. Add AssemblyInfo.cs for Script Project.   
+ - ProjectManagment: Rework project generation system. FIx some bugs with unnessesary updating some files in project directory.   
+ - Force: Add UtfCpp library as portable way fix convert string to utf8/16/32 and fix String that contains invalid utf charset.   
+ - Force: Replace C:/ForceDev strings by new proper macro FE_DEV_LOCATION to easily change dev directory if nessesary and not broke runtime.   
+ - Editor: Fix bug when open Force with setting StartupMode_StartupWindow it now show main window.   
+ - FileSystem: Add Open, CloseFile, and ToRelative, ToFull APIs.   
+ - Scripting: Remove reset of old API fom MonoBackend, and separate Assemblies, Domains with Methods, Objects. Add OpenCoreAndProjectAssemblies, CloseCoreAndProjectAssemblies as ultimate functions.   
+ - ProjectManagment: Add full support for Unicode projects.   
+ -    
+ - ...   
+
+## Force 0.3.10   
+ - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
+ - Editor: Fixed couples bugs with gizmo ui buttons, incurrent camera switching, blocking alt, editor view gizmos, now not user cannot drag object immidiatly when another is selected.   
+ - Editor: Fixed another batch of bugs with sending transform to undo and show scene modified, and bug with zooming when object selected and when gizmo is using.   
+ - Platform: Rework the window system to handle multiple windows at the same time. Win32: For Win32 window user can set its own proccdure.   
+ - Core & Graphics: Add LogoRenderer, and LogoScreen, that now appears when engine and editor is loading.   
+ - Graphics: Editor Camera: Rework the editor camera that is now more controllable and support a lot more controlls from WASD, Num Keys, Key Rotation, Key Zooming, fixing angles.   
+ - Editor: Add more buttons to camera's toolbar, such enabling grid, and add new camera properties window.   
+ - Editor: Fix a lot of buts with gizmos and its controlling not objects cannot be immidiatly moved, now need select object then move.   
+ - Editor: Starting to rework the Gizmos API. Start to write the Gizmos API for Rect tool and custom gizmos in future. Add new icon on camera view tool.   
+ - Editor: Rework the Toolbar. Move all buttons from Preview to Toolbar where all buttons like Play hang out.   
+ - Editor: Add new Pan tool, that allows move camera with mouse on X and Y axis. Now ToolbarUI can be show horizontal and match the size of viewport.   
+ - Editor: Rework the tooltips. Add tooltips almost in every place when its possible, some components may not have it.   
+ - Editor: Add rest of the tooltip messages to components.   
+ - SceneManagment & Editor: Fix bunch of bugs with scenes loading for example scene has wrong format, and also add another bunch of tooltip messages.   
+
+## Force 0.3.9   
+ - Scripting: Expands the Scripting API (Debug, GameObject), add Window, PrimitiveType, Utils, Vector2i, Vector2i.   
+ - Scripting: Major scripting update. Now all core of C# library stores in different module ForceCSCore.dll that now links to user scripts file ForceCS.dll.   
+ - Scripting: Now project link the ForceCSCore.dll directly to EditorPath.
+ - Project: Add to config EditorPath and LastEditorPath to save the editor path for linking other dynamic libraries.   
+ - SceneManagment: Fix bugs with scene manager, replace RemoveByAddress on Unload for removing scene from memory.   
+ - SceneManagment: Add support for sorting gameobject node by name, uuid, transform.   
+ - Core: Element System: Improve the element system, add category for element and advanced callaback sending via ElementCallbackClass.   
+ - Scripting: Starting work on SceneManager API for script, add Scene.cs and SceneManager.cs classes, and now C++ SceneManager has termin of scenes that was created by script at runtime.   
+ - Inspector & Explorer: Components View now will displayed specific for Edit Mode and Runtime Mode. In runtine when we select object on scene from script Explorer will send the context to Inspector.   
+ - Core: Application System: Replace old Config class by new ApplicationSpecificaion.   
+ - Core: Application System: Add ApplicationCmdArgsSpecification, ApplicationWindowSpecification. Now application knows about its worlking path and resources directory.   
+ - Runtime: Add new ForceRuntime project. This project will used to play final excecutable project/product.   
+ - Core: Application System: Add ApplicationUserSpecification instead of Project::ProjectConfig. Remove Project::ProjectConfig.   
+ - Core: Application System: Now instead ForceConfig.json Force creates ForceUser.json from ApplicationUserSpecification.   
+ - Runtime: Start working on integration playable runtime application. Starts with RuntimeElement.   
+ - Runtime: Completed playable runtime application. Now at this point user project that created in Editor can be run inside Force Runtime shell, and be kinda executable.  
+ - Runtime: Now runtime application have two state of excetution, one is when we run in IDE (search by start project path and use ForceUser.json), and second is final game app (all assets, resources and paths relative to game .exe file).   
+ - Runtime: Add support for raw application exporting in Force Editor (Build), only throw Force solution, other no have any idea how to implement.   
+ - Platform: Window: Add support for maximize window for ShowWindow function, add PayWindowAttention funtion.   
+ - Editor: Add Platfrom Configuration settings and Scenes Build settings. Now this settings does nothing.   
+ - Platform: Window: Add support for dark mode. Win32 API: Expose uxtheme.dll functions. GLFW: Not supported by its core.   
+ - Editor: Fix the white theme in some places with incurrect colors.   
+ - Core: Application System: Application now can runs without ImGui context and element. Add ApplicationPlatformSpecification.   
+ - Platfrom: Window: Add MouseCursorType enum. Win32: Fix not even loaded cursor. (Founds out when remove ImGuiElement and test without it.).]
+ - Core: Application System: Refresh, redising, update, remove unnessisary code.   
+ - Platform: Now platform detects not as part of Application, but part of each OS Entry Point.   
+ - Scripting: Now scripting backend initialize not by Application, by platform Entry Point. Because Mono JIT cannot be reloaded if it was CleanUp.   
+ - Graphics: Match all graphics creation code to PlatfromLibraryAPI.   
+ - D3D10/D3D11: Fix the bug with not setted primitive topology, to render all primitives as lines not triangles.   
+ - Platfrom & Debug: Match ImGui Element by PlatformLibraryAPI. Graphics: Also PlatfromAPI was renamed to RendererAPI, and the same with FE_RENDERER_ macros.   
+ - Editor: Add renderer support for building. Uncomplited.   
+ - Core: Application System: Update the application system, add Core.h/cpp files that initialize the core systems. Improve closing via new Shutdown function. Now application update loop is updates by running flag not by window->IsCloseRequested.   
+ - Nave: Starting working on super simple Launcher for Force (Force Nave).   
+ - Core: Now user can use ManagedInitializeCore() to disable Core engine.   
+ - Core: Application System: Now user can disable rendering and audio engines. (But it will still links and requrie DLL's.)   
+ - Nave: Raw implement the Force Builds (Installs) property.   
+ - Core: Application System: Add ApplicationVersionFlags to decompose the compared version by Application::CompareVersion().   
+ - Localization: Move language system to Force Engine from Editor and rewrite it to be accessable for Nave.   
+ - Nave: Implement the Installs and documentation pages. Working on Projects Tab.   
+ - Nave: Implement Projects Tab. Force Builds now can be opened. Improve Installs tabs.   
+ - Serialization: Write new Wrapper YAML API based on YAML.   
+ - ImGui: Editor and Nave now save imgui configs not imgui.ini, but in Resources/Application/GuiSettings.ini.   
+ - Other: Add the ResourceScript.rc for each project and output executable now have its icons.   
+ - Core: Application System: ApplicationBootSpecification now accept list of arguments that comes from cmdlineArguments.   
+ - Editor: Add way to load project that comes from cmdLineArguments if not load with standard way.   
+ - Nave: Implement Open Project/Force button and loading Force with selected project and without it.   
+ - Input: Fixed bug with Creating input as Ref but also deleting raw pointer at initialization/deinitialization.   
+ - Nave: Add Tabs icons, add Create Project Tab.   
+ - Graphics: Add .ShaderCache, that now contains all in-build engine shaders for renderers. Shaders now load in-build default shaders if user not provide custum implemention.   
+ - RenderEngine2D: Add asserts if we trying to render primivites outside the scope Begin() - End(), or if we call End/Begin to many times. If we call one of render function outside scope this primitives will be skipped.   
+ - Math: Few refactoring in math for current Force API. Add GetTransform(), GetView() functions for common usage.   
+ - RenderEngine2D: Fix bug the renderer not free vertex buffer/index buffer from GPU.   
+ - Graphics: Major graphics clean-up and refactoring. See Force-Log_RendererRefactoring.md for details.   
+ - IO: Move IO module from Force::Core to Force::IO, now its indemendent module.   
+ - Graphics: GL: D3D: Fix the Uniform buffer binding index, blocks situation again. Now its should work in all cases.   
+ - Graphics: Rewrite Model and Mesh classes and Face, add MaterialTextureType, restore basic 3d renderer and loading model via new API.   
+ - RenderEngine: Clean-up and rewrite the 3D renderer, restore it at that state where we can render something with it.   
+ - Examples: Add the new ExampleApplication Project to test core and rendering in future. This example is explaned in docs on For Engine Developers page.   
+ - Nave: Add new window for creating projects and loading it from Force Editor. This UI also moved soon in Editor creation project window.   
+ - Project: Refactoring project creation. Rename Configurate to Setup. Add SetupSpecification that automatically currect project data fully.   
+ - Core: Application System: Add SetupSpecification for Application. And connect last project and window changes, such as checking to all Window's was destroyed.   
+ - Editor: Remove the BasePanel file, and move some functions to Force ImGuiWidgetUtils some to other new utils files in Editor. Rename BasePanel to Panel. Remove old DialogPanel files. Clean-up the Editor completly, now its maybe unstable.   
+ - Project: Now opened project has state and it files cannot be removed until it not be closed.   
+ - Editor: Starting rework the dialog system. Starting with DialogNewProject. Add new UI.   
+ - Nave: Now project cannot be deleted until is opened in Editor.   
+ - Editor: Add DialogOpenProject and rework the project loading on first time or if project not found.   
+ - Editor & Project: Make a lot improvements with Open/Create projects, and fix but with loading project without exising startup scene.   
+ - Editor: Fixed bugs with viewports and camera resettings in Open/Create project.   
+ - Editor: Add Startup Page (Create Project or Open Project). Add Close Project button. Fix menubar icons.   
+ - Nave: Fix issues with older Force versions, that lead to crash.   
+ - SceneManagment: Add SceneSpecification and remove some SceneInitFlags.   
+ - Editor: Add DialogNewScene and fix couple issues with Browser and Explorer.   
+ - AssetManagment: Completly rewrite most function in AssetManager fix tons of bugs with copying, renaming, and add contept of Relative Vs Full Paths.   
+ - Editor: Browser: Completly rewrite the Browser, fix CopyAsset, MoveAsset, RenameAsset, Paste Asset, add new icons, and fix toons of bugs. See Force-Log_BrowserAndAssetsRefactoring.md.   
+ - AssetManagment: CreateAsset now supports create physical file.   
+ - Utils: Complete the Panel and Dialog API, now its moved to Force from Editor.   
+ - Inspector: Fix bug that asset preview button (show/hide) not hide preview some assets.   
+ - Editor: Add DialogNewScript and fix bugs with Inspector.   
+ - Editor: Add DialogNewPrefab and fix bugs with Inspector.   
+ - Editor: Add DialogSelectPreset and finally completle the new Dialog system. Remove old ProjectPanels/PanelDialogOld.   
+ - Inspector: Fix the name and tag input box.   
+ - Scripting: ScriptSystem v3.0. Part_1. In progress.   
+ - Scripting: ScriptSystem v3.0. Part_2. In progress.   
+ - Editor: Fix Transform Component UI via new Table API, fix other widgets, fix Console, remove doubled unused menubar, fix Tag and Object Name input boxes, improve UIToolbar.   
+ - Serialization: Make new API for Serializers. Add template Serializer class that allows easly create new Serializer. Renson for this, because Force already has at least six serializers.   
+ - Editor: Add actually preview for Scene and Prefab in Inspector. (Bonus)   
+ - Editor: Fix Undo/Redo with Create/Destroy/Paste/Cut/Duplicate objects, and fix some issues with Explorer (sorting by Name, popups, widgets).   
+ - Editor: Finish fixing Undo/Redo, and fix more issues with Explorer (popups, widgets, states).   
+ - Editor: Add dialogs with link to documentation.   
+ - Scripting: ScriptSystem v3.0. Part_3. In progress. Rebuild And Continue Play.   
+ - Scripting: Fix a lot of memory leak in components and Mono Runtime.   
+ - Editor: Upgrade the Preferences to use the Table API, and that fix ugly glitched resizing on columns and uncurrect separator.   
+ - Editor: Add new DialogSelectImage to select images when no apportunity to currect drag it from browser (for example in prefab editor).   
+ - Scripting: Recreate the attach and instantiation prefabs throw fields. Works with Rebuild And Continue Play.   
+ - Editor: Preferences: Add support for exiting from full screen mode, and go back with reloading application.   
+ - Editor: Preferences: Fix settings UI and change some descriptions.   
+ - Scripting: Now Force detect status of build script project from MSBuild, and print correspond messages.   
+ - Editor: Add key-codes for Play (F5) / Simulatie (F6) and Build Script Project (Shift+F5).   
+ - Editor: Add GameObjectProperties popup on GameObject icon in inspector.   
+ - Scripting: Refact the NativeScript API (C++ scripting) simular to MonoScript API (C# scripting). But C++ is unusles because its not have hot script recompiling yet.   
+ - Editor: Fix couple bugs with CSharpScriptComponent rendering and move build button on top of UIToolbar. Add button help for each component.   
+ - Scripting: Add OnEnable() and OnDisable() method-events.   
+ - Scripting: Fix transform and with physics in runtime not affect on instance of object, and runtime fixture not became NULL on colliders when body destroy it.   
+ - Scripting: Fix the C# physics rigidbody method AddForce now its actaully add force to game object position.   
+ - Editor: Fix issue that save mark appears in simulation, and fix uncurrent scene node sort order when go to runtime.   
+ - Editor: Fix couple bugs with explorer nodes and script fields not appears in simulation mode.   
+ - Platform: Fixed very old bug, to not redraw content with any GraphicsAPI on Win32 client area when move/resize messages as sended.   
+ - Audio: Fix couble bugs with deserializing audio when asset .ext is missing.    
+ - Audio: Improve Audio clean-up with projects and scenes.   
+ - Editor: Fix the UIToolbar not overlaping now, add spinner when script project is building, block the open/close project, and open/close/unload/delete scene if script project is building.   
+ - Editor: Fix a lot of UI stuff, finally fully fixed White theme, and some uncurrent buttons.   
+ - Core: Application System: Remove old OnUpdate function, devide it to BeginFrame and EndFrame, and add PresentFrame with two different modes.   
+ - Editor: Now projects creates, and opens half-dynamic on OnFrameOver function, and show messages-step with kinda of loading step it is dynamically.   
+ - Editor: Fix some bugs with fullscreen mode, disable open any dialog in fullscreen.   
+ - Editor: When build scripts is now shows Spinner.   
+ - Editor: All actions with saving/opening scenes, projects now show in StatusBar.   
+ - Editor: Add DialogAbout to see who creators of the Force.
+ - Editor: Fix bunch of bugs with creation/loading project dynamically situations.   
+ - Editor & Nave: Now Nave & Editor checks its resources and binaries.   
+ - Nave: Fix bug that Nave create startup scene with default name.   
+ - Editor: Extend the Create Project Dialog, and More button, and screen.   
+ - Scripting: Add DisableInInspector & ShowInInspector attributes, and add opportunity to show or disable fields in inspector throw script.   
+ - Scripting: Add AudioSource.SetClip method and fix AudioClip.LoadAudioClip & AudioClip.UnloadAudioClip.   
+ - Scripting: MonoBackend: Add StringToUtf8 and few new functions, rewrite API. Remove from CsGameObject vars stay only internal calls and garbage GameObject creation using wrappers. SceneManager API: Add access to scene throw C# GameObject.   
+ - Scripting: Remove all garbage wrappers form MonoInternalCalls and rewrite the MonoObjectWrappers NewComponent_ API, not code not duplicate at some placeses and should be faster.   
+ - Scripting: Rewrite the MonoObjectWrappers Set_ API, now more officent and takes less code.   
+ - Scripting: Extend the RigidBody2D API, add a lot of missing methods for contrilling bodies.   
+ - Scripting: Continue extend script API. Add Object base class, add MonoScript.IsMakedGameObject/RemoveMakedGameObject/Enable/Disable, add OnDisabled() event to allow user enable script again.   
+ - Physics2D: Make a new module for Physics. Move all physics 2d relative stuff to there.   
+ - Scripting: Extend the Physics API for scripts. Add AABB, PhysicsShape2D, PhysicsShape2DType, Physics2DSettings, Transform2D, and expand Collider2D and Rigidbody2D.   
+ - Scripting: Last script core rewriting. Finally add support for Instnatiate/Destroy/Get any MonoScript from script as other components.   
+ - Scripting: Finally continue work on SceneManager API. Now all scenes has concept of playable, just 'playing' flag that can be access from script.   
+ - Scripting: Add oportunity to unload current playing scene (play next found scene), and remove GameObjects, remove/add Components on objects from current & different runtime scenes.   
+ - Scripting: Improve UnloadScene and add LoadScene API.   
+ - Scripting: Add StartScene API, but with bugs for now. Cannot move object in inspector in second start scene.
+ - Scrtpting: Fix upper bug with dragging objects, add opportunity to re-play runtime scene and reset to state where it was loaded, to re-play from start.   
+ - Physics2D: Improve simulation mode, now physics dynamic bodies not sleep, because in simulation mode we need always run simulation and we cannot controll awaking from scripts.   
+ - Explorer: Rework the draw system of scene nodes in different scene, loading/unloading scenes, and add more states to UIToolbar.   
+ 
+## Force 0.3.5  
+ - SceneManagment: Fix saving scene with incurrect name.   
+ - Project: Fix saving project with current scene not make it startup.   
+ - Editor: Fix bug when attach another script to object, not displayed add button.   
+ - Scripting: Now all prefabs instantiate staticaly before copy scene objects to mono.   
+ - Editor: Fix bug with incurrect viewport resizing at start of runtime scene.   
+ - Scripting: We dont need to set the 'ratio' from Mono.   
+ - Scripting: Support for multiple camera holding and switching between them.   
+ - Scripting: Fix bug with writing updated camera projection.   
+ - Graphics: UniformBuffer: Add function SetBuffer to pass raw data to shader buffer.   
+ - Scripting: Add Shader, ShaderBufferBlock, StructuredBuffer, Math, Color, Color32 classes to deal wtih shaders and colors. BETA commit.
+ - RenderEngine2D: Fix bug with using three identical buffers of VP to one, and remove shaders binding when upload data in Begin().   
+ - UniformBuffer: GL: Fix bug: OpenGL uniform buffer was not realocate the buffer when pass data with different size in PutData() and SetVariable().   
+ - Scripting: Add functionality to create a uniform buffers (ShaderBuffers/Blocks) throw script using Shader.CreateBlock() and dynamically set the data by Shader.SetBuffer().
+ - Scripting: Fix bug with recompiling assembly when binary file actually locked by another procces.   
+ - Scripting: Fix issues with Color, Color32, and Vectors beeing rendered in inspector and update values.   
+ - Audio: Starting to implementing the Audio system for Force. Add AudioContext, SoundBuffer, SoundSource, AudioEngine per platfom classes with backend OpenAL.   
+ - Audio: Add SoundSourceSpecification and make some chanages in AudioEngine.   
+ - Audio: Add support for .ogg, .mp3, and other formats sound loading with sndfile library. Add test playing and test streaming.   
+ - Audio: Add Sound class for streaming sounds with multiple buffers working nicely.   
+ - Audio: Upgrade AudioEngine to support loading streaming and non-streaming audios.   
+ - Audio: Implement Stop() function and add way to pause source in Play() function.   
+ - Audio: Add SoundListener class. Add way to change the position, gain, and velocity of the Mono sound.   
+ - Editor: Add way to loading and playing audio clips in editor throw new editor audio inspector UI.   
+ - Editor: Upgrade Audio Clip Manager and localized it.   
+ - Editor: Add playback timer to Audio Clip. Add Script & Prebab file managers to preview the assets.   
+ - SceneManagment: Add AudioClip, AudioSource & AudioListener components + serialization. Each new scene have by default AudioListener attached to position of camera.   
+ - Editor: Make a UI for AudioSource & AudioListener components.   
+ - Editor: Settings: Add new Audio Settings manager, that allow controll the global editor playback of clips.   
+ - Editor: Create new Tag Manager.   
+ - Editor: Add Scene icon and name of it in Explorer with it state.   
+ - Editor: Add to project browser settings with context type.   
+ - Editor: Fix bug with reseting components at runtime.   
+ - Scripting: Add AudioClip, AudioSource, AudioListener components to C#. User now can play sounds using script. Not all features is present.   
+ - Editor: Fixed ton of bugs in ProjectBrowser with renamed dirs, and input box. Add/Remove components now set SceneChanged on true.   
+ - Scripting: Add AudioListener implementation. Fix AudioSource fields.   
+ - Build: Tested current build on Release.   
+ - Project: Add the Build settings and Visual Studio paths.   
+ - Scripting: Now .cs files builds automatically on Play without Visual Studio.   
+ - Utils: Win32: Add support for Toolbar ProgressBar.   
+ - Editor: Add new GameObject Icon on Explorer.   
+ - Editor: SceneExplorer: Add new settings button with scene options, loading, unloading, set as editable, etc.   
+ - Editor: ProjectBrowser: Add buch of fixes, and add new popup on black space and on item space click.   
+ - Editor: SceneExplorer: Add new menu if none of scenes is not loaded.   
+ - Editor: Add multiple scene holding and editing. Now user can edit multiple scenes and save it at the same time and play it.   
+ - Editor: Update explorer panel, add new buttons and popup-UIs.   
+ - Editor: Add scene loading-unloading state, now scenes can be unloaded and stay in explorer or loaded back, and then deleted.   
+ - SceneManagment: Add camera background field.   
+ - Editor: Settings: Add new Profiler & Colors setting tabs.   
+ - Editor: Add colored outlines for selected objects.   
+ - RenderEngine2D: Expand the renderer and add the RenderGrid() function to render grid of lines.   
+ - RenderEngine2D: In line renderer now lines check on depth.   
+ - Editor: Add the 2D Mode button and Alt/Block/Alt modes when in 2D mode. 2D Mode button make the 2D view of scene.   
+ - Platform: Add the DragDrop class. Win32: Add DragDropWin32 class.   
+ - AssetManagment: Preparing for Asset System. Force now tracks that Assets folder was changed, add add grag & grop files from system (OS) explorer to project browser.   
+ - AssetManagment: Starting to implement Asset System.   
+ - AssetManagment: Add reimport assets. Starting to implement Image Asset type description.   
+ - Editor: Add visual representation of Asset Manager and assets via Inspector. Begin with Image Asset.   
+ - Editor: ProjectBrowser: Now he displaying images instead old file icon.   
+ - Graphics: Texture: Add TextureType enum class. Add conversion between other texture enums.   
+ - AssetManagment: Add renaming with keeping the same UID, and removing asset to "Backup" or removing it completle.   
+ - AssetManagment: Assets now automatically reimports when some of it changes inside the Editor. Note: If asset removes/renames outside the Force it break the asset and it UID and create new asset with new UID.   
+ - Editor: Fix the Browser OS drag-drap rectable.   
+ - Editor: Add custom implementation of slider using ImGui.   
+ - Editor: ProjectBrowser: Update design.   
+ - Editor: Console: Update design and information about saving project & scenes.   
+ - Graphics: Texture: Fix the incurrect filter1 value was not passing in the specification.   
+ - Graphics: Texture: Update the DymamicTextureSpecification & TextureFilterType API.   
+ - AssetManagment: Extend the Asset & AssetManagment to support loading, saving the Image type assets.   
+ - SceneManagment: SpriteRenderer Component now accept the assetUID not filepath.   
+ - Editor: Add Drag & Drop and UI for Image Asset.   
+ - Editor: Fix incurrect offset of buttons, redesign the some widgets and style.   
+ - Editor: Add support for components moving up and down.   
+ - AssetManagment: Now if .ext file exist, but local file not it will attempt to load this asset.   
+ - AssetManagment: Image asset load texture when it file is appears in Assets, if not show message Missing.   
+ - AssetManagment: Starting to implement Image Audio type.   
+ - Editor: Add visual representation of Audio Asset.   
+ - AssetManagment: Fix bunch of issues with Audio & Image asset and improve it.   
+ - Editor: ProjectBrowser: Fix uncorrect drag-drop icons event.   
+ - Editor: ProjectBrowser: Remove refresh and open folder buttons. Add new sub-panel.   
+ - AssetManagment: Upgrade the asset manager and fix issues in some functions.   
+ - Editor: ProjectBrowser: Start working on draging items to folders. (Not working if file is opened by another proccess).   
+ - Editor: ProjectBrowser: Fix bugs with dragging state and audio files.   
+ - Editor: ProjectBrowser: Add support for moving files in back directory (displayed with new icon).   
+ - AssetManagment: Add CreateAsset function. And fix bugs #0073 & #0074.   
+ - Editor: ProjectBrowser: Fix bugs with folder assets. And fix  #0075 & #0076 & #0077.   
+ - AssetManagment: Add support for removing complex assets. Add RemoveLinkedAssets(), PushLastAssetIndex(), PopLastAssetIndex().   
+ - AssetManagment: Add support for moving complex assets. Moving folder asset to anohter folder.   
+ - Editor: ProjectBrowser: Add new button Copy and Paste asset.   
+ - AssetManagment: Add support for renaming assets. Complete.   
+ - AssetManagment: Add visual representation of Scene Asset. Scenes now can be opened from asset.   
+ - Editor: Add Scene Dialog window for creation scenes. Now scenes create as asset.   
+ - AssetManagment: Now asset manager skip hidden special OS files/folder starting with "." or ends with "~".   
+ - AssetManagment: Starts working on CSharp Script Asset.   
+ - AssetManagment: Now scripts can be draged on dropped as actual asset.   
+ - Editor: Regesign the CSharpScriptComponent UI for asset button.   
+ - Scripting: Little rewrite MonoBackend for assets scripts.   
+ - Scripting: Now EditorElement has global BuildScriptEngine function that eventially do all work with compiling, moving ForceCS.dll files and compiling to Mono scripts.   
+ - SceneManagment: SceneSerializer: Add root header as Force version, and Serializeble Version for scene, that scenes can detect if feature version of Force update SceneSerializer, and block loading scenes if scene version < Serializeble Version.   
+ - AssetManagment: Starts working on Prefab asset.   
+ - Editor: Add support to dragging prefabs in to Explorer with highlight.   
+ - Scripting: When moving script file to another folder (In Assets) it automatically regen the script project. (If moving folder -> scripts not working).   
+ - Editor: Add Prefab Dialog window for creation prefab. Now prefabs create as asset.   
+ - Win32 + ImGui: Add support for dialog window renders as normal Win32 windows and block parent window.   
+ - Editor: Add new dialog windows for opened project and scene. Add project name on top on menu bar.   
+ - Editor: Refacting the Menu Bar, now Play,Stop buttons not part of dockspace. Add new StatusBar panel.   
+ - Editor: Add Copy & Paste components in component settings.   
+ - Scripting: Fix bug when call one of Find_() methods its return new instance to C# object not that witch exist in monoGameObjects, and its block opportunity to change object in script.   
+ - Editor & Scripting: Upgrade the prefab system. Now prefabs can be automatically init by Force or manially by user in script.   
+ - Build: Update the build and SMI configurations.   
+ - AssetManagment: Starts working on brand new Preset asset.   
+ - SceneManagment: Split the component serialiation to SerializeComponent/DeserializeComponent functions. (For Preset System)   
+ - Editor: Inspector: Split component drawing by types. ByRegistry, ByInstance. Add new drawing component type, its ByInstance (directly access to component without using the GameObject). (For Preset System)   
+ - Editor: Add Preset Drag Drop.   
+ - Editor: Add Physics Simulation Mode.   
+ - Scripting: Fixing bug that GameObject that was created from script not send its components data to Force.   
+ - Scripting: Fixing bug that GameObjects transforms and physical data not currenlty updates to/from Mono.   
+ - Scripting: Fixing bug data not send to Mono after OnStart().   
+
+## Force 0.3.3
+ - Scripting: Add test Mono integrations and create ForceCS project in C# to create scripts. For now not working with premake5.lua. Editor: Add visual debug rendering for box and circle colliders.
+ - Update gitignore for ForceCS.
+ - Editor: Add new setting group and new settings: OpenLastProject, Autosave, SaveOnExit. Add the new Dialog Boxes to ProjectManager is scene/project not loaded.
+ - Editor: Add new component icons and refact/fix size of others. Fix text input and camera moving at the same time.
+ - Editor: Fix all text inputs, fix not updating project info data when project is loading, add close buttons on some panels.
+ - Editor: Add close buttons to all panels, and reseting back the panel throw menubar-panels. Add property in InspectorPanel to remove gameobject.
+ - Editor: Add Undo/Redo system for Create/Destrying Objects, Transform, Colors, Textures, Copy & Paste & Duplicate commands.
+ - Scripting: Add almost full intergration C# scripting: Debug, Input, GameObject and Components integration. Only for now Force not support runtime recompilation scripts/assemblies.
+ - Scripting: Add CsComponentRegistry and basic interaction with component throw script only with read side. Writing back to C++ works only with Transforms. Simplify the names of components in C# library.
+ - Scripting: Add CircleRenderer and Camera components (only for reading.)
+ - Hole bunch new features in Scripting. See last 11 updates in ForceLog.md.
+ - Scripting: Restructered hole echosystem of scripting engine. Now all gameobjects and scripts stores on C++ side as ref to hold it in runtime. Also now gameobjects data are dynamically uploads to Mono and from it to C++, also when modifiy objects components from Inspector. That restructre fix bug with when Mono GC remove objects in runtime. Fix the Scene pointer but and Scene saving name bug. Prefabs are broke for this commit.
+ - Editor: Fix bug when attach another script to object, not displayed add button.
+ - Editor: Fix bug with incurrect viewport resizing at start of runtime scene. Scripting: We dont need to set the 'ratio' from Mono.
+ - Scripting: Support for multiple camera holding and switching between them.
+ - Scripting: Fix bug with writing updated camera projection.
+ - Scripting: Add Shader, ShaderBufferBlock, StructuredBuffer, Math, Color, Color32 classes to deal wtih shaders and colors. BETA/RAW API commit.
+ - RenderEngine2D: Fix bug with using three identical buffers of VP to one, and remove shaders binding when upload data in Begin().
+ - Scripting: Add functionality to create a uniform buffers (ShaderBuffers/Blocks) throw script using Shader.CreateBlock() and dynamically set the data by Shader.SetBuffer().
+ - Scripting: Shader.DestroyBlock() method to destroy buffer.
+ - Scripting: Added way to remove ShaderBufferBlock using MonoScript.Destroy().
+ - Scripting: Fix issues with Color, Color32, and Vectors beeing rendered in inspector and update values.
+ - Audio: Starting to implementing the Audio system for Force. Add AudioContext, SoundBuffer, SoundSource, AudioEngine per platfom classes with backend OpenAL.
+ - Audio: Add SoundSourceSpecification and make some chanages in AudioEngine.
+ - Audio: Add support for .ogg, .mp3, and other formats sound loading with sndfile library. Add test playing and test streaming.
+ - Audio: Add Sound class for streaming sounds with multiple buffers working nicely.
+ - Audio: Upgrade AudioEngine to support loading streaming and non-streaming audios.
+ - Audio: Add SoundListener class. Add way to change the position, gain, and velocity of the Mono sound.
+ - Editor: Add way to loading and playing audio clips in editor throw new editor audio inspector UI.
+ - Editor: Upgrade Audio Clip Manager and localized it.
+ - Editor: Add playback timer to Audio Clip. Add Script & Prebab file managers to preview the assets.
+ - Editor: Add AudioClip, AudioSource & AudioListener components + serialization. Each new scene have by default AudioListener attached to position of camera. Make a UI for AudioSource & AudioListener components. Create new Tag Manager.
+ - Scripting: Add AudioClip, AudioSource, AudioListener components to C#. User now can play sounds using script. Not all features is present.
+ - Scripting: Forgot to add C# files to binary.
+ - Editor: Fixed ton of bugs in ProjectBrowser with renamed dirs, and input box. Add/Remove components now set SceneChanged on true.
+ - Scripting: Add AudioListener implementation. Fix AudioSource fields.
+
+## Force 0.2.16   
+  - Platform: Add new FE_PLATFORM_WINDOWS_WINx macros to determine extatly witch version of Windows we need use to compile code. For example if we compile to Win7 we not want to use d3d12.lib at all and all D3D12 code.
+  - Editor: Add texture serialization, fix removing transform component, make C++ Script UI (beta).
+  - SceneManagment: Install Mono and preparing for C# scripting after finishing with Physics2D.
+  - SceneManagment: Add CopyComponent, CopyComponentIfExist, CopyAllComponents inspired by contrubutes.
+  - Graphics: RenderEngine2D: Add circle renderer and CircleRenderer component.
+  - Graphics: Shader: Add the Compile and Recompile functions to global pipeline.
+  - Physics2D: Added the Circle2DCollider component and circle physics.
+  - RenderEngine2D: Add line renderer and line rectangle renderer.
+  - RenderEngine2D: Add circle renderer and CircleRenderer component.
+  - Editor: Add new components to menu bar, add icon to component settings, add reset button to reset components.
+  - Editor: Add visual camera sprite that renders on camera position, and add visual camera aspect.
+
+## Force 0.2.15
+  - D3D12: Try to create device but my GPU not support D3D_FEATURE_LEVEL_12_1, made switch to D3D11 if D3D12 is not support. Stop working on DirectX 12.
+  - Build: Add python scripts.
+  - Project and Scenes open functions now use the Path(std::path) instead of String(std::string). Add check filepath on extensions.
+  - Physics2D: Add more paramteters to RigidBody2DComponent such a mass, inertia, gravityScale, gravityVelocity etc. SceneManagment: Add to SceneSerializer.cpp Get and Set templates functions to automatically set values if in the that not exist.
+  - Graphics: Implement fully functional DirectX 10 Graphics API for older GPU's, like GL3.3.
+
+## Force 0.2.14
+  - SceneManagment: Add CreateObjectWithUUID() and diserizliztion for UUID. Core: Add beta Reload() func in FE_EXPEREMENTAL. D3D11: Starting to implement mipmapping.
+  - D3D11: Add D3DImage and GDIPlus to load textures using GDI, not throw WIC or DSS. Also fixed texture filtering, and add new combined filter flags.
+  - D3D11: Add mipmapping support for textures.
+  - Graphics: Added TextureWrappingMode platfrom structure. D3D11: Framebuffer now support multiple render targets rendering. And fix the ReadPixel() function, now you can select object from scene by clicking on it.
+  - Update Force-Log.md.
+  - Editor: Finally fix Graphics Framebuffers. Update the Release to 0.2 10.1 version.
+  - Editor: Refact the UI Play/Stop/Pause/Resume buttons, recreate hole framebuffer switching/resizing situation in EditorElement.cpp and create SceneState structure.
+  - Physics2D: Add the Box2D physics library and interate it to the editor with BoxCollider2DComponent and RigidBody2DComponent. And serialize-desirialize this components.
+  - Editor: Add scene Copy functions and CopyComponent to reset the scene and switch to editor scene when not playing and then back to runtime if we play.
+  - Editor: Add Engine icon on top of menu bar. Add the IconRegistry to easly modify the icons. Core: Fix the crash on window input when exception is thrown.
+  - Editor: Add EditorCamera free moving. (Early test)
+    
+## Force 0.2.10
+  - D3D11: Continue to implement DirectX 11 API. Connect ImGui to DirectX 11, add ConstantBuffer, Sampler, Texture and Rasterizing State as BETA API. This commit is not stable and only use for testing purpuses.
+  - D3D11: Fixed Drawing that not rendered primitives cause last vertex buffer was not set/bound in D3DGraphicsAPI::Draw & D3DGraphicsAPI::DrawIndices. Add vertex buffer versions of Draw & DrawIndices.
+  - D3D11: Implement D3DAdapter, to manually select proper video card. And change D3D_DRIVER_TYPE_HARDWARE TO D3D_DRIVER_TYPE_UNKNOWN.
+  - D3D11 & GL4.x: Redesign the VertexBuffer-VertexArray connection. Remove a lot of bullshit code in GLVertexArray, Index/Vertex Buffer. Fix D3DAbapter.
+  - D3D11: Implement Depth Stencil State.
+  - D3D11: Implement Depth Stencil State. (Reupload).
+  - D3D11: Add basic texture loading using DxTK.
+  - D3D11: Implement basic working constant buffers. Loading variables to shader.
+  - D3D11 & GL4: Implement Uniform Buffer in OpenGL, and its now compatible with DirectX 11 Constant Buffer. Experimental API.
+  - D3D11 & GL4: Add dynamic updating Uniform Buffers, currently works on OpenGL, Direct 11 requies d3d11.1.h but is at the core have many toubles. Add FE_CLEAR_BIT flags to RenderCmd::ClearDepthStencil function.
+  - D3D11: Add in Win32 proc WM_SIZE DirectX 11 SwapChain resizing. Add almost full integration ImGui with DirectX 11 (Docking & Viewport_Enabled).
+  - ImGui: Refactor my ImGui_Impl_Win32 by ImGui interface, and now OpenGL/DirectX11 implementations with Win32 works perfecly.
+  - D3D11: MVP martices multiplication and object transformation now supports by DirectX 11 using GLM not DirectXMath. Common: Add examples.
+  - Graphics: Add UniformBlock and UniformUploader API. Sonner will replace old Shader loading unfiorms API.
+  - D3D11 & GL: Now supports multiple buffers loading, but some problems has with OpenGL.
+  - Graphics: Implemented full working Uniform Buffers on D3D11 & GL.
+  - GL: Fix bug with not correct buffer binding point. UniformUploader: Add SetVector(), SetFloat() & SetInt() functions. Uniform Buffers now at working stage.
+  - Graphics: Add RenderCmd::CullMode & RenderCmd::SetCounterClockwise API for OpenGL & DirectX 11.
+  - D3D11: Add raw support for Framebuffers (RenderTargetView + Texture2D + ShaderResourceView). No depth support in FramebufferSpecification for now.
+  - D3D11: Added to Framebuffer DepthView and Viewport resizing.
+  - D3D11: Create main swap-chain framebuffer in D3DContext.
+  - D3D11: Fixed Framebuffer depth texture, and swap-chain resizing.
+  - GLFW: Fixed appended bug with mouse mods event coming from input, to blocking clearing the main framebuffer color and mouse/key events.
+  - D3D11: Change CreateDeviceAndSwapChain to CreateDevice form DXGIFactory and CreateSwapChain, because DirectX 11.1 doesn't use upper first one.
+  - D3D11: Draw ImGui Docking viewport and Update Projection Matrix when viewport resize.
+  - D3D11: Finally tested my BatchRendering with DirectX 11 & OpenGL. Some issues has with texture/sampling, but most of work is done.
+  - D3D11: Fix texturing bug and refact RenderEngine2D.
+  - UniformBuffer: Add Upload() function and UploadAndSet*() function to manually set uniform and then upload in GPU if requries.
+  - Graphics: Replace TextureData with new TextureSpecification API.
+  - D3D11: Added raw D3DFramebuffer::ReadPixel() implementation.
+  - Editor: Merge FE_EXPEREMENTAL with Editor Project, its works but with a lot of issues.
+  - Editor: Integrating the DirectX 11 Graphics API support.
+  - Core: Add UUID system. D3D11 & GL: Fixed not renderable texture in shader.
+    
+## Force 0.2.0 to 0.2.9
+  - Graphics: WGL: Add more funtionality to Win32 WGL Context.    
+  - Editor: Settings, Language and imgui.ini files are now creates automatically if its not on the disk.   
+  - Graphics: GL3: Fix bug: Doesn't render textures in batch renderer.   
+  - Graphics: GL3: Now framebuffer support it, and render all currectly. RenderEngine2D: GL3: Doesn't render textures in batch renderer since 0.1.20.3.7c.   
+  - Graphics: GL4: Recreate Framebuffer API, now is more structured and support easing attaching Render Targets. GL3: Framebuffer doesnt render anything, black texture.   
+  - Graphics: Written new GLH API instead old one GLHelper, now is more usable and not recall gl functions.   
+  - Win32: WGL: Fully recreate WGL context, now all WGL_CONTEXT_CORE_PROFILE_BIT_ARB, WGL_CONTEXT_COMPAT_PROFILE_BIT_ARB, WGL_CONTEXT_FORWARD_COMPAT and WGL_CONTEXT_DEBUG_BIT_ARB works perfectly with all extensions.    
+  - Editor: Add preview of runtime view in editor. And add 'play' button to runs the scene-application and stopping it by pressing escape.   
+  - Window: Fix uncorrect title when new scene is created, displayed old scene title.   
+  - Graphics: RenderEngine2D: Add support for 'Selection' of GameObject's using objectID as vertex buffer attribute to determite pixel on screen as id or empty space.   
+  - Graphics: RenderEngine: Add the EditorCamera class, and now editor scene will render throw that camera. Also Rewrite the RuntimeCamera class. Editor: Add control buttons to easy changing the gizmo types and EditorCamera projection.   
+  - Editor: Add snapping to Gizmos using Alt/Alt+Shift when moving. Fixed shifting the Gizmo model itself in other game objects.   
+  - Editor: Fix 'Gizmo Lock' with rotation gizmo. Fix incorrect displaying '#n' as '\n' form lang file. Fix SaveAs without format.   
+  - Editor: Settings Panel + Localization: English, Russian + Basic Gizmos support + fixed #0002 bug.   
+  - Core: Recreate the Force Application system. Removed CoreApp, and replace by ApplicationPlatform.   
+  - Editor: Recreate and improve Console Log panel, fix bugs with coping/pasting unvalid game objects.   
+  - Editor: Add console log panel, when shows all major changes, and more icons.   
+  - Graphics: WGL: Context now creates natively using wglCreateContextWithAttribs().   
+  - Graphics: RenderEngine2D: Add beginBatch() and beginNewBatch() functions + fix memory leak on destroying renderer.    
+  - Debug: Profiling: Fix memory leak in Instrumentator. (don't have destructor.)
+  - Core: CTXEngine renamed to Force.   
+  - Editor: Add support for saving tags per scene. Copy-Cut-Paste system, user can now copying, pasting, cutting the game objects with UI Menus and shortcuts.   
+  - Window: Win32: Fix the minimum size of window.   
+
+## CTXEngine 0.1.21.3.12 to Force 0.2.0  
+  - Editor: Added YAML Serializing library. Now user can load and save scenes in/from .ctx format pretty easly. Also added editor icons on InpsectorPanel. Refresh desing of CTXEditor.   
+  - Editor: Recreate the UI for transform component, add colored XYZ reset-buttons and move the labels in to left side. Graphics: GL3: Refactoring GLIndexBufferObject, now OpenGL 3.x support 16 bit IndexBuffers.   
+  - Graphics: DX11 & GL3: To DirectX 11 add dynamic buffer creation and data rewriting. In OpenGL 3.x add dynamic rewritting by glMap/glUnmap.   
+  - Graphics: DX11: Fully implement D3DShader and fix memory leak. Now D3D has fully base abstraction to create basic mesh. GL: Remove 'selected' flags from VertexArray, VertexBuffer, IndexBuffer.   
+  - Graphics: DX11: Add D3DShader, but with bug, big memory leak. Next commit shoud fix that problem.   
+  - Graphics: DX11: Continue to implement Direct3D 11. Add D3DVertexArrayObject, D3DVertexBufferObject, D3DVertexIndexBuffer, update layout and format system. GL3: Add few new shader data formats.   
+  - Graphics: D3D11: Implementing raw DirectX 11 work pipeline. Add D3DContext, D3DGraphicsAPI, D3DHelper. Draw rect with index buffer.   
+  - Window: Win32: Fixed visibale flag, and now window can be showed or not by controlling flag. WindowPlatfrom in win32 now stores hInstance and hwndClass pointers.   
+  - Window: Win32: Fixed back (Y axis) mouse scrolling. Fix bug with cursor when updating in rect of window. Add to handle five new messages in WinProcc.   
+  - Editor: Improve editor functionality. Fully recreate desing. Add dark and white themes.   
+  - RenderEngine: Add support for basic lighting.   
+  - Window: Fix displaying of uncorrect title.   
+  - Editor: Add Tag Component UI, Tag list, Tag Add button, GameObject Add button.   
+  - Editor: Add Camera Properies UI Panel. And upgrade editor, fix uncurrect projection resize.   
+  - RenderEngine: Update RenderEngine 3D, add support for TextureCube, advanced Depth Testing. Editor: Inspector panel now shows currect data about GameObject's and Components.   
+  - Editor: Add support to loading any model from modeling program, and add new Editor Panels.   
+  - Input: Recreate fully input system. Window: Add global callback system.   
+  - Window: Add global callback system, i.e Win32 and GLFW works uses CTXEngine callbacks.   
+  - ECS: Added Components, GameObject and Scene classes.   
+  - Win32 Support: Window, OpenGL context, ImGui + lazzy Input.   
+  - Core & SceneManagment: EnTT and Core Refactoring.
+
+## CTXEngine 0.1.20 to 0.1.21.3.12
 **(For this special thanks to TheCherno "Yan Chernikov" and its GameEngine series!)**   
-**0.1.20 to 0.1.21.3.12 (The Core Pipeline Update):**   
-	- Core: Application System: New Configuration System.   
-	- Core: Application System: Element + Scene + App structure recreation and fixing Editor events.   
-	- RenderEngine2D: Support More that 32 textures on Render + black rect on some devices.   
-	- Editor: Editor Viewport + Upgrade light.   
-	- Common: Basic 2D Lighting.   
-	- Editor: Editor Space + Project.   
-	- RenderEngine2D: Engine now support raw batch rendering system, also updated buffer's classes.   
-	- RenderEngine2D: Prepare class RenderEngine2D for batch rendering system.   
-	- SceneManagment: Again upgrade game object system. Now all transform stuff move to Transformation component class. This is not full version of this class, i will also add support to geetting matrix from it and other cool stuff.   
-	- SceneManagment: Try to attempt to add very early game object system to the engine. Next step be components system.   
-	- Runtime: Try create basic template my favorite game geometry dash in CTXEngine.   
-	- Common: These are very big changes in the code. Because I organized the files closer to the folders by namespace. That is, now there is a part of the Core engine, it includes a control system, then Renderer which is responsible for rendering, with all the API. And also made many other sorts in the code.   
-	- RenderEngine2D: Upgrade the render engine 2d, now support textures with alpha channel and textures with colours and alpha. Moved two shaders in one GameObject.glsl. Its boost perfomance very well, because gpu don't need at runtime switch between this shader programs. Also fixed much small bugs, and improve better camera movement. Now camera follow by player.  
-	- RenderEngine2D: Started to create specicfic 2d render engine, because it be very imporatnt in the future for exampe uis-guis.   
-	- Graphics: Add textures iwth blending support, upgrade asset engine pack, and do many small changes with optimization and code.   
-	- Core: Made few refactoring in the code. Moved all CTX defines to CoreBase. And also add templates to easy putting some stuff, such a std::vector, std::*_ptr. And finally create shader abstraction.   
-	- Graphics: Finally base of RenderEngine is fully complete! Now render engine set the uses rendeing api (for now open gl) and dispatch it. Also now RenderEngineHelper stores data about rendering commands. And if current api is open gl then load GLRenderEngine impl and runs it functions.   
-	- Graphics: Upgrade the rendering, add attrubite buffer layouts to easy put attribute (offset, stride). For now remove Abstraction GLVertexArrayObject, but in next commit it's be more better.   
-	- Graphics: Improve renderer and add shader support.   
-	- Graphics: Create platform specific rendering api's context, and improve renderer.   
-	- Core: Now engine use static link (.lib) instead (.dll). And also fix other bugs with warnings on build.   
-	- ImGui: Update ImGui to Docking Branch.   
-	- Graphics: Patricles and SubTextures support.   
-	- Math: Add GLM (Math library) support.   
-	- IO: Windows Input support.   
-	- Github: Here should be first first initial commit on Force/Craftix repository, but i create repositiry few weeks later, then delete it again or break. (Because i did't know how git works :D)
-	- GLFW: Add first Window.   
-	- ImGui: Start working on supporting reciving events from ImGui in ImGuiElement.   
-	- Graphics: Dear's ImGui. Add ImGui library and OpenGL + GLFW backends to render ImGui.   
-	- Graphics: OpenGL and GLAD. Add glad extension loader for OpenGL functions.   
-	- Element System: Add support for raw Element/Layer system and write the GameLayer for test.   
-	- Core: Now all .cpp files includes the Precompile headers.   
-	- IO: Start working on input system for Craftix. Basic inplmenetation uses GLFW in the Core.   
-	- Core: Add PreMake5 support for build engine projects.   
-	- Core: Add Logger library SpdLog for logging debug messages to console and debug application.    
-	- Core: Entry Point. Make a basic main entry point for Application.   
-   
-**0.0.1 to 0.1.21: (The version of the Force/Craftix then on Java before C++) (2018-2019):**   
-   
-0.1.19 - The Final Fixable Update (Lwjgl 3)   
-0.0.19 - The Final Fixable Update (Lwjgl 2)   
-0.0.18 - Multiplayer Test Update   
-0.0.17 - Menu 2.0   
-0.0.16 - Second Button Fixable Update   
-0.0.15 - Rotateble Menu Skybox   
-0.0.14 - First Button Fixable Update   
-0.0.13 - Text 2.0   
-0.0.12 - Audio Update   
-0.0.11 - First Menu   
-0.0.11be - Bogdan Edition   
-   
+ 
+  - Core: Application System: New Configuration System.   
+  - Core: Application System: Element + Scene + App structure recreation and fixing Editor events.   
+  - RenderEngine2D: Support More that 32 textures on Render + black rect on some devices.   
+  - Editor: Editor Viewport + Upgrade light.   
+  - Common: Basic 2D Lighting.   
+  - Editor: Editor Space + Project.   
+  - RenderEngine2D: Engine now support raw batch rendering system, also updated buffer's classes.
+  - RenderEngine2D: Prepare class RenderEngine2D for batch rendering system.   
+  - SceneManagment: Again upgrade game object system. Now all transform stuff move to Transformation component class. This is not full version of this class, i will also add support to geetting matrix from it and other cool stuff.   
+  - SceneManagment: Try to attempt to add very early game object system to the engine. Next step be components system.   
+  - Runtime: Try create basic template my favorite game geometry dash in CTXEngine.   
+  - Common: These are very big changes in the code. Because I organized the files closer to the folders by namespace. That is, now there is a part of the Core engine, it includes a control system, then Renderer which is responsible for rendering, with all the API. And also made many other sorts in the code.   
+  - RenderEngine2D: Upgrade the render engine 2d, now support textures with alpha channel and textures with colours and alpha. Moved two shaders in one GameObject.glsl. Its boost perfomance very well, because gpu don't need at runtime switch between this shader programs. Also fixed much small bugs, and improve better camera movement. Now camera follow by player.  
+  - RenderEngine2D: Started to create specicfic 2d render engine, because it be very imporatnt in the future for exampe uis-guis.   
+  - Graphics: Add textures iwth blending support, upgrade asset engine pack, and do many small changes with optimization and code.   
+  - Core: Made few refactoring in the code. Moved all CTX defines to CoreBase. And also add templates to easy putting some stuff, such a std::vector, std::*_ptr. And finally create shader abstraction.   
+  - Graphics: Finally base of RenderEngine is fully complete! Now render engine set the uses rendeing api (for now open gl) and dispatch it. Also now RenderEngineHelper stores data about rendering commands. And if current api is open gl then load GLRenderEngine impl and runs it functions.   
+  - Graphics: Upgrade the rendering, add attrubite buffer layouts to easy put attribute (offset, stride). For now remove Abstraction GLVertexArrayObject, but in next commit it's be more better.   
+  - Graphics: Improve renderer and add shader support.   
+  - Graphics: Create platform specific rendering api's context, and improve renderer.   
+  - Core: Now engine use static link (.lib) instead (.dll). And also fix other bugs with warnings on build.   
+  - ImGui: Update ImGui to Docking Branch.   
+  - Graphics: Patricles and SubTextures support.   
+  - Math: Add GLM (Math library) support.   
+  - IO: Windows Input support.   
+  - Github: Here should be first first initial commit on Force/Craftix repository, but i create repositiry few weeks later, then delete it again or break. (Because i did't know how git works :D)
+  - GLFW: Add first Window.   
+  - ImGui: Start working on supporting reciving events from ImGui in ImGuiElement.   
+  - Graphics: Dear's ImGui. Add ImGui library and OpenGL + GLFW backends to render ImGui.   
+  - Graphics: OpenGL and GLAD. Add glad extension loader for OpenGL functions.   
+  - Element System: Add support for raw Element/Layer system and write the GameLayer for test.   
+  - Core: Now all .cpp files includes the Precompile headers.   
+  - IO: Start working on input system for Craftix. Basic inplmenetation uses GLFW in the Core.   
+  - Core: Add PreMake5 support for build engine projects.   
+  - Core: Add Logger library SpdLog for logging debug messages to console and debug application.    
+  - Core: Entry Point. Make a basic main entry point for Application.   
+
+## Craftix 0.0.1 to CTXEngine 0.1.21
+**The version of the Force/Craftix then on Java before C++) (2018-2019):**   
+
+  - List of updates:
+    - 0.1.19 - The Final Fixable Update (Lwjgl 3)
+    - 0.0.19 - The Final Fixable Update (Lwjgl 2)
+    - 0.0.18 - Multiplayer Test Update
+    - 0.0.17 - Menu 2.0
+    - 0.0.16 - Second Button Fixable Update
+    - 0.0.15 - Rotateble Menu Skybox
+    - 0.0.14 - First Button Fixable Update
+    - 0.0.13 - Text 2.0
+    - 0.0.12 - Audio Update
+    - 0.0.11 - First Menu
+    - 0.0.11be - Bogdan Edition
