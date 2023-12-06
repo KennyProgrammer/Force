@@ -53,18 +53,32 @@ Logo released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 
 ### Open Source Technologies Used In Force
 
-* C++ 17 Standard
+ **Languages**
+
+* C++
+* C#
+* Lua
+* Python
+
+ **Build Managers**
+
 * Premake
+* VcPKG
+
+ **Software**
+
 * OpenGL
-* DirectX
+* D3D10
+* D3D11
+* D3D12
 * Vulkan
-* DxTk
-* DxErr
-* Stb Image
+* DXTK
+* DXErr
+* Stb
 * Glm
 * Glfw
 * ImGui
-* Imguizmo
+* ImGuizmo
 * Spdlog
 * Glad
 * ENTT
@@ -72,17 +86,18 @@ Logo released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 * Yaml
 * Mono
 * Box2D
-* OpenAL Soft
-* sndfile
-* libmp3lame
-* mpg123
-* ogg
-* flac
-* opus
-* vorbis
-* vorbisfile
-* libcurl
-* zlib
-* libzip
-* minizip
-* pugixml
+* OpenAL-Soft
+* LibSndFile
+* LibMp3Lame
+* Mpg123
+* Ogg
+* Flac
+* Opus
+* Vorbis
+* VorbisEnc
+* LibCurl
+* ZLib
+* LibZip
+* MiniZip
+* PugiXml
+* UtfCpp
