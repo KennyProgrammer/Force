@@ -1,5 +1,3 @@
-# Force-Bugs
-
 Status: (F) - Fixed, (A) - Active, (C) - Critical   
 Type: (K) - Kernel/Core,   
 	  (I) - IO,   
@@ -10,8 +8,33 @@ Type: (K) - Kernel/Core,
 	  (P) - Physics,   
 	  (S) - Scene/Scripting/Project,   
 	  (M) - Assets   
+	  (C) - Commands   
 	  (N) - Nave   
 	  
+(F/C) #0286: 
+(F/C) #0285: 
+(F/K) #0284: Fix bug that when user click on LogoScreen X button in title bar window is destroyed. Now Force immidiatly exit.   
+(F/C) #0283: Fixed unconsistency with Delete & Remove commands.   
+(F/S) #0282: Fixed bug that during creating scene via new project it title not shows.   
+(F/E) #0281: Fix bug that ProcessAssets was happen when user inside Force (i.e notify that some files was changed (opened/attributes) but not actualy writed).   
+(F/G) #0280: Fixed but that OpenFile was not opened file with default assisiated program.   
+(F/E) #0279: Fixed bug that project can be saved by Ctrl+Shift+S when is not opened.   
+(F/E) #0278: Fixed bug that modification files by OS casue ProcessAssets during drag so currupt drag icon.   
+(F/M) #0277: Fixed bug that when Audio asset create .ext file with writeExisting it sill load audio data, so slow down moving, pasing audio assets.   
+(F/M) #0276: Fixed bug that when new project opened, it not update Applications's startProjectPath from Asset::GetFullPath that cause to remove loaded assets from GAssets.   
+(F/K) #0275: Fix calling CallOnNextFrame when its was procesed already.   
+(F/C) #0274: Fix SaveSceneAs bug that SaveFileBox was unnessesary modify browser's filewatch.    
+(F/C) #0273: Fix some issue with SaveScene & SaveSceneAs commands.   
+(F/C) #0272: Fix bug that sometimes command that was not processed, then was ececuted multiple time from queue..   
+(F/E) #0271: Fix bug with text input and searching with russian letters.   
+(F/E) #0270: Fix bugs with some incurrect key short cuts.   
+(F/E) #0269: Fix bug that non-client area was too big for MaximizeRuntime mode.   
+(F/M) #0268: Fix importing assets throw AssetImporter.   
+(F/M) #0267: Fix bug that asset cannot be unassigned to zero if asset was not valid or missing.   
+(F/G) #0266: Fix glitch bug when minimize/maximize window from OS messages and that was unnessasary PresentFrame call.   
+(F/A) #0265: Fix bugs with applying parameters to audio when click to play.   
+(F/A) #0264: Fix bug that audio buffers want not added to audio clip. and bug that audio was not loading.   
+(F/W) #0263: (Prev was: #0126) As it was actually not Key Delete stuck bug at all, it just when message box shows up, ImGui now send WM_KEY_UP event to lead to stuck ANY key that was pressed before MessageBox in its owns backend. Stupid really, how ImGui handle Mouse/Key inputs every frame but not release buttons. In Force it already works perfectly but problem was that InputBox its a ImGui widget that recive all events throw ImGui Win32 backend not throw Force. Phuuuxxx. finally Fixed.
 (F/E) #0262: Fixed bug that lead to crash just crash...   
 (F/E) #0261: Fixed bug with incurrent selected group of assets via Shift.   
 (F/G) #0260: Fixed bug that in runtime drag-drop was disabled.   

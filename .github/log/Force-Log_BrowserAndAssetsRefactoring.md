@@ -15,6 +15,7 @@ This returning by ref fix bugs with replacing data into GAssets if data not curr
 
 This hole stuff also affect on ProjectBrowser that also little rectructured with moving items.
 
+
 # ProjectBrowser remove hole buch stuff from
  - Rename MoveAssetToDirectory to MoveAsset, and MoveAssetToDirectory1 to MoveAssetItem, and MoveAssetFolderToDirectory1 to MoveAssetFolder.
  - Remove BrowserItemType, fully replaced by AssetType.
@@ -35,6 +36,14 @@ This hole stuff also affect on ProjectBrowser that also little rectructured with
  - Remove AssetCreationData and AssetModificationState_NewAsset.
  - Rewrite behavior of DrawThumbnailEdit, now edit state have two state Create and Rename.
  - In future fix bug with is we copy from selectedDirectory to copyDirectory where selectedDirectory == copyDirectory.   
+ #New
+ - Assets Importing state now have its own progress dialog. + 
+ - Assets Importing starts now only if user focused on main window. +
+ - Replace AssetModificationState by AssetImportType, AssetChangeType, AssetChangeGType, AssetChangeState. + 
+ - FileWatcher now change Assets directory and all its files and sub-directories. +
+ - Import Assets if they was modifyed outside Force. (Working...)
+ - Import Asset or Assets if they was modified inside Force. (Created, Renamed, Removed, Moved) -
+ - Import Asset or Assets using Drag Drop. -
    
 # Tests
    
