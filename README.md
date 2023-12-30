@@ -11,7 +11,7 @@ support in a far future.
 |---------------|------------| ------------------------------------------ |
 | :green_circle:Pre-release   | [0.3.10](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
 | :red_circle:Pre-release   | [0.4.0-Q1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0-q1) | ![100%](https://progress-bar.dev/100) |
-| :yellow_circle:Pre-release   | [0.4.0-Q2](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0-q1) | ![100%](https://progress-bar.dev/100) |
+| :yellow_circle:Pre-release   | [0.4.0-Q2](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0-q2) | ![100%](https://progress-bar.dev/100) |
 | :red_square:Development   | 0.4.0-Q3 | ![50%](https://progress-bar.dev/50) |
 
 **NOTE:** Most of the issues and bugs that you can find in latest 0.3.10 pre-release can be already fixed or re-created during 0.4.0
