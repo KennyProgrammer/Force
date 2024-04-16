@@ -10,12 +10,13 @@ support in a far future.
 | :hammer_and_wrench:**Build**     |            | :earth_americas:**Offical Home**                           |
 |---------------|------------| ------------------------------------------ |
 | :green_circle:Pre-release   | [0.3.10](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
-| :red_circle:Pre-release   | [0.4.0-Q1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0-q1) | ![100%](https://progress-bar.dev/100) |
-| :yellow_circle:Pre-release   | [0.4.0-Q2](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0-q2) | ![100%](https://progress-bar.dev/100) |
-| :red_square:Development   | 0.4.0-Q3 | ![50%](https://progress-bar.dev/50) |
+| :green_circle:Pre-release   | [0.4.0](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
+| :red_circle:Pre-release     | [0.5.0-Q1 (2025-Q2)]() | ![0%](https://progress-bar.dev/0) |
 
-**NOTE:** Most of the issues and bugs that you can find in latest 0.3.10 pre-release can be already fixed or re-created during 0.4.0
-development. So be patient and wait global and massive 0.4.0 update that will re-live Force in all cases.
+**NOTE:** Force 0.4.0 now was unexpectedly released. Because of that fact that i cannot work on this engine in the next year, prior to 2025-Q2 (April-May)
+i will release this version now. But you cannot test it because i cannot answer and be able to discuss in PR's this time. Also 0.4.0 was released with not completed
+Undo-Redo system which is done on 90%, so maybe then i spend some time about 2-3 weeks to do-implement it and make a simple patch (0.4.1) with will be totally
+stable.
 
 ## Content
 * [Introduction](#introduction)
