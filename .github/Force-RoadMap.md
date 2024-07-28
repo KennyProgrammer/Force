@@ -7,16 +7,16 @@
 | Core              | Build basic workstation to work with Force.                          | +                            |
 | Window System     | Handle windows on different platforms.                               | +                            |
 | Renderer 2D       | Batch Renderer: Quads, Lines, Circles, Sprites.                      | +                            |
-|                   | Font Rendering: Support for text and font.                           | Working...                   |
-|                   | UI Rendering: Support for UI/GUI/HUD rendering.                      | Working...                   |
-| Renderer 3D       | Basic model loading, basic shaders and renderer.                     | 2024?                        |
+|                   | Font Rendering: Support for text and font.                           | +                            |
+|                   | UI Rendering: Support for UI/GUI/HUD rendering.                      | Working... (20%)             |
+| Renderer 3D       | Basic model loading, basic shaders and renderer.                     | 2025?                        |
 | Project Managment | Apportunatty to create, save, and edit projects.                     | +                            |
 | Scene Managment   | ECS. Creating, saving, controlling, playing scenes.                  | +                            |
 | Asset Managment   | Creating, importing, saving, display, attach to GameObjects assets.  | +                            |
 | C# Scripting      | Mono and scripting projects, feature to create scripts, attatch to   |                              |
 |                   | GameObjects and play.                                                | +                            |
 | Physics 2D        | Box 2D physics.                                                      | +                            |
-| Physics 3D        | XPhys physics.                                                       | 2024-LQ-?                    |
+| Physics 3D        | XPhys physics.                                                       | 2025-LQ-?                    |
 | Audio             | Playing effects and sounds.                                          | +                            |
 | Networking        | Internet connection and files downloading.                           | +                            |
 | Editor Tool       | Force Editor Tool, to create projecs and games. Main focus today.    | Infinity...                  |
