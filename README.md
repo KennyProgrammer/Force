@@ -11,7 +11,7 @@ support in a far future.
 |---------------|------------| ------------------------------------------ |
 | :green_circle:Pre-release   | [0.3.10](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
 | :green_circle:Pre-release   | [0.4.0](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
-| :red_circle:Pre-release     | [0.5.0-Q1 (2025-Q2)]() | ![0%](https://progress-bar.dev/0) |
+| :red_circle:Pre-release     | [0.5.0 / 2025.1 (2025-Q2)]() | ![0%](https://progress-bar.dev/0) |
 
 **NOTE:** Force 0.4.0 now was unexpectedly released. Because of that fact that i cannot work on this engine in the next year, prior to 2025-Q2 (April-May)
 i will release this version now. But you cannot test it because i can't answer and be able to discuss bugs, features in PR's this time. Also 0.4.0 was released with not completed
