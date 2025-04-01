@@ -16,7 +16,7 @@ support in a far future.
 i will release this version now. But you cannot test it because i can't answer and be able to discuss bugs, features in PR's this time. Also 0.4.0 was released with not completed
 Undo-Redo system which is done on 90%, so maybe then i spend some time about 2-3 weeks to do-implement it and make a simple patch (0.4.1) with will be totally stable.
 
-Next version of Force will be another major update called **Force 0.5.0** or code name *Force 2025.b1**
+Next version of Force will be another major update called **Force 0.5.0** or code name **Force 2025.b1**
 I dont know for now what im gonna do, if 2d uis will be not done, im finish that. If 0.4.1 deal with this, im start to work on system witch will able to ship final applications (games) on Windows. But also then i need to create Runtime AssetManager and somehow pack assets when application will be shipped.
 
 ## Content
