@@ -14,7 +14,7 @@ support in a far future.
 
 Next version of Force will be another major update called **Force 5** or code name **Force 2025.b1.
 
-Development of this build starts after April 24.**
+**Development of this build starts after April 24.**
 
 ## Content
 * [Introduction](#introduction)
