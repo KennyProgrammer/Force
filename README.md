@@ -12,7 +12,7 @@ support in a far future.
 | :green_circle:Pre-release   | [0.4.0](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
 | :red_circle:Pre-release     | [2025.b1](https://github.com/KennyProgrammer/Force/issues/12) | ![0%](https://progress-bar.dev/0) |
 
-Next version of Force will be another major update called **Force 5** or code name **Force 2025.b1**.
+Next version of Force will be another major update with code name **Force 2025.b1**.
 
 **Development of this build starts after April 24.**
 
