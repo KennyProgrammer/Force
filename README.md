@@ -9,7 +9,8 @@ support in a far future.
 | 🌎 **Offical Home** | [Explore](https://danil-dukhovenko.gitbook.io/force) | |
 |------|------|------|
 |      |      |      |
-| 🛠️ **Build** | 📑 **Type** | :hour_glass **Progress** |
+| 🛠️ **Build** | 📑 **Type** | :hour_
+glass **Progress** |
 | 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases)| Pre-release | 100% |
 🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   0% |
 
