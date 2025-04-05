@@ -6,11 +6,12 @@
 And now engine support [OpenGL](https://www.khronos.org/opengl/), [DirectX](https://en.wikipedia.org/wiki/DirectX) and maybe in future
 [Vulkan](https://www.khronos.org/vulkan/) graphical API's.  Its only for Windows for now, other platforms such a Mac and Linux will be also
 support in a far future.
-
-| :hammer_and_wrench:**Build**     |            | :earth_americas:**Offical Home**                           |
-|---------------|------------| ------------------------------------------ |
-| :green_circle:Pre-release   | [0.4.0](https://github.com/KennyProgrammer/Force/releases) | [Explore](https://danil-dukhovenko.gitbook.io/force/) |
-| :red_circle:Pre-release     | [2025.b1](https://github.com/KennyProgrammer/Force/issues/12) | ![0%](https://progress-bar.dev/0) |
+| 🌎 **Offical Home** | [Explore](https://danil-dukhovenko.gitbook.io/force) | |
+|------|------|------|
+|      |      |      |
+| 🛠️ **Build** | 📑 **Status** | |
+| 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases)| Pre-release | 100% |
+🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   0% |
 
 Next version of Force will be another major update with code name **Force 2025.b1**.
 
