@@ -9,13 +9,13 @@ support in a far future.
 | 🌎 **Offical Home** | [Explore](https://danil-dukhovenko.gitbook.io/force) | |
 |------|------|------|
 |      |      |      |
-| 🛠️ **Build** | 📑 **Type** | :hourglass **Progress** |
+| 🛠️ **Build** | 📑 **Type** | ⏳ **Progress** |
 | 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases)| Pre-release | 100% |
 🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   0% |
 
-Next version of Force will be another major update with code name **Force 2025.b1**.
+Looking for other builds? Go to releases [page](https://github.com/KennyProgrammer/Force/releases). 
 
-**Development of this build starts after April 24.**
+**Development of 2025.b1 starts after April 24.**
 
 ## Content
 * [Introduction](#introduction)
