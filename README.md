@@ -2,10 +2,8 @@
 
 ![image](.github/ForceHome.png)
 
-**Force** this is an game engine for writing any 2D and 3D (in future) graphic applications including games. It is written in C++.
-And now engine support [OpenGL](https://www.khronos.org/opengl/), [DirectX](https://en.wikipedia.org/wiki/DirectX) and maybe in future
-[Vulkan](https://www.khronos.org/vulkan/) graphical API's.  Its only for Windows for now, other platforms such a Mac and Linux will be also
-support in a far future.
+**Force** is a game engine for making any 2D and 3D (in future) graphics applications, games. It is written in C/C++ with C# as scripting language. Force support [OpenGL](https://www.khronos.org/opengl/), [DirectX](https://en.wikipedia.org/wiki/DirectX) and maybe in future
+[Vulkan](https://www.khronos.org/vulkan/) rendering API's. Its only for Windows for now, other platforms such as Mac and Linux or Android will be also support in a far future.
 | 🌎 **Offical Home** | [Explore](https://danil-dukhovenko.gitbook.io/force) | |
 |------|------|------|
 |      |      |      |
