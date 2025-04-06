@@ -41,7 +41,7 @@ If you interesed on you can check Force [Roadmap](.github/Force-RoadMap.md) to s
 
 ### Contributors
 
-**Force** was developing by one person Kenny Programmer (Danil Dukhovenko) from January 2020 and still by present day.
+**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day.
 
 If you find you can help me and want to contribute to the project with your experience or you do want to get part of the project for some other
 reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to Force Private Development Repository.
