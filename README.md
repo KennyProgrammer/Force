@@ -8,11 +8,8 @@
 [Vulkan](https://www.khronos.org/vulkan/) rendering API's. Its only for Windows for now, other platforms (Mac, Linux, Android) will be also support in a far future. 
 
 ![image](.github/323007544-605798bb-cf59-4a6a-a973-ab5bd87c71e0.png) 
-
-| 🌎 **Offical Home** | [Explore](https://danil-dukhovenko.gitbook.io/force) | |
-|------|------|------|
-|      |      |      |
 | 🛠️ **Build** | 📑 **Type** | |
+|------|------|------|
 | 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases)| Pre-release | 100% |
 🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   0% |
 
@@ -43,6 +40,8 @@ You can read new documentation how install and work with engine, how write scrip
 If you interesed on you can check Force [Roadmap](.github/Force-RoadMap.md) to see completed and not completed features.
 
 ### Contributors
+
+**Force** was developing by one person Kenny Programmer (Danil Dukhovenko) from January 2020 and still by present day.
 
 If you find you can help me and want to contribute to the project with your experience or you do want to get part of the project for some other
 reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to Force Private Development Repository.
