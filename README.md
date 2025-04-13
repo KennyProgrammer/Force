@@ -18,9 +18,9 @@ Looking for other builds? Go to releases [page](https://github.com/KennyProgramm
 
 ## Introduction
 
-**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. 
+**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from [January 2020](https://danil-dukhovenko.gitbook.io/force/other/insider) and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. 
 
-If you interesed on you can check Force [Roadmap](.github/Force-RoadMap.md) to see completed and not completed features.
+If you interesed you can check Force global [Roadmap](.github/Force-RoadMap.md) to see completed and not yet completed features.
 
 ![image](.github/323007544-605798bb-cf59-4a6a-a973-ab5bd87c71e0.png) 
 
@@ -31,7 +31,9 @@ To use Force, you can download official Editor binaries on [**Releases**](https:
 **If some binary is missing that popup the error message let me know.**
 
 ### Documentation
-You can read new documentation how install and work with engine, how write scripts and make games [here](https://danil-dukhovenko.gitbook.io/force/).
+The [official documentation](https://danil-dukhovenko.gitbook.io/force/) about how install and work with **Force**, how write scripts and make games its now on **Force official home**.
+
+The [script reference](https://danil-dukhovenko.gitbook.io/force/force-scripting-api) of every class that you can use in scripting is also available and growing every release. 
 
 ## Additional Information
 
