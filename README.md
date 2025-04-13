@@ -5,7 +5,7 @@
 ## Overview
 
 [**Force**](https://danil-dukhovenko.gitbook.io/force) is a game engine for making **any 2D and 3D (in future) graphics applications, games**. It is written in C/C++ with C# as scripting language. Force support [OpenGL](https://www.khronos.org/opengl/), [DirectX](https://en.wikipedia.org/wiki/DirectX) and maybe in future
-[Vulkan](https://www.khronos.org/vulkan/) rendering API's. Its only for Windows for now, other platforms (Mac, Linux, Android) will be also support in a far future. 
+[Vulkan](https://www.khronos.org/vulkan/) rendering API's. Its supports Windows for now as main platform, other desktop platforms (Mac, Linux) and mobile platforms (IOS, Android) will be also support in a far future. 
 
 | 🛠️ **Build** | 📑 **Type** | |
 |------|------|------|
@@ -18,7 +18,7 @@ Looking for other builds? Go to releases [page](https://github.com/KennyProgramm
 
 ## Introduction
 
-**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day. Force still on very early stage, because working on it by myself. In future where engine steps some stability point, i will attach other developers, and create open source-community driven technology. 
+**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. 
 
 If you interesed on you can check Force [Roadmap](.github/Force-RoadMap.md) to see completed and not completed features.
 
