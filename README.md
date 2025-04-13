@@ -18,7 +18,7 @@ Looking for other builds? Go to releases [page](https://github.com/KennyProgramm
 
 ## Introduction
 
-**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day.
+**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer/Force/commits?author=KennyProgrammer) from January 2020 and still by present day. Force still on very early stage, because working on it by myself. In future where engine steps some stability point, i will attach other developers, and create open source-community driven technology. 
 
 If you interesed on you can check Force [Roadmap](.github/Force-RoadMap.md) to see completed and not completed features.
 
