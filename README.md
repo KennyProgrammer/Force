@@ -48,7 +48,7 @@ reasons, feel free to contact me directly, sending a email here on kennytuts@gma
 
 The main language on witch was **Force** writing is **C++**. On other side **Lua** using as build manager with **Premake**, **Python** as misc-script utilities and **C#** as backend for user in-engine scripts. 
 
-Other kind a software list witch used in engine, you can find in [SOFTWARE](https://github.com/KennyProgrammer/Force/blob/SOFTWARE) page. 
+Other kind a software list witch used in engine, you can find in [SOFTWARE](https://github.com/KennyProgrammer/Force/blob/main/SOFTWARE) 
 
 ## License
 
