@@ -46,56 +46,11 @@ reasons, feel free to contact me directly, sending a email here on kennytuts@gma
 
 ### Open Source Technologies Used In Force
 
- **Languages**
+The main language on witch was **Force** writing is **C++**. On other side **Lua** using as build manager with **Premake**, **Python** as misc-script utilities and **C#** as backend for user in-engine scripts. 
 
-* C++
-* C#
-* Lua
-* Python
+Other kind a software list witch used in engine, you can find in [SOFTWARE](https://github.com/KennyProgrammer/Force/blob/SOFTWARE) page. 
 
- **Build Managers**
-
-* Premake
-* VcPKG
-
- **Software**
-
-* OpenGL
-* D3D10
-* D3D11
-* D3D12
-* Vulkan
-* DXTK
-* DXErr
-* Stb
-* Glm
-* Glfw
-* ImGui
-* ImGuizmo
-* Spdlog
-* Glad
-* ENTT
-* Assimp
-* Yaml
-* Mono
-* Box2D
-* OpenAL-Soft
-* LibSndFile
-* LibMp3Lame
-* Mpg123
-* Ogg
-* Flac
-* Opus
-* Vorbis
-* VorbisEnc
-* LibCurl
-* ZLib
-* LibZip
-* MiniZip
-* PugiXml
-* UtfCpp
-  
-### License
+## License
 
 Code, documentation, demos, and logos are released under MIT licence. See [LICENCE.md](https://github.com/KennyProgrammer/Force/blob/main/LICENSE) for more details. 
 
