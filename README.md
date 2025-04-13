@@ -44,7 +44,7 @@ The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff su
 If you can help me and want to contribute to the project with your experience or do you want to get part of the project for some other
 reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to **Force Private Development Repository** before it's became open source.
 
-### Open Source Technologies Used In Force
+### Open Source Technologies
 
 The main language on witch was **Force** writing is **C++**. On other side **Lua** using as build manager with **Premake**, **Python** as misc-script utilities and **C#** as backend for user in-engine scripts. 
 
