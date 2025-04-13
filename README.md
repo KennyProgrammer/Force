@@ -35,21 +35,14 @@ The [official documentation](https://danil-dukhovenko.gitbook.io/force/) about h
 
 The [script reference](https://danil-dukhovenko.gitbook.io/force/force-scripting-api) of every class that you can use in scripting is also available and growing every release. 
 
+The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff such as global engine **bug-fix** list, **log-list**, **crash report** forum, and history of developing and updates are also on Force home page. 
+
 ## Additional Information
 
 ### Contributors
 
-If you find you can help me and want to contribute to the project with your experience or you do want to get part of the project for some other
-reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to Force Private Development Repository.
-
-### License
-
-Code and documentation Copyright (c) 2020-2025 Dukhovenko Danila.\
-Logo Copyright (c) 2025 Dukhovenko Danila.
-
-Engine and external sets of in-engine tools `'not open source code'` will be released under [the MIT license](./).\
-Documentation released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\
-Logo released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+If you can help me and want to contribute to the project with your experience or do you want to get part of the project for some other
+reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to **Force Private Development Repository** before it's became open source.
 
 ### Open Source Technologies Used In Force
 
@@ -101,3 +94,8 @@ Logo released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 * MiniZip
 * PugiXml
 * UtfCpp
+  
+### License
+
+Code, documentation, demos, and logos are released under MIT licence. See [LICENCE.md](https://github.com/KennyProgrammer/Force/blob/main/LICENSE) for more details. 
+
