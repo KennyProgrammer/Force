@@ -35,7 +35,7 @@ The [official documentation](https://danil-dukhovenko.gitbook.io/force/) about h
 
 The [script reference](https://danil-dukhovenko.gitbook.io/force/force-scripting-api) of every class that you can use in scripting is also available and growing every release. 
 
-The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff such as global engine **bug-fix** list, **log-list**, **crash report** forum, and history of developing and updates witch also on Force home page. 
+The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff such as global engine **bug-fix** list, **log** list, **crash report** forum, and history of developing and updates witch also on Force home page. 
 
 ## Additional Information
 
