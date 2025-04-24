@@ -14,8 +14,6 @@
 
 Looking for other builds? Go to releases [page](https://github.com/KennyProgrammer/Force/releases). 
 
-**Development of 2025.b1 starts after April 24.**
-
 ## Introduction
 
 **Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer) from [January 2020](https://danil-dukhovenko.gitbook.io/force/other/insider) and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. 
