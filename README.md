@@ -29,26 +29,26 @@ To use Force, you can download official Editor binaries on [**Releases**](https:
 **If some binary is missing that popup the error message let me know.**
 
 ### Documentation
-The [official documentation](https://danil-dukhovenko.gitbook.io/force/) about how install and work with **Force**, how write scripts and make games its now on **Force official home**.
+The [official documentation](https://danil-dukhovenko.gitbook.io/force/) about how install and work with **Force**, how write scripts and make games, great place to catch latest news its now on **Force official home**.
 
-The [script reference](https://danil-dukhovenko.gitbook.io/force/force-scripting-api) of every class that you can use in scripting is also available and growing every release. 
+The [script reference](https://danil-dukhovenko.gitbook.io/force/force-scripting-api) of every class that you can use in scripting is also available and growing every release. Scripting API can be changed over some releases so follow to API changes. 
 
-The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff such as global engine **bug-fix** list, **log** list, **crash report** forum, and history of developing and updates witch also on Force home page. 
+The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff such as global engine **bug-fix** list, **log** list, **crash report** forum, and history of developing and updates of this engine witch also on Force home page. 
 
 ## Additional Information
 
 ### Contributors
 
 If you can help me and want to contribute to the project with your experience or do you want to get part of the project for some other
-reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to **Force Private Development Repository** before it's became open source.
+reasons, feel free to contact me directly, sending a email here on kennytuts@gmail.com and get a chance to get access to **Force Private Development Repository** before it's became open source and develop **Force** with me.
 
 ### Open Source Technologies
 
-The main language on witch was **Force** writing is **C++**. On other side **Lua** using as build manager with **Premake**, **Python** as misc-script utilities and **C#** as backend for user in-engine scripts. 
+The main language on witch was **Force** writing is **C++** as Core and Editor APIs. On other side **Lua** using as build manager with **Premake**, **Python** as misc-script utilities and **C#** as backend for user in-engine scripts. 
 
 Other kind a software list witch used in engine, you can find in [SOFTWARE.md](https://github.com/KennyProgrammer/Force/blob/main/SOFTWARE.md). 
 
 ## License
 
-Code, documentation, demos, and logos are released under MIT licence. See [LICENCE.md](https://github.com/KennyProgrammer/Force/blob/main/LICENSE) for more details. 
+Code, documentation, demos, and logos in this repository are released under MIT licence. See [LICENCE.md](https://github.com/KennyProgrammer/Force/blob/main/LICENSE) for more details. 
 
