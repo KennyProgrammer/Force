@@ -10,7 +10,7 @@
 | 🛠️ **Build** | 📑 **Type** | |
 |------|------|------|
 | 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases/tag/v0.4.0)| Pre-release | 100% |
-🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   2% |
+🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   6% |
 
 Looking for other builds? Go to releases [page](https://github.com/KennyProgrammer/Force/releases). 
 
