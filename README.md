@@ -9,10 +9,10 @@
 
 | 🛠️ **Build** | 📑 **Type** | |
 |------|------|------|
-| 🟢[0.4.0](https://github.com/KennyProgrammer/Force/releases/tag/v0.4.0)| Pre-release | 100% |
-🔴[2025.b1](https://github.com/KennyProgrammer/Force/issues/12)| Stable-release|   6% |
+| 🟢[0.4.0](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0)| Pre-release | 100% |
+🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preivew 1 |   10% |
 
-Looking for other builds? Go to releases [page](https://github.com/KennyProgrammer/Force/releases). 
+Looking for other builds? Go to updates [page](https://danil-dukhovenko.gitbook.io/force/other/updates). 
 
 ## Introduction
 
