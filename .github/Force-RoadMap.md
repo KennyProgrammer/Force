@@ -42,7 +42,7 @@
 | Description                                   | State                        |
 | ----------------------------------------------| -----------------------------|
 | Creating projects                             | +                            |
-| Creating projects via Russian symbols         | +-                           |
+| Creating projects via Unicode                 | +                            |
 | Serialization projects                        | +                            |
 | Renaming projects                             | +                            |
 | Creating projects using Nave                  | +                            |
@@ -105,7 +105,7 @@
 | Description                                   | State                        |
 | ----------------------------------------------| -----------------------------|
 | Basic Audio                                   | +                            |
-| Streaming Audio                               | +-                           |
+| Streaming Audio                               | Fixing Now (2025.b1)         |
 
 ### Networking
 
