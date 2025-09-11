@@ -2,6 +2,455 @@
 
 Each latest feature in each version reads from bottom -> top.
 
+## Force 2025.b1   
+- Force: Finally im back to this. Start working on 2025.b update.   
+- Core: Add ForceVersionManager and fix some bugs with localization.   
+- UR: Fix and finish AddRemoveGameObject command.   
+- UR: Add CommandsUR_PushReverseCommandArgs for scene base commands.   
+- UR: Start working on CommandUR_SelectDeselectXXX commands.   
+- Explorer: Wrap SelectXXX API arguments to ExplorerSelectData.   
+- UR: Add URCommand_SelectDeselectGameObject, URCommand_SelectDeselectGameObjects, URCommand_SelectAndDeselectGameObject.   
+- UR: FIx incurrect Undo-Redo recording while selecting, deselecting objects by using Rect tool.   
+- UR: FIx bug that UR commands not works currectly in simulate mode, and when go from simulate to edit.   
+- Editor: Now user cannot play simualte mode if in scene no physics component attached.   
+- UR: Fix bug where Click+Shift UR_SelectDeselectGameObject was not recorded.   
+- UR: Improve URCommand_AddRemoveGameObject when remove selected object it create it as selected.   
+- UR: Add URCommand_AddRemoveGameObjects.   
+- UR: Add missing CommandUR_AddRemoveComponentAndSetAssetCSScript.   
+- UR: Add CommandURData_PasteGameObject, CommandURData_PasteGameObjects + rework its SceneCommands.   
+- UR: Add missing CommandUR_AddRemoveGameObject when drag object and preset from browser.   
+- Explorer: Fix some bugs when scene is not active but we can use commands on it.   
+- Core: Fix bugs with EditorCamera scroll events.   
+- UR: Add regular CommandUR_PasteComponent, witch acts as paste on Undo/Redo.   
+- Debug: Fix huge CPU usage when dialog windows are opened. Add vSync to Present/SwapBuffers in ImGui implementation.   
+- Commands: Add Command_ActivateScene, CommandDeactivteScene. Remove it as functions from explorer.   
+- UR: Add CommandUR_ActivateScene.   
+- UR: Add CommandUR_RenameScene and ability to KeepCommand (not move to undo/redo) if something goes wrong inside it.   
+- Commands: Fix SaveScene command witch are clear the current scene UID while saving renamed scene.   
+- Commands: Fix a lot of problems with SaveScene, SaveSceneAs, SaveProject + appearing multiple times the same action dialogs while saving scene from different state of execution.   
+- Commands: Fix bug in CreateProject witch cause crash in Inspector, Explorer while trying get component from wrapper of GameObject, witch scene was deleted.   
+- Platfrom: Win32: Fix bug that WorkerDialogThread sometimes shows loading dialog after hide. Need more testing.   
+- UR: Fix CommandURData_OpenScene, CommandURData_ActivateScene with open/close in multicontext, and deactivation states.   
+- Commands: Add Command_SetAsEditableScene.   
+- UR: Add CommandUR_SetAsEditableScene.   
+- UR: Fix CommandUR_OpenScene, CommandUR_ActivateScene, CommandUR_SetAsEditableScene when trying to undo/redo in play/simulate mode, it not possible.  For CommandUR_OpenScene add additional case if trying to open scene witch asset was removed.   
+- AssetManagment: Add new Refresh function witch properly refresh asset if some of its parts was removed. Also ProcessAssetsI now handles TrackedAssets witch type Removed.   
+- UR: Fix CommandUR_RenameScene, CommandUR_ActivateScene, CommandUR_SetAsEditableScene, CommandUR_AddRemoveGameObject/s with sceneUID, instead of Scene*.   
+- Commands: Add Command_DeleteScene, with dialog checked if it was modified.   
+- UR: Completly rework Undo-Redo. Now CommandURData_BaseScene contains sceneUID instead of Scene_. Add CommandURData_BaseObject.   
+- UR: Rework scene the scene modification case.   
+- SceneManagment: Now play scenes, copies edit scene asset UID when go to play mode.   
+- UR: Reworks CommandURManager add FindSceneForUR, FindEditSceneForUR, FindPlaySceneForUR witch garantie the Undo/Redo command will applyed in context of multiple edit, or play scenes.    
+- UR: Clean-up the CommandsUR.   
+- Commands: Add Command_DiscardSceneChanges.   
+- Explorer: Add DeleteScene button from main popup, add DiscardChanges button.   
+- AssetManagment: Fix bug during moving folder asset to Backup.   
+- AssetsBrowser: Add OpenBackupFolder button, and make some changes in dialog descriptions.   
+- UR: Fix some issues with CommandUR_OpenCloseScene. Now this command mark as completed.   
+- UR: Fix some issues CommandsUR_ActivateScene, CommandsUR_RenameScene, CommandsUR_SetAsEditableScene. Now this commands marks as completed.   
+- EditorPlayer: Made some minor changes, for example now console not focus on play. Fix bugs in Explorer and AssetCommands.   
+- GUI: Fix bug that ScriptEditor was not recompile script engine after save script them.   
+- UR: Add CommandUR_StartScene. This is last scene command. Scenes UR commands are finished.   
+- Scripting: Redo the MonoField struct. Remove voidPtr as value pointer, now its used Any. And that fix fixes couple bugs witch lead to HEAP CURRUPTION.   
+- UR: Starting to implement the UR commands for CSharpScript user properties. Implement Float Type.   
+- GUI: Modify some widgets to properly handle modifications in case of Undo-Redo.   
+- MenuBar: Fix bug with wrong Undo-Redo button actions.   
+- Editor: Add new icon for field.   
+- UR: Add all UR commands for CSharpScript user properties. Undo-Redo API for scenes, objects and components are completed.   
+- Force: Update Premake5-beta1 to Premake5-beta6.   
+- Force: Breaking changes (im not planned it really) migrate from C++17 to C++20 (Broken ENTT with views/groups crash).    
+- Force: Add FE_API_TARGET macro. Refer to ForceVersionManager.   
+- SceneManagment: Update code API for GameObject. Most important here add ValidSave() function.   
+- Scripting: Fix bug that ScriptEngine data was saved to old file.   
+- SceneManagment: Add SetSceneNameOnTitle() as old hard coding this flags every time.   
+- Scripting: Remove some flags, and new one, and UnloadUserAssembly(), UnloadCoreAndProjectAssemblies() returns that MonoStatus.   
+- Scripting: Add missing VisualStudio_2017 to ScriptEditor enum. (In future this enum will be removed or deprecated).   
+- UR: Start working on UR commands for Assets.   
+- Utils: Now ProcessInfo take as Path commandLine, and add applicationName.   
+- Commands: Rename most comands, regroup them, made sinignifitlent changes with ExecuteGlobal() and remove SetGlobalCommandState().   
+- Commands: Rework global commands. Most changes in NewProject, OpenProject. Basically now we use ExecuteGlobal with CommandState_ vs old SetGlobalCommandState().   
+- Toolbar: Move Build and Refesh buttons from ToolbarGamePlay to ToolbarStandard. Add copy, cut, paste (master commands), to ToolbarStandard.   
+- EditorElement: Add GetEditorVersionFolder() and update AppData\LocalLow now generate folder for 2025.bx.   
+- MenuBar: Add ExportProject button (cuz at the end of 2025.b1 or year exporting projects will be done.)   
+- Force: Add missing -UNACTIVE icons. New icons for assets UR commands, new icons for export project, refresh, and build and compile project.   
+- Application: Add new BuildEnvironmentSpecification.   
+- MonoBuildManager & Commands: Rename Build() and UpdateScripts() to BuildAndCompileProject(), RefreshProject().   
+- ProkectManagment: Rework and clean-up OpenProject(), CreateProject() functions. Now it supports more error codes.   
+- GUI: Add ShowSafe().   
+- Utils: Add VisualStudioManager to easly find and manipulate multiple installed instances of devenv.exe.   
+- ProjectManagment: Fix multiple bugs with project loading. Remove Generate_.bat files not Force can do it automatically. Change way how Force find VisualStudio, and currect path to MSBuild. Move ScriptEditor settings from project to editor settings.   
+- Panel: Add new PanelCommandPrompt (in beta state for now).   
+- ProjectManagment: Start some refactoring with the projects. Add ProjectEmvironment and ProjectBuildEngine thats actually works.   
+- ProjectManagment: ProjectSettings: Remove: SceneStartAsset, AssetDir, BinDir, ScriptModulePath, ScenesPath, ScriptsPath, GenerateExampleScript. Rename: Type-Template, Company-Organization, ClientPath-EditorPath, EngineVersion-EditorVersion. Add Environment, BuildEngine properties.   
+- ProjectManagment: Update ProjectSerializer, improve EdittorPath case.   
+- ProjectManagment: Remove Build.bat, Generate_XXX files, now this commands called internally by Force. Fix some bugs with project loading. Add new ProjectStatus error codes.   
+- ProjectManagment: Commit other changes, because it was a lot.   
+- SceneSerializer: Add basic scene recovery manager with UI.   
+- Preferences: Refact UI for StartupScene, SceneBuildList, add more warnings.   
+- AssetManagment: Now CreateAsset accept function-implementator how create physical asset file.   
+- FileSystem: Extend its API, add Contains, StartsWith, EndsWith, Replace, ReplaceLast for Paths.   
+- SceneRenderer & ENTT: Fix crash with groups witch was caused by moving to C++20, and updating ENTT.   
+- Explorer: Fix incurrect behaviour in Explorer with select asset (and constantness and C++20).   
+- Inspector: Fix bug with incurrent behviour of select asset (the same as Explorer).   
+- Commands: OpenScene: Fix crash then scene open as not as multicontext, forgot to reset Explorer and Scene panels.   
+- Commands: Fix new Paste (master command) witch are not working.   
+- AssetImporter: Now after changing scripts outside Force, Force immidiatly call BuildAndCompileProject.   
+- Application & RecentProjects: Make some refactoring with Application GetRootPath(), and fix bugs with recent projects. Move Recent Project API from DialogNewProject.h to Project.h.   
+- EditorAssets: Add few more resolutions to Candara font.   
+- DialogNewProject: Add new UI for new project, since a lot of project properties was removed, and updated.   
+- Win32: Win32Console: Fix crash when closing Force by Debug Console.   
+- AssetsBrowser: Fixed crash when user delete Assets project directory.   
+- GUI: Fix incurrect base dialog opening and closing, because callbacks OnOpenCallback, OnCloseCallback sometimes was not called.   
+- DialogStartup: Move all behaviour of startup dialog from DialogNewProject to DialogStartup, witch fixes many bugs. Now DialogStartup behaves how it suppose to be initilay at 0.4.0-Q1.   
+- Debug: Rework Profiler, fix bug with a extra comma. Now Profiler currect shows Initialize Phase 1/2.   
+- Platform: PlatformUtils: Win32: Add SetExecutableWorkingDirectory API.   
+- Core: Add CoreCommandArgsUtility witch check acceptable arguments. Add patch for working directory if user starts Force by opening a project file. Finally now user can open projects by opening its files with application Force.exe.   
+- Project: Now users can open projects by opening scene file with Force.exe.   
+- DialogStartup: Fix some bugs with opening/closing.   
+- PlatformUtils: Win32: Add ConvertWideToUtf8 and ConvertUtf8ToWide API.   
+- ProjectManagment: Improve Unicode project API.   
+- ProjectManagment: Fix bug with renaming project, a static buffer cause a crash.   
+- FileSystem: Add error_code check to IsExist(), because first time std::filesystem::exist throw a error code 87 for unknown reason.   
+- MonoBuildManager: Remove unnessesary calling RefreshScriptProject witch was before starting MsBuild thread, and on Unicode since it executes a little longer (copy-files), cause not call BuildScriptProject or even start MsBuild thread.   
+- Core: Major Force Core update. Rename termin UUID to Handle. Scene, Object UUID now Handle's. Asset UID now AssetHandle. Entt Identifier now EnttHandle. See Handle.h for more info. Next few commits will contain combined changes of renaming UUID to Handle and new changes.   
+- Platform: Win32: Add PlatformWin32MacroFix.h as improved old that was in SimplePrintSafe.h.   
+- Platform: Win32: Add PlatformError and better OS error handling in PlatformUtils.   
+- Graphics: Texture: Rename GetID() to GetNativeHandle() and GetUUID() to GetHandle().   
+- AssetManagment: Group AssetExt, AssetImport, AssetMove, AssetState, AssetManagerIteration to AssetInfo.   
+- AssetManagment: Clean-up Asset.h remove few unnessesary stuff, remove ImporterData from there, later will be explanation, add AssetHandle type instead of UUID. In AssetDatabase now GetAssetXXX returns new Asset, instead by Asset&.   
+- AssetManagment: Clean-up AssetManager. Most important: Fix bugs with MoveAsset(): Copy, Move operations, and rework WriteExtFile(), ReadExtFile(), CreateAsset with template. Now it works easily with new Importers API.   
+- AssetManagment: Completly rewrite Importers API. Now all of this finally make sence. Most important now Importers not stored in Asset, now it can be retrived from .ext file by AssetManager::GetImporterByAsset, and now Asset structure can be copied, passed by ref, pointer without curruption ImporterData.   
+- Core: Add RefObjectType, later will be used for TextureManager, AudioEngine, FontManager.   
+- Graphics: Renderer2D & Vertex: Rename objectID to pickID, because i make most sence.   
+- Storages: Rework TextureManager, AudioEngine, FontManager. Improve ref-counting system. Add support for storing Internal objects witch can be also ref-counted. Not done with this, shoud make more tests.   
+- ProjectManagment: Apply changes from UUID to Handle & AssetHandle.   
+- SceneManagment: Finally rename: IDComponent to HandleComponent, EditorComponent to PropertyComponent, CSharpScriptComponent to MonoScriptComponent.   
+- SceneManagment: Also finally get rid of GameObjectT, now we have only GameObject and where need templated stuff and fast perfomance use System.h. Rework Scene.h and related by using groups and for-each .each() iterator.   
+- SceneManagment: Clean-up SceneManager, add FormatSceneName() + accept localization.   
+- Serialization: Add more error codes to Yaml.h. clean-up Preset/Prefab Serializers.   
+- Serialization: Rework SceneSerialializer, change format to 1004. Add opportunity to recover from fmts Legacy to 1003 to 1004.   
+- Editor: Apply last changes to Editor.   
+- AssetsBrowser: Fix bug in table entry desel-sel first thumbnail + not sel on full row (on was on selected button)   
+- AssetsBrowser: Fix bug when we can open asset when shift/alt/ctrl pressd.   
+- AssetsBrowser: Fix bug when pressed ctrl + clicks should select/deselect but it also starts to rename (cuz double-click) in browser and explorer.   
+- Serialization: Clean-up the PreferencesSerializer, UserSerializer and User API.   
+- AssetsPreview: Complelty rework assets preview. Add PreviewContext, PreviewManager. Now preview on AssetsPreview and auto-preview on Inspector goes throw different contexts. And then fixed much bugs with this hole system.   
+- Editor: Fix some crashes with editor on reloading.   
+- GUI: Add a magic ScaleImageKeepAspect() with makes image resized and keep the same aspect. Already in AssetsPreview's TextureImporter UI, Browser Thumbnails and drag drop UI.   
+- Core: Fix bug in Application first frame when timer is not fully initialized and give delta time with too large value and thats currupts other variables. (Catch in ExampleApplication).   
+- Platform: Thread: Add ThreadEx to access to platform thread functions. Now all threads sets it names to OS thread, witch appears in VisualStudio and easily to debug.   
+- Force: Rename all Config.h to Main.h, remove a lot of garbage stuff like all ForceXXX.h files.   
+- Core: Add Sha2Hasher, now GenerateHandle can generate string hash-handles and few additional variants.   
+- Nave: Starting woking on Nave 1.0.5.   
+- Nave: Update GUI library to support new features from Editor.   
+- Nave: Update Nave logo. Add new icons, and font sizes.   
+- Nave: Now downloads location also generate folder name using SHA Handle.   
+- Nave: Minor changes.   
+- Nave: Change the height ot the main viewport. Make it a little smaller.   
+- Nave: Rework the clients system, news system, project creation, add focerver, forcenews, change the UI for Home, Projects, Installs tabs, fixed bugs with threads. Release Nave 1.0.5.   
+- ProjectManagment: Add ProjectXSerializer, and new .forceprojx format. It used to create projects from Nave.   
+- Force: Fixed compilation errors when prefered linked set to ForceNave.   
+- Utils: Add FormatBytes function.   
+- Utils: Win32: Add new IsProcessRunning function.   
+- FileSystem: Expand FileSystem API, add few new functions.   
+- Force: Remove SimplePrintSafe.h and add new watermarks on all files.   
+- Core: Refactor the Types.h now it include std libraries which supported by current C++ compiler standard. Add _XLOCALE, _FORMAT, _PRINT APis.   
+- Platform: Console: Win32: Add Write, WriteLn functions. Now it can be used to WriteConsole + color support.   
+- Platform: Thread: Win32: Add GetCurrentThreadID() as replacement for std::this_thread::get_id() because its to slow and returns not the actual thread id.   
+- Utils: Add new FormatUtils that used as most replacement for StringUtils::ToString(), with new C++20 std::format.   
+- Debug: Finally this day is come. Replace SimplePrint logger API from SpdLog to Force internal API by using FormatUtils. No one not-windows file not include 'windows.h' anymore.   
+- Audio: Major AudioManager API refactoring is started now.   
+- Audio: Fix incurrect looping situation for Streamer.   
+- Audio: Fix bug if audio length is too small like less that a second, it not start streaming.   
+- Audio: Remove AudioDataError.h. Move AudioDataStatus and AudioClipStatus to AudioError.h.   
+- Audio: Misc changes in AudioBuffer, AudioListener, AudioContext, AudioSource.   
+- Audio: Fix bug when reach its end its unload its AudioData and makes a read-only (fix for old system, new functionality for new system).   
+- Audio: Move GetPlaybackTimeStreamer() from ALAudioSource to AudioData, because playback for streamers we retrive throw AudioData not a Source.   
+- Audio: Add new API to AudioData is ReadOnly pre-loading any type of audio data. New funcs: ROLoad(), ROOpenFile(), ROCloseFile().   
+- Audio: Add AudioClip and AudioData handles to reference managment later.   
+- Audio: Fully recreate AudioClip and AudioSource creation system, now its works for Track and Streamers. (not tested for resources yet.)   
+- Audio: Meet the meat of this refactoring. Remove AudioEngine, and it will be replaced by new AudioManager.   
+- Audio: AudioManager: Add new AudioDataItem, and AudioClipItem witch will used for new reference managment system. Next few commits will be to this AudioManager, since i rewrite hole file completly.   
+- Audio: AudioManager: Add new AudioStreamer Thread for Streamers, finally.   
+- Audio: AudioManager: Rework the LoadAudio(), and UnloadAudio() functions. In short now all this crap properly works with ref counting system and loading, unloading from AudioManager with Track and Streamer.   
+- Audio: AudioManager: Rework UnloadAllAudios(), UnloadAllRuntimeAudios(), UnloadAllResourcesAudios(), UnloadAllUnusedAudioDatas() based on new UnloadAudio() function.   
+- Audio: AudioManager: Rework all FindAudioXXX functions. New APIs here is: FindAudioDatasByAssetHandle(), FindAudioClipByAudioData(), FindAudioClipsByAssetHandle().   
+- Audio: AudioManager: Play-controlling functions such as Play(), Stop(): Now have overloads only with AudioClip and by clip name. Overloads by Asset/AssetHandle was removed.   
+- Audio: AudioManager: Rework Reload() function, remove ReloadAllAudios/ReloadAllAudiosRuntime (this not tested yet).   
+- Audio: AudioManager: Rework rest of the functions, add new APIs.   
+- Audio: Intergrate new AudioManager to rest of engine functionlity.   
+- Audio & Scripting: Integrate new Audio API to Scripting. Rename AudioEngine.cs to AudioManager.cs. Scripting API for Audio will be tested later after full refactorig.   
+- Audio: Remove SingleThreaded processing of Streamers, since now its perfecly process on AudioStreamer Thread.   
+- Audio: Rework deletion, renaming, moving audio files with streamer importer config, now this operations can be done. Since AudioFile handles are closed and reopened when it nedeed.   
+- Audio: Commit rest of the files, now will be testing Audio in ECS, Scripting, and Undo-Redo systems.   
+- Audio: AudioManager: Improve StreamerThread synchronization, sync LoadAudio().   
+- Audio & AssetManager: Implement unloading audio from asset detaches AudioClip, and when asset is missing, then recoverd, also loads a clip.   
+- TextureManager: Fix bug the asset texture deleted, then recoverd in not pre-load that texture, the same as for Audios. It will be done for Fonts, Scripts later aswell.   
+- Scripting: Fix bug the asset script deleted, then recoverd in not pre-load that script.   
+- Serialization: Fix not loading AutoPlay field in AudioSource.   
+- Core & Platform: Add RunnableThreads::InsertThreadPID() and ThreadEx::SetThreadPID(), GetThreadName(), GetThreadID().   
+- AssetDatabase: Make foregroundIcon image with ScaleImageKeepAspect the same as for Browser's one.   
+- AssetsPreview: Fix image with size below 0.0f be inverted.   
+- GUI: Add support for read-only Checkbox's and InputXXX widgets.   
+- AssetsPreview: Audio: When playing clip we cannot modify any property aside pitch.   
+- Audio: Disable support for 'ConvertToMono', it will be supported later when Force attach ffmpeg library.   
+- Audio & SceneManagment: Add CopyComponentSourceClip() to copy source clip when dublicate, or copy game object.   
+- UR: Fix bug CommandURData_PasteGameObjects was not set modification state.   
+- UR: Finish CommandsUR_ApplyAudioAsset and Undo-Redo for AudioClip.   
+- Audio & EditScene: Fix bug that in edit mode audio clips not call any scene->OnUpdateAudio() so position of this clips was not updated relative to camera [listener].   
+- Audio & Scripting: FIx bug that when call we AudioSource.Play() in C# in creates additional AudioClip and adds to AudioManager.   
+- Debug: Fix some garbage shit with assertions and FE_ASSERT.
+- Audio: Remove AudioSourceSpecification, refact AudioSource creation, add few new functions to AudioClip such as IsMono(), IsStereo(), etc.   
+- Audio & UI: Refact old Audio Playback UI, in AssetsPreview, Inspector, and StatusBar.   
+- Inspector: FIx bug with AudioSource is3D variable, it was setted wrong thats why i remove AudioSourceSpecification, and that bug not let AudioSettings 3D renders.   
+- GUI: Fix bug with SliderAudioPlayback, witch when too fast click sliders sets playback position back before click. Actually also few states was added to AudioClip::AudioPlayback in prev commits.   
+- GUI:  Add to Selectable output 'held' value, witch at the end is not using :(.   
+- GUI: Add three WrapText algorithms based on ImGui::RenderText one. This allows to calculate WrapTexts not render actual text by GUI::TextWrapped() + faster in perfomance.   
+- AssetsBrowser: Refact all three DrawEntryXXX. Main focus here is DrawEntryThumbnail(), now using GUI::WrapText we know wrapped text height, so can render selectable by combining size of thumbnail + text height. Finally! Also made few improvements with renaming widget.   
+- AssetsDatabase: Move new thumbnail look to Database. Also fix bug when Ctrl+Click it opens asset. Allows only double-click. Ctrl using for selection.   
+- SceneManagment & Preivew: During Audio refactoring figure out that all preview: prefabs, scenes, presets was not free additional objects memory, start to fixing that.   
+- Preivew: Add Ctrl+S on AssetsPreview or Inspector preview to save Importer.   
+- SceneRenderer & Previiew: Fix bug that objects sprites like audio, camera and 2D grid was not renders.   
+- ScenePanel: Fix bug that Grid and image from framebuffer was glitching (e.g using not currect viewport position).   
+- Commands: Rename Command_LoadProject to Command_StartupLoader, and fix bug when editor at startup loader state, GUIPanel's witch was as outside main window i.e has a platform interface shows before main window.   
+- Dialog: Rework the DrawThumbnail of SelectScene,Font,Image,Preset, to match new UI of the browser's entry.   
+- AssetsBrowser: Fix DrawThumbnailEntryEdit with foreground image, was wrong size.   
+- Inspector: Continue Preset,Prefab previews fixing. Rework DrawComponent() API, and seperate _Registry & _Instance tree rendering by DrawComponentImpl_ByInstance, DrawComponentImpl_ByRegistry.   
+- GUI: Add new version of GetStyleColor() with shifting, and add custrom width and height to TreeNode().
+- Inspector: Fix more 130+ crashes with every component property field, with DrawComponent when component renders as DrawComponentType_ByInstnace as preset in AssetsPreview.   
+- AssetsPreivew: Fix some UI elements in PresetPreview.   
+- AssetManager: Fix bug that ResetImporter was not reset actual preset data.   
+- Inspector: Add red highlght when drag preset on component with wrong component type.   
+- AssetsBrowser: Add way to drag multiple presets (in future prefabs) and apply it even if we drag multiple assets where exist only only one preset rest just skip.   
+- Inspector: Fix bug with copying large string into gameobject name buffer.   
+- Inspector: Fix bug that any drag drop from browser to assets preview not working by reordering rendering AssetsPreview before Browser in Dockspace.   
+- TextureManager: Refact the texture manager ref counting system by the same scheme as AudioManager. Because for AssetPreview + Preview in Inspector old system is failed.   
+- Texture: GL3/4.x: Fix missing setting glHandle to zero after glDeleteTextures.   
+- SceneManagment: Fix missing CopyComponentRenderer for all other sprite components exclude SpriteRendererComponent.   
+- SceneManagment: Scene: Fix missing assets resources objects unloading during OnRuntimeStop().   
+- AssetManagment: AssetManager: Rework LoadTextureFromAsset(), and fix multiple bugs with _AssignAssetToComponent() and _AssignAssetToComponentZero() for textures.   
+- PreviewContext: Fix missing loading/unloading textures for UploadPresetPrev(), UnloadPresetPrev().   
+- AssetsPreview: Improve UI for Apply, ResetDefaults buttons. Now when presets modified also its imported modified. And now we can Apply/Save importer only if its data was actually modified.   
+- Inspector: Fix bug that DrawAssetWidgetXXX its AssetWidgetPopup was not opened on AssetsPreview. And some other small fixes.   
+- Commands: Fix Command_ShowImportFile is not working.   
+- TextureManager: Fix UnloadTexture() returns error if Storage is empty.   
+- PanelInspector:: Add new MenuItems to DrawAssetWidgetPopUp when asset is missing.   
+- Graphics: Texture: Add IsLoaded() to validate if renderer texture was actually loaded/unloaded.   
+- TextureManager: Fix bug in UnloadTexture() error happens when asset is invalid.   
+- Inspector: Restore support for AudioSource component throw preset preview.   
+- Inspector: Restore support for AudioListener component throw preset preview.   
+- Inspector: Restore support for MonoScript component throw preset preview.   
+- AssetManagment: Add ImporterScript which saves script fields on asset, and now this works any time when we reassign asset to component not just once when scene is loading.   
+- AssetsPreview: Fix some UI on script importer.   
+- GUIDialog: Fix oldest bug when dialog just opened its focused state are false, true, false, true, true... (was glitching).   
+- SceneManagment: Add missing texture unloading in RemoveGameObject(), because new TextureManager requre it.   
+- SceneManagment: Add FormatName() to GameObject.   
+- Commands: Add Command_AddPrefabObject, because AssetManager::LoadPrefabFromAsset() its raw, and not handle many editor cases.   
+- Commands: Expose Command_AddPrefabObject to every place where it requred. Fix prefab editor 'add prefab' was not undoable, now prefabs can be dragged more that one with presets combination and applies to scene on drop.   
+- GUIPrefabEditor: Fix bug that prefab editor not renders, because DrawGameObject Scene::IsValidSafe only accept the scenes from SceneManager, and not include prefab scene.   
+- AssetsPreview: Rework the UI for prefab preview viewport. Now preview scene in prefab renders on main child (mini-preview), and on closed editor on full avaliable size.   
+- CommandsUR: Add support Undo-Redo for prefab editor.   
+- AssetsPreview: Improve UI for preview prefabs, now its icons, draws on AssetPreviewHeader.   
+- AssetsPreview & Inspector: Fix displaying components menu & filter wrong when the same prefab opened by inspector and assets preview && previewContext now has prefab editor open state to work per contexts and per panels.   
+- PreviewManager: Fix bug that each prefab scene has asset handle of prefab asset, it make impossible to work with the same prefab on different panels with UR.   
+- Commands & CommandsUR: Add support for UrCommands which are excetuted in queue for prefab editor by CommandDataQueueURExtenstion.   
+- Commands: Fix Command_PasteComponent witch are always paste to selected gameobject which was wrong for prefab editor.   
+- Dialog: Fix not scrollable tables on DialogSelectFont, DialogSelectImage, DialogSelectPreset.   
+- Inspector: Fix bug that swapping DrawComponentOrder by MoveUp, MoveDown not work in AssetsPreview.   
+- Inspector: Extend DrawComponentOrder API to be for every GameObject. In future this will be serializable.   
+- Serialization: Add way to serialize components order in game object and deserialize it. Was missing feature from 0.3.4.   
+- Commands: Add Command_SwapComponent.  
+- CommandsUR: Add CommandUR_SwapComponent.   
+- CommandsUR: Add support for rest UR commands for prefab editor.   
+- AssetsPreview: All importers now notify user that has been modified if was: on switching importers, on project closure, on editor exit.   
+- CommandsUR: Add CommandUR_AddRemoveTag.   
+- Inspector & AssetsPreview: Fix bugs with closing components menu and tag manager by pressing esc.   
+- Inspector: Update UI of TagManager, and its icon.   
+- SceneManagment & SceneCommands: Fix memory leaks when destroying MonoScripts & Textures.   
+- SceneManagment: Make a title display scene modification state (_) and playing/simulate/pause states.   
+- SceneManagment: Start a global refactoring of Scene Assets Managment. Basically rework SceneRegistry, and make a Scene::FreeComponents. Textures and AudioClip's and potential Fonts now properly freeing by OnRuntimeStop +not copying to resetRegistry.   
+- AssetsPreview: Fix missing UR command for AddOrReplace preset to game object in Preset Preview Popup.   
+- SceneManagment: Rework SceneRegistry and script classes also copies in by CopyComponent<T>.   
+- SceneManagment: Fix bug with Scene::Copy() that was accidently made in fac1e00a during renaming UUIDs to Handles.   
+- AssetsPreview: FIx bug that can't add prefab to play scene from preview.   
+- SceneManagment: Remove SceneRegistry.h from Scene. Create EnttReigstry.h API (EnttRegistryManager) which works on registries and resources components. Rename System.h to EnttSystem.h. Improve the Freeing resource components. Rename CopyComponentIfExist to DuplicateComponent.    
+- SceneManagment: FIx memory leaks with SceneManager::FreeAll(), SceneManager::Free(), SceneManager::Unload(), resource assets in components was not deleted.   
+- AssetImporter: Fix bug when asset (temp, ~, etc) changes/removes outside it try to perfom a action for types which should't.   
+- SceneManagment: Add FreeAllComponentsOf to EnttRegistryManager, instead of hardcoding this in Scene::DestroyGameObject().   
+- CommandsUR: FIxed bug with CommandURData_MonoScript_SetFieldValueString was a crash.   
+- SceneManagment: Add FreeComponent() -> EnttRegistryManager_FreeComponentByRuntimeType() to make free single resource component by runtime type.   
+- Scripting: GameObject: Add error message if we try to get MonoScript directly without explict type.   
+- Scripting: Fix memory leaks with forgotting to remove resource components (Textures, AudioClips), and especially MonoScript.   
+- SceneCommands: Now OnRemoveComponentPre() also use EnttRegistryManager::FreeComponent() instead of old hard code garbage.   
+- Audio & Preview: Add AudioReloading for Preview AudioClip's.   
+- Scripting: Fix bug that static fields cannot be modified.   
+- Scripting: Add MonoEngine::GetAttribute() without retriving a value.   
+- SceneManagment: Fix bug that when DuplicateComponent called on Copy/Duplicate GameObject its was not copying MonoScriptComponent and cause a crash.   
+- Scripting: Fix MonoFieldGetAccessModifier() which now returns modifies with extended modifiers like "static, const, readonly".   
+- Explorer: Fix bug that ExplorerSortType_ was set uncorrect on editor startup.   
+- AssetsPreview: Fix uncurrect displaying childs windows on Script Preview and Audio Playback Preview.   
+- GUI: Add enabled parameter on ColorEditXXX widgets, that was missing.   
+- Inspector: Fix some bugs with scripting fields (cant modify some, render disabled but can modify, etc) and their tooltip text. Now if field marked as [DisableInInspector] it also shows in inspector tooltip.   
+- ImGui: FE_IMGUI_C0007: Add ImGuiInputTextFlags_CharOnlyBehaviour as extension for InputText.   
+- GUI: Add new InputChar as extension for InputText which allows input only one char perfectly.   
+- Scripting & UR: Fix incurrect retriving and setting a char field. Was in char (UTF-8) now in char16_t (UTF-16) which acceptable for C#.   
+- Inspector: Add new InputChar API to char field which now handles perfectly with UTF-16 C# char.
+- Scripting: FIx bug that when Play audio witch already played, it should Pause it, but it call Play which (still Pause audio), but returns false from AudioClip::Play() and cause fake ComponentException throw from C#.   
+- Inspector: Fix bug with AudioSourceComponent widget. Case a crash, so..... джысесс.   
+- Scripting: FIx bug Pause/Stop/Resume audio and cause fake ComponentException throw from C#.   
+- Inspector: Made support for rest AssetWidgetPopupXXXs with preset situation exclude Font Asset.   
+- Scripting: Implement new AudioClip API whtch matches new AudioManager API. Add few new methods to C# AudioClip.   
+- Scripting: Add ForceError.cs as runtime exception which are not stops the runtime when thrown.   
+- Audio: Add AudioManager::FindAudioClipByHandle() to find clips by clip handle for MonoInternalCalls.   
+- Scripting: Add MonoEngine::DebugError() to log the ForceError exceptions.   
+- AssetManagment: Add PushAssignAssetFlags/PopAssignAssetFlags and AssetLoadFlags to configure AssetManager::AssignAssetToComponent() externally, not just by AssetManager::LoadXXXAsset().   
+- Editor: Fix some issues with EditorStatusHandler::HandleAssignAssetForComponent() for Audios. Add missing error code messages. Allow to log to console or as runtime error.   
+- Scripting: Rework MonoAllocator::NewAudioClip(). Now AudioClip's from C# can be founded not just by asset handle, but also by its clip handle, and native AudioClip API.   
+- Scripting: Rework wrappers in MonoInternalCalls, sort it out. Implement new AudioClip API, add new internal calls. Most importantly now AudioClip_SetClip() works perfectly and copies clip if need.   
+- Scripting: Disable printing to console: wrapper managed-to-native, Force.ForceError.Throw, Force.ForceException.Throw with exception callstack.   
+- Scripting: Restore back AudioClip.IsLoaded() method. Now clips which was unload basic info like name or samplerate can be accessable. Add Object_GetAudioClip() wrapper.   
+- Scripting: Fix AudioSource_SetClip() checking out clip was wrong we need to check by MonoObject* (Force.AudioClip).   
+- Scripting: Replace error logging from unmanaged code to MonoEngine::DebugError().   
+- SceneManagment: Fix missing Scene::FreeComponent() for SceneManager::LoadXX().   
+- Audio: Recover support resources AudioClips. Which work even better that inital implementation.   
+- Resources: Resources now unloads only at the end of runtime (not each FreeComponent, and not each OnRuntimeStop()), only on EditorPlay::Stop().   
+- Audio: Fix bug that when streamer audio was loaded but not played it (e.g playbackTime == 0.0) its adds the playSamplesOffset.   
+- AssetManagment:  Add text asset type. Now Force recognize basic file types like: txt, html, csv, json, yaml, etc.   
+- AssetManagment: Add new AssetTypeFormatMap, where all assets type + its extensions are placed.   
+- Scripting & Resources: Add new Resources_FindXXX API.   
+- Scripting: Add IsExistInProjectAssembly() API to MonoScriptClass.   
+- Editor: Add a lot more new icons for new type of assets to browser's sheet.   
+- GUI: Add TextLongMultiline() widget and GUITextCache to render bigger texts wtthout clipping.   
+- AssetsBrowser: Add support for new type of text/file assets and render proper icons and all basic stuff.   
+- AssetImporter: Fix bug when script file importer inside Force, it not rebuild project.   
+- AssetOpener: Block opening .forceproj, .csproj files from editor.   
+- AssetsPreview: Add support for text assets for preview context + few changes with script preview data.   
+- AssetsPreview: Add new UI for Text Assets, rework File and Script previews, add raw support for Models preview.   
+- Audio: Fix CPU overrun in StreamerThread.   
+- Audio: Fix that edit scene audio clips was not stoped before entering to play mode.   
+- Audio: Add rest OpenAL API: AL_DIRECTION, AL_CONE_QUTER_GAIN, AL_CONE_QUTER/INNER_ANGLE, AL_MIN/MAX_GAIN, AL_SOURCE_RELATIVE was exposed to AudioSource.   
+- Audio: Expose listener OpenAL API: AL_DOOPLER_FACTOR/VELOCITY, AL_SPEED_OF_SOUND for AudioListener.   
+- Audio: Fix AudioDistanceModel never can be disabled, and AudioDistanceModel_None.   
+- Audio & SceneManagment: Fix bug that Direction of AudioSource, and Orientation for AudioListener was never update with object transform.   
+- Audio & SceneRenderer: Add AudioSourcePlaying icon to visualize in Scene that audio is playing.   
+- Audio & Serialization: Fix bug that DistanceModel was never deserialized/serialized since 0.3.3 when audio first introduce. Add new properties for serialization for AudioSource/Listener components.   
+- Audio & Scriping: Add AudioDistanceModel.cs struct for C# API.   
+- Audio & Scripting: Add all new Audio API to C#: SetConeOuterGain(), SetConeInnerAngle(), SetSourceRelative(), SetDooplerFactor(), SetSpeedOfSound(), SetVelocity(), SetMinimumGain(), etc.   
+- Preferences: Add PreferencesSerializerInternal.h and separate Internal Preferences Settings that was stored in (EditorSettings.data) by EditorSettingsInternal.data.   
+- CommandsUR: Add new URs for new Audio API (CommandUR_AudioSource_SetConeInnerAngle, etc..).   
+- Inspector: Add new UI for new Audio API in AudioSource and AudioListener.   
+- GUI: Rework UI for ScriptEditor now it looks like TextEditor in AssetsPreview.   
+- AssetsPreview: Add new pencil icon.   
+- Preferences: Now InternalSettings saved by value change.   
+- GUI: Fix bug that 2D Grid was not apply color from settings.   
+- Preferences: Fix bug that editor was not applied theme from settings on dialog on startup.   
+- EditorAssets: FIx bug that editor sprites (AudioSprite, CameraSprite) was loaded without mipmapping.   
+- PreviewContext: Fix bug that Audio Settings was incurrect. Just rework all Audio Settings in Preferences.   
+- Prefernces: Add support for Cancel Modification, add _ mark on each of tab, add Reset Button, add Apply Dialog if Preferences/Project/Editor Closes.   
+- Scripting: Fix GUITable_Widget that crashes when forgot to call GUITable_DrawXXX from C#.   
+- Scripting: FIx AudioSource_SetPitch and AudioSource_SetVolume that can set below 0.1f but never can set up again.   
+- Scripting: Add new API to GUI class. Add AddCombo(), GetAvaliableSpace(). Also few GUI additional functions was mapped such as Begin/EndCombo(), Push/PopItemWidth(), SetItemDefaultFocus(), Selectable().   
+- Scripting: GUIPanel: Fixed bug when in delegate errors happens its throw exception and jumps to return instruction, and not finish ImGui pass such a End(), EndCombo(), etc.   
+- Scripting: Audio: Restore loading resource AudioClip by using its constructor as: new AudioClip().   
+- Inspector: Now Audios also can be setted/resetted throw Inspector in PlayMode.   
+- EditorPlayer: Add log FE_LOG_ERROR() when last exceptions messages if it was exception at some point that cause to Stop.   
+- Graphics: Texture: Introduce new TextureLink API. It allows to provide for Texture now GPU (Texture) a additional information for propery ref counting it. Its alike AudioClip.   
+- Graphics: Texture: Add ReloadTexture() function that allows dynamically reload texture data if it specifcation was changed.   
+- Graphics: Texture: Add way to modify TextureSpecification, in case if we wan't to update texture data from spec that normally requres to ReloadTexture.   
+- Graphics: Sprite: Extend Sprite struct, now it accept TextureLink instead of direct (GPU) Texture. Also modify SpriteRendererXXX components.   
+- Graphics: TextureManager: Complerly rework TextureManager, not it behaves like AudioManager, only instead AudioData and AudioClip, with (GPU) Texture and TextureLink.   
+- AssetManagment: Split LoadTextureFromAsset to LoadTextureFromAsset and LoadTextureRawFromAsset.   
+- AssetManagment: Resources: Rework Resources Load/Find function for any type of texture, and now alos accept a TextureLink instead Texture2D/3D/Cube.   
+- Audio: AudioManager: Made few changes, simplify code, remove AudioClipItem, now it directly store AudioClip.   
+- Scripting: Texture: Add hole bunch of new API. Expose TextureBlendMode, TextureFilterType, TextureFormat, TextureWrappingMode to C#.  Add TextureSpecification data retriving from Texture class. Add way to ReloadTextures and change sRGB property of texture, and more.   
+- Preview: Texture previews are now not ref-counting and standalone, its allows to modify texture importer/specification data dynamically.   
+- Scripting: Add GetFullNameOfClass to MonoEngine API.   
+- Audio & Graphics: Add UnloadAllUnusedResourcesXXX for AudioManager & TextureManager.   
+- AssetManagment: Add UnloadAllUnusedResources(), UnloadAllResources(), UnloadAudioClip(), UnloadTexture() APIs.   
+- Scripting: Expose Resources.UnloadAllUnusedResources(), Resources.UnloadResource() to C# and opportunity to Object.Destroy() any supported resource.   
+- Scripting: Move properties witdh, height and Size() method from Texture to Texture2D. Now creating Force.Texture not allowing, you need to use Force.Texture2D.   
+- Scripting: Made few changes and fixes with TextAsset, for example now it actuall asset, i.e TextAsset.GetAsset() was implemented.   
+- Scripting: Add TextAsset.GetAsset(), and internal assetHandle field.   
+- Graphics: Font: Starting to reimplement Font Manager, fixing the same thing as with Audio and Texture Managers.   
+- Graphics: Font: Implement fully font atlas caching. Now specified font generates atlas texture ones, and then reuse it. It increase Font loading.   
+- Core: Application: FreeType library now initialize and frees by Application.   
+- Graphics: FontManager: Implement the same API for FontManager and for TextureManager via FontLink.   
+- AssetManagment: Implement LoadFontFromAsset() via Ref<FontLink> and LoadFontRawFromAsset via raw Ref<Font>.   
+- AssetManagment: Resources: Implement LoadFont(), UnloadFont(), FindFont() API's.   
+- Scripting: Implement new functions for Font and Text.   
+- Preview: Implement local font caching for preview, to increase loading speed.   
+- Editor: Make other bug-fixes with font handling in editor.   
+- Graphics: Font: Add dialog box message when font start generate atlas. Increase count of threads to 12.   
+- Font: Graphics: Fix bug that font handle not close after font creation, it makes not possible to delete/rename/move font file.   
+- Graphics: Font: Fix bug that incurrect FontLink was removed.   
+- AssetManagment: Rename AssetManager::RenamePhysicalFile() to AssetManager::RenameAssetPost(), and combine it in one func in AssetsCommands, and add support for renaming cache font atlas.    
+- Graphics: Font: Fix bug that was missing checking by asset handle in FontManager::UnloadAllFonts(asset) version.   
+- AssetManagment: Add opportunity to show editor preview thread dialog for AssignAssetForComponent for AssetType_Font when LoadFontFromAsset generates new font atlas.   
+- GUI: Add OpenPopupOnDialog() & SearchFilterOnDialog, that fixes another old bug from 0.4.0-Q1 when popup dont shows if it out dialog rect.   
+- GUI: GUIDialog: Add support for Events for dialog.   
+- GUI: Completly rework DialogSelectImage UI, now it feels like AssetsBrowser or AssetsDatabase with scrolling thumbnails + add new popup to it.   
+- GUI: GUIDialog: Rework DialogNewAsset, DialogNewProject, DialogOpenProject, DialogSelectPreset, DialogSelectPreset UIs.    
+- GUI: GUIDialog: Rework DialogSelectFont UI.   
+- DialogNewAsset: Add support for creation text files via UI.   
+- AssetManagment: Add more filters for asset types formats.   
+- DialogNewAsset: Now AssetType_Font selectable actually shows OpenFile to import font.   
+- AssetManagment: Now any fonts caching during its asset importing state, its extremely simplyfies working with fonts later in the project.   
+- AssetsPreview: Finally add controllable properties for font importer.   
+- Graphics: Font: Add opportinity to reload font when applying font importer.   
+- Commands: Add Command_ClearFontCache on ImporterFont properties.   
+- Scripting: Add rest methods to Load/Unload Font as resource.   
+- Graphics: Font: Add way to load some text like 'Abc' to bitmap/texture/file. Also implement Abc cache to preview fonts just like preview for textures.   
+- Dialogs & Browser & Preview & Database: Implement rendering abc image from abc font cache to font asset image.   
+- Scripting: Slitly rework Asset.cs (add more internal calls) and add AssetType.cs.   
+- Scripting: Implement slitly reworked Asset API in C++. MonoAllocator + MonoInternalCalls.   
+- AssetManagment: Fix bug that AssetManager:ResetImporter not reset anything.   
+- Thumbnail: Implement a ThumbnailCache API which wraps out preview thumbnails textures and font abc textures in one place properly.   
+- Graphics: GL4: GLTextureFilter && GLTextureWrapping and rework TextureFilterTypeToGL/TextureWrappingModeToGL, add ability to set mip filter on actual specification value.   
+- Graphics: GL4: Texture: FIxed bug that mipmaps was not generated for OpenGL 4.x textures, probably the same with OpenGL-Core 3.3. But OpenGL-Core 3.3 not be supported since its too old and my old laptop is died. So i cannot test it there.   
+- AssetsPreview: MipFilter value in TextureImporter not disabled if mipmapping is not enabled. Add disabled support for GUI::Combo.   
+- Graphics: TextureManager: Now all textures links and GPUTexture reloads if we apply changes on TextureImporter.   
+- AssetManagment: Add pre-loading filter values from texture resolution during first texture import or reset its importer to default values.   
+- AssetManagment: Fix bug that ,tmp files was ignored during importing but .TMP was not.   
+- AssetManagment: FIx bug that TextureImporter accept Texture3D or TextureCube which are not supported by Force yet.   
+- Graphics: Shader: Slitly improve shaders. Add shader handle, and implement this as with TextureLink's/FontLink's in C++ and C# (rework every internal call).   
+- Scripting: Rework scene and scene manager internal calls.   
+- Scripting: Add ability to get/set Shader/Scene names throw Object.name.   
+- Scripting: Rework the few situations with ForceException/ForceError. Now ForceError truly not raise any exception and not move a stack pointer. Also fix GUIException after OnGuiRender method-event that calls fake exception if inside it already raise some exception.   
+- Editor: Move fonts and and default script demo to Resources/Editor/Shared folder.   
+- Scripting: Improve XML documentation now every work/link are clickable.   
+- Graphics: GL: Add support for sRGB textures, finnaly. Before was only on DX.   
+- Graphics: Font: Now font texture loading with mipmapping.   
+- Graphics: Add support for sRGB pipelines, and framebuffers.   
+- Graphics: GL4: Fix bug that textures that have a 3 channels (usually .jpg) was loaded with broken pixel data, that visually shift image and apply gray effect, because of wrong GL_UNPACK_ALIGNMENT.   
+- Graphics: DX10/11: Replace D3D11_ENCODE_BASIC_FILTER by manually setting filter type, its garanties that exact filter to be set.   
+- Graphics: DX10/11: Texture: Fix bug that PSSetSamplers always set zero slot (binds to 0), it make no other way to apply other samplers on from other textures in array for batch.   
+- Graphics: DX10/11: Shader: Remove initial PSSetSamplers from SetSamplers. It not needed for DX.   
+- Graphics: DX10/11: Rework Renderer2D_Rect.hlsl, now textureSlots[16] and textureSamplers[16] for batch rendering to have ability apply its own sampler for exact texture just like OpenGL does this for us.   
+- Graphics: Renderer2D: Rework batch renderer for quads, and now finally DX10/11 textures filtering actually working, after 3 years of having DX.   
+- Graphics: DX10/11: Rework Renderer2D_UI.hlsl & RendererUI, now textureSlots[16] and textureSamplers[16] for batch rendering to support sampling the same as Renderer2D.   
+- Graphics: DX10/11 & GL4: Texture: Rework Texture creation API, samplers retriving, auto checks, and replace wrong override filter param in spec to auto filter.   
+- Graphics: DX10/11 & ImGui: Fixed bug that sampler always was from font texture, now add callback that find right sampler from our Texture2D. That fix that same sampler when rendering image via ImGui in DX10/11.   
+- DialogSelectImage: Now images there also retriving from ThumbnailCache.   
+- Graphics: Texture: Rework TextureWrappingModes now it called TextureAddressMode (closest to DX/VK naming) and support for all axis U/V/W.   
+- Graphics: DX11/DX10: Fix missing memsets for descriptions, that is not memset sometimes cause a crash.   
+- Graphics: Texture: Make alphaDiscardFactor controllable. Add new input layout to shader as usualy, and make in works on DX/GL. If allows setup texture for specific needs. Dicard alpha on high-res texture and keep more on low-res textures.   
+- AssetManagment: Add alphaDiscardFactor & alphaDiscardType to importer. Also increase texture importer to 1002. Also made few changes with importer versions via ImporterVersionMap.   
+- AssetsPreview: Add 2 new properties to TextureImporter UI: Alpha Discard Factor & Alpha Factor Values.   
+- Graphics: GL4 & ImGui: Rework ImGui GL3x fragment shaders, add discardAlphaValue and function, the make it look exact the same as in Force Renderer. It is a goal for previews.   
+- Graphics: GL4 & ImGui: Move ImGui GL3x shaders, to .ShaderCache.   
+- Graphics: Texture: Add ReadFileInfo function to Textures API, to make ability to read only base info about textues, for importer or other metadata.   
+- AssetManagment: Add ability and choose more frendly-like filtering based on image aspect ratio and then width or height for TextureImporter and Thumbnail Image Cache.   
+- Graphics: DX10: Texture: Fix bug that width/height was not set to the texture specification from image loader.   
+- Graphics: GL4: Texture: Fix bug that magnification filter was set to GL_TEXTURE_MIN_FILTER.   
+- Graphics: GL4 & ImGui: Fix bug that imgui access to texture even if Force was freed at the same frame and 1/99 cause crash.   
+- Graphics: DX11 & ImGui: Fix critical bug that the same as GL when Force free texture and at the same frame ImGui have that image by GUI::Image() wrong texture was passed to DX pipeline and cause a crash.   
+- Graphics: DX10 & ImGui: FIx the same bug as with DX11 in their ImGui Backend pipeline.   
+- Editor: Add EditorTextureManager that find all editor textures in Previews/TBCache/Atlases/Framebuffer/WhiteTexture need for DX11/10/GL callback for ImGuiImplXXX.   
+- PanelInspector: Now mini-preview image in DrawAssetImageSprite renders throw Thumbnail Cache not preload again. Now if asset not loaded/missing instead of white texture, finally NoTexture.png is rendered.   
+- Graphics: DX11/10 & ImGui: Move its pixel/fragment shader to ImGuiRenderer.hlsl.inl in .ShaderCache.   
+- AssetsPreview: Apply command now process not immidiatly but on the next frame fix texture extra glitching.   
+- ...   
+
 ## Force 0.4.0 (Q1, Q2, Q3)   
  - UI: Starting working on Force UI System.   
  - UI: Add first few template components for UI: FrameComponent, FrameRendererComponent, ImageComponent, ButtonComponent, UITransform. The are for now do noting.   
@@ -650,8 +1099,499 @@ Each latest feature in each version reads from bottom -> top.
  - FileSystem: Add Open, CloseFile, and ToRelative, ToFull APIs.   
  - Scripting: Remove reset of old API fom MonoBackend, and separate Assemblies, Domains with Methods, Objects. Add OpenCoreAndProjectAssemblies, CloseCoreAndProjectAssemblies as ultimate functions.   
  - ProjectManagment: Add full support for Unicode projects.   
- -    
- - ...   
+ - AssetManagment: Add new AssetManagerStatus_FailedRootDirNotExist and new error status handler function.   
+ - FileSystem & StringUtils: Add new type of StringUTF8/16/32, functions covertions bettween them, and add WriteFileUTF8/16/32.   
+ - ProjectManagment: Fix bug that when project passed as projectPath not file, Force returns ProjectStatus_ProjectPathNotExistOrIncurrect. Now it works on boths ways.   
+ - ProjectManagment: Remove ProjectLoadState enum because we dont need it anymore for status bar. And fix some bugs with crash on DirectoryIterators where path not exist.   
+ - ProjectManagment: Completly rework project renaming API, now it works perfecly and with Unicode aswell.   
+ - Commands: Now ProcessProjectRename command show text in status bar and show dialog while renaming.   
+ - SideBars: Add new flag to imgui.h see FE_IMGUI_C0005 and used in ImGuiElement. Add ImGuiWindowFlags_NoBringToFrontOnFocus to each side bar. Now we finaly can drag windows on top of this panels. But its ImGui hack and not offical.    
+ - PlatformUtils: Implement new OpenDirectoryBox as for Nave.   
+ - Dialog: Fix bug in DialogOpenProject with GetProjectLastWriteTimeString.   
+ - Dialog: Remove old SetProjectState, and fix issues with some messages during open or create project was displayed not currectly.   
+ - Platform: Add new SwapBuffersTriggerFn to Window, that to block calling SwapBuffers during active dialog.   
+ - Platform: ImGui: Win32: Fix bug with block mouse inputs when ImGuiViewportFlags_NoMouseInputs. Add ImGuiViewportFlags_NoMouseInputs flag to imgui.h, see FE_IMGUI_C0004.   
+ - Platform: ImGui: Implement for all imgui backends (D3D10, D3D11, GL3, GLFW, Win32) that swap buffers situation for dialogs.   
+ - Commands: Add new ProcessSwapBuffersTrigger command witch used when user open and close dialog.   
+ - Dialog: Rework GUIDialog class, replace ActiveDialog (String) to GUIDialog_. Remove uploading advanced and viewport flags from dialog to panel. Dialog & Panel Interface conflict.   
+ - Panel: Finally fully resolve Dialog & Panels platform interface confict. Remove advanced flags. Add FlagsOverrideSetVP witch now solution from Panel side.   
+ - Panel: Finally remove this old shit crap with changing widgets colors if dialog active.   
+ - Console: Rework console UI, and way to select messages in BigView.   
+ - SceneView: Fix bug that can move camera while active dialog.   
+ - Nave: Made some changes in Nave.   
+ - Core: Remove deprecated functions and macroses from Application class, clean up code.   
+ - Core: Add Exception type in Types.h.   
+ - Core: Rename all macroses ForceException_ to FE_EXCEPTION_ to keep the same FE_ style.   
+ - Platform: More FE_PLATFORM macroes to Platform.h, move FE_RENDERER_API macroses to RendererAPI.h.   
+ - Dialog: Fix bug that when user create new project from state already opened and probably closed project it crash because editScene not sets to FE_NULLPTR.   
+ - Force: Add missing SolutionItems.lua.   
+ - Platform: Win32: Remove from DialogBoxWithProgress::ShowI restore focus to main window. And this fix that dialog on appearance not lose focus.   
+ - MenuBar: Add Have a problem button on top of menu bar.   
+ - Editor: Add new TreeNode widget that fix bug that one tree node opened and on another and vise-versa.   
+ - Editor: Fix bug that tooltips on tables can be displayed outside it window.   
+ - Editor: Starting completly redo widgets in term of ID. Because calling NextID() on them was actual problem that widgets or scroll regions can glich or moves when press on widget or tree node or expand table with widgets.   
+ - Editor: Fixed Image(), SelectableWithoutText(), SelectableImageButtonDoubleText(), Selectable(), Combo() with stack id conflict.   
+ - Editor: Fixed rest of widgets with IDStack collision finally! And completly remove NextID() API for good.   
+ - ProjectManagment: Implement RemoveScriptProject() before load new project to rescan script project and link all .cs files in they location.   
+ - ColorEditor: Fixed bug with glitching presets table.   
+ - Commands: Add RecordCommand as public API.   
+ - MonoBuildManager: Add MonoBuildFlags and more options to build script project.   
+ - AssetsBrowser: Fixed bug that when some .cs script assets moves in not rebuild script engine.   
+ - Preferences: Add RebuildScriptIfChanges option.   
+ - AssetsDatabase: Fix bug that when file deletes, move, copies, renames database was not refresh and allows to operate to unexising assets.   
+ - AssetsCommands: When .cs file move we need to delete .csproj and generate it again via GenerateScriptProject() or DeleteScriptProject() + UpdateScriptProject().   
+ - Preferences: Fix bug that HideAssetExstensionFile was not serializeble.   
+ - AssetsBrowser: Implement command when move asset to the same directoy, to allow redraw frame before message box if error.   
+ - AssetsBrowser: Finally fixed table content view, now it shows normal table with header, and fix bugs with dragging.   
+ - AssetsBrowser: Fixed navigation in browser Few changes mixed in prev commit.   
+ - AssetsBrowser: Implement block deselection from blank space when press on and select thumbnail from list entry view, opening blank popup from it.   
+ - AssetsPreview & AssetsBrowser: Implement preview selection of multiple assets.   
+ - FileSystem: Add another version CopyFile2 witch copy exising file into new file.   
+ - AssetManagment: Improve handleling internal AssetManager errors, that was previously not localizable now it is.   
+ - Audio: Fixed bug that FindAllPlayingClips was not currect retrived it. Add new FindAllPlayingClipsGameObjects, now in AudioPlayback in StatusBar show object name from witch clip was played,    
+ - AssetManagment: Fixed CreateAsset in AssetManager that was not import asset to database, and was modified original asset if WriteToExt was passed.   
+ - AssetManagment: Fix pasing asset (MoveAsset). I seems like import original asset but not deleted and create new one. And fix copying assets to that same directory because to WriteExtFile we pass the same asset. Also now almost all behaviour was replaced to CreateAsset for (Copy operation).   
+ - Commands: Add new versions of CutAssetBuffer, and CopyAssetBuffer.   
+ - Commands: Add SelectAssetInDatabase, SelectAssetsInDatabase and SelectAllAssetsInDatabase commands.   
+ - AssetsDatabase: Improve UI, and add key events, mouse scroll events to scroll via Ctrl+MouseWheel.   
+ - Editor: Fixed SelectableImageButtonDoubleText, add ID to it, because it complex widget.   
+ - AssetManagment: Fixed some dialog incurrect errors messages with move asset to the same directory.   
+ - AssetsBrowser: Add scrolling content view using Ctrl+MouseWheel.   
+ - AssetsBrowser: Fixed bug that user can start drag asset by clicking on table or some widget and move mouse to content.   
+ - AssetsBrowser: Improve Hirerarhy Tree, and fix bugs that commands on tree context menu not even worked, like Copy, Cut, etc.   
+ - AssetsBrowser: Fix bug when renaming and click outside window it renames asset (aka move) asset to executable directory. Fix InputBox navigation crash, now when we in InputBox all inputs from NavKeys are blocked.   
+ - AssetsBrowser: Fixed bug that we can deselect asset in context popups.   
+ - AssetsBrowser: Fixed bug that we cannot select next asset using Ctrl+SelectAsset.   
+ - AssetsBrowser: Rename all DrawThumbnailXXX to DrawEntryXXX drawables and OnThumbnail to OnEntryXXX events.   
+ - AssetsBrowser & AssetManagment: Implement new FileSystem FindAvaliablePath function that find new name for creation asset or renaming it without bugs.   
+ - AssetsBrowser: Implement new List Content View. Now browser has: Thumbnail, List, Table views. Improve UI in edit boxes, and fix bunch of little bugs.   
+ - Scripting: Now build script allowed when in project no CsScriptComponent. Because we need anyways rebuild script, update it linked path even if CsScriptComponent is not used.   
+ - Graphics: Fixed EditorCameraSettings initial wrong pitch, yaw values.   
+ - Gizmos: Fixed bug that can use gizmo from another scene view.   
+ - Toolbars: Bug that cannot open second popup drop down.   
+ - Graphics: Fixed bug that can use pan tool from another scene view.   
+ - Scripting: Fixed bug that user can create or rename script witch contains number. C# is not allow classes have a number first.   
+ - SceneManagment: Fixed bug that key events on scene panel can work when hover Game Preview.   
+ - Platform: Win32: Almost fixed bug when changing WM_SETTINGCHANGE it creates a deadlock because command called on dialog window from main thread.   
+ - PanelScene: Restore GamePreview. Now GamePreview shows only when select any camera object. Also GamePreview perfectly works with Multi-View.   
+ - Preferences: Fixed bug that editor camera background changes only on engine restart. Now it changes immidiatlly.   
+ - Editor: Add rounded ImageButton and ImageTreeNode with support selection by navigation.   
+ - Explorer: Starting completly redo explorer UI and logic but at the same time staying the same concept.   
+ - Explorer: Remove old stupid Sort API, now all sorting happens directly by std::sort.   
+ - Explorer: Restore SearchFilter and fix bugs with Rename and NewObject popups.   
+ - SceneManagment: Add new activeInEditor variable to EditorComponent. In Scene add new functions like: HasActiveInScene/Editor. Now objects will be rendered if activeInEditor is not set.   
+ - Explorer: Add new icons for Prefab, GameObject, Scene, and new visibility icons for explorer node.   
+ - Explorer: Rework UI for explorer. Add new visibility column to hide/show objects in editor. In general improve explorer, now it looks a lot nicer.   
+ - AssetsBrowser: Fixed bug that when hasExtFiles not set in settings by select all assets it also peek .ext files.   
+ - Inspector: Fixed issue with activeInScene checkbox, beeing hidden when value is false.   
+ - Explorer: Add new unactive in scene icon, and fixed other gameobject/prefab icons.   
+ - AssetManagment: Fixed bug with CreateAsset witch not allocatd new imported data if exising asset not set.   
+ - SceneManagment: Refact CreatePrefab and CreatePreset, and add new CreateScene asset functions.   
+ - SceneView: Fixed bug that user can use key movement when other panel is focused.   
+ - Explorer: Remove old TreeNode, SelectedGameObjects API.   
+ - Explorer: Implement drag drop GameObjects from node to browser, and Scene from scene node to create new asset.   
+ - AssetsBrowser: Fixed crash with RefreshAssetsEntries.   
+ - AssetManagment: Fixed bug that command ProcessAssets process even if project was not opened.   
+ - Commands: Add new RenameObjectExplorer command.   
+ - Explorer: Add ability to rename object in Explorer, by double click on object node or by pressing Ctrl+R or in context menu command.   
+ - AssetsBrowser: Fixed bug that when drag scene in browser in render strange hightlight line.   
+ - Inspector: Remove AllowItemOverlapped flag from DrawComponent TreeNode.   
+ - Explorer: Fixed bug with deselection, it was deselect only one or some objects but not all.   
+ - Commands: Add SelectGameObjects, SelectGameObject, DeselectGameObject, DeselectGameObjects commands.   
+ - Explorer: Improve object selection, deselection, implement range selection for objects by Shift+Click.   
+ - AssetsBrowser: Fix multiple bugs in browser, with preview aswell. Add oporunity to open edit box by clicking 0.5 sec on any selected entry.   
+ - AssetManagment: Fixed bug that when open prefab it also open audio file. Because of missing 'break'.   
+ - Commands: Replace old Command_DeleteObject by Command_RemoveGameObject/s.   
+ - Explorer: Integrate new Command_RemoveGameObject to explorer context menu, shurt-cut, MenuBar.   
+ - GlobalSearch: Fixed bug with identical ids, and implment new remove game object command there.   
+ - Inspector: Remove Delete button from Object Properties and add new info there.   
+ - Commands: Add new DuplicateGameObject/s and remove old DuplicateObject.   
+ - Explorer: Integrate new DuplicateGameObject command to Explorer, SceneView, and MenuBar.   
+ - MenuBar: Separate object edit commands, and create new Gameplay tab.   
+ - Explorer: Rework GameObjectContextMenuPopup, now it can add prefabs, and remove prefabs in specific Create menu, also implement creation/deletion prefabs in multiselection context.   
+ - ToolbarGameplay: Fix bug that when in Pause mode go to MaximizeRuntime in not hide Scene Panel views.   
+ - Editor: Misc additions with tables. Update logo to 2024.   
+ - Commands: Add Copy/Cut/CancelCutted/Copied commands as fully reworked now.   
+ - GlobalSearch: Add new object commands to global search.   
+ - Explorer: Remove old game object commands, itegreate new one. Now CopyGameObjectBuffer, CutGameObjectBuffer, PasteGameObjectBuffer work perfectly and also with multiselection and between scenes.   
+ - SceneManagment: Add few missing function to Scene, and GameObject classes for editor.   
+ - Commands: Add support for saving specified scene in Command_SaveScene and Command_SaveSceneAs.   
+ - Commands: Add Command_MoveGameObject and Command_MoveGameObjects.   
+ - Explorer: Integrate new move object commands, and full remove old API. Explorer for now is done.   
+ - Commands: Add Command_CancelCopiedAsset.   
+ - Explorer: Add moving object from/to scene by dragging object and dropping on another object in other scene.   
+ - Scene: Journey of recovering in-engine runtime begins. Seperate Physics and Particles events from OnUpdateRuntime(), by creating speific functions, including its runtime versions.   
+ - Physics2D: Add new Physics2DEngineFlags. Main reason for that when copy objects not destroy original object physical fixtures from witch we copy from.   
+ - SceneManagment: Create new Rigidbody 2D if we not in edit mode, on copy Rigidbody2D, Box/Circle/ChainColider components.   
+ - SceneManagment: Add new parameters to SceneRendererSpecification with rendering visual effects (colliders, selection object outlines, etc).   
+ - Graphics: ParticleSystem: Fix bug that during particles Play it not reset (aka create new amout of particles).   
+ - SceneManagment: Add new property playInEditor to ParticleSystem component. That will allows us simulate particles in edit mode.   
+ - Audio: Fixed bug with infinite loop in AudioEngine::Find().   
+ - Editor: UI: Add new events to GUIPanel: OnUpdateParticles, OnUpdatePhysics.   
+ - Edtior: UI: Now when user in play mode, and open dialog, runtime is paused, and when closed it resumes.   
+ - PanelGame: Recreate Game Panel, seperate runtime events. fixed physics for simulate mode, and play mode, fix bugs with resizing viewports.   
+ - PanelScene: Integrate Scene panel with Game panel, fixed preview game viewport rendering. Make process physics for runtime and simulation in OnUpdatePhysics, and make process particles in OnUpdateParticles, and fix tons of little bugs.    
+ - SceneView: Fixed bug with mouse and key inputs during hovered, focused state and when Game Panel block input to Scene Panel when was open.   
+ - Scripting: Fixed bug that when script project was failed to build it still goes to play mode, when PlayOnBuild is set in Console.   
+ - EditorPlayer: Send last simulate/runtime scene main camera aspect ratio to edit scene to not have outdated ratio in Game View.   
+ - EditorPlayer: Fix a log of bugs with switching from edit to play/simualte state. Espescially with reselecting objects, and wrong setting states.   
+ - Commands: Replace all SceneManager::FindMainOrTargetPlayScene to EditorPlayer::GetTargetMainOrPlayScene to allow manipulate objects, in simualte scene.   
+ - Explorer & MenuBar: Now objects and components can be created/deleted/manipulated in all edit, runtime and simulate scenes without crashes. Thanks to Commands API.   
+ - Explorer: Fixed bug that explorer was not initialy load sort type from settings.   
+ - Explorer: Add new Create menu to SceneSettings. And now user cannot use other commands exclude this in runtime/simulate from SceneSettings.   
+ - Inspector: Now users can use all Physics 2D components in simulate mode.   
+ - Inspector: Add new PlayInEditor property for ParticleSystem Component UI..   
+ - Inspector: Add way to drag component from component node to browser to create preset.   
+ - Editor: Fixed bug that some message no Main Camera was printed wrong for simulate and play modes.   
+ - Editor: Improve DialogSelectPreset and DialogNewAsset.   
+ - Physics2D: Fixed bug that during creation new Rigidbody2D in sometimes can be minimum nagative float value in component.   
+ - Editor: In runtime with Shift+F6 set only pause state but never resume it.   
+ - PanelGame: Implement full Game Maximize Runtime view. I.e now this view is not panel, and content of Game render into main dockspace viewport.   
+ - Gizmos: Fixed very old bug since <0.3, when use gizmo and change it tool, Force instantlly crashed.   
+ - Editor: UI: Now dialogs cannot be opened in Maximize Runtime view.   
+ - Commands: Add PlayModeSettings and GameViewSettings commands.   
+ - Toolbars: Add GameView Toolbar.   
+ - PanelGame: Add key codes for Game panel. Add In Game Focus mode, that blocks all inputs from editor and process only from Game.   
+ - Editor: Remove more old code from EditorElement. Add new event OnKeyPressedInGame to exit from In Game Mode.   
+ - Graphics: ParticleSystem: Fixed bug that only one particle system emit particles at the same time.   
+ - Commands: Fixed bug that create new camera object additionaly tryies to add  AudioListener to Scene if theare already has one.   
+ - Commands: Fixed bug that allow to show panels in Maximize Runtime mode.   
+ - Explorer: Rework EmptyExplorer UI, now when no scene is opened 2 buttons renders on UpBar.   
+ - Explorer: Fixed bug when scene is not active we still can see objects and interact with it.   
+ - PanelScene: Fixed issue that when scene is not active sometimes we still can see scene view.   
+ - PanelGame: Fixed bug that Game View was not resized after each new scene or project opening.   
+ - AssetsBrowser: Add new UI when project is not opened. Now is like AssetsDatabase and GlobalSearch.   
+ - Platform: Win32 + DX11/DX10: IO: Mouse double click not responding when DClick in Dialog. Not fixed, for now replace to ImGui::IsMouseDoubleClick.   
+ - Explorer: Add border for Empty explorer view.   
+ - Console: Add new LoggerFlags to specifiy how we wanna log to console. Also fix some bugs there.   
+ - Scripting: Fixed problem that wrong file was compiled for InternalCallsEditor so not print messages to Console from script.   
+ - EditorPlayer: Fixed bug that when exception catch in C# runtime it was not Stop runtime scene.   
+ - Scripting: Now when script file modified in Force throw Script Editor in now saved.   
+ - Scripting: Fixed old bug from 0.3.10 that script fields when recompiles and witch displayed in inspector (its data) was overrided by value of that field from script class.   
+ - Console: Fixed issue that to log message was add dot where already exist ? mark or ! mark.   
+ - AssetsBrowser: Now assets previews on click only where not object are selected. Because othewise its annoying where attaching assets to object it always preview asset and you need again select object.   
+ - SceneManagment: Now default camera that creates with scene its name is now localized.   
+ - AssetsBrowser: Now preview from browser preview asset only in inspector, but command ShowAssetPreview shows only in AssetsPreview panel.   
+ - Scripting: Remove behaviour on preview script that it was loading actualy MonoScript but in preview we need only ReadFile.   
+ - SceneManagment: Fixed bug that preset was not serialize it type, and also even not assign preset to component where dragging.   
+ - Scripting: Fixed bug that OnValidate and InstantiatePrefabs called even if script is not executable.   
+ - Scripting: Fixed bug with prefab instantiate without AutoInstantiaton flag setted in PrefabAsset.   
+ - Editor: UI: Finally remove this PanelContextable garbage. And improve Inspector tag manager.   
+ - Preferences: Add way to enable/disable specific Debug Panels (only for DevMode).   
+ - Scripting: Fixed bug that when prefab was instantiated before rebuild it prints a fake NullReferenceException.    
+ - Scripting: Localize all MonoInternalErrors. But localization exceptions itself and Force custom messages within Force.CSharp.Core.dll still need to do.   
+ - Scripting: Fixed bug that modifying TransformComponent it not send data to Mono, and propbaby with some other components.   
+ - Scripting: Implement support sending TransformComponent when modifying Gizmos.   
+ - Scripting & Gizmos: Fixed bug when modify object using Rect tool is not send to Mono, and Rect bound was wrong window size.   
+ - Scripting: Finally make Mono linked with source core. More info In GETTING_STARTED.txt.   
+ - Scripting: Scripting Update v4.0. Rework how MonoBackend handles Domains and Assemblies.   
+ - Scripting: Move bunch of code from MonoBuildManager to Scene OnRuntimeReloadAssemblies_.   
+ - Scripting: Rework MonoBuildManager. And fixed MAJOR bug that cause crash in Mono after recompiling scripts in runtime.   
+ - Scripting & Gizmos & Physics2D: Fix but that in play mode physics with gizmos not properly updates to Mono.   
+ - Scripting: Fixed bug when GameObject.DestroyGameObject method called from C# runtime, it was not clear Explorer's context and buffers.   
+ - Scripting: Fixed bug that object copied to ENTT with new UUID but to Mono was passed the same object from witch copy was made.   
+ - AssetsBrowser: Fixed bug that Ctrl+Click was not working.   
+ - Explorer: Fixed bug that while rename object throw explorer in runtime it was not send editor component to Mono.   
+ - Physics2D: Fixed physics bodies glitch when was low frame rate (e.g window moving, resizing, holding on NC area).   
+ - Scripting: Fixed double calling OnValidate() when game starts. OnValidate() should called only after recompiling scripts. In case of OnStart() we already has OnCreate method.   
+ - Inspector: Fixed bug that Transform UI buttons was not work for physics objects. There are actually deeper problem, still fully not done with it.   
+ - Gizmos: Fixed bug that colors from preferences not modifying colors in gizmos.   
+ - Gizmos: Complelty get rid of ImGuizmo. Now gizmo tools was rewritten and part of Force Editor API.   
+ - Gizmos: Add Universal gizmo tool.   
+ - GIzmos: Fixed bug the Rect tool and Universal scale was not sending to Mono.   
+ - Gizmos: Now when using Translate and Rotate tool mouse jumping from end of the screen just like using ALT+CameraMove.   
+ - Preferences: Add new option Always Show Transform Z Axis.   
+ - PanelScene: Fixed bug that all objects was deselecting when Ctrl+Click is beeing used.   
+ - SceneManagment: Add OnSceneModified event.   
+ - GIzmos: Implement new feature that now multiple selected objects can be perfectly transformed by gizmo. Some visual issues exist there, leave for later revisit.   
+ - PanelScene: Add cursor move icon when pan tool is using.   
+ - Graphics: Fixed bug that editor camera in OnUpdate was not getting right mouse pos that lead to not working pan and move camera in SceneView.   
+ - PanelScene: Add cursor icon when using ALT+Move.   
+ - PanelScene: Fixed bug that when pressed ALT ImGui was focused to that panel and block ALT input.   
+ - PanelScene: Add cursor icon when bound tool is over.   
+ - Commands: Starting working on new Undo Redo system. Barely implement first comamnd CommandUR_Move.   
+ - Commands: FIx some Undo Redo UI and remove a lot of old code.   
+ - Commands: Add new UI form UndoRedo buttons + addtional information and fix redo in history.   
+ - Commands: Fix bug for CommandUR_Move when scene unloading via AudioReloading that scene became outdated and cannot make Redo.    
+ - Commands: With pain not goona lie, but now Move command records pefreclty from UI via button, dragging value or editing in input box (last still kinda raw).   
+ - Commands: Implement save point for scene modified state for Undo Redo.   
+ - Explorer: Fix UI bug that can set main scene when already scene is main.   
+ - UndoRedoHistory: Add UI that shows how many action will be undo or redo.   
+ - Commands: Implement save scene point for multiple scene (in some cases it still works kinda godgy but its just mark).   
+ - Commands: UR: Implement Rotate and Scale commands.   
+ - Gizmos: Temprary fix bug that when scale on all axis is absolute 0, it not render any gizmos only small rotation circle.   
+ - Editor: Change scale icon because it not make much difference from translate icon.   
+ - Commands: UR: Implement ChangingBounds, SetTranslation, SetRotation, SetScale commands. Now commands Move, Rotate, Scale records when using gizmos.   
+ - Commands: UR: Prepare for commands MRS_Multiple and create master super template function that works with MRS, SetTRS like one function.   
+ - Gizmos: Fixed bug that when moving objects from other gizmos context it also add addition undos from other gizmo contexts.   
+ - Preferences: Add new option SaveSceneOnPlay, and now user cannot save edit scene if it in play/simulate mode.   
+ - AssetManagment: Fixed bug that when to ImportAsset/ImportAssets/ImportAssetFromOsExplorer pass empty path it imports new empty '.ext' asset in the excecutable directory of the editor.   
+ - Gizmos: Fixed 'variabale' currupt current stack in Debug mode. I dont know why it perfectly works in Release before.   
+ - Audio: Rework audio reloading process. Now during reloading, scenes anymore not fully reloads it just reloads its AudioSource components. And impement dynamic replay clips if it was playing. And fix bug that sources was not free during reloading.   
+ - Audio: Fix bug that when audio reloads and was paused it play streamer anyway.   
+ - SceneManagment: Add createdFromEditMode and rename runtime to createdFromScript in EditorComponent.   
+ - Commands: UR: Improve Undo-Redo system, now actions made in runtime removes from lists, but at the same time if we made changes in edit mode then in play mode use undo-redo it applies to play and edit scene aswell.   
+ - Animation: Add way to focus camera to specific point not just GameObject.   
+ - Graphics: RenderEngine2D: Add new API for rendering points using rectangles or circles as way to displaying.   
+ - SceneRenderer: Add algorithm that allows to us render selection around multiple objects with perfect bounds and central point.   
+ - Gizmos: Add way to visualize selection of multiple objects and transform it toghter where gizmo is a center. Rotation and scale still transform around it local center of each object.   
+ - Commands: UR: Add commands Move/Rotate/Scale_Multiple to Undo-Redo actions of multiple objects. Now it works only in Edit Mode.   
+ - Commands: UR: Fixed bug that Move/Scale/Rotate multiple not work in Play/Simulate Mode.   
+ - Math: Expand math library. Add AABB, Rect, Ray classes for Ray picking and selection.   
+ - Scripting: Add Ray.cs and update AABB.cs.   
+ - Math: Add Plane ad Frustum as new way to to visualize camera frustum planes.   
+ - Graphics: Update Transform Component provide funtion to retrive AABB. Update camera and add GetScreenRay() to Camera.   
+ - PanelScene: Start working on Selection objects tool in Scene View.   
+ - PanelScene: Implement selection tool for orthographic camera (2D view) for 3D view still not fully done.   
+ - Platform: Add new type of mouse cursors.   
+ - Gizmos: Fixed bug that during move/rotate/scale multiple commands Undo sends even if transform is not changed (e.g only on click).    
+ - PanelScene & EditorCamera: Improve a lot camera controlls in 2D view, add Pan in 2D view, add more cursors telling what we are using via camera.   
+ - EditorCamera: Finally add Free Moving camera (BETA) in 3D view (act like FPS camera) and at the same time kepping focal point zooming/rotating mode.   
+ - EditorCamera: Improve camera free move controlls with Rotate, Zooming.   
+ - Explorer: Add Focus button to object context menu.   
+ - EditorCamera: Finally fully implement Editor Camera v2.0.   
+ - SceneView: Remove 'Block ALT' button because it make not sence.   
+ - Yaml: Localize Yaml internal errors from engine and editor side.   
+ - PanelScene: Finish selection tool. For 2D work perfect for 3D may change it in future.   
+ - Graphics: RenderEngine2D: Add new API for rendering AABB's using lines.   
+ - SceneRenderer: Now in 3D view selection renders as AABB's with small Z scale, not just flat rect.   
+ - Math: Add new Transform class. Witch is extended interface of TransformComponent. Soon this Transform migrate to component.   
+ - SceneManagment: Integrate new Transform class to TransformComponent.   
+ - Graphics: RenderEngine2D: Refact some code, rename RenderRectangle to RenderRect and RenderRectTextured, RenderRectLined, RenderCircleThin.   
+ - Graphics: RenderEngine: Integrate 2D API to standalone renderer.   
+ - Graphics: RenderEngine: Add way to render frustum view pyramid.   
+ - SceneRenderer: Integrate new Frustum rendering on selected camera and refact scene camera.   
+ - Examples: Update the example project to support new Transform.   
+ - SceneRenderer: Completly refact scene renderer, add oportunity to render AABB's on multiple selected objects in 3D view.   
+ - Graphics: RenderEngine2D: Expand renderer and add more functionality.  
+ - Graphics: RenderEngine2D: Provide interface for thick lines with rects, try to render but failed (works in 2D) but in 3D it even badly that normal lines.   
+ - Graphics: Implement Mesh Generator for custom predefined meshes.   
+ - Graphics: DX11: Fixed not working Alpha Blending. In Future need to expand that concept and implemet some kinda of Pipeline interface.   
+ - Graphics: GL: Add glBlendEquation(GL_FUNC_ADD) to EnableAlphaBlending().   
+ - Graphics: GL: Fixed warning when red integer buffer was not use objectID (second attachment) every frame.   
+ - Graphics: RenderEngine: Implement new grid rendereing system. Works only in OpenGL, in DirectX too but with strange glitch still working on that.   
+ - ScenePanel: Implement new inifinity 2D grid.   
+ - Graphics: Remove UniformBufferStruct API. Now Uniform buffers upload much easly.   
+ - Graphics: Add Mesh2D, Mesh2DUI and remork RenderEngine2D, RenderEngineUI   
+ - Graphics: Add raw way to render not batched cubes. Expose cube to mesh renderer for now.   
+ - Graphics: GL: Fixed bug that texture during creation was bind but never was unbind witch cause it attach to differ shader with not even use it, but has a sampler.   
+ - Graphics: Continue improving renderer system to fix DX Grid bug. Start working on new Pipeline System.   
+ - Graphics: Rename all RenderEngine's to Renderers. Add RendererManager. Now 2D and 3D primitives can be render in different order.   
+ - Examples: Add new AdvancedElement to show more advanced features with rendering as example.   
+ - Graphics: Mark 50% of functions in RenderCmd as deprecated, because it already replaced by Pipeline.   
+ - Graphics: GL: Remove wrong index buffer binding. Witch its wrong and does nothing.   
+ - Graphics: Remove VertexArray from abstract interface. Now it only create on OpenGL with each VertexBuffer.   
+ - Graphics: Rename Common.h to PipelineState.h .   
+ - Graphics: Fix Logo Renderer that was missing Pipeline and not renders on DX11/DX10.   
+ - Graphics: DX10: Implement pipeline system for DirectX 10.   
+ - Graphics: Add LineRenderer component. Its serializeble, have UI in inspector and new icons.   
+ - Commands: Add commads for creating LineRenderer, Cube object, and opporunity to create cubes from UI (Cubes is now only fun not final implementation).   
+ - Scripting: Add more error handlers during MonoBackend::NewInstnace and MonoBackend::GetClass, because it lead to crash, now reports to editor console.   
+ - Scripting: Add LineRenderer.cs and rename RenderEngine2D.cs to Renderer2D.cs.   
+ - Localization: Make few changes in LanguageManager and Language.   
+ - Scripting: Expose localization module to CSharp. Add Language.cs and LanguageManager.cs.   
+ - Scripting: Localize all exceptions in Force.CSharp.Core.dll module using new LanguageManager.cs.   
+ - Example: Add example to AdvancedElement to use Force Scene system to render objects.   
+ - Scripting: Move Templates to Scripting/Templates.   
+ - Scripting: Move MonoInternalErrors to MonoErrors.h.   
+ - Scripting: Extend MonoBackend API's. Add DebugLog/DebugStop, GetConstructor/Default, GetClass. Now almost all errors happens in Mono prints to ForceEditor console as localized strings.   
+ - Scripting: Rename MonoBackend to MonoEngine and ScriptingEngine to ScriptEngine.   
+ - Scripting: Replace MonoObjectWrapper with new nice API as Allocator, Sender and Reciver, also merge component sender/reciver to object reciver/sender.   
+ - Scripting: Move script component registry to MonoRegistry.h.   
+ - Scripting: Add new AABB2D.cs for 2D physics and old AABB.cs now is representation of new Math.AABB class. Add Intersection.cs and modify some colliders.   
+ - Scripting: Asset Manager system to C#. Add Asset.cs and AssetManager.cs.   
+ - AssetManagment: Implement new Resources API.   
+ - Scripting: Expose Resources API to C#. Add Resources.cs and TextFile.cs. Now users can modify textures from C# code at runtime. Also fix bugs with textures and improve TextureManager.   
+ - Scripting: Revert some last changes because new MonoAllocator or Sender or Reciver cause crash at runtime at some point.  
+ - Scripting: Start to recovery Allocator, Sender and Reciver.   
+ - Scripting: Expand Window.cs, add new functionlity, now user can change size and position of main window.   
+ - Scripting: Now user cannot create scripts via new MonoScript().   
+ - Scripting: Recover Vectors, Matrices, Fields in Allocator, Sender, Reciver.   
+ - Scripting: Finally find a bug, problem was in MonoAllocator::NewAsset i pass C++ string directly to C# field without MonoEngine::NewString() witch currupt memory layout of managed object and GC cannot delete or scan.   
+ - Scripting: Restore Resources API to C#. Add missing localization to Scene Manager module. Rename TextureDimension.cs to TextureType.cs.   
+ - Scripting: Finally Allocator, Reciver, Sender is stable API, and pretty good.   
+ - Scripting: Add MonoGC as wrapper over mono_gc.   
+ - Scripting: Add way to throw Force.ForceException from Force Engine.   
+ - Scripting: Add way to use Input keys and buttons as strings with new API.   
+ - Scripting: FIx AABB and AABB2D wrong intersection results. Add method to retrive AABB's from Transform.   
+ - Scripting: Add reciver for Scene. Add IsActiveInEditor, SetActiveInEditor for managed GameObject.   
+ - Scripting: Fixed bug that AudioClip was not playing from script.   
+ - Scripting: Add way to log all exceptions after end of runtime. Before exceptions was logged when they occurs. So if exception is reason to stop runtime it should log last after all frame errors.   
+ - Scripting: Implement new Properties API for accessing C# properties the same as normal fields.   
+ - Scripting: Make GameObject.scene and Component.gameObject properties, now its cannot be modified only retrived.   
+ - Scripting: Add bunch of new API to AudioClip and AudioSource. Now AudioClip loaded by Resources API.   
+ - Audio: Try to implement reloading AudioDevice at runtime but still editor audios removed completly. Soon will rework this.   
+ - Scripting: Implement AudioEngine for C#.   
+ - Scripting: Add new Application.cs class and expose some properties from Force.Core.Application.   
+ - Scripting: Add Rect.cs class.   
+ - Scripting: Update AABB and AABB2D now its has a properties instead of fields.   
+ - Scripting: Add missing comments to Vector2, Vector2i, Vector3, Vector3i, Vector4.   
+ - Scripting: Fixed bug that actually i've wrong implement set method for properties and it cause StackOverflow.   
+ - Scripting: Add AutoValidate attribute witch allows calls OnStart() after OnValidate() to not call content it explictly.   
+ - Scripting: Start big scripting marshiling rework. So in future all Vectors, Matrices, Quat's, will be a struct instead of class for better perfomance. Start with Vector2. Rename Vector2 to Vector2f. Add more math functionality to Vector2f, Vector2i.   
+ - Scripting: Implement new Vector3f and Vector3i.   
+ - Scripting: Add new Vector4f struct.   
+ - Scripting: Add new Color and Color32 struct.   
+ - Scripting: Add Quaternion.cs struct. And expose a lot of glm API to there.   
+ - Scripting: Add new Matrix3f struct. Remove unused operators such div, sub, add, because for matrices we dont use then ever.   
+ - Scripting: Add new Matrix4f struct. Expose hole a bunch of API with matrices.   
+ - Scripting: Add CameraOrthoBounds.cs and CameraPerspectiveBounds.cs.   
+ - Scripting: Restore old MonoEngine::SetCaller functionality for Renderer2D.cs now it works not throw static field but throw static properties.   
+ - Math: Add new Color and Color32 types to match C# structs. Previously it was Vector4f and UVector4i8.   
+ - Scripting: Add new Rotate/Translate/ScaleThis methods for Matrix4f because prev solution was not work on methods witch shoud manipulate _this matrix.   
+ - SceneManagment: Fix bug that script witch was not processInRuntime still creates its instance and set fields witch it should't.   
+ - Scripting: Made perfect marshaling new structs for all field case. And also add Vector2i, Vector3i, Quaternion, Matrix3f, Matrix4f as displayable field types.   
+ - Inspector: Add new UI for Quaternion, Vector3i, Vector2i, Matrix3f, Matrix4f in C# script component.   
+ - SceneManagment: Update SceneRenderer, because runtime camera was not set the modifed view matrix.   
+ - Scripting: Update Renderer.cs to experimental API and add to Camera.cs new functionality and fix bugs.   
+ - Scripting & Math: Map Rect.cs as struct to size of C++ Rect.h. Add more methods to render in Renderer2D.cs.   
+ - Scripting & Math: Make a Ray.cs struct and map to C++ Ray.h.   
+ - Scripting: Make AABB, AABB2D, Ray as structs. Also it modify all colliders, transforms where AABB or AABB2D requred and its internal calls.   
+ - Scripting: Expose rendering Ray, and AABB, AABB2D for Renderer2D.cs.   
+ - Scripting: Fix bug that if unsupported fields for serializing, or displaying in inspector was not initialized it print fake NullReferenceException from MonoScript.   
+ - Inspector: Add new UI for Rect, Ray, AABB, AABB2D.   
+ - Inspector: Fixed crash with String script widget, i.e its buffer was not resized for multiline.   
+ - Scripting: Add way to publically retrive access modifiers from fields.   
+ - Inspector: Add way to expand the multipile script string field widget by clicking on it.   
+ - Math: Remove MathTransform.h, recreate glm::ortho, glm::perspective, glm::lookat, glm::frustum with specifying clipping parameters.   
+ - SceneManagment: Rename RuntimeCamera to SceneCamera. Rework the scene camera class and fix bugs with incurrect ortho and perspective creation for DirectX11.   
+ - Scripting: Completly recreate Camera.cs class and Renderer2D.cs. Now instead field Force will use properties + get + set internal calls.   
+ - Editor: GUI: Add DragDouble, DragUint64, DragInt64, InputDouble, InputUint64, InputInt64 widgets.   
+ - PanelScene: Now preview camera renders throw another scene camera.   
+ - PanelGame: Fixed bug that when game collapsed is still resize framebuffer with zero aspect.   
+ - Inspector: Add support for current Uint64, Int64, Double displaying in script field.   
+ - Inspector: Update UI for CameraRendererComponent. Now SceneCamera has near, far, ratio for otrho and perspective projections as one value, and for/size specific for projection types. Now Near cannot be bigger Far, and Far cannot be smaller Near.   
+ - Graphics: DX10/DX11: Fixed crash when sampler is not set it still try to delete it.   
+ - DialogSelectImage: Fixed crash when texture is not valid for displaying in preivew selector.   
+ - SceneRenderer: Now all cameras can be visualize its frustum. And now cameras not render additional selection rect/aabb.   
+ - Scripting: Add TextureFlip.cs and TextureTileEffect.cs enums.   
+ - Scripting: Rework SpriteRenderer to new marshaling system. Add controling dynamic texture data from scripts.   
+ - Inspector: Now textures can be fully dropped, setted, removed from editor at runtime.   
+ - Scripting: Rework CircleRenderer to new marshaling system. Add controling all data from circle renderer.   
+ - Graphics: Renderer2D: Fixed bug or temp test, witch broke set incurrect blending for circles in DX11/DX10.   
+ - Scripting: Rework LineRenderer and MeshRenderer to new marshaling system. Add controling all data from renderers.   
+ - ParticleSystem: Fixed some bugs with particle system, some properties was not worked. Update scene version to 1003.   
+ - Inspector & Scripting: Add new field type Particle and add UI for it in Inspector.   
+ - Scripting: Rework ParticleSystem.cs and Particle.cs to new marshaling system. Add controling all data from renderer.   
+ - Editor: GUI: Add ultimate widgets: WidgetInt/2/3/4, WidgetInt64/Uint64, WidgetFloat2/3/4, WidgetDouble.   
+ - Inspector: Add way to switch between draggers and input widgets by clicking on text column for all draggers.   
+ - Scripting: Rework AudioSource.cs and AudioListener.cs to new marshaling system. Add controling all data.   
+ - Scripting: Replace properties back to fields in Vectors.   
+ - SceneManagment: Change order of executing of updates. Now scripit OnUpdate goes first. For now takes one frame behind because im not finished with Transform component marshaling and removing Recive/Sender API's.    
+ - Physics: Make some changes in physics. Fixed offset debug rendering.   
+ - Scripting: Rework Rigidbody2D.cs, Collider2D.cs, BoxCollider2D.cs, CircleCollider2D.cs, PhysicsShape2D.cs to new marshaling system. Add controling all data.   
+ - Scripting: Rework last component is Transform.cs, Transform2D.cs to new marshaling system.  Add another bunch of internal calls for Transform.   
+ - Scripting: Fixed bug that MonoEngine::SetPropertyString was actuall call SetFieldValue instead of SetPropertyValue.   
+ - Scripting: Rework the EditorPanel.cs, add new funtionality for rendering ulitmate Drag/Input widgets, but for now not tested yet. Add WidgetInt64/UInt64/Double.   
+ - SceneManagment: Add new concept of runtime UUID for scenes, becuase retriveing scenes by index throw C# its really bad itea. Also rework SceneManager.   
+ - Scripting: Update Scene.cs now its has properties instead of field to new Marshaling System. Major update is that now Scenes retirives by its runtimeUUID.   
+ - Scripting: Rework SceneManager.cs, update Load/UnloadScene, GetSceneByIndex/Name/etc, fix error messages.   
+ - Scripting: Rework base Component.cs now tag gets/sets by internal class. Also add new method as TryGetComponent/GetOrAddComponent from GameObject.   
+ - Scripting: Add to GameObject.cs TyrGetComponent, GetOrAddComponent, fix some bugs. Add support for unactivePrefabLinks. Now scene, transform, activeInScene, tag is properties and retrives by using InternalCalls.   
+ - Scripting: Rework base Object.cs class. Now name propertiy implements specifically get/set methods as internal calls for Component type and GameObject type.   
+ - Scripting: Rework Input.cs and Window.cs.   
+ - Scripting: Remove experimental namespace, and replace all at finally stable API. (Vector2f, Vector3f, Matrix4f, etc).   
+ - Scripting: Finally remove Reciver, Sender API's and what left is little MonoAllocator.   
+ - Scripting: Add RayCast2DInput, RayCast2DOutput Fields, add UI for it in inspector. Fixed bug witch boolean fields was not currect deserialized.   
+ - Physics: Add support for fixed timestep, and un-fixed, switch can be done in Project Settings.   
+ - Editor: Remove unused debug panels.   
+ - Scripting: Add Rotate/MoveAndRotate for Rigidbody2D.cs.   
+ - Scripting & SceneManagment: Add controling SpriteRenderer's tiling factor as on X and Y axis sepertly.   
+ - Scripting: Add GetPlayScene to SceneManager.cs.   
+ - Explorer: Fixed uncurrect UI that in play mode we can move object to another not play scene, can select objects, can see selected obejcts from not play scene, and gizmos not working on second play scene when we switch to.   
+ - SceneManagment: Add callback to resize viewport on OnRuntimeStart each time, to keep it the same as PanelGame in editor.   
+ - Scripting: Now when add MonoScript via AddComponent in script its also find in read asset, and displays in Inspector.   
+ - Scripting: Rework the marshaling on the component side. Remove components array in GameObject.cs, rework Object.cs.   
+ - Scripting: Components Marshaling: Implement new Internal Calls for GameObject, Object, MonoScript, Component. Rework Editor's SceneCommands. Now cause crash during reloading with init scripts. Possible because of MonoScript GC handle missing somewhere. Waiting final marshaling with MonoGameObjects and MonoScripts.   
+ - Scripting: Rework that Instantiation and Freeing of MonoScript, now its have its own gc handle per each initial instance.   
+ - Scripting; Remove the MonoScripts and MonoGameObjects API from Scene. Now each GameObject retrive its own new instance. No more this ungly copying to mono and gc handles.   
+ - Scripting: Remove the MonoRegistry no more allocating components to GameObject array.   
+ - Scripting: Rework the few Internal Calls to new Marahsling System, retriving managed GameObject's never was so easly.   
+ - Scripting: Fixed crash to switching on the different scene. Add special handling copying for CSharpScriptComponent's.   
+ - Scripting: Finally fully finish the Scripting Update V5 (New Marshaling Update). Now just need to test few Internal Calls.   
+ - SceneManagment: Finnaly rename GameObjectA to GameObject, and GameObject to GameObjectT.   
+ - Scripting & SceneManagment: Now when user switch scenes, or every OnRuntimeStop all editor objects will be deselected from Explorer.   
+ - Scripting: Add missing execution of OnDestroy method-event, when user removes script component.   
+ - Scripting: Rework some MonoScript and NativeScript method-events execution.   
+ - Scripting: Implement new workable way to load scripts via script code by GameObject.AddComponent().   
+ - Scripting: Rework how scene handles script components in its registries. Now scripts can be removed, replaced, added, safly do not modify the edit scene at all and not cause the crashes.   
+ - Scripting & AssetManager: Rework the way of assigning script asset component. Now it properly load new class, free prev instance, class and instantiate script instance if we it play mode.   
+ - Inspector: Add way to drag script file and attach to game object without add component + drag asset to field.   
+ - Inspector & DialogNewAsset: Add way to create new script and right away attach it to GameObject.   
+ - Editor: Now prefabs, presets can be easialy created in runtime.   
+ - SceneManagment: Clean up the SceneManager. Add StartScene, UnloadScene move logic from mono version.   
+ - Scripting: Rename SetSceneAsTargetForGameObjects to SetTargetSceneForGameObjects.   
+ - Commands: Add new Command_StartScene.   
+ - Explorer: Add way to Start Scene at runtime from editor via new super button.   
+ - SceneManagment & Scripting: Reimplement LoadScene and UnloadScene functions, moves a lot of code from internal calls to SceneManager itself. Add SceneManagerStatus.   
+ - Scripting: Rework and flush EditorPanel API. Rename EditorPanel to GUIPanel. Add GUI.cs class.   
+ - Scripting: Add GUITable.cs API. Add InputText, and ColorEdit widgets to C#.   
+ - Graphics: EditorCamera: Add ability to increase movement speed when hold the any move key button.   
+ - Scripting: Expose TextComponent to C# as Text.cs.   
+ - Scripting: Add Pre/Post events for GameObject_AddComponent. Also fixed some other issues with importing.   
+ - Scripting: Expose Font.cs to C# and fix some issues with Text.cs.   
+ - Graphics: Text: Add FontManager and remove the FontRegistry from AssetManager.   
+ - SceneManagment: Add new type of scene, Simualte Scene. TextComponents now renders by specific font.   
+ - Graphics: Renderer2D: Fix bug that unicode characters was not rendered on font witch support them.   
+ - Graphics: TextureManager & FontManager: Fix bug that fonts and textures was not properly referenced when we in Simulate Scene.    
+ - UI: Final feature of 0.4.0 - UIs. Finaly continue work on them not garantie to finish this year.  Create new UIFrame witch works almost as a Camera.   
+ - Graphics: Renderer2DUI: Integrate UIFrame to renderer UI. Add new frame projection matrix, and update its shader.   
+ - SceneManagment: Integrate UIFrame object to UIFrameComponent and update its serializer.   
+ - SceneManagment: SceneRenderer: Update scene renderer to support UIFrame properly. Add its sprite and frustum visualizer.   
+ - UI: Lock the Transform changing of UIFrame. Also UIFrame width and height now displays real resolution of game panel of screen.   
+ - GUI: Add support for disabled widgets. Also UITransform in Inspector cannot be changed. Now all UIElements by default have UITransformComponent.   
+ - UI: Now removing UIFrame all UI elements (objects) also will be removed. Hmmm really need concept of parentness objects.   
+ - UI: Update Renderer2D_UI for OpenGL/GLSL. And update this shaders in .ShaderCache.   
+ - GL: Pipeline: Fixed bug when depth test state was set to false it not disabled it via glDisable(GL_DEPTH_TEST).   
+ - UI: SceneRenderer: When UI's renders throw WorldSpace on it not applyies depth test.   
+ - SceneManagment: SceneRenderer: Add way to render selection for texts, witch covers all characters.   
+ - UI: Create new UIText shader, and its rendering pipeline. UI Text can be created by TextComponent + UITransformComponent for now.   
+ - UI: UI's now can be rotated around X and Y axis aswell.   
+ - SceneManagment: SceneRenderer: Fixed bug that selection can be rendered on select objects on non main scene.   
+ - Serialization: Fixed bug that 'activeInEditor' properly was not serialized.   
+ - UI: Start implement UIButton interface to able to select buttons, and check they states.   
+ - UI & Editor: Add UIText and Text as menu items in Explorer, Objects Toolbar.   
+ - Inspector: UI-elements TransformUI component now shows width and height. Remove Scale component for rendering in TransformBehaviour. Now all of TRS component can be removed from this TransformBehaviour   
+ - GUI: Add new way to detect that any WidgetXXX was modified for UndoRedo system.   
+ - UI: SceneRenderer: Add new text sprite that will render on text component if is string is empty or not font.   
+ - Scripting: Rework the instantiation of prefabs. Now prefabs can be changed at runtime.   
+ - Scripting: Add new primitive types to PrimitiveType.cs, and fixed bug that we cannot Rigidbody2D's runtime body was not created during CreateGameObjectCopy().   
+ - AssetManager: Add GetAssetUIDByComponent() to retrive asset UID from component.   
+ - UR: Add addition of scene save point.   
+ - UR: Prepare for new UR set/remove assets commands from component.   
+ - UR: Add CommandUR_SetAssetSprite.   
+ - UR: Add CommandUR_SetAssetCSScript.   
+ - UR: Add CommandUR_SetAssetCSScriptGameObject.   
+ - UR: Add CommandUR_SetAssetFont.   
+ - UR: Add CommandUR_SetAssetAudio.   
+ - GUI: Add support to return true when InputText/ColorEdit only if it was modified and deactivated or (colorEdit) closed for UR.   
+ - UR: Add CommandURData_Text with for each of TextComponent property.   
+ - UR: Add CommandURData_Editor for EditorComponent and CommandURData_Tag for TagComponent to all properties.   
+ - PanelScene: Replace the Pixel Picking by Ray Picking for 3D view. And fix bug that Undo command was not recorded because of Selection Start Event.   
+ - UR: Fixed some bugs with InputText and CommandUR_Text_SetText.   
+ - GUI: Add support to return true when Slider only if it was modified and deactivated for UR.   
+ - UR: Add CommandURData_AudioSource for AudioSourceComponent to all properties.   
+ - UR: Add CommandURData_AudioListener for AudioListenerComponent to all properties.   
+ - UR: Add CommandURData_Camera for CameraRendererComponent to all properties.   
+ - UR: Add commands for all renderer components and all its properties.   
+ - UR: Add commands for NativeScriptComponent and CSharpScriptComponent for all properties. (CS Script custom properties now broken and not support Undo-Redo, need to fix that).   
+ - UR: Made some changes in widgets again Widget/Slider because for script fields we not have yet UndoRedo (its little compilcated).   
+ - GUI: Update WidgetInt/Int64/Float2/Float3/Float4 for support modified for undo case.   
+ - UR: Add CommandURData_Rigidbody2D for Rigidbody2DComponent to all properties.   
+ - UR: Add CommandURData_BoxCollider2D for BoxCollider2D to all properties.   
+ - UR: Add CommandURData_CircleCollider2D for CircleCollider2DComponent to all properties.   
+ - UR: Add CommandURData_ChainCollider2D for ChainCollider2DComponent to all properties.   
+ - GUI: A little modify ColorEditXXX for UndoRedo.   
+ - UR: Add commands for all UI components and all its properties.   
+ - UR: Add CommandURData_ParticleSystem for ParticleSystemComponent to all properties. First step of Undo-Redo is done.   
+ - UR: Add cursor-separator between Undo/Redo lists to show excatly where are we.   
+ - UR: Add CommandUR_AddRemoveComponent.
+ - Force: Fix some issuies in Debug compilation.   
+ - UR: Add oporunity or CommandUR_AddOrRemoveComponent restore it data and asset if we Do-Do-RemoveComponent-AddComponent sequence.   
+ - UR: Add CommandUR_ResetRestoreComponent and fix some bugs with CommandUR_AddRemoveComponent.   
+ - UR: Add CommandUR_PasteRestoreComponent witch combines: Paste, UndoPaste, PasteAsNew and UndoPasteAsNew commands. Components commands pretty much done.   
+ - UR: Add UR commands for AddRemoveGameObject, and OpenScene (last is beta but now i really not have time). Just immitidaly release 0.4.0 and prepare for Force 2025.
+ - Force: Release 0.4.0 update.     
 
 ## Force 0.3.10   
  - Editor: Fixed couples bugs with project system reopening project, and physics colliders.   
@@ -1136,4 +2076,5 @@ Each latest feature in each version reads from bottom -> top.
     - 0.0.13 - Text 2.0
     - 0.0.12 - Audio Update
     - 0.0.11 - First Menu
+
     - 0.0.11be - Bogdan Edition
