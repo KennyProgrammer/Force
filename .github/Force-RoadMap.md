@@ -10,7 +10,7 @@
 |                   | Font Rendering: Support for text and font.                                               | +                            |
 |                   | UI Rendering: Support for UI/GUI/HUD rendering.                                          | Working... (20%)             |
 | Renderer 3D       | Basic model loading, basic shaders and renderer.                                         | 2026?                        |
-| Project Managment | Apportunatty to create, save, and edit projects.                                         | +                            |
+| Project Managment | Opportunity to create, save, and edit projects.                                          | +                            |
 | Scene Managment   | ECS. Creating, saving, controlling, playing scenes.                                      | +                            |
 | Asset Managment   | Creating, importing, saving, display, attach to GameObjects assets.                      | +                            |
 | C# Scripting      | Mono and scripting projects, feature to create scripts, attatch to GameObjects and play. | +                            |
@@ -18,11 +18,11 @@
 | Physics 3D        | XPhys physics.                                                                           | 2026-LQ-?                    |
 | Audio             | Playing effects and sounds.                                                              | +                            |
 | Networking        | Internet connection and files downloading.                                               | +                            |
-| Editor Tool       | Force Editor Tool, to create projecs and games. Main focus today.                        | Infinity...                  |
-| Nave Tool         | Force Launcher allowing download, search builds, and create projects.                    |                    +         |
-| Runtime           | Goal to play created project outside the Editor.                                         | +                            |
+| Editor Tool       | Force Editor Tool, to create projects and games. Main focus today.                       | Infinity...                  |
+| Nave Tool         | Force Launcher allowing download, search builds, and create projects.                    | +                            |
+| Runtime           | Goal to export the project created in Editor, open executable and play.                  | +-                           |
 | Platforms         | Windows, Linux, Mac, GLFW                                                                | +--+                         |
-| Renderers         | OpenGL, DirectX10, DirectX11, DirectX12, Vulkan, Metal, Mantle.                          | +++----                      |
+| Renderers         | OpenGL4, OpenGL3, DirectX 10, DirectX 11, DirectX 12, Vulkan, Metal, Mantle.             | ++++----                     |
 
 ### Renderer
 
@@ -133,3 +133,4 @@
 ### The Editor
 
 There's too much to do, too big a list, see [Force-Log.md](https://github.com/KennyProgrammer/Force/blob/main/.github/log/Force-Log.md) and logs or more details. Bascially i define editor by: Editor during 2D era of Force, that has a limited ending and some 'competeness' of engine, and another 3D era of Force that is basically infinity because for 3D we can implement infinity amout of features.                                                          
+
