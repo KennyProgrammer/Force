@@ -7,10 +7,10 @@
 [**Force**](https://danil-dukhovenko.gitbook.io/force) is a game engine for making **any 2D and 3D (in future) graphics applications, games**. It is written in C/C++ with C# as scripting language. Force support [OpenGL](https://www.khronos.org/opengl/), [DirectX](https://en.wikipedia.org/wiki/DirectX) and maybe in future
 [Vulkan](https://www.khronos.org/vulkan/) rendering API's. Its supports Windows for now as main platform, other desktop platforms (Mac, Linux) and mobile platforms (IOS, Android) will be also support in a far future. 
 
-| 🛠️ **Build** | 📑 **Type** | 2406 commits|
+| 🛠️ **Build** | 📑 **Type** | 2441 commits|
 |------|------|------|
 | 🟢[0.4.0](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0)| Pre-release | 100% |
-🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preview 1 |   30% |
+🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preview 1 |   35% |
 
 Looking for other builds? Go to updates [page](https://danil-dukhovenko.gitbook.io/force/other/updates). 
 
