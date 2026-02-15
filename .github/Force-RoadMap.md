@@ -28,18 +28,22 @@
 
 |                     | API                      | OpenGL 3/4    | Microsoft DirectX 10/11 | Microsoft DirectX 12 | Vulkan |
 | ------------------- | ------------------------ | ------------- | ------------- | ---------- | ------ |
-| **Implementations** | Context/Init             | +             | +             | +          | +      |
-|                     | Abstract Render Commands | +             | +             |            |        |
-|                     | ImGui                    | +             | +             |            |        |
-|                     | Vertex Buffer            | + hidden VAO  | +             |            |        |
-|                     | Index Buffer             | +             | +             |            |        |
-|                     | Uniform/Constant Buffer  | +             | +             |            |        |
+| **Implementations** | GUI Library              | +             | +             | +          | +      |
+|                     | Context                  | +             | +             |            |        |
+|                     | SwapChain                | +             | +             |            |        |
+|                     | VertexBuffer             | + hidden VAO  | +             |            |        |
+|                     | IndexBuffer              | +             | +             |            |        |
+|                     | UniformBuffer            | +             | +             |            |        |
+|                     | Sampler                  | +             | +             |            |        |
 |                     | Shaders                  | +             | +             |            |        |
 |                     | Texture2D                | +             | +             |            |        |
 |                     | Texture3D                | 3D            | 3D            |            |        |
-|                     | TextureCube              | 3D            | 3D            |            |        |
+|                     | TextureCube              | +             | +             |            |        |
+|                     | DescriptorSet            | +             | +             |            |        |
+|                     | Pipeline                 | +             | +             |            |        |
+|                     | RenderPass               | +             | +             |            |        |
 |                     | Framebuffer              | +             | +             |            |        |
-|                     | Adapter                  | Using Context | +             |            |        |
+|                     | CommandBuffer            | -             | -             |            |        |
 
 ### Platform
 
@@ -126,11 +130,12 @@
 - [x] Downloading files/archives
 
 ### Runtime
-- [x] Playable runtim
+- [x] Playable runtime
 - [x] Exporting project to Game (via Solution)
 - [ ] Exporting project to Game (via Editor) 2025bx+
 
 ### The Editor
 
 There's too much to do, too big a list, see [Force-Log.md](https://github.com/KennyProgrammer/Force/blob/main/.github/log/Force-Log.md) and logs or more details. Bascially i define editor by: Editor during 2D era of Force, that has a limited ending and some 'competeness' of engine, and another 3D era of Force that is basically infinity because for 3D we can implement infinity amout of features.                                                          
+
 
