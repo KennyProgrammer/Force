@@ -35,7 +35,7 @@
 |                     | IndexBuffer              | +             | +             |            |        |
 |                     | UniformBuffer            | +             | +             |            |        |
 |                     | Sampler                  | +             | +             |            |        |
-|                     | Shaders                  | +             | +             |            |        |
+|                     | Shader                   | +             | +             |            |        |
 |                     | Texture2D                | +             | +             |            |        |
 |                     | Texture3D                | 3D            | 3D            |            |        |
 |                     | TextureCube              | +             | +             |            |        |
@@ -137,5 +137,6 @@
 ### The Editor
 
 There's too much to do, too big a list, see [Force-Log.md](https://github.com/KennyProgrammer/Force/blob/main/.github/log/Force-Log.md) and logs or more details. Bascially i define editor by: Editor during 2D era of Force, that has a limited ending and some 'competeness' of engine, and another 3D era of Force that is basically infinity because for 3D we can implement infinity amout of features.                                                          
+
 
 
