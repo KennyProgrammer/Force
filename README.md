@@ -38,6 +38,9 @@ The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff su
 
 ## Additional Information
 
+### Desktop Upgrade
+Since last week my main PC was burned out by electric power off-on, and motherboard cannot handle that since PC was pretty old, so temporary i pause working on Force, until I not buy a new one. Thankfully last 200 commits (2 mouths of work) survived that currently not pushed to main repo. And finally this upgrade opens a path to Vulkan and DirectX 12, last APIs that was not added because my old GPU was not supported them. 
+
 ### Contributors
 
 If you can help me and want to contribute to the project with your experience or do you want to get part of the project for some other
