@@ -11,7 +11,7 @@
 |------|------|------|
 | 🟢[0.4.0](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0)| Pre-release | 100% |
 🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preview 3 |   60% |
-|⏸️|Full Desktop Upgrade| 9% |
+|⏸️|Full Desktop Upgrade| 50% |
 
 Looking for other builds? Go to updates [page](https://danil-dukhovenko.gitbook.io/force/other/updates). 
 
