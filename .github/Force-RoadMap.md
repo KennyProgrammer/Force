@@ -8,7 +8,7 @@
 | Window System     | Handle windows on different platforms.                                                   | +                            |
 | Renderer 2D       | Batch Renderer: Quads, Lines, Circles, Sprites.                                          | +                            |
 |                   | Font Rendering: Support for text and font.                                               | +                            |
-|                   | UI Rendering: Support for UI/GUI/HUD rendering.                                          | Working... (20%)             |
+|                   | UI Rendering: Support for UI/GUI/HUD rendering.                                          | Working... (95%)             |
 | Renderer 3D       | Basic model loading, basic shaders and renderer.                                         | 2026?                        |
 | Project Managment | Opportunity to create, save, and edit projects.                                          | +                            |
 | Scene Managment   | ECS. Creating, saving, controlling, playing scenes.                                      | +                            |
