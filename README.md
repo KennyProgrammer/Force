@@ -11,13 +11,12 @@
 |------|------|------|
 | 🟢[0.4.0](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0)| Pre-release | 100% |
 🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preview 3 |   60% |
-|⏸️|Full Desktop Upgrade| 99% |
 
 Looking for other builds? Go to updates [page](https://danil-dukhovenko.gitbook.io/force/other/updates). 
 
 ## Introduction
 
-**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer) from [January 2020](https://danil-dukhovenko.gitbook.io/force/other/insider) and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. 
+**Force** was developing by one person [Danil Dukhovenko](https://github.com/KennyProgrammer) from [January 2020](https://danil-dukhovenko.gitbook.io/force/other/insider) and still by present day. Force still on very early stage, because working on it by myself. So it needs get a lot more features for now to left this early stage. In future where engine steps some **stability point**, i will attach other developers, and create open source-community driven technology. Im currently already started to write Vulkan backed, so be sure that by recent RHI abstraction is fits real Vulkan requirements.
 
 If you interesed you can check Force global [Roadmap](.github/Force-RoadMap.md) to see completed and not yet completed features.
 
@@ -39,7 +38,7 @@ The [other documented](https://danil-dukhovenko.gitbook.io/force/other) stuff su
 ## Additional Information
 
 ### Desktop Upgrade
-Since last week my main PC was burned out by electric power off-on, and motherboard cannot handle that since PC was pretty old, so temporary i pause working on Force, until I not buy a new one. Thankfully last 200 commits (2 mouths of work) survived that currently not pushed to main repo. And finally this upgrade opens a path to Vulkan and DirectX 12, last APIs that was not added because my old GPU was not supported them. 
+PC upgrade is finished, now whats lefts just its to move last 200 commits (2 mouths of work) survived that currently not pushed to main repo from old HDD to new SSD.  And finally this upgrade opens a path to Vulkan and DirectX 12, last APIs that was not added because my old GPU was not supported them.  Right now im already started to write Vulkan backend to see that my recent RHI abstraction fits Vulkan requirements.
 
 ### Contributors
 
