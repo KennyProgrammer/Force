@@ -28,7 +28,7 @@
 
 |                     | API                      | OpenGL 3/4    | Microsoft DirectX 10/11 | Microsoft DirectX 12 | Vulkan |
 | ------------------- | ------------------------ | ------------- | ------------- | ---------- | ------ |
-| **Implementations** | GUI Library              | +             | +             | +          | +-     |
+| **Implementations** | GUI Library              | +             | +             | +          | +      |
 |                     | Context                  | +             | +             |            | +      |
 |                     | SwapChain                | +             | +             |            | +      |
 |                     | VertexBuffer             | + hidden VAO  | +             |            | +      |
