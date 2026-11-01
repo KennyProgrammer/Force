@@ -28,22 +28,22 @@
 
 |                     | API                      | OpenGL 3/4    | Microsoft DirectX 10/11 | Microsoft DirectX 12 | Vulkan |
 | ------------------- | ------------------------ | ------------- | ------------- | ---------- | ------ |
-| **Implementations** | GUI Library              | +             | +             | +          | +      |
-|                     | Context                  | +             | +             |            | +      |
-|                     | SwapChain                | +             | +             |            | +      |
-|                     | VertexBuffer             | + hidden VAO  | +             |            | +      |
-|                     | IndexBuffer              | +             | +             |            | +      |
-|                     | UniformBuffer            | +             | +             |            | +      |
-|                     | Sampler                  | +             | +             |            | +      |
-|                     | Shader                   | +             | +             |            | +      |
-|                     | Texture2D                | +             | +             |            | +      |
+| **Implementations** | GUI Library              | +             | +             | -          | +      |
+|                     | Context                  | +             | +             | +-         | +      |
+|                     | SwapChain                | +             | +             | +-         | +      |
+|                     | VertexBuffer             | + hidden VAO  | +             | -          | +      |
+|                     | IndexBuffer              | +             | +             | -          | +      |
+|                     | UniformBuffer            | +             | +             | -          | +      |
+|                     | Sampler                  | +             | +             | -          | +      |
+|                     | Shader                   | +             | +             | -          | +      |
+|                     | Texture2D                | +             | +             | -          | +      |
 |                     | Texture3D                | 3D            | 3D            | 3D         | 3D     |
-|                     | TextureCube              | +             | +             |            | +      |
-|                     | DescriptorSet            | +             | +             |            | +      |
-|                     | Pipeline                 | +             | +             |            | +      |
-|                     | RenderPass               | +             | +             |            | +      |
-|                     | Framebuffer              | +             | +             |            | +      |
-|                     | CommandBuffer            | +             | +             |            | +      |
+|                     | TextureCube              | +             | +             | -          | +      |
+|                     | DescriptorSet            | +             | +             | -          | +      |
+|                     | Pipeline                 | +             | +             | -          | +      |
+|                     | RenderPass               | +             | +             | +-         | +      |
+|                     | Framebuffer              | +             | +             | -          | +      |
+|                     | CommandBuffer            | +             | +             | +          | +      |
 
 ### Platform
 
