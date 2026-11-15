@@ -2,7 +2,7 @@
 
 ### Main Roadmap
 
-| Feature           | Description                                                                              | State                        |
+| Primary Features           | Description                                                                              | State                        |
 |-------------------|----------------------------------------------------------------------------------------- |------------------------------|
 | Core              | Build basic workstation to work with Force.                                              | +                            |
 | Window System     | Handle windows on different platforms.                                                   | +                            |
@@ -22,38 +22,40 @@
 | Nave Tool         | Force Launcher allowing download, search builds, and create projects.                    | +                            |
 | Runtime           | Goal to export the project created in Editor, open executable and play.                  | +-                           |
 | Platforms         | Windows, Linux, Mac, GLFW                                                                | +--+                         |
-| Renderers         | OpenGL4, OpenGL3, DirectX 10, DirectX 11, DirectX 12, Vulkan, Metal, Mantle.             | ++++----                     |
+| Renderers         | OpenGL 3.3, OpenGL 4.6, Vulkan 1.3+. DirectX 10, DirectX 11, DirectX 12, Metal, Mantle.  | ++++++--                     |
 
-### Renderer
+### Renderer Roadmap
 
-|                     | API                      | OpenGL 3/4    | Microsoft DirectX 10/11 | Microsoft DirectX 12 | Vulkan |
-| ------------------- | ------------------------ | ------------- | ------------- | ---------- | ------ |
-| **Implementations** | GUI Library              | +             | +             | -          | +      |
-|                     | Context                  | +             | +             | +-         | +      |
-|                     | SwapChain                | +             | +             | +-         | +      |
-|                     | VertexBuffer             | + hidden VAO  | +             | +          | +      |
-|                     | IndexBuffer              | +             | +             | +          | +      |
-|                     | UniformBuffer            | +             | +             | +          | +      |
-|                     | Sampler                  | +             | +             | +          | +      |
-|                     | Shader                   | +             | +             | +          | +      |
-|                     | Texture2D                | +             | +             | +          | +      |
-|                     | Texture3D                | 3D            | 3D            | 3D         | 3D     |
-|                     | TextureCube              | +             | +             | +          | +      |
-|                     | DescriptorSet            | +             | +             | +          | +      |
-|                     | Pipeline                 | +             | +             | +          | +      |
-|                     | RenderPass               | +             | +             | +-         | +      |
-|                     | Framebuffer              | +             | +             | -          | +      |
-|                     | CommandBuffer            | +             | +             | +          | +      |
+|                                       | API (Renderer)           |  OpenGL 3.3   |  OpenGL 4.6   |   Vulkan 1.3+   |  DirectX 10 | DirectX 11 | DirectX 12 |
+| -------------------                   | ------------------------ | ------------- | ------------- | ---------- | ----------- | ---------- | ---------- |
+| **RHI (Renderer Hardware Interface)** |                          |               |               |            |             |            |            |
+|                                       | GUI Library              | +             | +             | +          | +           | +          | -          | 
+|                                       | Context                  | +             | +             | +          | +           | +          | +          |
+|                                       | SwapChain                | +             | +             | +          | +           | +          | +          |
+|                                       | VertexBuffer             | +             | +             | +          | +           | +          | +          |
+|                                       | IndexBuffer              | +             | +             | +          | +           | +          | +          |
+|                                       | UniformBuffer            | +             | +             | +          | +           | +          | +          |
+|                                       | Sampler                  | +             | +             | +          | +           | +          | +          |
+|                                       | Shader                   | +             | +             | +          | +           | +          | +          |
+|                                       | Texture2D                | +             | +             | +          | +           | +          | +          |
+|                                       | Texture3D                | 3D            | 3D            | 3D         | 3D          | 3D         | 3D         |
+|                                       | TextureCube              | +             | +             | +          | +           | +          | +          |
+|                                       | DescriptorSet            | +             | +             | +          | +           | +          | +          |
+|                                       | Pipeline                 | +             | +             | +          | +           | +          | +          |
+|                                       | RenderPass               | +             | +             | +          | +           | +          | -          |
+|                                       | Framebuffer              | +             | +             | +          | +           | +          | +-         |
+|                                       | CommandBuffer            | +             | +             | +          | +           | +          | +          |
 
-### Platform
+### Platform Roadmap
 
 
-|                     |       OS/Platform        |     Microsoft Windows ~*7*~/10/11   |          Mac OS        |   Linux    |    GLFW     |
+|                     |       OS/Platform        |     Microsoft Windows ~*7*~/10/11   |          Apple Mac OS        |   Linux    |    GLFW (Platform Library)     |
 | ------------------- | ------------------------ | ---------------------------- | ---------------------- | ---------- | ----------  |
-| **Implementations** | Window                   | +                            | -                      | -          | +           |
+| **Implementations** |                          |                              |                        |            |             |
+|                     | Window                   | +                            | -                      | -          | +           |
 |                     | Timer                    | +                            | -                      | -          | +           |
 |                     | NotifyClient             | +                            | -                      | -          | NA          |
-|                     | FileSystem (std::fs)     | +                            | +                      | +          | +           |
+|                     | FileSystem (wrapper over std::fs)     | +                            | +                      | +          | +           |
 |                     | FileSystem Observer      | +                            | -                      | +          | NA          |
 |                     | Drag & Drop              | +                            | -                      | -          | NA          |
 |                     | Console/Terminal         | +                            | -                      | -          | NA          |
