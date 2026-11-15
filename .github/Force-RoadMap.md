@@ -31,16 +31,16 @@
 | **Implementations** | GUI Library              | +             | +             | -          | +      |
 |                     | Context                  | +             | +             | +-         | +      |
 |                     | SwapChain                | +             | +             | +-         | +      |
-|                     | VertexBuffer             | + hidden VAO  | +             | -          | +      |
-|                     | IndexBuffer              | +             | +             | -          | +      |
-|                     | UniformBuffer            | +             | +             | -          | +      |
-|                     | Sampler                  | +             | +             | -          | +      |
-|                     | Shader                   | +             | +             | -          | +      |
-|                     | Texture2D                | +             | +             | -          | +      |
+|                     | VertexBuffer             | + hidden VAO  | +             | +          | +      |
+|                     | IndexBuffer              | +             | +             | +          | +      |
+|                     | UniformBuffer            | +             | +             | +          | +      |
+|                     | Sampler                  | +             | +             | +          | +      |
+|                     | Shader                   | +             | +             | +          | +      |
+|                     | Texture2D                | +             | +             | +          | +      |
 |                     | Texture3D                | 3D            | 3D            | 3D         | 3D     |
-|                     | TextureCube              | +             | +             | -          | +      |
-|                     | DescriptorSet            | +             | +             | -          | +      |
-|                     | Pipeline                 | +             | +             | -          | +      |
+|                     | TextureCube              | +             | +             | +          | +      |
+|                     | DescriptorSet            | +             | +             | +          | +      |
+|                     | Pipeline                 | +             | +             | +          | +      |
 |                     | RenderPass               | +             | +             | +-         | +      |
 |                     | Framebuffer              | +             | +             | -          | +      |
 |                     | CommandBuffer            | +             | +             | +          | +      |
