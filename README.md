@@ -11,8 +11,8 @@
 |------|------|------|
 | 🟢[0.4.0](https://danil-dukhovenko.gitbook.io/force/other/updates/force-0.4.0)| Pre-release | 100% |
 🔴[2025.b1](https://danil-dukhovenko.gitbook.io/force/other/updates/force-2025.b1.dbg-preview-1)| Preview 3 |   60% |
-🟠[2026.XX](https://github.com/KennyProgrammer/ForceDevVK)| Vulkan API |   95% |
-|| DirectX 12 |   10% |
+🟠[2026.XX](https://github.com/KennyProgrammer/ForceDevVK)| Vulkan API |   98% |
+|| DirectX 12 |   85% |
 
 Looking for other builds? Go to updates [page](https://danil-dukhovenko.gitbook.io/force/other/updates). 
 
