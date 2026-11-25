@@ -29,7 +29,7 @@
 |                                       | API (Renderer)           |  OpenGL 3.3   |  OpenGL 4.6   |   Vulkan 1.3+   |  DirectX 10 | DirectX 11 | DirectX 12 |
 | -------------------                   | ------------------------ | ------------- | ------------- | ---------- | ----------- | ---------- | ---------- |
 | **RHI (Renderer Hardware Interface)** |                          |               |               |            |             |            |            |
-|                                       | GUI Library              | +             | +             | +          | +           | +          | -          | 
+|                                       | GUI Library              | +             | +             | +          | +           | +          | +          | 
 |                                       | Context                  | +             | +             | +          | +           | +          | +          |
 |                                       | SwapChain                | +             | +             | +          | +           | +          | +          |
 |                                       | VertexBuffer             | +             | +             | +          | +           | +          | +          |
@@ -43,7 +43,7 @@
 |                                       | DescriptorSet            | +             | +             | +          | +           | +          | +          |
 |                                       | Pipeline                 | +             | +             | +          | +           | +          | +          |
 |                                       | RenderPass               | +             | +             | +          | +           | +          | -          |
-|                                       | Framebuffer              | +             | +             | +          | +           | +          | +-         |
+|                                       | Framebuffer              | +             | +             | +          | +           | +          | +          |
 |                                       | CommandBuffer            | +             | +             | +          | +           | +          | +          |
 
 ### Platform Roadmap
